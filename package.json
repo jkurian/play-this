@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "knex": "^0.14.4",
     "npm": "^5.7.1",
+    "pg": "^7.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
