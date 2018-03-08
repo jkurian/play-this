@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot"
+    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0"
   },
   "keywords": [
     "react",
