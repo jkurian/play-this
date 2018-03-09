@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import LandingPage from './LandingPage.jsx'
+import Main from './main/Main.jsx'
 //example import action
 //import { fetchUser } from '../actions/userActions'
 
@@ -22,7 +23,7 @@ export default class Layout extends React.Component {
         //const { user } = this.props;
         //return <h1>{user.name} is {user.age} years old</h1>
         return (
-            <LandingPage />
+            <Main />
         )
     }
 }
