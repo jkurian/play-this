@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import AppBar from 'material-ui/AppBar';
-import NavBar from './NavBar.jsx'
+import NavBar from './NavBar.jsx';
 import LoginForm from './LoginForm.jsx';
 import SignupForm from './SignupForm.jsx';
 
@@ -14,7 +13,8 @@ import { connect } from 'react-redux'
     //   userFetched: store.user.fetched,
     //   tweets: store.tweets.tweets,
     };
-  })
+})
+
 export default class LandingPage extends Component {
     render() {
         console.log('hello', this.props)
