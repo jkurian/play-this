@@ -4,3 +4,4 @@ npm-debug.log
 .env
 yarn-error.log
 yarn.lock
+knexfile.js
