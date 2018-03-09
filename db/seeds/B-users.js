@@ -1,6 +1,6 @@
 const faker = require("faker");
 
-// Use this to build accounts for development.
+// Use this to build real accounts for development.
 // Ensure that the loop in C-users.js, i > the amount of users here
 exports.seed = function(knex, Promise) {
   return knex("users").then(() => {
