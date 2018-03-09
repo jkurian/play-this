@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
-const TextFieldExampleSimple = () => (
+const LoginForm = () => (
   <div>
     <TextField
       floatingLabelText="Email"
@@ -13,4 +13,4 @@ const TextFieldExampleSimple = () => (
   </div>
 );
 
-export default TextFieldExampleSimple;
+export default LoginForm;
