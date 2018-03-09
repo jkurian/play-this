@@ -20,15 +20,25 @@
 //   }
 // }
 
-// export function addTweet(id, text) {
-//   return {
-//     type: 'ADD_TWEET',
-//     payload: {
-//       id,
-//       text,
-//     },
-//   }
-// }
+export function displayLoginForm(status) {
+  return {
+    type: 'SHOW_LOGIN_FORM',
+    payload: {
+        status_login: status,
+        status_signup: false
+    },
+  }
+}
+
+export function displaySignupForm(status) {
+  return {
+    type: 'SHOW_SIGNUP_FORM',
+    payload: {
+        status_signup: status,
+        status_login: false
+    },
+  }
+}
 
 // export function updateTweet(id, text) {
 //   return {
