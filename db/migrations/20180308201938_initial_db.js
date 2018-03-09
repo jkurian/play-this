@@ -1,7 +1,7 @@
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
   return Promise.all([
     // create user table
-    knex.schema.createTable("users", function(table) {
+    knex.schema.createTable("users", table => {
       table.increments("id");
       table.string("first_name");
       table.string("last_name");
@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // requests table
-    knex.schema.createTable("requests", function(table) {
+    knex.schema.createTable("requests", table => {
       table.increments("id");
       table.string("name");
       table.string("reason");
@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // songs table
-    knex.schema.createTable("songs", function(table) {
+    knex.schema.createTable("songs", table => {
       table.increments("id");
       table.string("artist");
       table.string("title");
@@ -33,7 +33,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // Comments table
-    knex.schema.createTable("comments", function(table) {
+    knex.schema.createTable("comments", table => {
       table.increments("id");
       table.string("comment");
       table.integer("user_id").unsigned();
@@ -43,7 +43,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // User_song table
-    knex.schema.createTable("user_song", function(table) {
+    knex.schema.createTable("user_song", table => {
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
@@ -51,7 +51,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // User likes table
-    knex.schema.createTable("userlikes", function(table) {
+    knex.schema.createTable("userlikes", table => {
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
@@ -59,7 +59,7 @@ exports.up = function(knex, Promise) {
     }),
 
     // User Friends tableName
-    knex.schema.createTable("userfriends", function(table) {
+    knex.schema.createTable("userfriends", table => {
       table.integer("user_id1").unsigned();
       table.foreign("user_id1").references("users.id");
       table.integer("user_id2").unsigned();
@@ -68,10 +68,10 @@ exports.up = function(knex, Promise) {
   ]);
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
   return Promise.all([
-    knex.schema.dropTable("userFriends"),
-    knex.schema.dropTable("userLikes"),
+    knex.schema.dropTable("userfriends"),
+    knex.schema.dropTable("userlikes"),
     knex.schema.dropTable("user_song"),
     knex.schema.dropTable("comments"),
     knex.schema.dropTable("songs"),
