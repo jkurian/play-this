@@ -7,7 +7,7 @@ let createRecord = (knex, id) => {
     explanation: faker.lorem.sentence(),
     user_admin_id: faker.random.number({
       min: 1,
-      max: 10
+      max: 1000
     })
   });
 };
@@ -16,7 +16,7 @@ exports.seed = (knex, Promise) => {
   return knex("requests").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 50; i++) {
       records.push(createRecord(knex, i));
     }
 

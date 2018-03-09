@@ -9,11 +9,11 @@ let createRecord = (knex, id) => {
     spotifyID: "d3213nkjd79e8",
     request_id: faker.random.number({
       min: 1,
-      max: 10
+      max: 50
     }),
     user_id: faker.random.number({
       min: 1,
-      max: 10
+      max: 1000
     })
   });
 };

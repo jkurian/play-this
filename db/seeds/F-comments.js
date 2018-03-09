@@ -6,11 +6,11 @@ let createRecord = (knex, id) => {
     comment: faker.lorem.sentences(),
     user_id: faker.random.number({
       min: 1,
-      max: 10
+      max: 1000
     }),
     song_id: faker.random.number({
       min: 1,
-      max: 10
+      max: 1000
     })
   });
 };
