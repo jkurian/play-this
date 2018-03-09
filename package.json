@@ -16,11 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "material-ui": "^1.0.0-beta.36",
+    "material-ui": "^0.20.0",
     "npm": "^5.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
