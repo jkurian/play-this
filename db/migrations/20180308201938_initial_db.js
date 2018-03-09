@@ -13,8 +13,8 @@ exports.up = (knex, Promise) => {
     // requests table
     knex.schema.createTable("requests", table => {
       table.increments("id");
-      table.string("name");
-      table.string("reason");
+      table.string("title");
+      table.string("explanation", 500);
       table.integer("user_admin_id").unsigned();
       table.foreign("user_admin_id").references("users.id");
     }),
@@ -35,7 +35,7 @@ exports.up = (knex, Promise) => {
     // Comments table
     knex.schema.createTable("comments", table => {
       table.increments("id");
-      table.string("comment");
+      table.string("comment", 500);
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
