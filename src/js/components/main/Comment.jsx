@@ -9,28 +9,15 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 
+// Once the API is fully up and running, we will parsing and mapping the object into just one <ListItem>
 export default class Comment extends Component {
   render() {
-    const iconButtonElement = (
-      <IconButton touch={true} tooltip="more" tooltipPosition="bottom-left">
-        <MoreVertIcon color={grey400} />
-      </IconButton>
-    );
-
-    const rightIconMenu = (
-      <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem>Reply</MenuItem>
-        <MenuItem>Forward</MenuItem>
-        <MenuItem>Delete</MenuItem>
-      </IconMenu>
-    );
-
     return (
       <div>
         <List>
-          <Subheader>Today</Subheader>
+          <Subheader>Comments</Subheader>
           <ListItem
-            leftAvatar={<Avatar src="images/ok-128.jpg" />}
+            leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
             primaryText="Name of User:"
             secondaryText={
               <p>
@@ -42,7 +29,7 @@ export default class Comment extends Component {
           />
           <Divider inset={true} />
           <ListItem
-            leftAvatar={<Avatar src="images/kolage-128.jpg" />}
+            leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
             primaryText="NAMEY MAMEY"
             secondaryText={
               <p>Wish I could come, but I&apos;m out of town this weekend.</p>
@@ -51,7 +38,7 @@ export default class Comment extends Component {
           />
           <Divider inset={true} />
           <ListItem
-            leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
+            leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
             primaryText="Someone:"
             secondaryText={
               <p>Do you have Paris recommendations? Have you ever been?</p>
@@ -60,7 +47,7 @@ export default class Comment extends Component {
           />
           <Divider inset={true} />
           <ListItem
-            leftAvatar={<Avatar src="images/kerem-128.jpg" />}
+            leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
             primaryText="Awesome Name"
             secondaryText={
               <p>
@@ -72,7 +59,7 @@ export default class Comment extends Component {
           />
           <Divider inset={true} />
           <ListItem
-            leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
+            leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
             primaryText="NAME-O"
             secondaryText={
               <p>
