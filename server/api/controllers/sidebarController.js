@@ -6,19 +6,18 @@ exports.userForums = function(req, res, knex) {
       };
 
 
-    // knex('requests')
-    //   .where({
-    //       user_admin_id: 2
-    //   })
-    //   .select('title')
-    //   .then((results) => {
-    //       console.log('don!!!!!!!e');
-    //     templateVars.userForums = results
-    //     console.log('results are: ', results);
-        
-    // })
+    knex('requests')
+      .where({
+          user_admin_id: 2
+      })
+      .select('title')
+      .then((results) => {
+        //console.log('don!!!!!!!e');
+        templateVars.userForums = results
+        console.log('results are: ', results);
+        //res.json(templateVars);
+    })
     console.log('outside!!!!!');
-    res.json(templateVars);
 
     if (err) res.status(501).send('failed');
 };
