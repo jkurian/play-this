@@ -15,6 +15,7 @@ exports.up = (knex, Promise) => {
       table.increments("id");
       table.string("title");
       table.string("explanation", 500);
+      table.dateTime("time_stamp");
       table.integer("user_admin_id").unsigned();
       table.foreign("user_admin_id").references("users.id");
     }),
@@ -26,6 +27,7 @@ exports.up = (knex, Promise) => {
       table.string("title");
       table.string("album");
       table.string("spotifyID");
+      table.dateTime("time_stamp");
       table.integer("request_id").unsigned();
       table.foreign("request_id").references("requests.id");
       table.integer("user_id").unsigned();
@@ -36,6 +38,7 @@ exports.up = (knex, Promise) => {
     knex.schema.createTable("comments", table => {
       table.increments("id");
       table.string("comment", 500);
+      table.dateTime("time_stamp");
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
