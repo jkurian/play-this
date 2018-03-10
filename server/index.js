@@ -1,3 +1,4 @@
+
 let cors = require('cors')
 let bodyParser = require('body-parser');
 let express = require('express');
@@ -9,7 +10,10 @@ const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig.development);
 const knexLogger  = require("knex-logger");
 
+const dataHelpers = require("./data-helpers")(knex)
+
 app.use(knexLogger(knex));
+
 
 app.use(cors())
 // mongoose instance connection url connection
@@ -22,7 +26,7 @@ app.use(bodyParser.json());
 
 
 var routes = require('./api/routes/playThisRoutes'); //importing route
-routes(app, knex); //register the route
+routes(app, dataHelpers); //register the route
 
 
 app.listen(port);
