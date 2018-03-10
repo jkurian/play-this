@@ -6,7 +6,7 @@ let createRecord = (knex, id) => {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     avatar_image: faker.image.avatar(),
-    email: faker.internet.email(),
+    email: faker.internet.exampleEmail(),
     password: faker.internet.password()
   });
 };

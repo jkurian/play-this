@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot"
+    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0 --watch"
   },
   "keywords": [
     "react",
@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.4",
     "knex": "^0.14.4",
+    "material-ui": "^0.20.0",
     "npm": "^5.7.1",
     "pg": "^7.4.1",
     "react": "^16.2.0",
