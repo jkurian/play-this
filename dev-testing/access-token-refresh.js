@@ -7,6 +7,8 @@ var spotifyApi = new SpotifyWebApi({
   clientSecret: process.env.spotify_clientSecret
 });
 
+console.log(spotifyApi);
+
 // Retrieve an access token
 spotifyApi.clientCredentialsGrant().then(
   function(data) {

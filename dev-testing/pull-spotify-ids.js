@@ -5,7 +5,7 @@ console.log(args);
 
 const spotifyApi = new SpotifyWebApi({
   accessToken:
-    "BQCvHaMkdDRHdX0aP0CTfnD70Y4Qx8epOTlTo_S8Nyy1IYyOQhaaEv3OYUJZLorqtKKk2SMow9_UcmTCW30"
+    "BQB4l85QAk7_X_CPBELGy-CHwDCr0Yx4qDDD6_wAwa1Ne6F1V-Tpu0qseSv_w7FbMo38hiuMr3f_6Dz8jHk"
 });
 
 // Do search using the access token
@@ -15,7 +15,7 @@ spotifyApi.searchTracks(args).then(
     let outgoing = [];
 
     incoming.forEach(element => {
-      outgoing.push(element.id);
+      outgoing.push(element);
     });
     console.log(outgoing);
   },
