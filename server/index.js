@@ -4,6 +4,13 @@ let express = require('express');
 
 let app = express();
 let port = process.env.PORT || 3000;
+
+const knexConfig  = require("../knexfile");
+const knex        = require("knex")(knexConfig.development);
+const knexLogger  = require("knex-logger");
+
+app.use(knexLogger(knex));
+
 app.use(cors())
 // mongoose instance connection url connection
 // mongoose.Promise = global.Promise;
@@ -15,7 +22,7 @@ app.use(bodyParser.json());
 
 
 var routes = require('./api/routes/playThisRoutes'); //importing route
-routes(app); //register the route
+routes(app, knex); //register the route
 
 
 app.listen(port);

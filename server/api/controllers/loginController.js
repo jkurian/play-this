@@ -1,5 +1,4 @@
 exports.login = function(req, res) {
-    console.log("asdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadasasdasdasdsadadas")
     let err = false;
 
     if (err)
