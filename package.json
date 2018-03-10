@@ -6,12 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0 --watch"
+    "dev":
+      "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0 --watch-poll"
   },
-  "keywords": [
-    "react",
-    "redux"
-  ],
+  "keywords": ["react", "redux"],
   "author": "Jerry Kurian",
   "license": "ISC",
   "dependencies": {
