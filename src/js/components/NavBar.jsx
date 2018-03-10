@@ -55,7 +55,7 @@ export default class NavBar extends React.Component {
             </div>
           );
           
-            true ? buttons = logoutButton : buttons = rightButtons
+            false ? buttons = logoutButton : buttons = rightButtons
             
         return (
             <div>
