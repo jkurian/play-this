@@ -25,6 +25,7 @@ export default class SideBar extends React.Component {
     componentWillMount() {
         console.log("COMPONENT WILL MOUNT");
         this.props.dispatch(fetchUserForums())
+        this.prop.dispatch(fetchUserFriendsForums())
     }
     
     render(){

@@ -10,7 +10,7 @@ let createRecord = (knex, id) => {
     time_stamp: faker.date.between("2017-07-31", "2018-03-09"),
     request_id: faker.random.number({
       min: 1,
-      max: 50
+      max: 3000
     }),
     user_id: faker.random.number({
       min: 1,
@@ -23,7 +23,7 @@ exports.seed = (knex, Promise) => {
   return knex("songs").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 25000; i++) {
       records.push(createRecord(knex, i));
     }
 

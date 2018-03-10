@@ -12,3 +12,17 @@ exports.userForums = function(req, res, dataHelpers) {
     // res.json(templateVars);
     if (err) res.status(501).send('failed');
 };
+
+exports.userFriendsForums = function(req, res, dataHelpers) {
+    let err = false;  
+
+     dataHelpers.getFriendsForums()
+      .then(result => {
+          console.log('in controller got', result)
+          res.json(result);
+      }
+    )
+
+    // res.json(templateVars);
+    if (err) res.status(501).send('failed');
+};
