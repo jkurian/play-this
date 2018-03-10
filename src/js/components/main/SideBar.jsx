@@ -10,17 +10,25 @@ import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import { displayUserForums } from '../../actions/sidebar'
+
 
 //this is where data comes from store as props
 @connect((store) => {
     return {
-
+        userForums: store.sidebar.userForums
     };
 })
 
 
 export default class SideBar extends React.Component {
+    componentWillMount() {
+        console.log("COMPONENT WILL MOUNT");
+        this.props.dispatch(displayUserForums())
+    }
+    
     render(){
+        console.log('IN RENDER');
         const boxStyle = {
             width: 300,
             margin: 20,
@@ -41,10 +49,7 @@ export default class SideBar extends React.Component {
                     </IconButton>
                     Create New Request
                     <List>
-                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
-                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
-                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
-                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
+                        <ListItem primaryText={this.props.userForums[0].name} leftIcon={<HearingIcon />} />
                     </List>
                     <Divider />
                     <h4>Friends' Requests</h4>

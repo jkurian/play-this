@@ -23,7 +23,7 @@ export default class Layout extends React.Component {
         //const { user } = this.props;
         //return <h1>{user.name} is {user.age} years old</h1>
         return (
-            <LandingPage />
+            <Main />
         )
     }
 }
