@@ -6,7 +6,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import { Provider } from 'react-redux'
 
-import Layout from './components/Layout'
+import Layout from './components/Layout.jsx'
 import store from './store'
 
 const app = document.getElementById('app')

@@ -17,7 +17,6 @@ import { connect } from 'react-redux'
 
 export default class LandingPage extends Component {
     render() {
-        console.log('hello', this.props)
         return (
             <div>
                 <NavBar />
