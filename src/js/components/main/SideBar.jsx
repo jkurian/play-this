@@ -39,7 +39,9 @@ export default class SideBar extends React.Component {
             marginLeft: 24,
             marginRight:23
         }
-        
+        const allUserRequests = this.props.userForums.map(forum => {
+            return <ListItem primaryText={forum.title} leftIcon={<HearingIcon />} />
+        })
         return (
             <div>
                 <Paper style={boxStyle} zDepth={1}> 
@@ -49,7 +51,7 @@ export default class SideBar extends React.Component {
                     </IconButton>
                     Create New Request
                     <List>
-                        <ListItem primaryText={this.props.userForums[0].name} leftIcon={<HearingIcon />} />
+                        {allUserRequests}
                     </List>
                     <Divider />
                     <h4>Friends' Requests</h4>

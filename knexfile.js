@@ -1,8 +1,8 @@
-require("dotenv").config();
+require('dotenv').config({path: __dirname + '/.env'});
 
 module.exports = {
   development: {
-    client: "postgresql",
+    client: 'pg',
     connection: {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,

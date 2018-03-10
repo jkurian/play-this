@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(app, knex) {
+module.exports = function(app, dataHelpers) {
     const loginController = require('../controllers/loginController');
     const sidebarController = require('../controllers/sidebarController');
 
@@ -9,7 +9,7 @@ module.exports = function(app, knex) {
     //  .post(todoList.create_a_task);
 
     app.route('/api/userforums')
-      .get(sidebarController.userForums);
-  
+      .get((req, res) => 
+          sidebarController.userForums(req, res, dataHelpers));
   };
   

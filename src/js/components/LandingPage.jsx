@@ -30,7 +30,6 @@ export default class LandingPage extends Component {
                     ? <SignUpForm />
                     : null
                 }
-                
             </div>
         )
     }
