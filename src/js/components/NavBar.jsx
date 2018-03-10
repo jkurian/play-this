@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import SignupForm from './SignupForm.jsx'
+import SignUpForm from './SignUpForm.jsx'
 import axios from 'axios'
 import { connect } from "react-redux"
 

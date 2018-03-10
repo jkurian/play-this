@@ -10,7 +10,7 @@ import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
-import { displayUserForums } from '../../actions/sidebar'
+import { displayUserForums, fetchUserForums } from '../../actions/sidebar'
 
 
 //this is where data comes from store as props
@@ -24,7 +24,7 @@ import { displayUserForums } from '../../actions/sidebar'
 export default class SideBar extends React.Component {
     componentWillMount() {
         console.log("COMPONENT WILL MOUNT");
-        this.props.dispatch(displayUserForums())
+        this.props.dispatch(fetchUserForums())
     }
     
     render(){
