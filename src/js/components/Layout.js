@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import LandingPage from './LandingPage.jsx'
+import Main from './main/Main.jsx'
 //example import action
 //import { fetchUser } from '../actions/userActions'
 
