@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NavBar from '../NavBar.jsx';
 import SideBar from './SideBar.jsx';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import { connect } from 'react-redux'
 
@@ -13,6 +14,9 @@ import { connect } from 'react-redux'
 })
 
 export default class Main extends Component {
+    
+
+    
     render() {
         return (
             <div>

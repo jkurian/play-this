@@ -5,12 +5,11 @@ import { connect } from 'react-redux'
 
 import {List, ListItem} from 'material-ui/List';
 import Paper from 'material-ui/Paper';
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ActionGrade from 'material-ui/svg-icons/action/grade';
-import ContentSend from 'material-ui/svg-icons/content/send';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
+import HearingIcon from 'material-ui/svg-icons/av/hearing';
+import ForumIcon from 'material-ui/svg-icons/communication/forum';
+import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
-import ActionInfo from 'material-ui/svg-icons/action/info';
+import IconButton from 'material-ui/IconButton';
 
 //this is where data comes from store as props
 @connect((store) => {
@@ -22,28 +21,50 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 
 export default class SideBar extends React.Component {
     render(){
-        const style = {
+        const boxStyle = {
             width: 300,
             margin: 20,
             display: 'inline-block',
         };
+
+        const iconStyle = {
+            marginLeft: 24,
+            marginRight:23
+        }
         
         return (
             <div>
-                <Paper style={style} zDepth={1}> 
+                <Paper style={boxStyle} zDepth={1}> 
+                    <h4>Requests</h4>
+                    <IconButton>
+                        <AddIcon />
+                    </IconButton>
+                    Create New Request
                     <List>
-                        <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
-                        <ListItem primaryText="Starred" leftIcon={<ActionGrade />} />
-                        <ListItem primaryText="Sent mail" leftIcon={<ContentSend />} />
-                        <ListItem primaryText="Drafts" leftIcon={<ContentDrafts />} />
-                        <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
+                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
+                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
+                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
+                        <ListItem primaryText="Request Title" leftIcon={<HearingIcon />} />
+                    </List>
+                    <Divider />
+                    <h4>Friends' Requests</h4>
+                    <List>
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
+                        <ListItem primaryText="Request Title" rightIcon={<ForumIcon />} />
                     </List>
                     <Divider />
                     <List>
-                        <ListItem primaryText="All mail" rightIcon={<ActionInfo />} />
-                        <ListItem primaryText="Trash" rightIcon={<ActionInfo />} />
-                        <ListItem primaryText="Spam" rightIcon={<ActionInfo />} />
-                        <ListItem primaryText="Follow up" rightIcon={<ActionInfo />} />
+                        <ListItem primaryText="Friends" />
+                        <Divider />
+                        <ListItem primaryText="Settings" />
                     </List>
                 </Paper>
             </div>
