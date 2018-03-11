@@ -25,6 +25,7 @@ module.exports = function makeDataHelpers(knex) {
       return knex("comments")
         .where({ song_id: 10 })
         .then(results => {
+          console.log("LOOK ---> " + results);
           return results;
         })
         .catch(err => {

@@ -1,14 +1,6 @@
 export default function reducer(
   state = {
-    songComments: [
-      {
-        id: null,
-        comment: "",
-        time_stamp: null,
-        user_id: null,
-        song_id: null
-      }
-    ],
+    songComments: [{}],
     fetching: false,
     error: null
   },
@@ -22,6 +14,7 @@ export default function reducer(
       };
     }
     case "FETCH_SONG_COMMENTS_FULFILLED": {
+      console.log(action.payload[0].comment);
       return {
         ...state,
         fetching: false,

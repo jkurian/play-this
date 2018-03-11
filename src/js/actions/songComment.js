@@ -7,15 +7,15 @@ export function fetchSongComments() {
     axios
       .get("http://localhost:3000/api/songcomments/")
       .then(response => {
-        console.log("response from axios", response.data);
+        console.log("song comments from axios", response.data);
 
         dispatch({
-          type: "FETCH_USER_FORUMS_FULFILLED",
+          type: "FETCH_SONG_COMMENTS_FULFILLED",
           payload: response.data
         });
       })
       .catch(err => {
-        dispatch({ type: "FETCH_USER_FORUMS_REJECTED", payload: err });
+        dispatch({ type: "FETCH_SONG_COMMENTS_REJECTED", payload: err });
       });
   };
 }

@@ -2,6 +2,7 @@
 module.exports = function(app, dataHelpers) {
   const loginController = require("../controllers/loginController");
   const sidebarController = require("../controllers/sidebarController");
+  const songController = require("../controllers/songController");
 
   app.route("/api/login").post(loginController.login);
 
