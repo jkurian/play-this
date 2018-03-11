@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "dev":
-      "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0 --watch-poll"
+    "dev": "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0 --watch-poll"
   },
-  "keywords": ["react", "redux"],
+  "keywords": [
+    "react",
+    "redux"
+  ],
   "author": "Jerry Kurian",
   "license": "ISC",
   "dependencies": {
@@ -26,6 +28,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
+    "sass": "^1.0.0-beta.5.3",
     "spotify-web-api-node": "^3.0.0",
     "webpack-dev-server": "^3.1.0"
   },

@@ -52,7 +52,7 @@ export default class Comment extends Component {
             secondaryText={
               <p>
                 Do you have any ideas what we can get Heidi for her birthday?
-                How about a pony?
+                How about a mouse?
               </p>
             }
             secondaryTextLines={2}
