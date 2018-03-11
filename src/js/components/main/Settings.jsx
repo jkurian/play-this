@@ -7,7 +7,7 @@ import { fetchSettings } from '../../actions/sidebar';
 
 @connect((store) => {
     return {
- 
+        settings: store.sidebar.settings,
     };
 })
 
@@ -16,7 +16,7 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-             SUP MUTHA FUCKAS
+             {this.props.settings[0].first_name}
             </div>
         )
     }

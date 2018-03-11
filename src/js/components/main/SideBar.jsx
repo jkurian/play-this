@@ -31,11 +31,12 @@ export default class SideBar extends React.Component {
         this.props.dispatch(fetchUserFriendsForums())
     }
 
-    settingsClick = (ev) => {
-        evt.preventDefault();
-    }
-    
     render(){
+        const settingsClick = (ev) => {
+            ev.preventDefault();
+            this.props.dispatch(fetchSettings("settings"))
+        }
+        
         const boxStyle = {
             width: 300,
             margin: 20,

@@ -32,13 +32,14 @@ export function fetchUserFriendsForums() {
   }
 }
 
-export function fetchSettings() {
+export function fetchSettings(view) {
   return function(dispatch) {
     dispatch({type: "FETCH_SETTINGS"});
 
     axios.get("http://localhost:3000/api/settings/")
       .then((response) => {
-        dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: response.data})
+        console.log('THIS IS SETTINGS AXIOS RESPONSE:', response)
+        dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: {settings: response.data, view: view}})
       })
       .catch((err) => {
         dispatch({type: "FETCH_SETTINGS_REJECTED", payload: err})

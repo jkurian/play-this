@@ -7,6 +7,7 @@ export default function reducer(state={
     settings: {},
     fetchingSettings: false,
     fetchedSettings: false,
+    view: null,
     error: null,
   }, action) {
     switch (action.type) {
@@ -47,7 +48,8 @@ export default function reducer(state={
         case "FETCH_SETTINGS_FULFILLED": {
             return {
                 ...state, 
-                userFriendsForums: action.payload,
+                settings: action.payload.settings,
+                view: action.payload.view,
                 fetchingSettings: false,
                 fetchedSettings: true
             }

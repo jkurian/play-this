@@ -24,7 +24,7 @@ module.exports = function makeDataHelpers(knex) {
         },
         getSettings: function() {
             return knex('users')
-                .where({user_id1: 2})
+                .where({id: 2})
                 .then((results) => {
                     return results;
                 })
