@@ -10,6 +10,8 @@ exports.login = function(req, res, dataHelpers) {
                 req.session.userID = results[0].id;
                 console.log('session set:', req.session)
                 res.status(200).json("accepted");
+            } else {
+                res.status(500).json("failed");
             }
         })
     if (err)

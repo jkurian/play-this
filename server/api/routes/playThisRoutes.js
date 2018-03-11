@@ -9,7 +9,6 @@ module.exports = function(app, dataHelpers) {
     app.route('/api/userforums')
       .get((req, res) => 
           sidebarController.userForums(req, res, dataHelpers));
-
     app.route('/api/userfriendsforums')
       .get((req, res) => 
           sidebarController.userFriendsForums(req, res, dataHelpers));

@@ -1,5 +1,5 @@
 
-// let cors = require('cors')
+let cors = require('cors')
 let bodyParser = require('body-parser');
 let express = require('express');
 var cookieSession = require('cookie-session')
@@ -27,7 +27,7 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000
   }));
 
-// app.use(cors())
+app.use(cors())
 // mongoose instance connection url connection
 // mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://localhost/Tododb'); 
