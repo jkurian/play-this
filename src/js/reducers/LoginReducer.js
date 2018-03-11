@@ -2,6 +2,7 @@ export default function reducer(state={
     loginEmailField: '',
     loginPasswordField: '',
     sessionCookie: '',
+    authenticating: false,
     error: null,
   }, action) {
     switch (action.type) {
@@ -15,6 +16,12 @@ export default function reducer(state={
         return {
           ...state, 
           loginPasswordField: action.payload.loginPasswordField,
+        }
+      }
+      case "AUTHENTICATE_USER": {
+        return {
+          ...state, 
+          authenticating: true,
         }
       }
       case "AUTHENTICATE_USER_FULFILLED": {

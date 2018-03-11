@@ -4,8 +4,8 @@ module.exports = function(app, dataHelpers) {
     const sidebarController = require('../controllers/sidebarController');
 
     app.route('/api/login')
-      .post(loginController.login);
-
+    .post((req, res) => 
+          loginController.login(req, res, dataHelpers));
     app.route('/api/userforums')
       .get((req, res) => 
           sidebarController.userForums(req, res, dataHelpers));

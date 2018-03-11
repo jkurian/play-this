@@ -9,5 +9,5 @@ import login from './LoginReducer'
 export default combineReducers({
     navbar,
     sidebar,
-    login,
+    login
 })

@@ -1,4 +1,3 @@
-
 exports.userForums = function(req, res, dataHelpers) {
     let err = false;  
 

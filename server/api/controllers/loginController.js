@@ -1,19 +1,17 @@
-exports.login = function(req, res) {
-    let err = false;
 
-    console.log(req.body)
-    // knex('requests')
-    //   .where({
-    //       user_admin_id: 2
-    //   })
-    //   .select('title')
-    //   .then((results) => {
-    //     //console.log('don!!!!!!!e');
-    //     templateVars.userForums = results
-    //     console.log('results are: ', results);
-    //     //res.json(templateVars);
-    // })
+exports.login = function(req, res, dataHelpers) {
+    let err = false;
+    //AUTHENTICATE!!
+    dataHelpers.authenticate_user(req.body.loginEmailField, req.body.loginPasswordField)
+        .then(results => {
+            if(results) {
+                //SET COOKIE
+                console.log('setting userID', results[0].id)
+                req.session.userID = results[0].id;
+                console.log('session set:', req.session)
+                res.status(200).json("accepted");
+            }
+        })
     if (err)
         res.status(501).send('failed');
-      res.json("ok");
   };
