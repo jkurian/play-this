@@ -63,6 +63,7 @@ export default class NavBar extends React.Component {
             <AppBar
               title="PlayThis"
               iconElementRight={buttons}
+              iconElementLeft={<div></div>}
             />
             </div>
         )
