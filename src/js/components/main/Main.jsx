@@ -21,7 +21,7 @@ export default class Main extends Component {
         return (
             <div>
                 <NavBar />
-                <SideBar />     
+                <SideBar />  
             </div>
         )
     }

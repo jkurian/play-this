@@ -29,9 +29,10 @@ export function authenticate(loginEmailField, loginPasswordField) {
             console.log('response from axios',response.data);
             //  SET COOKIE
             // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
+            dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data})
           })
           .catch((err) => {
-            // dispatch({type: "FETCH_USER_FORUMS_REJECTED", payload: err})
+              dispatch({type: "AUTHENTICATE_USER_REJECTED", payload: err})
           })
       }
 }

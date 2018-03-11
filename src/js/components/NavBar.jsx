@@ -17,7 +17,8 @@ import { displayLoginForm, displaySignupForm } from "../actions/navbar"
     //   userFetched: store.user.fetched,
     //   tweets: store.tweets.tweets,
     showLoginForm: store.navbar.showLoginForm,
-    showSignupForm: store.navbar.showSignupForm
+    showSignupForm: store.navbar.showSignupForm,
+    sessionCookie: store.login.sessionCookie
     };
   })
 export default class NavBar extends React.Component {    
@@ -55,7 +56,7 @@ export default class NavBar extends React.Component {
             </div>
           );
           
-            false ? buttons = logoutButton : buttons = rightButtons
+        this.props.sessionCookie === 'accepted' ? buttons = logoutButton : buttons = rightButtons
             
         return (
             <div>
