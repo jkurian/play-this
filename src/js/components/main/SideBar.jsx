@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 
 import {List, ListItem} from 'material-ui/List';
-import Paper from 'material-ui/Paper';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import AddIcon from 'material-ui/svg-icons/content/add-circle';
@@ -56,29 +57,41 @@ export default class SideBar extends React.Component {
             return <ListItem primaryText={forum.title} rightIcon={<ForumIcon />} />
         })
 
+        const divStyle = `
+        .sidebarStyle {
+            font-size: 24px; 
+            color: rgb(255, 255, 255); 
+            line-height: 64px; 
+            font-weight: 300;
+            background-color: rgb(0, 188, 212); 
+            padding-left: 24px; 
+            margin-bottom: 8px;
+        }`
+
         return (
             <div>
-                <Paper style={boxStyle} zDepth={1}> 
+                <Drawer> 
+                <div class="sidebarStyle"><style>{divStyle}</style>Play This</div>
                     <h4>Requests</h4>
                     <IconButton>
                         <AddIcon />
                     </IconButton>
                     Create New Request
-                    <List>
+                    <MenuItem>
                         {allUserRequests}
-                    </List>
+                    </MenuItem>
                     <Divider />
                     <h4>Friends' Requests</h4>
-                    <List>
+                    <MenuItem>
                         {allUserFriendRequests}
-                    </List>
+                    </MenuItem>
                     <Divider />
-                    <List>
+                    <MenuItem>
                         <ListItem primaryText="Friends" />
                         <Divider />
                         <ListItem primaryText="Settings" onClick={settingsClick}/>
-                    </List>
-                </Paper>
+                    </MenuItem>
+                </Drawer>
             </div>
         )
     }
