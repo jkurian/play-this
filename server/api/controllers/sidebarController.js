@@ -1,22 +1,28 @@
-exports.userForums = function(req, res, knex) {
+
+exports.userForums = function(req, res, dataHelpers) {
     let err = false;  
-    let templateVars = {
-        userForums: [{name: 'test', url: 'google.ca'}],
-      };
 
+     dataHelpers.getForums()
+      .then(result => {
+          res.json(result);
+      }
+    )
 
-    knex('requests')
-      .where({
-          user_admin_id: 2
-      })
-      .select('title')
-      .then((results) => {
-        //console.log('don!!!!!!!e');
-        templateVars.userForums = results
-        console.log('results are: ', results);
-        //res.json(templateVars);
-    })
-    console.log('outside!!!!!');
+    // res.json(templateVars);
+    if (err) res.status(501).send('failed');
+};
 
+exports.userFriendsForums = function(req, res, dataHelpers) {
+    let err = false;  
+    console.log('IN USER FRIENDS FORUMS');
+     dataHelpers.getFriendsForums()
+      .then(result => {
+          console.log('result is', result);
+          
+          res.json(result);
+      }
+    )
+
+    // res.json(templateVars);
     if (err) res.status(501).send('failed');
 };

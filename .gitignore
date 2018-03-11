@@ -4,4 +4,4 @@ npm-debug.log
 .env
 yarn-error.log
 tscinfig.json
-package.json.lock
+package-lock.json
