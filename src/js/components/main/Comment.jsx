@@ -31,8 +31,8 @@ export default class Comment extends Component {
           <List>
             <Subheader>Comments</Subheader>
             <ListItem
-              leftAvatar={<Avatar src="http://www.placecage.com/gif/200/300" />}
-              primaryText="Name of User:"
+              leftAvatar={<Avatar src={comment.avatar_image} />}
+              primaryText={comment.first_name}
               secondaryText={<p>{comment.comment}</p>}
               secondaryTextLines={2}
             />
