@@ -8,6 +8,13 @@ import IconButton from "material-ui/IconButton";
 import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
+import { connect } from "react-redux";
+
+@connect(store => {
+  return {
+    songComments: store.song.songComments
+  };
+})
 
 // Once the API is fully up and running, we will parsing and mapping the object into just one <ListItem>
 export default class Comment extends Component {

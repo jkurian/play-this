@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import NavBar from "./NavBar.jsx";
 import LoginForm from "./LoginForm.jsx";
-import SignupForm from "./SignUpForm.jsx";
+import SignUpForm from "./SignUpForm.jsx";
 
 import { connect } from "react-redux";
 
@@ -20,7 +20,7 @@ export default class LandingPage extends Component {
       <div>
         <NavBar />
         {this.props.showLoginForm ? <LoginForm /> : null}
-        {this.props.showSignupForm ? <SignupForm /> : null}
+        {this.props.showSignupForm ? <SignUpForm /> : null}
       </div>
     );
   }
