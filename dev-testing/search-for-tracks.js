@@ -5,7 +5,7 @@ console.log(args);
 
 const spotifyApi = new SpotifyWebApi({
   accessToken:
-    "BQCvHaMkdDRHdX0aP0CTfnD70Y4Qx8epOTlTo_S8Nyy1IYyOQhaaEv3OYUJZLorqtKKk2SMow9_UcmTCW30"
+    "BQDYL1XZgmX0JWdI2Xfg4NHmgI0W5vWKKprRRB0W3Pd8dKVco62AlPvZLjuybUqwk8TkNvwtsuxTk1QW_tU"
 });
 
 // Do search using the access token

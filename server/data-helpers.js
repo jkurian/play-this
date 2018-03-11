@@ -34,6 +34,16 @@ module.exports = function makeDataHelpers(knex) {
               if(results.length != 0) return results
               return null
           })
+        },
+        getSettings: function() {
+            return knex('users')
+                .where({id: 2})
+                .then((results) => {
+                    return results;
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
     }
 }
