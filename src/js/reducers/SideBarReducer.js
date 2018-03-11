@@ -1,15 +1,12 @@
 export default function reducer(state={
     //these keys are used as names for props in component
-    userForums: [{
-        name: null,
-        url: null 
-    }],
-    userFriendsForums: [{
-        name: null,
-        url: null
-    }],
+    userForums: [{}],
+    userFriendsForums: [{}],
     fetchingForums: false,
     fetchedForums: false,    
+    settings: {},
+    fetchingSettings: false,
+    fetchedSettings: false,
     error: null,
   }, action) {
     switch (action.type) {
@@ -39,6 +36,20 @@ export default function reducer(state={
                 userFriendsForums: action.payload,
                 fetchingForums: false,
                 fetchedForums: true
+            }
+        }
+        case "FETCH_SETTINGS": {
+            return {
+                ...state,
+                fetchingSettings: true
+            }
+        }
+        case "FETCH_SETTINGS_FULFILLED": {
+            return {
+                ...state, 
+                userFriendsForums: action.payload,
+                fetchingSettings: false,
+                fetchedSettings: true
             }
         }
     }

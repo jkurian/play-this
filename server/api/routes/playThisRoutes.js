@@ -10,8 +10,12 @@ module.exports = function(app, dataHelpers) {
       .get((req, res) => 
           sidebarController.userForums(req, res, dataHelpers));
 
-    app.route('/api/userfriendsforums')
+    app.route('/api/userfriendsforums/')
       .get((req, res) => 
           sidebarController.userFriendsForums(req, res, dataHelpers));
+
+    app.route('/api/settings')
+      .get((req, res) => 
+          sidebarController.settings(req, res, dataHelpers));
   };
   

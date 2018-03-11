@@ -21,6 +21,16 @@ module.exports = function makeDataHelpers(knex) {
                 .catch(err => {
                     console.log(err)
                 })
+        },
+        getSettings: function() {
+            return knex('users')
+                .where({user_id1: 2})
+                .then((results) => {
+                    return results;
+                })
+                .catch(err => {
+                    console.log(err)
+                })
         }
     }
 }

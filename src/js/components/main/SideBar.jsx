@@ -11,14 +11,15 @@ import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
-import { fetchUserForums, fetchUserFriendsForums } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings } from '../../actions/sidebar'
 
 
 //this is where data comes from store as props
 @connect((store) => {
     return {
         userForums: store.sidebar.userForums,
-        userFriendsForums: store.sidebar.userFriendsForums
+        userFriendsForums: store.sidebar.userFriendsForums,
+        settings: store.sidebar.settings
     };
 })
 
@@ -28,6 +29,10 @@ export default class SideBar extends React.Component {
         console.log("COMPONENT WILL MOUNT");
         this.props.dispatch(fetchUserForums())
         this.props.dispatch(fetchUserFriendsForums())
+    }
+
+    settingsClick = (ev) => {
+        evt.preventDefault();
     }
     
     render(){
@@ -70,7 +75,7 @@ export default class SideBar extends React.Component {
                     <List>
                         <ListItem primaryText="Friends" />
                         <Divider />
-                        <ListItem primaryText="Settings" />
+                        <ListItem primaryText="Settings" onClick={settingsClick}/>
                     </List>
                 </Paper>
             </div>
