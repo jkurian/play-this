@@ -23,7 +23,8 @@ module.exports = function makeDataHelpers(knex) {
     },
     getSongComments: function() {
       return knex("comments")
-        .where({ song_id: 10 })
+        .leftJoin("users", "users.id", "comments.user_id")
+        .where({ song_id: 1 })
         .then(results => {
           console.log("LOOK ---> " + results);
           return results;
