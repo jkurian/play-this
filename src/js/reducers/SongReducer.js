@@ -9,14 +9,24 @@ export default function reducer(
         song_id: null
       }
     ],
+    fetching: false,
     error: null
   },
   action
 ) {
   switch (action.type) {
     case "FETCH_SONG_COMMENTS": {
-      ...state,
-      songComments: action.payload
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "FETCH_SONG_COMMENTS_FULFILLED": {
+      return {
+        ...state,
+        fetching: false,
+        songComments: action.payload
+      };
     }
   }
   return state;
