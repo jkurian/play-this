@@ -4,8 +4,10 @@ import { combineReducers } from 'redux'
 //import tweets from './tweetsReducer'
 import navbar from './NavBarReducer'
 import sidebar from './SideBarReducer'
+import login from './LoginReducer'
 
 export default combineReducers({
     navbar,
     sidebar,
+    login,
 })

@@ -27,7 +27,7 @@ export default class LandingPage extends Component {
                 }
                 {
                 this.props.showSignupForm
-                    ? <SignupForm />
+                    ? <SignUpForm />
                     : null
                 }
             </div>

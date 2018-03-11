@@ -1,4 +1,3 @@
-
 exports.userForums = function(req, res, knex) {
     let err = false;  
     let templateVars = {
