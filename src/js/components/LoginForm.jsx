@@ -27,6 +27,8 @@ export default class Layout extends React.Component {
     const onClick = (evt) => {
       evt.preventDefault();
       sendForm(evt);
+      this.props.dispatch(updateEmailField(''))
+      this.props.dispatch(updatePasswordField(''))
     }
     const _handleEmailFieldChange = (evt) => {
       evt.preventDefault();

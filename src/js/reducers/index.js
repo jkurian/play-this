@@ -5,7 +5,7 @@ import { combineReducers } from "redux";
 import navbar from './NavBarReducer'
 import sidebar from './SideBarReducer'
 import login from './LoginReducer'
-import song from "./SongReducer";
+import song from "./SongReducer"
 
 export default combineReducers({
     navbar,

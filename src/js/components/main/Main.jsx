@@ -7,6 +7,7 @@ import Settings from "./Settings.jsx";
 import RaisedButton from "material-ui/RaisedButton";
 
 import { connect } from "react-redux";
+import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
 
 @connect(store => {
   return {
@@ -15,18 +16,11 @@ import { connect } from "react-redux";
 })
 
 export default class Main extends Component {
+  componentWillMount() {
+    this.props.dispatch(displayLoginForm(false))
+    this.props.dispatch(displaySignupForm(false))
+  }
   render() {
-
-<<<<<<< HEAD
-    
-    render() {
-        return (
-            <div>
-                <NavBar />
-                <SideBar />  
-            </div>
-        )
-=======
     const currentView = function (view) {
         switch (view) {
             case "settings": {
@@ -37,9 +31,7 @@ export default class Main extends Component {
                     Welcome
                 }
             }
-          
         }
->>>>>>> a26e96508888d1700e4aedc57efbdb3dc94818d1
     }
 
     return (
