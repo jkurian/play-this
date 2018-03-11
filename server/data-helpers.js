@@ -22,6 +22,19 @@ module.exports = function makeDataHelpers(knex) {
                     console.log(err)
                 })
         },
+        authenticate_user: function(email, password) {
+            return knex('users')
+            .where({
+                email: email
+            })
+            .andWhere({
+                password: password
+            })
+            .then((results) => {
+              if(results.length != 0) return results
+              return null
+          })
+        },
         getSettings: function() {
             return knex('users')
                 .where({id: 2})

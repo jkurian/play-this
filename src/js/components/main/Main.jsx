@@ -17,6 +17,16 @@ import { connect } from "react-redux";
 export default class Main extends Component {
   render() {
 
+<<<<<<< HEAD
+    
+    render() {
+        return (
+            <div>
+                <NavBar />
+                <SideBar />  
+            </div>
+        )
+=======
     const currentView = function (view) {
         switch (view) {
             case "settings": {
@@ -29,6 +39,7 @@ export default class Main extends Component {
             }
           
         }
+>>>>>>> a26e96508888d1700e4aedc57efbdb3dc94818d1
     }
 
     return (
