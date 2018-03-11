@@ -13,7 +13,7 @@ module.exports = function makeDataHelpers(knex) {
         },
         getFriendsForums: function() {
             return knex('userfriends')
-                .rightjoin('requests', 'user_id2', 'user_admin_id')
+                .rightJoin('requests', 'user_id2', 'user_admin_id')
                 .where({user_id1: 2})
                 .then((results) => {
                     return results;

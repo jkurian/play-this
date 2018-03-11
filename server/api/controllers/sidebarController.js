@@ -4,7 +4,6 @@ exports.userForums = function(req, res, dataHelpers) {
 
      dataHelpers.getForums()
       .then(result => {
-          console.log('in controller got', result)
           res.json(result);
       }
     )
@@ -15,10 +14,11 @@ exports.userForums = function(req, res, dataHelpers) {
 
 exports.userFriendsForums = function(req, res, dataHelpers) {
     let err = false;  
-
+    console.log('IN USER FRIENDS FORUMS');
      dataHelpers.getFriendsForums()
       .then(result => {
-          console.log('in controller got', result)
+          console.log('result is', result);
+          
           res.json(result);
       }
     )
