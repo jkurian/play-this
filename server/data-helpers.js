@@ -32,7 +32,9 @@ module.exports = function makeDataHelpers(knex) {
             })
             .then((results) => {
               if(results.length != 0) return results
+              //maybe throw an error here instead
               return null
+              //add catch here
           })
         },
         getSettings: function() {

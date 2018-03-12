@@ -6,7 +6,7 @@ export default function reducer(state={
     registerPasswordField: '',
     registerPasswordConfirmationField: '',
     authenticateValidEmail: '',
-    sessionCookie: '',
+    sessionCookie: false,
     authenticatingEmailEmail: false,
     isValid: false,
     error: null,

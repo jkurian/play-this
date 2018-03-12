@@ -50,7 +50,7 @@ export default class NavBar extends React.Component {
             </div>
           );
           
-        this.props.sessionCookie === 'accepted' ? buttons = logoutButton : buttons = rightButtons
+        this.props.sessionCookie ? buttons = logoutButton : buttons = rightButtons
             
         return (
             <div>

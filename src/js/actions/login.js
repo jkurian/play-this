@@ -26,13 +26,14 @@ export function authenticate(loginEmailField, loginPasswordField) {
         }
         axios.post("http://localhost:3000/api/login/", authenticateCredientials)
           .then((response) => {
-            console.log('response from axios',response.data);
+            console.log('response from axios in apilogin',response.data);
             //  SET COOKIE
             // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
-            dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data})
+            localStorage.setItem('key', response.data.token);
+            dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data.authenticated})
           })
           .catch((err) => {
-              dispatch({type: "AUTHENTICATE_USER_REJECTED", payload: err})
+              dispatch({type: "AUTHENTICATE_USER_REJECTED", payload: response.data.authenticated})
           })
       }
 }

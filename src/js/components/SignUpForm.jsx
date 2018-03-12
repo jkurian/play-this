@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 @connect((store) => {
   return {
       registerFirstNameField: store.register.registerFirstNameField,
-      registerLastNameField: store.register.registerFirstNameField,
+      registerLastNameField: store.register.registerLastNameField,
       registerEmailField: store.register.registerEmailField,
       registerPasswordField: store.register.registerPasswordField,
       registerPasswordConfirmationField: store.register.registerPasswordConfirmationField,

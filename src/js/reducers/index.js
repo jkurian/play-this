@@ -8,10 +8,19 @@ import login from './LoginReducer'
 import song from "./SongReducer"
 import register from './RegisterReducer'
 
-export default combineReducers({
+const appReducer = combineReducers({
     navbar,
     sidebar,
     song,
     login,
     register
 })
+
+const rootReducer = (state, action) => {
+    if (action.type === 'USER_LOGOUT') {
+        state = undefined;
+    }
+    return appReducer(state, action)
+}
+
+export default rootReducer

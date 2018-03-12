@@ -1,4 +1,6 @@
 
+require('dotenv').config({path: __dirname + '../.env'});
+
 let cors = require('cors')
 let bodyParser = require('body-parser');
 let express = require('express');
