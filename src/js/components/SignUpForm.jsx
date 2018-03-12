@@ -52,6 +52,7 @@ export default class Layout extends React.Component {
     this.props.isValid ? validEmail = 'true': validEmail= 'false'
     return (
       <div>
+        <form action="/api/register" method="POST">
     <TextField
       floatingLabelText="First Name"
       value={this.props.registerFirstNameField}
@@ -83,6 +84,8 @@ export default class Layout extends React.Component {
       value={this.props.registerPasswordConfirmationField}
       onChange={handlePasswordConfirmationFieldChange}
       /><br />
+       <RaisedButton type="submit" label="Register" style={style} onClick={onClick}/>
+      </form>
   </div>
   )
 }
