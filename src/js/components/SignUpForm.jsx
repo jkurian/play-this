@@ -1,7 +1,10 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton'
+
 import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail } from '../actions/register'
 import {connect} from 'react-redux'
+
 
 @connect((store) => {
   return {
@@ -16,6 +19,9 @@ import {connect} from 'react-redux'
 
 export default class Layout extends React.Component {
   render () {
+    const style = {
+      margin: 12,
+    };
     const handleEmailFieldChange = (evt) => {
       evt.preventDefault();
       this.props.dispatch(updateRegisterEmailField(evt.target.value))
@@ -47,6 +53,13 @@ export default class Layout extends React.Component {
     function validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
+  }
+  const submitForm = (evt) => {
+    console.log('submit the form');
+  }
+  const onClick = (evt) => {
+    evt.preventDefault();
+    submitForm(evt);
   }
     let validEmail = ''
     this.props.isValid ? validEmail = 'true': validEmail= 'false'
@@ -84,7 +97,7 @@ export default class Layout extends React.Component {
       value={this.props.registerPasswordConfirmationField}
       onChange={handlePasswordConfirmationFieldChange}
       /><br />
-       <RaisedButton type="submit" label="Register" style={style} onClick={onClick}/>
+       <RaisedButton type="submit" label="Register" style={style} onClick={onClick} disabled={!this.props.isValid}/>
       </form>
   </div>
   )
