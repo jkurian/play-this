@@ -74,6 +74,7 @@ module.exports = function makeDataHelpers(knex) {
       return knex("songs")
         .where({ song_id: 65 })
         .then(results => {
+          console.log("LOOK ---> " + results);
           return results;
         })
         .catch(err => {

@@ -1,6 +1,6 @@
 exports.songComments = function(req, res, dataHelpers) {
   let err = false;
-
+  console.log("In song comments controller");
   dataHelpers.getSongComments().then(result => {
     res.json(result);
   });

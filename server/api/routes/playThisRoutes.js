@@ -3,6 +3,7 @@ module.exports = function(app, dataHelpers) {
   const loginController = require("../controllers/loginController");
   const sidebarController = require("../controllers/sidebarController");
   const registerController = require("../controllers/registerController");
+  const songPostController = require("../controllers/songPostController");
 
   app
     .route("/api/login")
@@ -26,4 +27,8 @@ module.exports = function(app, dataHelpers) {
     .post((req, res) =>
       registerController.checkValidEmail(req, res, dataHelpers)
     );
+
+  app
+    .route("/api/songcomments/")
+    .get((req, res) => songPostController.songComments(req, res, dataHelpers));
 };
