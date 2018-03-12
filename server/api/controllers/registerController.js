@@ -13,3 +13,14 @@ exports.checkValidEmail = function(req, res, dataHelpers) {
     if (err)
         res.status(501).send('failed');
   };
+
+exports.registerNewUser = function(req, res, dataHelpers) {
+    let err = false;
+    console.log('req data is ', req.body)
+    dataHelpers.register_new_user(req.body)
+        .then(results => {
+            console.log(results);
+        })
+    if (err)
+        res.status(501).send('failed');
+  };

@@ -58,6 +58,23 @@ module.exports = function makeDataHelpers(knex) {
                 console.log(err)
                 return false
             })
+        },
+        register_new_user: function(userRegistrationDetails) {
+            return knex('users')
+                .returning()
+                .insert({
+                    first_name: userRegistrationDetails.firstname,
+                    last_name: userRegistrationDetails.lastname,
+                    avatar_image: '',
+                    email: userRegistrationDetails.email,
+                    password: userRegistrationDetails.password
+                })
+                .then((results) => {
+                    console.log(results);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
     }
 }

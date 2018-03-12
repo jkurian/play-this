@@ -22,5 +22,9 @@ module.exports = function(app, dataHelpers) {
     app.route('/api/register/email')
       .post((req, res) => 
         registerController.checkValidEmail(req, res, dataHelpers));
+
+    app.route('/api/register/newuser')
+      .post((req, res) => 
+        registerController.registerNewUser(req, res, dataHelpers));
   };
   

@@ -4,7 +4,6 @@ require('dotenv').config({path: __dirname + '../.env'});
 let cors = require('cors')
 let bodyParser = require('body-parser');
 let express = require('express');
-var cookieSession = require('cookie-session')
 
 let app = express();
 let port = process.env.PORT || 3000;
@@ -35,12 +34,3 @@ app.listen(port);
 
 
 console.log('todo list RESTful API server started on: ' + port);
-
-
-
-let state = {
-    userForms: {
-        name: null,
-        url: null
-    }
-}
