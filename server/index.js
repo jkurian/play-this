@@ -17,18 +17,6 @@ const dataHelpers = require("./data-helpers")(knex)
 
 app.use(knexLogger(knex));
 
-app.use(cookieSession({
-    name: 'session',
-    keys: ['key1', 'key2', 'key3'],
-    // Cookie Options
-    // Session length is 2 hours
-    cookie: {
-        secure: false,
-        httpOnly: false
-    },
-    maxAge: 24 * 60 * 60 * 1000
-  }));
-
 app.use(cors())
 // mongoose instance connection url connection
 // mongoose.Promise = global.Promise;
