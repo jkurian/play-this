@@ -60,6 +60,7 @@ module.exports = function makeDataHelpers(knex) {
             })
         },
         register_new_user: function(userRegistrationDetails) {
+            console.log('writing to DB')
             return knex('users')
                 .returning()
                 .insert({
@@ -71,6 +72,7 @@ module.exports = function makeDataHelpers(knex) {
                 })
                 .then((results) => {
                     console.log(results);
+                    return results.rowCount
                 })
                 .catch((err) => {
                     console.log(err);
