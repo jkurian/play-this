@@ -2,7 +2,6 @@ const faker = require("faker");
 
 let createRecord = (knex, id) => {
   return knex("comments").insert({
-    id,
     comment: faker.lorem.sentences(),
     time_stamp: faker.date.between("2017-07-31", "2018-03-09"),
     user_id: faker.random.number({
@@ -21,7 +20,7 @@ exports.seed = (knex, Promise) => {
     let records = [];
 
     for (let i = 1; i <= 1000; i++) {
-      records.push(createRecord(knex, i));
+      records.push(createRecord(knex));
     }
 
     return Promise.all(records);

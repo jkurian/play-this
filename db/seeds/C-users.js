@@ -2,7 +2,6 @@ const faker = require("faker");
 
 let createRecord = (knex, id) => {
   return knex("users").insert({
-    id,
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     avatar_image: faker.image.avatar(),
@@ -16,7 +15,7 @@ exports.seed = (knex, Promise) => {
     let records = [];
 
     for (let i = 4; i <= 1000; i++) {
-      records.push(createRecord(knex, i));
+      records.push(createRecord(knex));
     }
 
     return Promise.all(records);

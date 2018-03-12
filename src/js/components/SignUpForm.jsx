@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail } from '../actions/register'
+import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail, registerNewUser } from '../actions/register'
 import {connect} from 'react-redux'
 
 
@@ -56,6 +56,14 @@ export default class Layout extends React.Component {
   }
   const submitForm = (evt) => {
     console.log('submit the form');
+    let userRegistrationDetails = {
+      firstname: this.props.registerFirstNameField,
+      lastname: this.props.registerLastNameField,
+      email: this.props.registerEmailField,
+      password: this.props.registerPasswordField,
+      passwordConfirmation: this.props.registerPasswordConfirmationField
+    }
+    this.props.dispatch(registerNewUser(userRegistrationDetails))
   }
   const onClick = (evt) => {
     evt.preventDefault();

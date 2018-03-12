@@ -1,6 +1,6 @@
 const faker = require("faker");
 
-let createRecord = (knex, id) => {
+let createRecord = (knex) => {
   return knex("user_song").insert({
     user_id: faker.random.number({
       min: 1,
@@ -18,7 +18,7 @@ exports.seed = (knex, Promise) => {
     let records = [];
 
     for (let i = 1; i <= 1000; i++) {
-      records.push(createRecord(knex, i));
+      records.push(createRecord(knex));
     }
 
     return Promise.all(records);

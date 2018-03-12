@@ -2,7 +2,6 @@ const faker = require("faker");
 
 let createRecord = (knex, id) => {
   return knex("songs").insert({
-    id,
     artist: faker.commerce.productName(),
     title: faker.commerce.productName(),
     album: faker.commerce.productName(),
@@ -24,7 +23,7 @@ exports.seed = (knex, Promise) => {
     let records = [];
 
     for (let i = 1; i <= 25000; i++) {
-      records.push(createRecord(knex, i));
+      records.push(createRecord(knex));
     }
 
     return Promise.all(records);

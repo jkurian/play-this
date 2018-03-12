@@ -59,3 +59,19 @@ export function authenticateValidEmail(registerEmailField) {
           })
       }
   }
+
+  export function registerNewUser(userRegistrationDetails) {
+    return function(dispatch) {
+      dispatch({type: "REGISTER_NEW_USER"});
+      axios.post("http://localhost:3000/api/register/newuser", userRegistrationDetails)
+        .then((response) => {
+          // console.log('response from axios',response.data);
+          //  SET COOKIE
+          // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
+          // dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED", payload: response.data})
+        })
+        .catch((err) => {
+            dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED", payload: err})
+        })
+    }
+  }
