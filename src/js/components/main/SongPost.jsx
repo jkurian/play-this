@@ -21,20 +21,25 @@ export default class SongPost extends Component {
       return (
         <div>
           <div>
-            <iframe
-              src={
-                "https://open.spotify.com/embed?uri=spotify:track:" +
-                this.props.songInfo[0].spotify_id
-              }
-              width="640"
-              height="80"
-              frameborder="0"
-              allowtransparency="true"
-              allow="encrypted-media"
-            />
+            <span>
+              {song.title} by {song.artist} from {song.album}
+            </span>
+            <div>
+              <iframe
+                src={
+                  "https://open.spotify.com/embed?uri=spotify:track:" +
+                  song.spotify_id
+                }
+                width="640"
+                height="80"
+                frameborder="0"
+                allowtransparency="true"
+                allow="encrypted-media"
+              />
+            </div>
           </div>
           <div>
-            <Comment />
+            <Comment songId={song.id} />
           </div>
         </div>
       );

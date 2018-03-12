@@ -25,20 +25,22 @@ export default class Comment extends Component {
 
   render() {
     const comments = this.props.songComments.map(comment => {
-      return (
-        <div>
-          <List>
-            <Subheader>Comments</Subheader>
-            <ListItem
-              leftAvatar={<Avatar src={comment.avatar_image} />}
-              primaryText={comment.first_name}
-              secondaryText={<p>{comment.comment}</p>}
-              secondaryTextLines={2}
-            />
-            <Divider inset={true} />
-          </List>
-        </div>
-      );
+      if (this.props.songId === comment.song_id) {
+        return (
+          <div>
+            <List>
+              <Subheader>Comments</Subheader>
+              <ListItem
+                leftAvatar={<Avatar src={comment.avatar_image} />}
+                primaryText={comment.first_name}
+                secondaryText={<p>{comment.comment}</p>}
+                secondaryTextLines={2}
+              />
+              <Divider inset={true} />
+            </List>
+          </div>
+        );
+      }
     });
     return <div>{comments}</div>;
   }

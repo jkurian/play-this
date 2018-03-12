@@ -61,7 +61,8 @@ module.exports = function makeDataHelpers(knex) {
     getSongComments: function() {
       return knex("comments")
         .leftJoin("users", "users.id", "comments.user_id")
-        .where({ song_id: 65 })
+        .leftJoin("songs", "songs.id", "comments.song_id")
+        .where({ request_id: 2 })
         .then(results => {
           console.log("LOOK COMMENTS---> " + results);
           return results;
@@ -72,9 +73,9 @@ module.exports = function makeDataHelpers(knex) {
     },
     getSongInfo: function() {
       return knex("songs")
-        .where({ request_id: 65 })
+        .where({ request_id: 2 })
         .then(results => {
-          console.log("LOOK spotify ID---> " + results);
+          console.log("LOOK song info---> " + results);
           return results;
         })
         .catch(err => {

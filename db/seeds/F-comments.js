@@ -11,7 +11,7 @@ let createRecord = (knex, id) => {
     }),
     song_id: faker.random.number({
       min: 1,
-      max: 1000
+      max: 25000
     })
   });
 };
@@ -20,7 +20,7 @@ exports.seed = (knex, Promise) => {
   return knex("comments").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 50000; i++) {
       records.push(createRecord(knex, i));
     }
 
