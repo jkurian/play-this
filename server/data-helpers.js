@@ -44,6 +44,18 @@ module.exports = function makeDataHelpers(knex) {
                 .catch(err => {
                     console.log(err)
                 })
+        },
+        check_valid_email: function(email) {
+            return knex('users')
+            .where({email: email})
+            .then((results) => {
+                if(results.length > 0) return false
+                return true
+            })
+            .catch(err => {
+                console.log(err)
+                return false
+            })
         }
     }
 }

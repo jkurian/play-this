@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import {updateEmailField, updateFirstNameField, updateLastNameField, updatePasswordConfirmationField, updatePasswordField } from '../actions/register'
+import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail } from '../actions/register'
+import {connect} from 'react-redux'
 
 @connect((store) => {
   return {
@@ -9,6 +10,7 @@ import {updateEmailField, updateFirstNameField, updateLastNameField, updatePassw
       registerEmailField: store.register.registerEmailField,
       registerPasswordField: store.register.registerPasswordField,
       registerPasswordConfirmationField: store.register.registerPasswordConfirmationField,
+      isValid: store.register.isValid
   }
 })
 
@@ -16,25 +18,39 @@ export default class Layout extends React.Component {
   render () {
     const handleEmailFieldChange = (evt) => {
       evt.preventDefault();
-      this.props.dispatch(updateEmailField(evt.target.value))
+      this.props.dispatch(updateRegisterEmailField(evt.target.value))
     }
     const handlePasswordFieldChange = (evt) => {
       evt.preventDefault();
-      this.props.dispatch(updatePasswordField(evt.target.value))
+      this.props.dispatch(updateRegisterPasswordField(evt.target.value))
     }
     const handlePasswordConfirmationFieldChange = (evt) => {
       evt.preventDefault();
-      this.props.dispatch(updatePasswordConfirmationField(evt.target.value))
+      this.props.dispatch(updateRegisterPasswordConfirmationField(evt.target.value))
     }
     const handleFirstNameFieldChange = (evt) => {
       evt.preventDefault();
-      this.props.dispatch(updateFirstNameField(evt.target.value))
+      this.props.dispatch(updateRegisterFirstNameField(evt.target.value))
     }
     const handleLastNameFieldChange = (evt) => {
       evt.preventDefault();
-      this.props.dispatch(updateLastNameField(evt.target.value))
+      this.props.dispatch(updateRegisterLastNameField(evt.target.value))
     }
-    return (      
+    const checkValidEmail = (evt) => {
+      if(validateEmail(this.props.registerEmailField)) {
+        this.props.dispatch(authenticateValidEmail(this.props.registerEmailField))
+      } else {
+        //cheap hack, need to fix. Basically send out an invalidate email
+        this.props.dispatch(authenticateValidEmail('jerry@dev.com'))
+      }
+    }
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+  }
+    let validEmail = ''
+    this.props.isValid ? validEmail = 'true': validEmail= 'false'
+    return (
       <div>
     <TextField
       floatingLabelText="First Name"
@@ -50,19 +66,22 @@ export default class Layout extends React.Component {
       hintText="example@domain.com"
       floatingLabelText="Email"
       value={this.props.registerEmailField}
-      onChange={handleEmailChange}
-      /><br />
+      onChange={handleEmailFieldChange}
+      onBlur={checkValidEmail}      
+      />
+      <p>EmailValidity: {validEmail}</p>
+      <br />
     <TextField
       floatingLabelText="Password"
       type="password"
       value={this.props.registerPasswordField}
-      onChange={handlePasswordChange}
+      onChange={handlePasswordFieldChange}
       /><br />
     <TextField
       floatingLabelText="Password Confirmation"
       type="password"
       value={this.props.registerPasswordConfirmationField}
-      onChange={handlePasswordConfirmationChange}
+      onChange={handlePasswordConfirmationFieldChange}
       /><br />
   </div>
   )
