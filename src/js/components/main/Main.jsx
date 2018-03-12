@@ -4,6 +4,7 @@ import NavBar from "../NavBar.jsx";
 import SideBar from "./SideBar.jsx";
 import Settings from "./Settings.jsx";
 import Friends from "./Friends.jsx";
+import NewForum from "./NewForum.jsx";
 
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -42,6 +43,9 @@ export default class Main extends Component {
             }
             case "friends": {
                 return <Friends />
+            }
+            case "newForum": {
+                return <NewForum />
             }
         }
     }

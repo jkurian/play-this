@@ -11,6 +11,8 @@ export default function reducer(state={
     friends: [{}],
     fetchingFriends: false,
     fetchedFriends: false,
+    fetchingNewForum: false,
+    fetchedNewForum: false,
     view: null,
     error: null,
   }, action) {
@@ -87,6 +89,15 @@ export default function reducer(state={
                 open: false,
                 fetchingFriends: false,
                 fetchedFriends: true
+            }
+        }
+        case "FETCH_NEW_FORUM_FULFILLED": {
+            return {
+                ...state,
+                view: action.payload.view,
+                open:false,
+                fetchingNewForum: false,
+                fetchedNewForum: true
             }
         }
     }

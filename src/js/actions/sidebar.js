@@ -61,6 +61,12 @@ export function fetchFriends(view) {
   }
 }
 
+export function fetchNewForum(view) {
+  return function(dispatch) {
+    dispatch({type: "FETCH_NEW_FORUM_FULFILLED", payload: {view: view}})
+  }
+}
+
 export function sidebarToggleOpen() {
   return function(dispatch) {
     dispatch({type: "SIDEBAR_TOGGLE_OPEN"});

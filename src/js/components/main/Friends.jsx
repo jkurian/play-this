@@ -11,13 +11,13 @@ import { connect } from 'react-redux';
     };
 })
 
-export default class Main extends Component {
+export default class Friends extends Component {
         
     render() {
 
         const friendProfiles = this.props.friends.map(friendObj => {
             return <div><img src={friendObj.avatar_image} />
-                        <div>{friendObj.first_name}  {friendObj.last_name}</div>
+                        <div>` this string{friendObj.first_name}`  {friendObj.last_name}</div>
                         <div>{friendObj.email}</div>
                     </div> 
         })

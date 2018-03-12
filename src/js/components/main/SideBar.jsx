@@ -12,7 +12,7 @@ import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
-import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
 
 
 //this is where data comes from store as props
@@ -42,6 +42,11 @@ export default class SideBar extends React.Component {
         const friendsClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchFriends("friends"))
+        }
+
+        const newForumClick = (ev) => {
+            ev.preventDefault();
+            this.props.dispatch(fetchNewForum("newForum"))
         }
         
         const boxStyle = {
@@ -82,7 +87,7 @@ export default class SideBar extends React.Component {
                 <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
                     <h4>Requests</h4>
                     <IconButton >
-                        <AddIcon />
+                        <AddIcon onClick={newForumClick} />
                     </IconButton>
                     Create New Request
                     <MenuItem>
