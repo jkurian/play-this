@@ -28,6 +28,7 @@ export default function reducer(state={
         return {
           ...state, 
           sessionCookie: action.payload,
+          
           authenticating: false
         }
       }
@@ -36,6 +37,12 @@ export default function reducer(state={
           ...state, 
           sessionCookie: "rejected",
           authenticating: false
+        }
+      }
+      case "USER_LOGOUT": {
+        return {
+          ...state, 
+          sessionCookie: null,
         }
       }
     }

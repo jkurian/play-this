@@ -6,6 +6,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
+import { logout } from '../actions/logout'
+import { sidebarToggleOpen } from '../actions/sidebar'
 /**
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
@@ -25,19 +27,14 @@ export default class NavBar extends React.Component {
   render() {
     const onLoginClick = evt => {
       this.props.dispatch(displayLoginForm(!this.props.showLoginForm));
-      // axios.post('http://localhost:3000/api/login')
-      // .then(res => {
-      //   console.log('axios post complete');
-      // })
-      // .catch(err => {
-      //   console.log('err');
-      // })
     };
+
     const onSignupClick = evt => {
       this.props.dispatch(displaySignupForm(!this.props.showSignupForm));
     };
+
     const onLogoutClick = evt => {
-      console.log("logging out");
+      this.props.dispatch(logout())
     };
 
     let buttons = null;
@@ -56,13 +53,19 @@ export default class NavBar extends React.Component {
     );
         
     this.props.sessionCookie === 'accepted' ? buttons = logoutButton : buttons = rightButtons
+    
+    const toggleClose = () => {
+      this.props.dispatch(sidebarToggleOpen()) 
+    }
 
     return (
         <div>
         <AppBar
           title="PlayThis"
           iconElementRight={buttons}
-        />
+          onLeftIconButtonClick={toggleClose}
+        >
+        </AppBar>
         </div>
     )
   }

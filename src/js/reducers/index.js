@@ -5,11 +5,13 @@ import { combineReducers } from "redux";
 import navbar from './NavBarReducer'
 import sidebar from './SideBarReducer'
 import login from './LoginReducer'
-import song from "./SongReducer";
+import song from "./SongReducer"
+import register from './RegisterReducer'
 
 export default combineReducers({
     navbar,
     sidebar,
     song,
-    login
+    login,
+    register
 })

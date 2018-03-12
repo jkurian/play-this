@@ -7,8 +7,9 @@ import Settings from "./Settings.jsx";
 import RaisedButton from "material-ui/RaisedButton";
 
 import { connect } from "react-redux";
-import { sidebarToggleOpen, sidebarToggleClose } from '../../actions/sidebar'
+import { sidebarToggleClose } from '../../actions/sidebar'
 
+import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
 
 @connect(store => {
   return {
@@ -18,9 +19,16 @@ import { sidebarToggleOpen, sidebarToggleClose } from '../../actions/sidebar'
 })
 
 export default class Main extends Component {
+  componentWillMount() {
+    this.props.dispatch(displayLoginForm(false))
+    this.props.dispatch(displaySignupForm(false))
+  }
   render() {
-    const handleToggle = () => {
-        this.props.sidebarToggle ? this.props.dispatch(sidebarToggleClose()) : this.props.dispatch(sidebarToggleOpen())
+    
+    const toggleClose = () => {
+       if (this.props.sidebarToggle) {
+           this.props.dispatch(sidebarToggleClose()) 
+       }
     }
 
     const currentView = function (view) {
@@ -33,7 +41,6 @@ export default class Main extends Component {
                     Welcome
                 }
             }
-          
         }
     }
 
@@ -41,7 +48,7 @@ export default class Main extends Component {
       <div>
           <NavBar />
           <SideBar />
-            <div onClick={handleToggle}>
+            <div onClick={toggleClose}>
                 {currentView(this.props.view)}
                 helloasfdlkjsfdjfjslfjklasjfklsfljddlkjsfdjfjslfjklasjfklsfljd
                 dlkjsfdjfjslfjklasjfklsfljd            

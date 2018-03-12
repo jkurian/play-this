@@ -65,6 +65,7 @@ export default function reducer(state={
                 ...state, 
                 settings: action.payload.settings,
                 view: action.payload.view,
+                open: false,
                 fetchingSettings: false,
                 fetchedSettings: true
             }
