@@ -13,7 +13,6 @@ exports.userForums = function(req, res, dataHelpers) {
 
 exports.userFriendsForums = function(req, res, dataHelpers) {
     let err = false;  
-    console.log('IN USER FRIENDS FORUMS');
      dataHelpers.getFriendsForums()
       .then(result => {        
           res.json(result);

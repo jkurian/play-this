@@ -7,26 +7,22 @@ import Settings from "./Settings.jsx";
 import RaisedButton from "material-ui/RaisedButton";
 
 import { connect } from "react-redux";
+import { sidebarToggleOpen, sidebarToggleClose } from '../../actions/sidebar'
+
 
 @connect(store => {
   return {
+    sidebarToggle: store.sidebar.open,
     view: store.sidebar.view
   };
 })
 
 export default class Main extends Component {
   render() {
+    const handleToggle = () => {
+        this.props.sidebarToggle ? this.props.dispatch(sidebarToggleClose()) : this.props.dispatch(sidebarToggleOpen())
+    }
 
-<<<<<<< HEAD
-    
-    render() {
-        return (
-            <div>
-                <NavBar />
-                <SideBar />  
-            </div>
-        )
-=======
     const currentView = function (view) {
         switch (view) {
             case "settings": {
@@ -39,16 +35,17 @@ export default class Main extends Component {
             }
           
         }
->>>>>>> a26e96508888d1700e4aedc57efbdb3dc94818d1
     }
 
     return (
       <div>
-        <div>
           <NavBar />
           <SideBar />
-          {currentView(this.props.view)}
-        </div>
+            <div onClick={handleToggle}>
+                {currentView(this.props.view)}
+                helloasfdlkjsfdjfjslfjklasjfklsfljddlkjsfdjfjslfjklasjfklsfljd
+                dlkjsfdjfjslfjklasjfklsfljd            
+            </div>
       </div>
     );
   }

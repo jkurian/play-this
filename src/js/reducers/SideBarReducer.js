@@ -1,5 +1,6 @@
 export default function reducer(state={
     //these keys are used as names for props in component
+    open: true,
     userForums: [{}],
     userFriendsForums: [{}],
     fetchingForums: false,
@@ -11,6 +12,20 @@ export default function reducer(state={
     error: null,
   }, action) {
     switch (action.type) {
+        case "SIDEBAR_TOGGLE_OPEN": {
+            console.log(reducer)
+            return {
+                ...state,
+                open: true
+            }
+        }
+        case "SIDEBAR_TOGGLE_CLOSE": {
+            console.log(reducer)
+            return {
+                ...state,
+                open: false
+            }
+        }
         case "FETCH_USER_FORUMS": {
             return {
                 ...state,

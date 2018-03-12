@@ -18,6 +18,7 @@ import { fetchUserForums, fetchUserFriendsForums, fetchSettings } from '../../ac
 //this is where data comes from store as props
 @connect((store) => {
     return {
+        sidebarToggle: store.sidebar.open,
         userForums: store.sidebar.userForums,
         userFriendsForums: store.sidebar.userFriendsForums,
         settings: store.sidebar.settings
@@ -56,7 +57,9 @@ export default class SideBar extends React.Component {
         const allUserFriendRequests = this.props.userFriendsForums.map(forum => {
             return <ListItem primaryText={forum.title} rightIcon={<ForumIcon />} />
         })
-
+        
+        const drawerOpenState = this.props.sidebarToggle
+        
         const divStyle = `
         .sidebarStyle {
             font-size: 24px; 
@@ -70,10 +73,10 @@ export default class SideBar extends React.Component {
 
         return (
             <div>
-                <Drawer> 
-                <div class="sidebarStyle"><style>{divStyle}</style>Play This</div>
+                <Drawer open={drawerOpenState}> 
+                <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
                     <h4>Requests</h4>
-                    <IconButton>
+                    <IconButton >
                         <AddIcon />
                     </IconButton>
                     Create New Request

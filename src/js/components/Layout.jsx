@@ -27,9 +27,8 @@ export default class Layout extends React.Component {
         return (
             <div>
             {
-                this.props.sessionCookie === 'accepted'
-                    ? <Main />
-                    : <LandingPage />
+
+                    <Main />
             }
             </div>
         )

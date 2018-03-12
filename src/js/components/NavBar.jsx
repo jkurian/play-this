@@ -17,11 +17,8 @@ import { displayLoginForm, displaySignupForm } from "../actions/navbar";
     //   userFetched: store.user.fetched,
     //   tweets: store.tweets.tweets,
     showLoginForm: store.navbar.showLoginForm,
-<<<<<<< HEAD
     showSignupForm: store.navbar.showSignupForm,
     sessionCookie: store.login.sessionCookie
-=======
-    showSignupForm: store.navbar.showSignupForm
   };
 })
 export default class NavBar extends React.Component {
@@ -35,7 +32,6 @@ export default class NavBar extends React.Component {
       // .catch(err => {
       //   console.log('err');
       // })
->>>>>>> a26e96508888d1700e4aedc57efbdb3dc94818d1
     };
     const onSignupClick = evt => {
       this.props.dispatch(displaySignupForm(!this.props.showSignupForm));
@@ -54,30 +50,20 @@ export default class NavBar extends React.Component {
 
     const rightButtons = (
       <div>
-        <RaisedButton label="Login" primary={true} onClick={onLoginClick} />
-        <RaisedButton label="Sign up" primary={true} onClick={onSignupClick} />
+          <RaisedButton label="Login" primary={true} onClick={onLoginClick}/>
+          <RaisedButton label="Sign up" primary={true} onClick={onSignupClick}/>
       </div>
     );
+        
+    this.props.sessionCookie === 'accepted' ? buttons = logoutButton : buttons = rightButtons
 
-    false ? (buttons = logoutButton) : (buttons = rightButtons);
-
-        const rightButtons = (
-            <div>
-                <RaisedButton label="Login" primary={true} onClick={onLoginClick}/>
-                <RaisedButton label="Sign up" primary={true} onClick={onSignupClick}/>
-            </div>
-          );
-          
-        this.props.sessionCookie === 'accepted' ? buttons = logoutButton : buttons = rightButtons
-            
-        return (
-            <div>
-            <AppBar
-              title="PlayThis"
-              iconElementRight={buttons}
-              iconElementLeft={<div></div>}
-            />
-            </div>
-        )
-    }
+    return (
+        <div>
+        <AppBar
+          title="PlayThis"
+          iconElementRight={buttons}
+        />
+        </div>
+    )
+  }
 }

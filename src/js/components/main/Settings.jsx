@@ -16,6 +16,7 @@ export default class Main extends Component {
     render() {
         return (
             <div>
+             SETTTINNGGS
              {this.props.settings[0].first_name}
             </div>
         )

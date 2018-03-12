@@ -46,3 +46,15 @@ export function fetchSettings(view) {
       })
   }
 }
+
+export function sidebarToggleOpen() {
+  return function(dispatch) {
+    dispatch({type: "SIDEBAR_TOGGLE_OPEN"});
+  }
+}
+
+export function sidebarToggleClose() {
+  return function(dispatch) {
+    dispatch({type: "SIDEBAR_TOGGLE_CLOSE"});
+  }
+}
