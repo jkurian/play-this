@@ -63,18 +63,18 @@ module.exports = function makeDataHelpers(knex) {
         .leftJoin("users", "users.id", "comments.user_id")
         .where({ song_id: 65 })
         .then(results => {
-          console.log("LOOK ---> " + results);
+          console.log("LOOK COMMENTS---> " + results);
           return results;
         })
         .catch(err => {
           console.log(err);
         });
     },
-    getSongSpotifyId: function() {
+    getSongInfo: function() {
       return knex("songs")
-        .where({ song_id: 65 })
+        .where({ id: 65 })
         .then(results => {
-          console.log("LOOK ---> " + results);
+          console.log("LOOK spotify ID---> " + results);
           return results;
         })
         .catch(err => {

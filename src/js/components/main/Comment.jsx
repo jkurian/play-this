@@ -9,11 +9,11 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
-import { fetchSongComments } from "../../actions/songComment";
+import { fetchSongComments } from "../../actions/post";
 
 @connect(store => {
   return {
-    songComments: store.song.songComments
+    songComments: store.post.songComments
   };
 })
 

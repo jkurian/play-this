@@ -1,6 +1,7 @@
 export default function reducer(
   state = {
     songComments: [{}],
+    songInfo: [{}],
     fetching: false,
     error: null
   },
@@ -19,6 +20,20 @@ export default function reducer(
         ...state,
         fetching: false,
         songComments: action.payload
+      };
+    }
+    case "FETCH_SONG_INFO": {
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "FETCH_SONG_INFO_FULFILLED": {
+      console.log(action.payload);
+      return {
+        ...state,
+        fetching: false,
+        songInfo: action.payload
       };
     }
   }

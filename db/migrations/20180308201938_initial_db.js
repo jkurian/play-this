@@ -26,7 +26,7 @@ exports.up = (knex, Promise) => {
       table.string("artist");
       table.string("title");
       table.string("album");
-      table.string("spotifyID");
+      table.string("spotify_id");
       table.dateTime("time_stamp");
       table.integer("request_id").unsigned();
       table.foreign("request_id").references("requests.id");
