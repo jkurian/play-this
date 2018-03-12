@@ -37,3 +37,18 @@ exports.settings = function(req, res, dataHelpers) {
     // res.json(templateVars);
     if (err) res.status(501).send('failed');
 };
+
+exports.friends = function(req, res, dataHelpers) {
+    let err = false;  
+    console.log('IN FRIENDS');
+     dataHelpers.getFriendsList()
+      .then(result => {
+          console.log('friends list result is', result);
+          
+          res.json(result);
+      }
+    )
+
+    // res.json(templateVars);
+    if (err) res.status(501).send('failed');
+};

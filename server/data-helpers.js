@@ -56,6 +56,17 @@ module.exports = function makeDataHelpers(knex) {
                 console.log(err)
                 return false
             })
-        }
+        },
+        getFriendsList: function() {
+            return knex('userfriends')
+                .rightJoin('users', 'user_id2', 'id')    
+                .where({user_id1: 2})
+                .then((results) => {
+                    return results;
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        },
     }
 }

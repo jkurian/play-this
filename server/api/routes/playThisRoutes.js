@@ -22,5 +22,9 @@ module.exports = function(app, dataHelpers) {
     app.route('/api/register/email')
       .post((req, res) => 
         registerController.checkValidEmail(req, res, dataHelpers));
+
+    app.route('/api/friends')
+      .get((req, res) => 
+        sidebarController.friends(req, res, dataHelpers));
   };
   

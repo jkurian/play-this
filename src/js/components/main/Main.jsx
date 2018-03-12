@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import NavBar from "../NavBar.jsx";
 import SideBar from "./SideBar.jsx";
 import Settings from "./Settings.jsx";
+import Friends from "./Friends.jsx";
 
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -33,13 +34,14 @@ export default class Main extends Component {
 
     const currentView = function (view) {
         switch (view) {
+            case null: {
+                return //welcome page here   
+            }
             case "settings": {
                 return <Settings />
             }
-            case "welcome": {
-                return {
-                    Welcome
-                }
+            case "friends": {
+                return <Friends />
             }
         }
     }
@@ -49,9 +51,7 @@ export default class Main extends Component {
           <NavBar />
           <SideBar />
             <div onClick={toggleClose}>
-                {currentView(this.props.view)}
-                helloasfdlkjsfdjfjslfjklasjfklsfljddlkjsfdjfjslfjklasjfklsfljd
-                dlkjsfdjfjslfjklasjfklsfljd            
+                {currentView(this.props.view)}   
             </div>
       </div>
     );

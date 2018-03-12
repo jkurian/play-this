@@ -38,11 +38,25 @@ export function fetchSettings(view) {
 
     axios.get("http://localhost:3000/api/settings/")
       .then((response) => {
-        console.log('THIS IS SETTINGS AXIOS RESPONSE:', response)
         dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: {settings: response.data, view: view}})
       })
       .catch((err) => {
         dispatch({type: "FETCH_SETTINGS_REJECTED", payload: err})
+      })
+  }
+}
+
+export function fetchFriends(view) {
+  return function(dispatch) {
+    dispatch({type: "FETCH_FRIENDS"});
+
+    axios.get("http://localhost:3000/api/friends/")
+      .then((response) => {
+        console.log('THIS IS SETTINGS AXIOS RESPONSE from friends:', response)
+        dispatch({type: "FETCH_FRIENDS_FULFILLED", payload: {friends: response.data, view: view}})
+      })
+      .catch((err) => {
+        dispatch({type: "FETCH_FRIENDS_REJECTED", payload: err})
       })
   }
 }

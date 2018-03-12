@@ -8,6 +8,9 @@ export default function reducer(state={
     settings: {},
     fetchingSettings: false,
     fetchedSettings: false,
+    friends: [{}],
+    fetchingFriends: false,
+    fetchedFriends: false,
     view: null,
     error: null,
   }, action) {
@@ -68,6 +71,22 @@ export default function reducer(state={
                 open: false,
                 fetchingSettings: false,
                 fetchedSettings: true
+            }
+        }
+        case "FETCH_FRIENDS": {
+            return {
+                ...state,
+                fetchingFriends: true
+            }
+        }
+        case "FETCH_FRIENDS_FULFILLED": {
+            return {
+                ...state,
+                friends: action.payload.friends,
+                view: action.payload.view,
+                open: false,
+                fetchingFriends: false,
+                fetchedFriends: true
             }
         }
     }

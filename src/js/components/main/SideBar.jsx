@@ -12,7 +12,7 @@ import AddIcon from 'material-ui/svg-icons/content/add-circle';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
-import { fetchUserForums, fetchUserFriendsForums, fetchSettings } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends } from '../../actions/sidebar'
 
 
 //this is where data comes from store as props
@@ -37,6 +37,11 @@ export default class SideBar extends React.Component {
         const settingsClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchSettings("settings"))
+        }
+
+        const friendsClick = (ev) => {
+            ev.preventDefault();
+            this.props.dispatch(fetchFriends("friends"))
         }
         
         const boxStyle = {
@@ -90,7 +95,7 @@ export default class SideBar extends React.Component {
                     </MenuItem>
                     <Divider />
                     <MenuItem>
-                        <ListItem primaryText="Friends" />
+                        <ListItem primaryText="Friends" onClick={friendsClick}/>
                         <Divider />
                         <ListItem primaryText="Settings" onClick={settingsClick}/>
                     </MenuItem>

@@ -11,13 +11,18 @@ import { fetchSettings } from '../../actions/sidebar';
     };
 })
 
-export default class Main extends Component {
+export default class Settings extends Component {
         
     render() {
+        let avatarImage = this.props.settings[0].avatar_image
         return (
             <div>
              SETTTINNGGS
-             {this.props.settings[0].first_name}
+             <div>{this.props.settings[0].first_name}</div>
+             <div>{this.props.settings[0].last_name}</div>
+             <img src={avatarImage} />
+             <div>{this.props.settings[0].email}</div>
+             <div>{this.props.settings[0].password}</div>
             </div>
         )
     }
