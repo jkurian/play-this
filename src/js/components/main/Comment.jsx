@@ -24,7 +24,6 @@ export default class Comment extends Component {
   }
 
   render() {
-    console.log("THE PROPS ARE: ", this.props);
     const comments = this.props.songComments.map(comment => {
       return (
         <div>

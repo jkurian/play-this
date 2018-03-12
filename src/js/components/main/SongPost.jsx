@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { fetchSongInfo } from "../../actions/post";
 import { connect } from "react-redux";
+import Comment from "./Comment.jsx";
 
 @connect(store => {
   return {
@@ -16,20 +17,28 @@ export default class SongPost extends Component {
     this.props.dispatch(fetchSongInfo());
   }
   render() {
-    return (
-      <div>
-        <iframe
-          src={
-            "https://open.spotify.com/embed?uri=spotify:track:" +
-            this.props.songInfo[0].spotify_id
-          }
-          width="640"
-          height="80"
-          frameborder="0"
-          allowtransparency="true"
-          allow="encrypted-media"
-        />
-      </div>
-    );
+    const songs = this.props.songInfo.map(song => {
+      return (
+        <div>
+          <div>
+            <iframe
+              src={
+                "https://open.spotify.com/embed?uri=spotify:track:" +
+                this.props.songInfo[0].spotify_id
+              }
+              width="640"
+              height="80"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            />
+          </div>
+          <div>
+            <Comment />
+          </div>
+        </div>
+      );
+    });
+    return <div>{songs}</div>;
   }
 }

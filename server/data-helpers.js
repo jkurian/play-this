@@ -72,7 +72,7 @@ module.exports = function makeDataHelpers(knex) {
     },
     getSongInfo: function() {
       return knex("songs")
-        .where({ id: 65 })
+        .where({ request_id: 65 })
         .then(results => {
           console.log("LOOK spotify ID---> " + results);
           return results;
