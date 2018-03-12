@@ -19,7 +19,7 @@ export function fetchUserForums() {
 export function fetchUserFriendsForums() {
   return function(dispatch) {
     dispatch({type: "FETCH_USER_FRIENDS_FORUMS"});
-    console.log('IN AXIOS GET REQUEST FRIENDS FORUMS');
+
     axios.get("http://localhost:3000/api/userfriendsforums/")
       .then((response) => {
         console.log('response from axios',response.data);
@@ -28,6 +28,21 @@ export function fetchUserFriendsForums() {
       })
       .catch((err) => {
         dispatch({type: "FETCH_USER_FRIENDS_FORUMS_REJECTED", payload: err})
+      })
+  }
+}
+
+export function fetchSettings(view) {
+  return function(dispatch) {
+    dispatch({type: "FETCH_SETTINGS"});
+
+    axios.get("http://localhost:3000/api/settings/")
+      .then((response) => {
+        console.log('THIS IS SETTINGS AXIOS RESPONSE:', response)
+        dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: {settings: response.data, view: view}})
+      })
+      .catch((err) => {
+        dispatch({type: "FETCH_SETTINGS_REJECTED", payload: err})
       })
   }
 }

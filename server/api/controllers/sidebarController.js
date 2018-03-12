@@ -18,3 +18,10 @@ exports.userFriendsForums = function(req, res, dataHelpers) {
   // res.json(templateVars);
   if (err) res.status(501).send("failed");
 };
+
+exports.settings = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.getSettings().then(result => {
+    res.json(result);
+  });
+};
