@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "../.env" });
+require("dotenv").config({ path: "../.env" });
 const SpotifyWebApi = require("spotify-web-api-node");
 
 // Spotify API client details
