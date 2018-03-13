@@ -21,7 +21,7 @@ exports.userFriendsForums = function(req, res, dataHelpers) {
 exports.settings = function(req, res, dataHelpers) {
     let err = false;  
     console.log('IN SETTINGS');
-     dataHelpers.getSettings()
+     dataHelpers.getSettings(req.params.id)
       .then(result => {
           console.log('result is', result);
           
@@ -36,10 +36,8 @@ exports.settings = function(req, res, dataHelpers) {
 exports.friends = function(req, res, dataHelpers) {
     let err = false;  
     console.log('IN FRIENDS');
-     dataHelpers.getFriendsList()
-      .then(result => {
-          console.log('friends list result is', result);
-          
+     dataHelpers.getFriendsList(req.params.id)
+      .then(result => {          
           res.json(result);
       }
     )

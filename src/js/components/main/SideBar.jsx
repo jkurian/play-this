@@ -14,7 +14,7 @@ import IconButton from 'material-ui/IconButton';
 
 import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
 
-
+let currentUserID;
 //this is where data comes from store as props
 @connect((store) => {
     return {
@@ -29,8 +29,8 @@ import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, f
 
 export default class SideBar extends React.Component {
     componentWillMount() {
-        let currentUserID = this.props.sessionCookie
-
+        currentUserID = this.props.sessionCookie
+        
         this.props.dispatch(fetchUserForums(currentUserID))
         this.props.dispatch(fetchUserFriendsForums(currentUserID))
     }
@@ -54,12 +54,12 @@ export default class SideBar extends React.Component {
 
         const settingsClick = (ev) => {
             ev.preventDefault();
-            this.props.dispatch(fetchSettings("settings"))
+            this.props.dispatch(fetchSettings("settings", currentUserID))
         }
 
         const friendsClick = (ev) => {
             ev.preventDefault();
-            this.props.dispatch(fetchFriends("friends"))
+            this.props.dispatch(fetchFriends("friends", currentUserID))
         }
 
         const newForumClick = (ev) => {

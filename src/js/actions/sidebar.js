@@ -32,11 +32,11 @@ export function fetchUserFriendsForums(currentUserID) {
   }
 }
 
-export function fetchSettings(view) {
+export function fetchSettings(view, currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_SETTINGS"});
 
-    axios.get("http://localhost:3000/api/settings/")
+    axios.get(`http://localhost:3000/api/settings/${currentUserID}`)
       .then((response) => {
         dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: {settings: response.data, view: view}})
       })
@@ -46,11 +46,11 @@ export function fetchSettings(view) {
   }
 }
 
-export function fetchFriends(view) {
+export function fetchFriends(view, currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_FRIENDS"});
 
-    axios.get("http://localhost:3000/api/friends/")
+    axios.get(`http://localhost:3000/api/friends/${currentUserID}`)
       .then((response) => {
         console.log('THIS IS SETTINGS AXIOS RESPONSE from friends:', response)
         dispatch({type: "FETCH_FRIENDS_FULFILLED", payload: {friends: response.data, view: view}})

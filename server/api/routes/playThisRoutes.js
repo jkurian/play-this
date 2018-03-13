@@ -20,7 +20,7 @@ module.exports = function(app, dataHelpers) {
     );
 
   app
-    .route("/api/settings")
+    .route("/api/settings/:id")
     .get((req, res) => sidebarController.settings(req, res, dataHelpers));
 
   app
@@ -41,7 +41,7 @@ module.exports = function(app, dataHelpers) {
     .route("/api/songinfo")
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
 
-  app.route('/api/friends')
+  app.route('/api/friends/:id')
   .get((req, res) => 
     sidebarController.friends(req, res, dataHelpers));
 

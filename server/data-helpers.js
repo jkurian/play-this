@@ -36,9 +36,9 @@ module.exports = function makeDataHelpers(knex) {
           //add catch here
         });
     },
-    getSettings: function() {
+    getSettings: function(currentUserID) {
       return knex("users")
-        .where({ id: 2 })
+        .where({ id: currentUserID })
         .then(results => {
           return results;
         })
@@ -104,10 +104,10 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
-    getFriendsList: function() {
+    getFriendsList: function(currentUserID) {
       return knex('userfriends')
           .rightJoin('users', 'user_id2', 'id')    
-          .where({user_id1: 2})
+          .where({user_id1: currentUserID})
           .then((results) => {
               return results;
           })
