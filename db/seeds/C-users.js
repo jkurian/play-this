@@ -1,4 +1,5 @@
 const faker = require("faker");
+const bcrypt = require('bcrypt');
 
 let createRecord = (knex, id) => {
   return knex("users").insert({
@@ -6,7 +7,7 @@ let createRecord = (knex, id) => {
     last_name: faker.name.lastName(),
     avatar_image: faker.image.avatar(),
     email: faker.internet.exampleEmail(),
-    password: faker.internet.password()
+    password: bcrypt.hashSync(faker.internet.password(), 10)
   });
 };
 
