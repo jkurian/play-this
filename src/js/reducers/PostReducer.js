@@ -2,6 +2,7 @@ export default function reducer(
   state = {
     songComments: [{}],
     songInfo: [{}],
+    searchedTracks: [{}],
     fetching: false,
     error: null
   },
@@ -34,6 +35,13 @@ export default function reducer(
         ...state,
         fetching: false,
         songInfo: action.payload
+      };
+    }
+    case "SEARCH_FOR_SPOTIFY_SONGS_FULFILLED": {
+      console.log(action.payload);
+      return {
+        ...state,
+        searchedTracks: action.payload.searchedTracks
       };
     }
   }

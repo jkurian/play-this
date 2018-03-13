@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import LandingPage from "./LandingPage.jsx";
 import Main from "./main/Main.jsx";
+import Search from "./main/Search.jsx"
 // import Forum from "./main/Forum.jsx ";
 //example import action
 //import { fetchUser } from '../actions/userActions'
@@ -27,9 +28,9 @@ export default class Layout extends React.Component {
         console.log("PROPS ARE", this.props)
         return (
             <div>
-            {
+              {
 
-                    <Main />
+                <Search />
             }
             </div>
         )
