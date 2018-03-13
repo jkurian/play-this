@@ -10,7 +10,7 @@ let createRecord = (knex, id) => {
     }),
     song_id: faker.random.number({
       min: 1,
-      max: 1000
+      max: 25000
     })
   });
 };
