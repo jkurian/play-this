@@ -2,9 +2,13 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail, registerNewUser } from '../actions/register'
+import { updateRegisterEmailField, updateRegisterFirstNameField, updateRegisterLastNameField, updateRegisterPasswordConfirmationField, updateRegisterPasswordField, authenticateValidEmail, registerNewUser, updateErrorText, authenticatePasswordFields } from '../actions/register'
 import {connect} from 'react-redux'
 
+
+const style = {
+  margin: 12,
+};
 
 @connect((store) => {
   return {
@@ -13,15 +17,15 @@ import {connect} from 'react-redux'
       registerEmailField: store.register.registerEmailField,
       registerPasswordField: store.register.registerPasswordField,
       registerPasswordConfirmationField: store.register.registerPasswordConfirmationField,
-      isValid: store.register.isValid
+      passwordValidity: store.register.passwordValidity,
+      emailValidity: store.register.emailValidity,
+      passwordError: store.register.passwordError,
+      errorMessage: store.register.errorMessage
   }
 })
 
 export default class Layout extends React.Component {
   render () {
-    const style = {
-      margin: 12,
-    };
     const handleEmailFieldChange = (evt) => {
       evt.preventDefault();
       this.props.dispatch(updateRegisterEmailField(evt.target.value))
@@ -46,17 +50,20 @@ export default class Layout extends React.Component {
       if(validateEmail(this.props.registerEmailField)) {
         this.props.dispatch(authenticateValidEmail(this.props.registerEmailField))
       } else {
-        //cheap hack, need to fix. Basically send out an invalidate email
+        //cheap hack, need to fix. Basically send out and invalidate email
+        console.log('invalid email syntax');
         this.props.dispatch(authenticateValidEmail('jerry@dev.com'))
       }
     }
     function validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
-  }
-  const submitForm = (evt) => {
-    console.log('submit the form');
-    let userRegistrationDetails = {
+    }    
+    const checkPasswordMatching = (evt) => {
+      this.props.dispatch(authenticatePasswordFields(this.props.registerPasswordField, this.props.registerPasswordConfirmationField))
+    }
+    const submitForm = (evt) => {
+      let userRegistrationDetails = {
       firstname: this.props.registerFirstNameField,
       lastname: this.props.registerLastNameField,
       email: this.props.registerEmailField,
@@ -69,8 +76,10 @@ export default class Layout extends React.Component {
     evt.preventDefault();
     submitForm(evt);
   }
-    let validEmail = ''
-    this.props.isValid ? validEmail = 'true': validEmail= 'false'
+
+  let emailError = ''
+
+  // if(!this.props.isValid) emailError = 'Sorry, invalid email!'
     return (
       <div>
         <form action="/api/register" method="POST">
@@ -89,23 +98,26 @@ export default class Layout extends React.Component {
       floatingLabelText="Email"
       value={this.props.registerEmailField}
       onChange={handleEmailFieldChange}
-      onBlur={checkValidEmail}      
+      onBlur={checkValidEmail}
+      errorText={this.props.errorMessage}
       />
-      <p>EmailValidity: {validEmail}</p>
       <br />
     <TextField
       floatingLabelText="Password"
       type="password"
       value={this.props.registerPasswordField}
       onChange={handlePasswordFieldChange}
+      errorText={this.props.passwordError}
       /><br />
     <TextField
       floatingLabelText="Password Confirmation"
       type="password"
       value={this.props.registerPasswordConfirmationField}
       onChange={handlePasswordConfirmationFieldChange}
+      onBlur={checkPasswordMatching}
+      errorText={this.props.passwordError}
       /><br />
-       <RaisedButton type="submit" label="Register" style={style} onClick={onClick} disabled={!this.props.isValid}/>
+       <RaisedButton type="submit" label="Register" style={style} onClick={onClick} disabled={!this.props.emailValidity || !this.props.passwordValidity}/>
       </form>
   </div>
   )

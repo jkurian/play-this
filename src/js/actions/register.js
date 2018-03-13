@@ -59,7 +59,13 @@ export function authenticateValidEmail(registerEmailField) {
           })
       }
   }
-
+export function authenticatePasswordFields(password, passwordConfirmation) {
+  console.log('password fields!',password, passwordConfirmation)
+    return {
+        type: "AUTHENTICATE_PASSWORD_FIELDS", 
+        payload: password === passwordConfirmation
+      }
+  }
   export function registerNewUser(userRegistrationDetails) {
     return function(dispatch) {
       dispatch({type: "REGISTER_NEW_USER"});
