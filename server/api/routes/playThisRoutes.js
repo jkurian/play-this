@@ -41,7 +41,11 @@ module.exports = function(app, dataHelpers) {
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
 
   app.route('/api/friends')
-  .get((req, res) => 
+  .get((req, res) =>
     sidebarController.friends(req, res, dataHelpers));
+
+  app.route('/api/songinfo/post')
+  .post((req, res) =>
+    songPostController.postSpotifySong(req, res, dataHelpers));
 
 };

@@ -3,6 +3,7 @@ export default function reducer(
     songComments: [{}],
     songInfo: [{}],
     searchedTracks: [{}],
+    postSpotifySong: {},
     fetching: false,
     error: null
   },
@@ -43,6 +44,13 @@ export default function reducer(
         ...state,
         searchedTracks: action.payload.searchedTracks
       };
+    }
+    case "POST_SPOTIFY_SONG_SUCCESSFUL": {
+      console.log(action.payload);
+      return {
+        ...state,
+        postSpotifySong: action.payload.searchedTracks
+      }
     }
   }
   return state;

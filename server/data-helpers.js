@@ -78,6 +78,16 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    postSpotifySong: function(songInformation) {
+      console.log("In data helpers --> " + songInformation);
+      return knex("songs")
+      .insert({
+        artist: songInformation.artist,
+        title: songInformation.title,
+        album: songInformation.album,
+        spotify_id: songInformation.spotify_id
+      })
+    },
     //This needs to be edited to bring down the object being sent to only send the required information
     //rather than the whole two tables. Same for getFriendsForums
     getSongComments: function() {
@@ -106,7 +116,7 @@ module.exports = function makeDataHelpers(knex) {
     },
     getFriendsList: function() {
       return knex('userfriends')
-          .rightJoin('users', 'user_id2', 'id')    
+          .rightJoin('users', 'user_id2', 'id')
           .where({user_id1: 2})
           .then((results) => {
               return results;

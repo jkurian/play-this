@@ -3,6 +3,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import AutoComplete from "material-ui/AutoComplete";
 import { connect } from "react-redux";
 import { spotifyTrackData } from "../../actions/search";
+import { postSpotifyTrackData } from "../../actions/post"
 // const spotify = new Spotify();
 
 const colors = [
@@ -115,22 +116,27 @@ export default class Search extends Component {
     const spotifyApi = new SpotifyWebApi();
 
     spotifyApi.setAccessToken(
-      "BQCqGaIpBLN3xRd9KfEzd5A4hjIA_RxlIyu8ckoz46YbcI6mROpMTb3Op-gHbTU-RgkQuOFCjt982Xb8ujk"
+      "BQCq0E3dEgFK8XLCTDZJ2j-oDnLO-GponkK09iXEamI4-RyUZUlSNFqRcyxYH4d3sm8UtSxYnCJL4IoHfkc"
     );
     const tracks = this.props.searchedTracks;
     let testArr = [];
     let test = tracks.map(track => {
       testArr.push(
-        `${track.album.artists[0].name} - ${track.name} - ${track.album.name}`
+        `${track.artists[0].name} - ${track.name} - ${track.album.name}`
       );
     });
 
     const onChange = evt => {
       spotifyApi.searchTracks(evt).then(data => {
-        console.log(data.tracks.items);
         this.props.dispatch(spotifyTrackData(data.tracks.items));
       });
     };
+
+    const onClick = evt => {
+      spotifyApi.searchTracks(evt).then(data => {
+        this.props.dispatch(postSpotifyTrackData(data.tracks.items[0]));
+      });
+    }
 
     return (
       <div>
@@ -140,6 +146,7 @@ export default class Search extends Component {
           dataSource={testArr}
           maxSearchResults={10}
           onUpdateInput={onChange}
+          onNewRequest={onClick}
           fullWidth={true}
         />
       </div>
