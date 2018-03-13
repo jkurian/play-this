@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import SongPost from "./SongPost.jsx";
 import TextField from "material-ui/TextField";
 import FloatingActionButton from "material-ui/FloatingActionButton";
-import Comment from "./Comment.jsx";
 
 export default class Main extends Component {
   render() {
@@ -25,7 +24,6 @@ export default class Main extends Component {
           />
           <br />
         </div>
-        <Comment />
       </div>
     );
   }
