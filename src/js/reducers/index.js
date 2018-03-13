@@ -7,7 +7,7 @@ import sidebar from "./SideBarReducer";
 import login from "./LoginReducer";
 import post from "./PostReducer";
 import register from "./RegisterReducer";
-import newForum from "./NewForumReducer";
+import forum from "./ForumReducer";
 
 const appReducer = combineReducers({
   navbar,
@@ -15,7 +15,7 @@ const appReducer = combineReducers({
   post,
   login,
   register,
-  newForum
+  forum
 });
 
 const rootReducer = (state, action) => {

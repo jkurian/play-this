@@ -14,7 +14,7 @@ export default function reducer(
     fetchedFriends: false,
     fetchingNewForum: false,
     fetchedNewForum: false,
-    view: null,
+    view: null, 
     error: null,
   }, action) {
     switch (action.type) {
