@@ -39,11 +39,9 @@ export default class SideBar extends React.Component {
         
         const divStyle = `
         .sidebarStyle {
-            font-size: 24px; 
-            color: rgb(255, 255, 255); 
+            font-size: 24px;  
             line-height: 64px; 
             font-weight: 300;
-            background-color: rgb(0, 188, 212); 
             padding-left: 24px; 
             margin-bottom: 8px;
         }`
