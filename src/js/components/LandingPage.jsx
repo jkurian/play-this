@@ -3,8 +3,20 @@ import ReactDOM from "react-dom";
 import NavBar from "./NavBar.jsx";
 import LoginForm from "./LoginForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
+import Paper from 'material-ui/Paper';
 
 import { connect } from "react-redux";
+
+const style = {
+  height: 'auto',
+  width: 'auto',
+  margin: 20,
+  padding: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+  float: 'right'
+};
+
 
 @connect(store => {
   return {
@@ -19,8 +31,8 @@ export default class LandingPage extends Component {
     return (
       <div>
         <NavBar />
-        {this.props.showLoginForm ? <LoginForm /> : null}
-        {this.props.showSignupForm ? <SignUpForm /> : null}
+        {this.props.showLoginForm ? <Paper style={style} zDepth={2}><LoginForm /></Paper> : null}
+        {this.props.showSignupForm ? <Paper style={style} zDepth={2}><SignUpForm /> </Paper>: null}
       </div>
     );
   }

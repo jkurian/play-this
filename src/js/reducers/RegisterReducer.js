@@ -8,7 +8,10 @@ export default function reducer(state={
     authenticateValidEmail: '',
     sessionCookie: false,
     authenticatingEmailEmail: false,
-    isValid: false,
+    passwordValidity: false, 
+    emailValidity: false,
+    errorMessage: '',
+    passwordError: '',
     error: null,
   }, action) {
     switch (action.type) {
@@ -28,18 +31,21 @@ export default function reducer(state={
         return {
           ...state, 
           registerEmailField: action.payload.registerEmailField,
+         emailValidity: false
         }
       }
       case "UPDATE_REGISTER_PASSWORD_FIELD": {
         return {
           ...state, 
           registerPasswordField: action.payload.registerPasswordField,
+          passwordValidity: false
         }
       }
       case "UPDATE_REGISTER_PASSWORD_CONFIRMATION_FIELD": {
         return {
           ...state, 
           registerPasswordConfirmationField: action.payload.registerPasswordConfirmationField,
+          passwordValidity: false
         }
       }
       case "AUTHENTICATE_VALID_REGISTER_EMAIL": {
@@ -50,17 +56,29 @@ export default function reducer(state={
       }
       case "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED": {
           //NEEDS TO BE REFACTORED
+        let errorMessage = ''
+        if(!action.payload) errorMessage = 'Sorry, email is invalid!'
         return {
           ...state, 
-          isValid: action.payload,
+          emailValidity: action.payload,
+          errorMessage: errorMessage,
           authenticatingEmail: false
         }
       }
       case "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED": {
         return {
           ...state, 
-          isValid: "false",
+          emailValidity: false,
           authenticatingEmail: false
+        }
+      }
+      case "AUTHENTICATE_PASSWORD_FIELDS": {
+        let passwordError = ''
+        if(!action.payload) passwordError = 'Passwords must match!'
+        return {
+          ...state, 
+          passwordValidity: action.payload,
+          passwordError: passwordError,
         }
       }
     }

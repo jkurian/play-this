@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 module.exports = function makeDataHelpers(knex) {
   return {
     getForums: function() {
@@ -26,11 +27,10 @@ module.exports = function makeDataHelpers(knex) {
         .where({
           email: email
         })
-        .andWhere({
-          password: password
-        })
         .then(results => {
-          if (results.length != 0) return results;
+          if (results.length != 0 && bcrypt.compareSync(password, results[0].password)) {
+            return results
+          }
           //maybe throw an error here instead
           return null;
           //add catch here
@@ -59,7 +59,6 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     register_new_user: function(userRegistrationDetails) {
-      console.log("writing to DB");
       return knex("users")
         .returning("id")
         .insert({
@@ -67,7 +66,7 @@ module.exports = function makeDataHelpers(knex) {
           last_name: userRegistrationDetails.lastname,
           avatar_image: "",
           email: userRegistrationDetails.email,
-          password: userRegistrationDetails.password
+          password: bcrypt.hashSync(userRegistrationDetails.password, 10)
         })
         .then(results => {
           console.log(results);

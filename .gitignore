@@ -6,3 +6,5 @@ yarn-error.log
 tscinfig.json
 package-lock.json
 dev-testing
+client.min.json
+client.min.js.map
