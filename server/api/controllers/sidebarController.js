@@ -1,7 +1,6 @@
 exports.userForums = function(req, res, dataHelpers) {
   let err = false;
-
-  dataHelpers.getForums().then(result => {
+  dataHelpers.getForums(req.params.id).then(result => {
     res.json(result);
   });
 
@@ -11,7 +10,7 @@ exports.userForums = function(req, res, dataHelpers) {
 
 exports.userFriendsForums = function(req, res, dataHelpers) {
   let err = false;
-  dataHelpers.getFriendsForums().then(result => {
+  dataHelpers.getFriendsForums(req.params.id).then(result => {
     res.json(result);
   });
 
@@ -22,7 +21,7 @@ exports.userFriendsForums = function(req, res, dataHelpers) {
 exports.settings = function(req, res, dataHelpers) {
     let err = false;  
     console.log('IN SETTINGS');
-     dataHelpers.getSettings()
+     dataHelpers.getSettings(req.params.id)
       .then(result => {
           console.log('result is', result);
           
@@ -37,10 +36,8 @@ exports.settings = function(req, res, dataHelpers) {
 exports.friends = function(req, res, dataHelpers) {
     let err = false;  
     console.log('IN FRIENDS');
-     dataHelpers.getFriendsList()
-      .then(result => {
-          console.log('friends list result is', result);
-          
+     dataHelpers.getFriendsList(req.params.id)
+      .then(result => {          
           res.json(result);
       }
     )

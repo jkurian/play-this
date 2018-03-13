@@ -17,7 +17,7 @@ export default class Friends extends Component {
 
         const friendProfiles = this.props.friends.map(friendObj => {
             return <div><img src={friendObj.avatar_image} />
-                        <div>` this string{friendObj.first_name}`  {friendObj.last_name}</div>
+                        <div>{friendObj.first_name}  {friendObj.last_name}</div>
                         <div>{friendObj.email}</div>
                     </div> 
         })

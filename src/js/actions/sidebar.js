@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export function fetchUserForums() {
+export function fetchUserForums(currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_USER_FORUMS"});
 
-    axios.get("http://localhost:3000/api/userforums/")
+    axios.get(`http://localhost:3000/api/userforums/${currentUserID}`)
       .then((response) => {
         console.log('response from axios',response.data);
 
@@ -16,11 +16,11 @@ export function fetchUserForums() {
   }
 }
 
-export function fetchUserFriendsForums() {
+export function fetchUserFriendsForums(currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_USER_FRIENDS_FORUMS"});
 
-    axios.get("http://localhost:3000/api/userfriendsforums/")
+    axios.get(`http://localhost:3000/api/userfriendsforums/${currentUserID}`)
       .then((response) => {
         console.log('response from axios',response.data);
 
@@ -32,11 +32,11 @@ export function fetchUserFriendsForums() {
   }
 }
 
-export function fetchSettings(view) {
+export function fetchSettings(view, currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_SETTINGS"});
 
-    axios.get("http://localhost:3000/api/settings/")
+    axios.get(`http://localhost:3000/api/settings/${currentUserID}`)
       .then((response) => {
         dispatch({type: "FETCH_SETTINGS_FULFILLED", payload: {settings: response.data, view: view}})
       })
@@ -46,11 +46,11 @@ export function fetchSettings(view) {
   }
 }
 
-export function fetchFriends(view) {
+export function fetchFriends(view, currentUserID) {
   return function(dispatch) {
     dispatch({type: "FETCH_FRIENDS"});
 
-    axios.get("http://localhost:3000/api/friends/")
+    axios.get(`http://localhost:3000/api/friends/${currentUserID}`)
       .then((response) => {
         console.log('THIS IS SETTINGS AXIOS RESPONSE from friends:', response)
         dispatch({type: "FETCH_FRIENDS_FULFILLED", payload: {friends: response.data, view: view}})
