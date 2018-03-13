@@ -115,5 +115,17 @@ module.exports = function makeDataHelpers(knex) {
               console.log(err)
           })
   },
+    insertNewForum: function(newForumDetails) {
+      return knex('requests')
+        .insert({
+          title: newForumDetails.title,
+          explanation: newForumDetails.explanation,
+          time_stamp: new Date(),
+          user_admin_id: newForumDetails.user_admin_id
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   };
 };

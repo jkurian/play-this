@@ -4,6 +4,7 @@ module.exports = function(app, dataHelpers) {
   const sidebarController = require("../controllers/sidebarController");
   const registerController = require("../controllers/registerController");
   const songPostController = require("../controllers/songPostController");
+  const newForumController = require("../controllers/newForumController");
 
   app
     .route("/api/login")
@@ -43,5 +44,10 @@ module.exports = function(app, dataHelpers) {
   app.route('/api/friends')
   .get((req, res) => 
     sidebarController.friends(req, res, dataHelpers));
+
+  app.route("/api/forum")
+    .post((req, res) =>
+    newForumController.addNewForum(req, res, dataHelpers));    
+  
 
 };

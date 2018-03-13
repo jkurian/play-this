@@ -26,12 +26,10 @@ export default class Layout extends React.Component {
         //return <h1>{user.name} is {user.age} years old</h1>
         console.log("PROPS ARE", this.props)
         return (
-            <div>
-            {
-
-                    <Main />
-            }
-            </div>
-        )
+          <div>
+            {//the sessionCOokie is now the JWT id
+            this.props.sessionCookie ? <Main /> : <LandingPage />}
+          </div>
+        );
     }
 }
