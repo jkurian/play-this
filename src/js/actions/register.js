@@ -69,6 +69,8 @@ export function authenticateValidEmail(registerEmailField) {
           //  SET COOKIE
           // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
           // dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED", payload: response.data})
+          localStorage.setItem('key', response.data.token);
+          dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data.authenticated})
         })
         .catch((err) => {
             dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED", payload: err})

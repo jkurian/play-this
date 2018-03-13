@@ -18,6 +18,7 @@ export function updatePasswordField(formText) {
   }
 
 export function authenticate(loginEmailField, loginPasswordField) {
+  console.log('AUTHENTICATE FUNCTION', loginEmailField, loginPasswordField)
     return function(dispatch) {
         dispatch({type: "AUTHENTICATE_USER"});
         var authenticateCredientials = {

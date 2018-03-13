@@ -5,7 +5,7 @@ exports.login = function(req, res, dataHelpers) {
 
     let authenticated = {
         token: null,
-        authenticated: false
+        authenticated: -1
     }
 
     //AUTHENTICATE!!
@@ -13,14 +13,15 @@ exports.login = function(req, res, dataHelpers) {
         .then(results => {
             if(results) {
                 //instead of returning true or false in result, return userid if correct credentials
-                const payload = { user_id: '2' };
+                console.log("RESULTS OF AUTH", results[0].id)
+                const payload = { user_id: results[0].id };
                 jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: '24hr'}, (err, token) => {
                     if(err) {
                         console.log(err);
                     }
                     authenticated = {
                         token: token,
-                        authenticated: true
+                        authenticated: payload.user_id
                     }
                     res.status(201).send(authenticated);
                 })
