@@ -103,6 +103,17 @@ module.exports = function makeDataHelpers(knex) {
         .catch(err => {
           console.log(err);
         });
-    }
+    },
+    getFriendsList: function() {
+      return knex('userfriends')
+          .rightJoin('users', 'user_id2', 'id')    
+          .where({user_id1: 2})
+          .then((results) => {
+              return results;
+          })
+          .catch(err => {
+              console.log(err)
+          })
+  },
   };
 };

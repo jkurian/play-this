@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
 import { logout } from '../actions/logout'
+import { sidebarToggleOpen } from '../actions/sidebar'
 /**
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
@@ -51,15 +52,20 @@ export default class NavBar extends React.Component {
           );
           
         this.props.sessionCookie ? buttons = logoutButton : buttons = rightButtons
-            
-        return (
-            <div>
-            <AppBar
-              title="PlayThis"
-              iconElementRight={buttons}
-              iconElementLeft={<div></div>}
-            />
-            </div>
-        )
+    
+    const toggleClose = () => {
+      this.props.dispatch(sidebarToggleOpen())       
     }
+
+    return (
+        <div>
+        <AppBar
+          title="PlayThis"
+          iconElementRight={buttons}
+          onLeftIconButtonClick={toggleClose}
+        >
+        </AppBar>
+        </div>
+    )
+  }
 }

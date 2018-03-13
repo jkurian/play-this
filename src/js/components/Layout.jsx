@@ -16,19 +16,22 @@ import Main from "./main/Main.jsx";
   };
 })
 export default class Layout extends React.Component {
-  componentWillMount() {
-    //example displatch after component is mounted
-    //this.props.dispatch(fetchUser())
-  }
-  render() {
-    //Site would render the user age and name
-    //const { user } = this.props;
-    //return <h1>{user.name} is {user.age} years old</h1>
-    return (
-      <div>
-        {//the sessionCOokie is now the JWT id
-        this.props.sessionCookie ? <Main /> : <LandingPage />}
-      </div>
-    );
-  }
+    componentWillMount() {
+        //example displatch after component is mounted
+        //this.props.dispatch(fetchUser())
+    }
+    render() {
+        //Site would render the user age and name
+        //const { user } = this.props;
+        //return <h1>{user.name} is {user.age} years old</h1>
+        console.log("PROPS ARE", this.props)
+        return (
+            <div>
+            {
+
+                    <Main />
+            }
+            </div>
+        )
+    }
 }

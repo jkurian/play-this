@@ -39,4 +39,9 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/songinfo")
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
+
+  app.route('/api/friends')
+  .get((req, res) => 
+    sidebarController.friends(req, res, dataHelpers));
+
 };

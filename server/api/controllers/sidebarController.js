@@ -20,8 +20,31 @@ exports.userFriendsForums = function(req, res, dataHelpers) {
 };
 
 exports.settings = function(req, res, dataHelpers) {
-  let err = false;
-  dataHelpers.getSettings().then(result => {
-    res.json(result);
-  });
+    let err = false;  
+    console.log('IN SETTINGS');
+     dataHelpers.getSettings()
+      .then(result => {
+          console.log('result is', result);
+          
+          res.json(result);
+      }
+    )
+
+    // res.json(templateVars);
+    if (err) res.status(501).send('failed');
+};
+
+exports.friends = function(req, res, dataHelpers) {
+    let err = false;  
+    console.log('IN FRIENDS');
+     dataHelpers.getFriendsList()
+      .then(result => {
+          console.log('friends list result is', result);
+          
+          res.json(result);
+      }
+    )
+
+    // res.json(templateVars);
+    if (err) res.status(501).send('failed');
 };
