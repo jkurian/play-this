@@ -32,8 +32,24 @@ export default class SideBar extends React.Component {
         this.props.dispatch(fetchUserForums())
         this.props.dispatch(fetchUserFriendsForums())
     }
-
+    
     render(){
+        
+        const divStyle = `
+        .sidebarStyle {
+            font-size: 24px; 
+            color: rgb(255, 255, 255); 
+            line-height: 64px; 
+            font-weight: 300;
+            background-color: rgb(0, 188, 212); 
+            padding-left: 24px; 
+            margin-bottom: 8px;
+        }`
+
+        const menuItemStyle = {
+            padding: 0,
+        }
+
         const settingsClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchSettings("settings"))
@@ -48,45 +64,23 @@ export default class SideBar extends React.Component {
             ev.preventDefault();
             this.props.dispatch(fetchNewForum("newForum"))
         }
-        
-        const boxStyle = {
-            width: 300,
-            margin: 20,
-            display: 'inline-block',
-        };
-
-        const iconStyle = {
-            marginLeft: 24,
-            marginRight:23
-        }
 
         const allUserRequests = this.props.userForums.map(forum => {
-            return <ListItem primaryText={forum.title} leftIcon={<HearingIcon />} />
+            return <ListItem secondaryText={forum.title} leftIcon={<HearingIcon />} />
         })
 
         const allUserFriendRequests = this.props.userFriendsForums.map(forum => {
-            return <ListItem primaryText={forum.title} rightIcon={<ForumIcon />} />
+            return <ListItem secondaryText={forum.title} rightIcon={<ForumIcon />} />
         })
         
         const drawerOpenState = this.props.sidebarToggle
         
-        const divStyle = `
-        .sidebarStyle {
-            font-size: 24px; 
-            color: rgb(255, 255, 255); 
-            line-height: 64px; 
-            font-weight: 300;
-            background-color: rgb(0, 188, 212); 
-            padding-left: 24px; 
-            margin-bottom: 8px;
-        }`
-
         return (
             <div>
                 <Drawer open={drawerOpenState}> 
                 <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
                     <h4>Requests</h4>
-                    <IconButton >
+                    <IconButton>
                         <AddIcon onClick={newForumClick} />
                     </IconButton>
                     Create New Request
@@ -95,7 +89,7 @@ export default class SideBar extends React.Component {
                     </MenuItem>
                     <Divider />
                     <h4>Friends' Requests</h4>
-                    <MenuItem>
+                    <MenuItem innerDivStyle={menuItemStyle}>
                         {allUserFriendRequests}
                     </MenuItem>
                     <Divider />
