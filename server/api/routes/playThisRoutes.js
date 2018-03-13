@@ -10,11 +10,11 @@ module.exports = function(app, dataHelpers) {
     .route("/api/login")
     .post((req, res) => loginController.login(req, res, dataHelpers));
   app
-    .route("/api/userforums")
+    .route("/api/userforums/:id")
     .get((req, res) => sidebarController.userForums(req, res, dataHelpers));
 
   app
-    .route("/api/userfriendsforums/")
+    .route("/api/userfriendsforums/:id")
     .get((req, res) =>
       sidebarController.userFriendsForums(req, res, dataHelpers)
     );

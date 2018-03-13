@@ -1,7 +1,6 @@
 exports.userForums = function(req, res, dataHelpers) {
   let err = false;
-
-  dataHelpers.getForums().then(result => {
+  dataHelpers.getForums(req.params.id).then(result => {
     res.json(result);
   });
 
@@ -11,7 +10,7 @@ exports.userForums = function(req, res, dataHelpers) {
 
 exports.userFriendsForums = function(req, res, dataHelpers) {
   let err = false;
-  dataHelpers.getFriendsForums().then(result => {
+  dataHelpers.getFriendsForums(req.params.id).then(result => {
     res.json(result);
   });
 

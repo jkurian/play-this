@@ -21,16 +21,18 @@ import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, f
         sidebarToggle: store.sidebar.open,
         userForums: store.sidebar.userForums,
         userFriendsForums: store.sidebar.userFriendsForums,
-        settings: store.sidebar.settings
+        settings: store.sidebar.settings,
+        sessionCookie: store.login.sessionCookie
     };
 })
 
 
 export default class SideBar extends React.Component {
     componentWillMount() {
-        console.log("COMPONENT WILL MOUNT");
-        this.props.dispatch(fetchUserForums())
-        this.props.dispatch(fetchUserFriendsForums())
+        let currentUserID = this.props.sessionCookie
+
+        this.props.dispatch(fetchUserForums(currentUserID))
+        this.props.dispatch(fetchUserFriendsForums(currentUserID))
     }
     
     render(){

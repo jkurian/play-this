@@ -1,8 +1,8 @@
 module.exports = function makeDataHelpers(knex) {
   return {
-    getForums: function() {
+    getForums: function(currentUserID) {
       return knex("requests")
-        .where({ user_admin_id: 2 })
+        .where({ user_admin_id: currentUserID })
         .then(results => {
           return results;
         })
@@ -10,10 +10,10 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
-    getFriendsForums: function() {
+    getFriendsForums: function(currentUserID) {
       return knex("userfriends")
         .rightJoin("requests", "user_id2", "user_admin_id")
-        .where({ user_id1: 2 })
+        .where({ user_id1: currentUserID })
         .then(results => {
           return results;
         })
