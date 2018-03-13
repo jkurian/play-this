@@ -1,6 +1,9 @@
-export default function reducer(state={
+export default function reducer(
+  state={
     addingForum: false,
     addedForum: false,
+    title: "",
+    explanation: "",
     error: null,
   }, action) {
     switch (action.type) {
@@ -13,6 +16,8 @@ export default function reducer(state={
     case "ADD_FORUM_FULFILLED": {
         return {
             ...state,
+            title: action.payload[0].title,
+            explanation: action.payload[0].explanation,
             addingForum: false,
             addedForum: true
         }

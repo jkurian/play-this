@@ -116,6 +116,7 @@ module.exports = function makeDataHelpers(knex) {
   },
     insertNewForum: function(newForumDetails) {
       return knex('requests')
+        .returning(['title', 'explanation'])
         .insert({
           title: newForumDetails.title,
           explanation: newForumDetails.explanation,
