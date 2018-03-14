@@ -6,6 +6,7 @@ import SideBar from './SideBar.jsx'
 import { Redirect } from 'react-router-dom';
 import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 //import { fetchSettings } from '../../actions/sidebar';
 
 import { addForum } from '../../actions/newForum'
@@ -17,7 +18,7 @@ import { addForum } from '../../actions/newForum'
 })
 
 
-export default class NewForum extends Component {
+class NewForum extends Component {
     componentWillMount() {
         this.props.dispatch(sidebarToggleClose());
     }
@@ -31,6 +32,7 @@ export default class NewForum extends Component {
         const submitForm = (evt) => {
             evt.preventDefault();
             this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
+            this.props.history.push("/forum")
         }
 
         return  (
@@ -54,10 +56,12 @@ export default class NewForum extends Component {
             
                     <br />
                     <div>
-                    <RaisedButton type="submit" label="Create Forum" style={style} />
+                    <RaisedButton type="submit" style={style} />
                     </div>
                 </form>
             </div>
         )
     }
 }
+
+export default withRouter(NewForum);

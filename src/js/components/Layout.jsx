@@ -6,6 +6,7 @@ import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
 import Settings from './main/Settings.jsx'
 import NewForum from './main/NewForum.jsx'
+import Forum from './main/Forum.jsx'
 import { Route, HashRouter, Redirect } from 'react-router-dom';
 import Friends from './main/Friends.jsx'
 // import Forum from "./main/Forum.jsx ";
@@ -47,6 +48,7 @@ export default class Layout extends React.Component {
               <Route path="/settings" component={Settings} />
               <Route path="/friends" component={Friends} />
               <Route path="/newforum" component={NewForum} />
+              <Route path="/forum" component={Forum} />
               {/* <div>
                 <SideBar />
               <Route path="/friends" component={Friends} />
