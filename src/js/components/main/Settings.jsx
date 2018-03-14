@@ -10,7 +10,6 @@ import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import SideBar from './SideBar.jsx'
 import { updateEditState, updateProfile } from "../../actions/profile"
-
 const style = {
   margin: 12
 };
@@ -40,10 +39,11 @@ export default class Settings extends Component {
             first_name: evt.target[0].value,
             last_name: evt.target[2].value,
             email: evt.target[4].value,
-            avatar_url: evt.target[6].value,
+            avatar_image: evt.target[6].value,
             password: evt.target[8].value
         };
-        this.props.dispatch(updateProfile(updatedProfile, this.props.cookieSession))
+        this.props.dispatch(updateProfile(updatedProfile, this.props.sessionCookie))
+        this.props.dispatch(fetchSettings('', this.props.sessionCookie))
     };
     const updateEditableState = (evt, disabledStateChange) => {
         evt.preventDefault();

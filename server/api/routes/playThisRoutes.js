@@ -5,6 +5,7 @@ module.exports = function(app, dataHelpers) {
   const registerController = require("../controllers/registerController");
   const songPostController = require("../controllers/songPostController");
   const newForumController = require("../controllers/newForumController");
+  const profileController = require("../controllers/profileController");
 
   app
     .route("/api/login")
@@ -54,4 +55,8 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/forum")
     .post((req, res) => newForumController.addNewForum(req, res, dataHelpers));
+
+  app
+    .route("/api/profile/update/:id")
+    .post((req, res) => profileController.updateProfile(req, res, dataHelpers));
 };

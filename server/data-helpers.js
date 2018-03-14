@@ -135,6 +135,15 @@ module.exports = function makeDataHelpers(knex) {
         .catch(err => {
           console.log(err);
         });
+    },
+    updateProfile: function(updatedProfile, user_id) {
+      console.log("UPDATING PROFILE IN DATA HELPERS")
+      return knex("users")
+        .where({id: user_id})
+        .update(updatedProfile)
+        .then(results => {
+          console.log("RESULTS AFTER UPDATE:", results)
+        }) 
     }
   };
 };
