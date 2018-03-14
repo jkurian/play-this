@@ -26,7 +26,9 @@ class Main extends Component {
     this.props.dispatch(displaySignupForm(false));
   }
   render() {
-    
+    if (!this.props.sessionCookie) {
+      return <Redirect to="/login"/>
+    }
     const toggleClose = () => {
        if (this.props.sidebarToggle) {
            this.props.dispatch(sidebarToggleClose()) 
