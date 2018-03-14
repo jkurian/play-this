@@ -23,7 +23,7 @@ export default class NewForum extends Component {
         const style = {
             margin: 12,
         };
-        const onSubmit = (evt) => {
+        const submitForm = (evt) => {
             evt.preventDefault();
             this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
         }
