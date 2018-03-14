@@ -19,7 +19,7 @@ import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, f
 import { sidebarToggle } from '../../actions/sidebar'
 
 let currentUserID;
-// this is where data comes from store as props
+//this is where data comes from store as props
 @connect((store) => {
     return {
         open: store.sidebar.open,
@@ -30,8 +30,6 @@ let currentUserID;
         sessionCookie: store.login.sessionCookie
     };
 })
-
-
 export default class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
