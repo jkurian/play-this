@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
+import { withRouter, Route, Redirect, Link } from 'react-router-dom'
 
 import { updatePasswordField, updateEmailField, authenticate } from '../actions/login'
 const style = {
@@ -16,12 +17,14 @@ const style = {
   }
 })
 
-export default class Layout extends React.Component {
+export default class LoginForm extends React.Component {
   
   render() {
     const sendForm = (evt) => {
       evt.preventDefault();
-      console.log(this.props.loginEmailField);
+      console.log('email field isASDASDAS',this.props.loginEmailField);
+      return(<Redirect to="/"/>)
+
       this.props.dispatch(authenticate(this.props.loginEmailField, this.props.loginPasswordField));
     }
     const onClick = (evt) => {
@@ -51,7 +54,11 @@ export default class Layout extends React.Component {
         value={this.props.loginPasswordField}
         onChange={handlePasswordFieldChange}
       /><br />
-      <RaisedButton type="submit" label="Login" style={style} onClick={onClick}/>
+      <RaisedButton type="submit" label="Login" style={style} onClick={onClick}>
+        {/* <Link to='/'>
+          Login 
+        </Link> */}
+      </RaisedButton> 
       </form>
     )
   }

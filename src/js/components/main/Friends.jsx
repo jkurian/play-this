@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+
+
 import { connect } from 'react-redux';
 // import { fetchSettings } from '../../actions/sidebar';
 
@@ -12,9 +14,8 @@ import { connect } from 'react-redux';
 })
 
 export default class Friends extends Component {
-        
     render() {
-
+        console.log(this.props, 'props are');  
         const friendProfiles = this.props.friends.map(friendObj => {
             return <div><img src={friendObj.avatar_image} />
                         <div>{friendObj.first_name}  {friendObj.last_name}</div>
@@ -24,6 +25,7 @@ export default class Friends extends Component {
        
         return (
             <div>
+                asdadas
                 {friendProfiles}
             </div>
         )
