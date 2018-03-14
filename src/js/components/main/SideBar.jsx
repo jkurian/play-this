@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import ActionHome from 'material-ui/svg-icons/action/home';
 import {List, ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -14,12 +15,14 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
-import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum, sidebarToggleClose } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
+import { sidebarToggle } from '../../actions/sidebar'
 
 let currentUserID;
 // this is where data comes from store as props
 @connect((store) => {
     return {
+        open: store.sidebar.open,
         sidebarToggle: store.sidebar.open,
         userForums: store.sidebar.userForums,
         userFriendsForums: store.sidebar.userFriendsForums,
@@ -79,13 +82,21 @@ export default class SideBar extends React.Component {
             return <ListItem secondaryText={forum.title} rightIcon={<ForumIcon />} />
         })
         
-        const drawerOpenState = this.props.sidebarToggle
-        
+        const drawerOpenState = this.props.sidebarToggle;
+
+        const onClick = (evt) => {
+            evt.preventDefault();
+            console.log('CLICKING ACTON');
+            this.props.dispatch(sidebarToggle(!this.props.open))  
+        }
         return (
             <div>
                 <Drawer open={drawerOpenState}> 
                 <div class="sidebarStyle"><style>{divStyle}</style>
-                    Play This<IconButton><CloseIcon onClick={toggleClose()}></CloseIcon></IconButton>
+                <IconButton >
+                    <ActionHome onClick={onClick}/>
+                </IconButton>
+                Play This
                 </div> 
                     <h4>Requests</h4>
                     <IconButton>
