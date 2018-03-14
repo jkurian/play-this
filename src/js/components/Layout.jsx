@@ -28,7 +28,6 @@ export default class Layout extends React.Component {
         //Site would render the user age and name
         //const { user } = this.props;
         //return <h1>{user.name} is {user.age} years old</h1>
-        console.log("PROPS ARE", this.props)
         return (
           <HashRouter>
             <div>

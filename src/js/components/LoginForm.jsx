@@ -23,7 +23,6 @@ export default class LoginForm extends React.Component {
     const sendForm = (evt) => {
       evt.preventDefault();
       console.log('email field isASDASDAS',this.props.loginEmailField);
-      return(<Redirect to="/"/>)
 
       this.props.dispatch(authenticate(this.props.loginEmailField, this.props.loginPasswordField));
     }
@@ -54,10 +53,10 @@ export default class LoginForm extends React.Component {
         value={this.props.loginPasswordField}
         onChange={handlePasswordFieldChange}
       /><br />
-      <RaisedButton type="submit" label="Login" style={style} onClick={onClick}>
-        {/* <Link to='/'>
+      <RaisedButton type="submit" style={style} onClick={onClick}>
+        <Link to='/'>
           Login 
-        </Link> */}
+        </Link>
       </RaisedButton> 
       </form>
     )

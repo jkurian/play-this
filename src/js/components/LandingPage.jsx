@@ -30,7 +30,6 @@ export default class LandingPage extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         {this.props.showLoginForm ? <Paper style={style} zDepth={2}><LoginForm /></Paper> : null}
         {this.props.showSignupForm ? <Paper style={style} zDepth={2}><SignUpForm /> </Paper>: null}
       </div>
