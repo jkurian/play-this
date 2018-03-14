@@ -4,124 +4,30 @@ import AutoComplete from "material-ui/AutoComplete";
 import { connect } from "react-redux";
 import { spotifyTrackData } from "../../actions/search";
 import { postSpotifyTrackData } from "../../actions/post"
-// const spotify = new Spotify();
-
-const colors = [
-  "Red",
-  "Orange",
-  "Yellow",
-  "Green",
-  "Blue",
-  "Purple",
-  "Black",
-  "White"
-];
-
-const fruit = [
-  "Apple",
-  "Apricot",
-  "Avocado",
-  "Banana",
-  "Bilberry",
-  "Blackberry",
-  "Blackcurrant",
-  "Blueberry",
-  "Boysenberry",
-  "Blood Orange",
-  "Cantaloupe",
-  "Currant",
-  "Cherry",
-  "Cherimoya",
-  "Cloudberry",
-  "Coconut",
-  "Cranberry",
-  "Clementine",
-  "Damson",
-  "Date",
-  "Dragonfruit",
-  "Durian",
-  "Elderberry",
-  "Feijoa",
-  "Fig",
-  "Goji berry",
-  "Gooseberry",
-  "Grape",
-  "Grapefruit",
-  "Guava",
-  "Honeydew",
-  "Huckleberry",
-  "Jabouticaba",
-  "Jackfruit",
-  "Jambul",
-  "Jujube",
-  "Juniper berry",
-  "Kiwi fruit",
-  "Kumquat",
-  "Lemon",
-  "Lime",
-  "Loquat",
-  "Lychee",
-  "Nectarine",
-  "Mango",
-  "Marion berry",
-  "Melon",
-  "Miracle fruit",
-  "Mulberry",
-  "Mandarine",
-  "Olive",
-  "Orange",
-  "Papaya",
-  "Passionfruit",
-  "Peach",
-  "Pear",
-  "Persimmon",
-  "Physalis",
-  "Plum",
-  "Pineapple",
-  "Pumpkin",
-  "Pomegranate",
-  "Pomelo",
-  "Purple Mangosteen",
-  "Quince",
-  "Raspberry",
-  "Raisin",
-  "Rambutan",
-  "Redcurrant",
-  "Salal berry",
-  "Satsuma",
-  "Star fruit",
-  "Strawberry",
-  "Squash",
-  "Salmonberry",
-  "Tamarillo",
-  "Tamarind",
-  "Tomato",
-  "Tangerine",
-  "Ugli fruit",
-  "Watermelon"
-];
-
-/**
- * Two examples of filtering. The first uses `caseInsensitiveFilter`, the second uses `fuzzyFilter`,
- * and limits the number of results displayed using the `maxSearchResults` property.
- */
 
 @connect(store => {
   return {
     searchedTracks: store.post.searchedTracks
   };
 })
+
+
+// For tomorrow:
+// searchText={this.state}
+
 export default class Search extends Component {
   render() {
     const spotifyApi = new SpotifyWebApi();
 
     spotifyApi.setAccessToken(
-      "BQCq0E3dEgFK8XLCTDZJ2j-oDnLO-GponkK09iXEamI4-RyUZUlSNFqRcyxYH4d3sm8UtSxYnCJL4IoHfkc"
+      "BQAysoplpWXDZcaSYamm8EAg1D3B8gyeJ6L7KZ_M-zuL9NIRW8J3L1W2HpHcsPysvWQ3minWe8xEfLYFUdA"
     );
+
     const tracks = this.props.searchedTracks;
-    let testArr = [];
-    let test = tracks.map(track => {
-      testArr.push(
+    let listArr = [];
+
+    let list = tracks.map(track => {
+      listArr.push(
         `${track.artists[0].name} - ${track.name} - ${track.album.name}`
       );
     });
@@ -141,9 +47,9 @@ export default class Search extends Component {
     return (
       <div>
         <AutoComplete
-          floatingLabelText="Search for your favourite tunes:"
+          floatingLabelText="Search for your recommendation:"
           filter={AutoComplete.fuzzyFilter}
-          dataSource={testArr}
+          dataSource={listArr}
           maxSearchResults={10}
           onUpdateInput={onChange}
           onNewRequest={onClick}
