@@ -41,13 +41,17 @@ module.exports = function(app, dataHelpers) {
     .route("/api/songinfo")
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
 
-  app.route('/api/friends/:id')
-  .get((req, res) => 
-    sidebarController.friends(req, res, dataHelpers));
+  app
+    .route("/api/friends/:id")
+    .get((req, res) => sidebarController.friends(req, res, dataHelpers));
 
-  app.route("/api/forum")
+  app
+    .route("/api/songinfo/post")
     .post((req, res) =>
-    newForumController.addNewForum(req, res, dataHelpers));    
-  
+      songPostController.postSpotifySong(req, res, dataHelpers)
+    );
 
+  app
+    .route("/api/forum")
+    .post((req, res) => newForumController.addNewForum(req, res, dataHelpers));
 };

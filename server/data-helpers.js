@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 module.exports = function makeDataHelpers(knex) {
   return {
     getForums: function(currentUserID) {
@@ -28,8 +28,11 @@ module.exports = function makeDataHelpers(knex) {
           email: email
         })
         .then(results => {
-          if (results.length != 0 && bcrypt.compareSync(password, results[0].password)) {
-            return results
+          if (
+            results.length != 0 &&
+            bcrypt.compareSync(password, results[0].password)
+          ) {
+            return results;
           }
           //maybe throw an error here instead
           return null;
@@ -77,6 +80,14 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    postSpotifySong: function(songInformation) {
+      return knex("songs").insert({
+        artist: songInformation.artist,
+        title: songInformation.title,
+        album: songInformation.album,
+        spotify_id: songInformation.spotify_id
+      });
+    },
     //This needs to be edited to bring down the object being sent to only send the required information
     //rather than the whole two tables. Same for getFriendsForums
     getSongComments: function() {
@@ -96,7 +107,6 @@ module.exports = function makeDataHelpers(knex) {
       return knex("songs")
         .where({ request_id: 2 })
         .then(results => {
-          console.log("LOOK song info---> " + results);
           return results;
         })
         .catch(err => {
@@ -104,18 +114,18 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getFriendsList: function(currentUserID) {
-      return knex('userfriends')
-          .rightJoin('users', 'user_id2', 'id')    
-          .where({user_id1: currentUserID})
-          .then((results) => {
-              return results;
-          })
-          .catch(err => {
-              console.log(err)
-          })
-  },
+      return knex("userfriends")
+        .rightJoin("users", "user_id2", "id")
+        .where({ user_id1: currentUserID })
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     insertNewForum: function(newForumDetails) {
-      return knex('requests')
+      return knex("requests")
         .insert({
           title: newForumDetails.title,
           explanation: newForumDetails.explanation,
@@ -123,8 +133,8 @@ module.exports = function makeDataHelpers(knex) {
           user_admin_id: newForumDetails.user_admin_id
         })
         .catch(err => {
-          console.log(err)
-        })
+          console.log(err);
+        });
     }
   };
 };

@@ -25,7 +25,7 @@ export function fetchSongInfo() {
     dispatch({ type: "FETCH_SONG_INFO" });
 
     axios
-      .get("http://localhost:3000/api/songinfo/")
+      .get("http://localhost:3000/api/songinfo")
       .then(response => {
         console.log("Song Info from axios", response.data);
 
@@ -36,6 +36,29 @@ export function fetchSongInfo() {
       })
       .catch(err => {
         dispatch({ type: "FETCH_SONG_INFO_REJECTED", payload: err });
+      });
+  };
+}
+
+export function postSpotifyTrackData(incomingSpotifyTrack) {
+  return function(dispatch) {
+    let songInformation = {
+      artist: incomingSpotifyTrack.artists[0].name,
+      title: incomingSpotifyTrack.name,
+      album: incomingSpotifyTrack.album.name,
+      spotify_id: incomingSpotifyTrack.id
+    };
+    axios
+      .post("http://localhost:3000/api/songinfo/post", songInformation)
+      .then(response => {
+        console.log("Spotify song sent to axios", response.data);
+        dispatch({
+          type: "POST_SPOTIFY_SONG_SUCCESSFUL",
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: "POST_SPOTIFY_SONG_REJECTED", payload: err });
       });
   };
 }
