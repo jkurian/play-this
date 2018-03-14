@@ -4,6 +4,8 @@ import LandingPage from "./LandingPage.jsx";
 import Main from "./main/Main.jsx";
 import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
+import Settings from './main/Settings.jsx'
+import NewForum from './main/NewForum.jsx'
 import { Route, HashRouter, Redirect } from 'react-router-dom';
 import Friends from './main/Friends.jsx'
 // import Forum from "./main/Forum.jsx ";
@@ -41,6 +43,9 @@ export default class Layout extends React.Component {
                 }} />
               <Route path="/login" component={LandingPage} />
               <Route path="/welcome" component={Main} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/friends" component={Friends} />
+              <Route path="/newforum" component={NewForum} />
               {/* <div>
                 <SideBar />
               <Route path="/friends" component={Friends} />

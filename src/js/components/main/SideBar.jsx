@@ -84,9 +84,12 @@ class SideBar extends React.Component {
                 <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
                     <h4>Requests</h4>
                     <IconButton>
-                        <AddIcon onClick={newForumClick} />
+                        <AddIcon onClick={newForumClick} >
+                        </AddIcon>
                     </IconButton>
-                    Create New Request
+                        <Link to="/newforum">
+                            Create New Request
+                        </Link>
                     <MenuItem>
                         {allUserRequests}
                     </MenuItem>
@@ -103,7 +106,11 @@ class SideBar extends React.Component {
                             </Link>
                         </ListItem>
                         <Divider />
-                        <ListItem primaryText="Settings" onClick={settingsClick}/>
+                        <ListItem onClick={settingsClick}>
+                            <Link to="/settings">
+                                Settings
+                            </Link>
+                        </ListItem>
                     </MenuItem>
                 </Drawer>
             </div>

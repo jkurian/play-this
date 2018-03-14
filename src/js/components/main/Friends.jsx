@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import SideBar from './SideBar.jsx'
 
 
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ export default class Friends extends Component {
        
         return (
             <div>
-                asdadas
+                <SideBar />
                 {friendProfiles}
             </div>
         )

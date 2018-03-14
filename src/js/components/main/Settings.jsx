@@ -8,6 +8,7 @@ import IconButton from "material-ui/IconButton";
 import ActionGrade from "material-ui/svg-icons/action/grade";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
+import SideBar from './SideBar.jsx'
 
 const style = {
   margin: 12
@@ -39,6 +40,7 @@ export default class Settings extends Component {
     //have to find out how to pass value to onclick
     return (
       <div>
+        <SideBar />
         <form>
           <div>
             <TextField
