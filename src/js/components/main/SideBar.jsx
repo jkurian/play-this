@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {List, ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
@@ -16,23 +17,24 @@ import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, f
 
 let currentUserID;
 //this is where data comes from store as props
-@connect((store) => {
-    return {
-        sidebarToggle: store.sidebar.open,
-        userForums: store.sidebar.userForums,
-        userFriendsForums: store.sidebar.userFriendsForums,
-        settings: store.sidebar.settings,
-        sessionCookie: store.login.sessionCookie
-    };
-})
+// @connect((store) => {
+//     return {
+//         sidebarToggle: store.sidebar.open,
+//         userForums: store.sidebar.userForums,
+//         userFriendsForums: store.sidebar.userFriendsForums,
+//         settings: store.sidebar.settings,
+//         sessionCookie: store.login.sessionCookie
+//     };
+// })
 
 
-export default class SideBar extends React.Component {
+class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
         
         this.props.dispatch(fetchUserForums(currentUserID))
         this.props.dispatch(fetchUserFriendsForums(currentUserID))
+        this.props.dispatch(fetchFriends("friends", currentUserID))
     }
     
     render(){
@@ -59,7 +61,6 @@ export default class SideBar extends React.Component {
 
         const friendsClick = (ev) => {
             ev.preventDefault();
-            this.props.dispatch(fetchFriends("friends", currentUserID))
         }
 
         const newForumClick = (ev) => {
@@ -83,9 +84,12 @@ export default class SideBar extends React.Component {
                 <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
                     <h4>Requests</h4>
                     <IconButton>
-                        <AddIcon onClick={newForumClick} />
+                        <AddIcon onClick={newForumClick} >
+                        </AddIcon>
                     </IconButton>
-                    Create New Request
+                        <Link to="/newforum">
+                            Create New Request
+                        </Link>
                     <MenuItem>
                         {allUserRequests}
                     </MenuItem>
@@ -96,13 +100,34 @@ export default class SideBar extends React.Component {
                     </MenuItem>
                     <Divider />
                     <MenuItem>
-                        <ListItem primaryText="Friends" onClick={friendsClick}/>
+                        <ListItem>
+                            <Link to="/friends">
+                                Friends
+                            </Link>
+                        </ListItem>
                         <Divider />
-                        <ListItem primaryText="Settings" onClick={settingsClick}/>
+                        <ListItem onClick={settingsClick}>
+                            <Link to="/settings">
+                                Settings
+                            </Link>
+                        </ListItem>
                     </MenuItem>
                 </Drawer>
             </div>
         )
     }
 };
+
+const mapStateToProps = (state) => { 
+    console.log('THIS IS STATE -->', state)
+    return { 
+        sidebarToggle: state.sidebar.open,
+        userForums: state.sidebar.userForums,
+        userFriendsForums: state.sidebar.userFriendsForums,
+        settings: state.sidebar.settings,
+        sessionCookie: state.login.sessionCookie
+     };
+  };
+
+export default connect(mapStateToProps)(SideBar);
 

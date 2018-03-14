@@ -4,6 +4,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import SignUpForm from "./SignUpForm.jsx";
 import axios from "axios";
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom'
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
 import { logout } from '../actions/logout'
@@ -56,7 +57,6 @@ export default class NavBar extends React.Component {
     const toggleClose = () => {
       this.props.dispatch(sidebarToggleOpen())       
     }
-
     return (
         <div>
         <AppBar

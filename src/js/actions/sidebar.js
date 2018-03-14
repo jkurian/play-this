@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export function fetchUserForums(currentUserID) {
+  console.log('IN FETCH USER FORUMS ACTION', currentUserID)
   return function(dispatch) {
     dispatch({type: "FETCH_USER_FORUMS"});
 

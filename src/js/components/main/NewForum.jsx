@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import SideBar from './SideBar.jsx'
 
 import { connect } from 'react-redux';
 //import { fetchSettings } from '../../actions/sidebar';
@@ -29,6 +30,7 @@ export default class NewForum extends Component {
 
         return  (
             <div>
+                <SideBar />
                 <form onSubmit={submitForm}>
                     <TextField
                     name="title"

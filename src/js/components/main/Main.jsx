@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import NavBar from "../NavBar.jsx";
 import SideBar from "./SideBar.jsx";
 import Settings from "./Settings.jsx";
-import Post from "./Post.jsx";
 import Friends from "./Friends.jsx";
 import NewForum from "./NewForum.jsx";
-
-import RaisedButton from "material-ui/RaisedButton";
+import LandingPage from "../LandingPage.jsx"
+import Layout from '../Layout.jsx'
 
 import { connect } from "react-redux";
 import { sidebarToggleClose } from '../../actions/sidebar'
+import { Route, HashRouter, Redirect } from 'react-router-dom';
 
 import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
 
@@ -20,44 +20,60 @@ import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
     view: store.sidebar.view
   };
 })
-export default class Main extends Component {
+class Main extends Component {
   componentWillMount() {
     this.props.dispatch(displayLoginForm(false));
     this.props.dispatch(displaySignupForm(false));
   }
   render() {
-    
+    if (!this.props.sessionCookie) {
+      return <Redirect to="/login"/>
+    }
     const toggleClose = () => {
        if (this.props.sidebarToggle) {
            this.props.dispatch(sidebarToggleClose()) 
        }
     }
 
-    const currentView = function (view) {
-        switch (view) {
-            case null: {
-                return //welcome page here   
-            }
-            case "settings": {
-                return <Settings />
-            }
-            case "friends": {
-                return <Friends />
-            }
-            case "newForum": {
-                return <NewForum />
-            }
-        }
-      };
-
-    return (
+    // const currentView = function (view) {
+    //     switch (view) {
+    //         case null: {
+    //             return //welcome page here   
+    //         }
+    //         case "settings": {
+    //             return <Settings />
+    //         }
+    //         case "friends": {
+    //             return <Friends />
+    //         }
+    //         case "newForum": {
+    //             return <NewForum />
+    //         }
+    //     }
+    //   };
+    const home = this.props.sessionCookie ? <Friends /> : <LandingPage />
+    console.log("IN MAIN COMPONENT");
+    
+  return (
       <div>
-          <NavBar />
-          <SideBar />
-            <div onClick={toggleClose}>
-                {currentView(this.props.view)}   
+          {/* <NavBar />
+          <SideBar /> */}
+            <div>
+              <SideBar />
+                <Friends />
+                {/* <Route path="/friends" component={Friends} /> */}
             </div>
+            {this.props.children}
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => { 
+
+    return { 
+        sessionCookie: state.login.sessionCookie
+     };
+  };
+
+export default connect(mapStateToProps)(Main);

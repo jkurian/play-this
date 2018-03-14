@@ -28,9 +28,11 @@ const style = {
 })
 export default class LandingPage extends Component {
   render() {
+    if (this.props.sessionCookie) {
+      return <Redirect to="/"/>
+    }
     return (
       <div>
-        <NavBar />
         {this.props.showLoginForm ? <Paper style={style} zDepth={2}><LoginForm /></Paper> : null}
         {this.props.showSignupForm ? <Paper style={style} zDepth={2}><SignUpForm /> </Paper>: null}
       </div>

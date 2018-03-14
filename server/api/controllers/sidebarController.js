@@ -24,7 +24,6 @@ exports.settings = function(req, res, dataHelpers) {
      dataHelpers.getSettings(req.params.id)
       .then(result => {
           console.log('result is', result);
-          
           res.json(result);
       }
     )
