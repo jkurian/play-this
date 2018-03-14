@@ -6,3 +6,20 @@ export function updateEditState(disabledFieldState) {
     }
   };
 }
+
+export function updateProfile(userProfileDetails, currentUserID) {
+  return function(dispatch) {
+    axios.post(`http://localhost:3000/api/profile/update/${currentUserID}`, userProfileDetails)
+      .then((response) => {
+        // console.log('response from axios',response.data);
+        //  SET COOKIE
+        // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
+        // dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED", payload: response.data})
+        // localStorage.setItem('key', response.data.token);
+        // dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data.authenticated})
+      })
+      .catch((err) => {
+          dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED", payload: err})
+      })
+  }
+}

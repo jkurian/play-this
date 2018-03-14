@@ -9,7 +9,7 @@ import ActionGrade from "material-ui/svg-icons/action/grade";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import SideBar from './SideBar.jsx'
-import { updateEditState } from "../../actions/profile"
+import { updateEditState, updateProfile } from "../../actions/profile"
 
 const style = {
   margin: 12
@@ -19,22 +19,31 @@ const style = {
   return {
     settings: store.sidebar.settings,
     disabledFieldState: store.profile.disabledFieldState,
+    sessionCookie: store.login.sessionCookie
   };
 })
 export default class Settings extends Component {
-    componentWillUpdate() {
-        console.log('updating component');
-    }
   render() {
     let avatarImage = this.props.settings[0].avatar_image;
     const onSubmit = evt => {
       evt.preventDefault();
-      console.log(this.props.settings[0].first_name);
-    };
-    const onClick = evt => {
-      evt.preventDefault();
-      console.log("clicking", this.props.settings[0].first_name);
-      onSubmit(evt);
+      console.log('0',evt.target[0].value);
+      console.log('1',evt.target[1].value);
+      console.log('2',evt.target[2].value);
+      console.log('3',evt.target[3].value);
+      console.log('4',evt.target[4].value);
+      console.log('5',evt.target[5].value);
+      console.log('6',evt.target[6].value);
+      console.log('7',evt.target[7].value);
+      console.log('8',evt.target[8].value);
+        let updatedProfile = { 
+            first_name: evt.target[0].value,
+            last_name: evt.target[2].value,
+            email: evt.target[4].value,
+            avatar_url: evt.target[6].value,
+            password: evt.target[8].value
+        };
+        this.props.dispatch(updateProfile(updatedProfile, this.props.cookieSession))
     };
     const updateEditableState = (evt, disabledStateChange) => {
         evt.preventDefault();
@@ -45,7 +54,7 @@ export default class Settings extends Component {
     return (
       <div>
         <SideBar />
-        <form>
+        <form onSubmit={onSubmit}>
           <div>
             <TextField
               disabled={this.props.disabledFieldState.first_name}
