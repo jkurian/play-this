@@ -20,7 +20,7 @@ export default class Search extends Component {
     const spotifyApi = new SpotifyWebApi();
 
     spotifyApi.setAccessToken(
-      "BQAysoplpWXDZcaSYamm8EAg1D3B8gyeJ6L7KZ_M-zuL9NIRW8J3L1W2HpHcsPysvWQ3minWe8xEfLYFUdA"
+      ""
     );
 
     const tracks = this.props.searchedTracks;
