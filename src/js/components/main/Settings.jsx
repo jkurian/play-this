@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import {Redirect} from 'react-router-dom'
 import { connect } from "react-redux";
 import { fetchSettings } from "../../actions/sidebar";
 import TextField from "material-ui/TextField";
@@ -23,6 +24,9 @@ const style = {
 })
 export default class Settings extends Component {
   render() {
+    if (!this.props.sessionCookie) {
+        return <Redirect to="/login"/>
+      }
     let avatarImage = this.props.settings[0].avatar_image;
     const onSubmit = evt => {
       evt.preventDefault();

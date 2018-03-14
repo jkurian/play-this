@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SideBar from './SideBar.jsx'
-
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import { fetchSettings } from '../../actions/sidebar';
 
@@ -19,7 +19,9 @@ import { addForum } from '../../actions/newForum'
 export default class NewForum extends Component {
     
     render() {
-        
+        if (!this.props.sessionCookie) {
+            return <Redirect to="/login"/>
+          }
         const style = {
             margin: 12,
         };

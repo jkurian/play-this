@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar.jsx'
-
+import {Redirect} from 'react-router-dom'
 
 import { connect } from 'react-redux';
 // import { fetchSettings } from '../../actions/sidebar';
@@ -10,11 +10,15 @@ import { connect } from 'react-redux';
 @connect((store) => {
     return {
         friends: store.sidebar.friends,
+        sessionCookie: store.login.sessionCookie
     };
 })
 
 export default class Friends extends Component {
     render() {
+        if (!this.props.sessionCookie) {
+            return <Redirect to="/login"/>
+          }
         console.log(this.props, 'props are');  
         const friendProfiles = this.props.friends.map(friendObj => {
             return <div><img src={friendObj.avatar_image} />

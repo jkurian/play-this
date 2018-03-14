@@ -17,7 +17,8 @@ import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
 @connect(store => {
   return {
     sidebarToggle: store.sidebar.open,
-    view: store.sidebar.view
+    view: store.sidebar.view,
+    sessionCookie: store.login.sessionCookie
   };
 })
 class Main extends Component {
