@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
-import { Route, Redirect } from 'react-router-dom'
+import { withRouter, Route, Redirect, Link } from 'react-router-dom'
 
 import { updatePasswordField, updateEmailField, authenticate } from '../actions/login'
 const style = {
@@ -23,8 +23,9 @@ export default class LoginForm extends React.Component {
     const sendForm = (evt) => {
       evt.preventDefault();
       console.log('email field isASDASDAS',this.props.loginEmailField);
+      return(<Redirect to="/"/>)
+
       this.props.dispatch(authenticate(this.props.loginEmailField, this.props.loginPasswordField));
-      <Redirect to='/'/>
     }
     const onClick = (evt) => {
       evt.preventDefault();
@@ -53,7 +54,11 @@ export default class LoginForm extends React.Component {
         value={this.props.loginPasswordField}
         onChange={handlePasswordFieldChange}
       /><br />
-      <RaisedButton type="submit" label="Login" style={style} onClick={onClick}/>
+      <RaisedButton type="submit" label="Login" style={style} onClick={onClick}>
+        {/* <Link to='/'>
+          Login 
+        </Link> */}
+      </RaisedButton> 
       </form>
     )
   }
