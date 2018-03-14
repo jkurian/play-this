@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import LandingPage from "./LandingPage.jsx";
-import Main from "./main/Main.jsx";
+import Welcome from "./main/Welcome.jsx";
 import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
 import Settings from './main/Settings.jsx'
@@ -42,7 +42,7 @@ export default class Layout extends React.Component {
                    )
                 }} />
               <Route path="/login" component={LandingPage} />
-              <Route path="/welcome" component={Main} />
+              <Route path="/welcome" component={Welcome} />
               <Route path="/settings" component={Settings} />
               <Route path="/friends" component={Friends} />
               <Route path="/newforum" component={NewForum} />

@@ -16,25 +16,21 @@ import IconButton from 'material-ui/IconButton';
 import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
 
 let currentUserID;
-//this is where data comes from store as props
-// @connect((store) => {
-//     return {
-//         sidebarToggle: store.sidebar.open,
-//         userForums: store.sidebar.userForums,
-//         userFriendsForums: store.sidebar.userFriendsForums,
-//         settings: store.sidebar.settings,
-//         sessionCookie: store.login.sessionCookie
-//     };
-// })
+// this is where data comes from store as props
+@connect((store) => {
+    return {
+        sidebarToggle: store.sidebar.open,
+        userForums: store.sidebar.userForums,
+        userFriendsForums: store.sidebar.userFriendsForums,
+        settings: store.sidebar.settings,
+        sessionCookie: store.login.sessionCookie
+    };
+})
 
 
-class SideBar extends React.Component {
+export default class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
-        
-        this.props.dispatch(fetchUserForums(currentUserID))
-        this.props.dispatch(fetchUserFriendsForums(currentUserID))
-        this.props.dispatch(fetchFriends("friends", currentUserID))
     }
     
     render(){
@@ -117,17 +113,4 @@ class SideBar extends React.Component {
         )
     }
 };
-
-const mapStateToProps = (state) => { 
-    console.log('THIS IS STATE -->', state)
-    return { 
-        sidebarToggle: state.sidebar.open,
-        userForums: state.sidebar.userForums,
-        userFriendsForums: state.sidebar.userFriendsForums,
-        settings: state.sidebar.settings,
-        sessionCookie: state.login.sessionCookie
-     };
-  };
-
-export default connect(mapStateToProps)(SideBar);
 
