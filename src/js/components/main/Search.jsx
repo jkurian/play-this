@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import AutoComplete from "material-ui/AutoComplete";
+import Fuse from "fuse.js";
 import { connect } from "react-redux";
 import { spotifyTrackData } from "../../actions/search";
-import { postSpotifyTrackData } from "../../actions/post"
+import { postSpotifyTrackData } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -11,16 +12,28 @@ import { postSpotifyTrackData } from "../../actions/post"
   };
 })
 
-
 // For tomorrow:
 // searchText={this.state}
-
+// Also: http://fusejs.io/ for fuzzy search, is far superior than material's
 export default class Search extends Component {
   render() {
+    // const fuseOptions = {
+    //   shouldSort: true,
+    //   threshold: 0.6,
+    //   location: 0,
+    //   distance: 100,
+    //   maxPatternLength: 32,
+    //   minMatchCharLength: 1,
+    //   keys: ["track.name", "track.artists[0].name", "track.album.name"]
+    // };
+    //
+    // let fuse = new Fuse(listArr, fuseOptions);
+    // let result = fuse.search();
+
     const spotifyApi = new SpotifyWebApi();
 
     spotifyApi.setAccessToken(
-      ""
+      "BQBINnhTPqj9X-R8A4zFEaL1vhGbkWEMnBsLPKEi58dTHyGb6IZEF_FNyfx7jmq6Q-tmuaHopv2IwFBg44M"
     );
 
     const tracks = this.props.searchedTracks;
@@ -28,7 +41,7 @@ export default class Search extends Component {
 
     tracks.map(track => {
       listArr.push(
-        `${track.artists[0].name} - ${track.name} - ${track.album.name}`
+        `${track.name} - ${track.artists[0].name} - ${track.album.name}`
       );
     });
 
@@ -42,7 +55,7 @@ export default class Search extends Component {
       spotifyApi.searchTracks(evt).then(data => {
         this.props.dispatch(postSpotifyTrackData(data.tracks.items[0]));
       });
-    }
+    };
 
     return (
       <div>
