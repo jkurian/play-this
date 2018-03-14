@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SideBar from './SideBar.jsx'
-
+import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
 //import { fetchSettings } from '../../actions/sidebar';
 
@@ -17,7 +17,9 @@ import { addForum } from '../../actions/newForum'
 
 
 export default class NewForum extends Component {
-    
+    componentWillMount() {
+        this.props.dispatch(sidebarToggleClose());
+    }
     render() {
         
         const style = {
