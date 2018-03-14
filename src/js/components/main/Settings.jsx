@@ -26,15 +26,6 @@ export default class Settings extends Component {
     let avatarImage = this.props.settings[0].avatar_image;
     const onSubmit = evt => {
       evt.preventDefault();
-      console.log('0',evt.target[0].value);
-      console.log('1',evt.target[1].value);
-      console.log('2',evt.target[2].value);
-      console.log('3',evt.target[3].value);
-      console.log('4',evt.target[4].value);
-      console.log('5',evt.target[5].value);
-      console.log('6',evt.target[6].value);
-      console.log('7',evt.target[7].value);
-      console.log('8',evt.target[8].value);
         let updatedProfile = { 
             first_name: evt.target[0].value,
             last_name: evt.target[2].value,
@@ -43,7 +34,7 @@ export default class Settings extends Component {
             password: evt.target[8].value
         };
         this.props.dispatch(updateProfile(updatedProfile, this.props.sessionCookie))
-        this.props.dispatch(fetchSettings('', this.props.sessionCookie))
+            
     };
     const updateEditableState = (evt, disabledStateChange) => {
         evt.preventDefault();
