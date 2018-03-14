@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import LandingPage from "./LandingPage.jsx";
-import Main from "./main/Main.jsx";
+import Welcome from "./main/Welcome.jsx";
 import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
 import Settings from './main/Settings.jsx'
@@ -30,6 +30,7 @@ export default class Layout extends React.Component {
         //Site would render the user age and name
         //const { user } = this.props;
         //return <h1>{user.name} is {user.age} years old</h1>
+        
         return (
           <HashRouter>
             <div>
@@ -42,7 +43,7 @@ export default class Layout extends React.Component {
                    )
                 }} />
               <Route path="/login" component={LandingPage} />
-              <Route path="/welcome" component={Main} />
+              <Route path="/welcome" component={Welcome} />
               <Route path="/settings" component={Settings} />
               <Route path="/friends" component={Friends} />
               <Route path="/newforum" component={NewForum} />

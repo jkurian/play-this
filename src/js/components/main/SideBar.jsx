@@ -11,6 +11,7 @@ import MenuItem from 'material-ui/MenuItem';
 import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import AddIcon from 'material-ui/svg-icons/content/add-circle';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
@@ -32,14 +33,16 @@ let currentUserID;
 export default class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
-        
-        this.props.dispatch(fetchUserForums(currentUserID))
-        this.props.dispatch(fetchUserFriendsForums(currentUserID))
-        this.props.dispatch(fetchFriends("friends", currentUserID))
     }
     
     render(){
         
+        const toggleClose = () => {
+            if (this.props.sidebarToggle) {
+                this.props.dispatch(sidebarToggleClose()) 
+            }
+        }
+
         const divStyle = `
         .sidebarStyle {
             font-size: 24px; 

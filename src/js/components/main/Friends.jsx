@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar.jsx'
 import {Redirect} from 'react-router-dom'
-
+import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
 // import { fetchSettings } from '../../actions/sidebar';
 
@@ -15,6 +15,10 @@ import { connect } from 'react-redux';
 })
 
 export default class Friends extends Component {
+    componentWillMount() {
+        this.props.dispatch(sidebarToggleClose());
+    }
+    
     render() {
         if (!this.props.sessionCookie) {
             return <Redirect to="/login"/>

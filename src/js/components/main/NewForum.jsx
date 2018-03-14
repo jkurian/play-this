@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SideBar from './SideBar.jsx'
 import { Redirect } from 'react-router-dom';
+import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
 //import { fetchSettings } from '../../actions/sidebar';
 
@@ -17,7 +18,9 @@ import { addForum } from '../../actions/newForum'
 
 
 export default class NewForum extends Component {
-    
+    componentWillMount() {
+        this.props.dispatch(sidebarToggleClose());
+    }
     render() {
         if (!this.props.sessionCookie) {
             return <Redirect to="/login"/>

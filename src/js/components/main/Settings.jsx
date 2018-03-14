@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import {Redirect} from 'react-router-dom'
 import { connect } from "react-redux";
-import { fetchSettings } from "../../actions/sidebar";
+import { fetchSettings, sidebarToggleClose } from "../../actions/sidebar";
 import TextField from "material-ui/TextField";
 import IconButton from "material-ui/IconButton";
 import ActionGrade from "material-ui/svg-icons/action/grade";
@@ -23,6 +23,9 @@ const style = {
   };
 })
 export default class Settings extends Component {
+  componentWillMount() {
+    this.props.dispatch(sidebarToggleClose()) 
+  }
   render() {
     if (!this.props.sessionCookie) {
         return <Redirect to="/login"/>
