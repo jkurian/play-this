@@ -10,35 +10,38 @@ import MenuItem from 'material-ui/MenuItem';
 import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import AddIcon from 'material-ui/svg-icons/content/add-circle';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 
-import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum, sidebarToggleClose } from '../../actions/sidebar'
 
 let currentUserID;
-//this is where data comes from store as props
-// @connect((store) => {
-//     return {
-//         sidebarToggle: store.sidebar.open,
-//         userForums: store.sidebar.userForums,
-//         userFriendsForums: store.sidebar.userFriendsForums,
-//         settings: store.sidebar.settings,
-//         sessionCookie: store.login.sessionCookie
-//     };
-// })
+// this is where data comes from store as props
+@connect((store) => {
+    return {
+        sidebarToggle: store.sidebar.open,
+        userForums: store.sidebar.userForums,
+        userFriendsForums: store.sidebar.userFriendsForums,
+        settings: store.sidebar.settings,
+        sessionCookie: store.login.sessionCookie
+    };
+})
 
 
-class SideBar extends React.Component {
+export default class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
-        
-        this.props.dispatch(fetchUserForums(currentUserID))
-        this.props.dispatch(fetchUserFriendsForums(currentUserID))
-        this.props.dispatch(fetchFriends("friends", currentUserID))
     }
     
     render(){
         
+        const toggleClose = () => {
+            if (this.props.sidebarToggle) {
+                this.props.dispatch(sidebarToggleClose()) 
+            }
+        }
+
         const divStyle = `
         .sidebarStyle {
             font-size: 24px; 
@@ -81,7 +84,9 @@ class SideBar extends React.Component {
         return (
             <div>
                 <Drawer open={drawerOpenState}> 
-                <div class="sidebarStyle"><style>{divStyle}</style>Play This</div> 
+                <div class="sidebarStyle"><style>{divStyle}</style>
+                    Play This<IconButton><CloseIcon onClick={toggleClose()}></CloseIcon></IconButton>
+                </div> 
                     <h4>Requests</h4>
                     <IconButton>
                         <AddIcon onClick={newForumClick} >
@@ -117,17 +122,4 @@ class SideBar extends React.Component {
         )
     }
 };
-
-const mapStateToProps = (state) => { 
-    console.log('THIS IS STATE -->', state)
-    return { 
-        sidebarToggle: state.sidebar.open,
-        userForums: state.sidebar.userForums,
-        userFriendsForums: state.sidebar.userFriendsForums,
-        settings: state.sidebar.settings,
-        sessionCookie: state.login.sessionCookie
-     };
-  };
-
-export default connect(mapStateToProps)(SideBar);
 

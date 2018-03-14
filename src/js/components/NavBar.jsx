@@ -21,7 +21,7 @@ import { sidebarToggleOpen } from '../actions/sidebar'
     //   tweets: store.tweets.tweets,
     showLoginForm: store.navbar.showLoginForm,
     showSignupForm: store.navbar.showSignupForm,
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
   };
 })
 export default class NavBar extends React.Component {
@@ -54,7 +54,7 @@ export default class NavBar extends React.Component {
           
         this.props.sessionCookie ? buttons = logoutButton : buttons = rightButtons
     
-    const toggleClose = () => {
+    const toggleOpen = () => {
       this.props.dispatch(sidebarToggleOpen())       
     }
     return (
@@ -62,7 +62,7 @@ export default class NavBar extends React.Component {
         <AppBar
           title="PlayThis"
           iconElementRight={buttons}
-          onLeftIconButtonClick={toggleClose}
+          onLeftIconButtonClick={toggleOpen}
         >
         </AppBar>
         </div>
