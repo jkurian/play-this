@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
 
 import { updatePasswordField, updateEmailField, authenticate } from '../actions/login'
 const style = {
@@ -16,13 +17,14 @@ const style = {
   }
 })
 
-export default class Layout extends React.Component {
+export default class LoginForm extends React.Component {
   
   render() {
     const sendForm = (evt) => {
       evt.preventDefault();
-      console.log(this.props.loginEmailField);
+      console.log('email field isASDASDAS',this.props.loginEmailField);
       this.props.dispatch(authenticate(this.props.loginEmailField, this.props.loginPasswordField));
+      <Redirect to='/'/>
     }
     const onClick = (evt) => {
       evt.preventDefault();
