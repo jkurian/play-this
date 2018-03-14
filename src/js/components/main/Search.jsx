@@ -54,6 +54,7 @@ export default class Search extends Component {
           onUpdateInput={onChange}
           onNewRequest={onClick}
           fullWidth={true}
+          menuCloseDelay={0}
         />
       </div>
     );
