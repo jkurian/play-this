@@ -19,14 +19,12 @@ export default function reducer(
   }, action) {
     switch (action.type) {
         case "SIDEBAR_TOGGLE_OPEN": {
-            console.log(reducer)
             return {
                 ...state,
                 open: true
             }
         }
         case "SIDEBAR_TOGGLE_CLOSE": {
-            console.log(reducer)
             return {
                 ...state,
                 open: false
@@ -71,7 +69,6 @@ export default function reducer(
                 ...state, 
                 settings: action.payload.settings,
                 view: action.payload.view,
-                open: false,
                 fetchingSettings: false,
                 fetchedSettings: true
             }
@@ -87,7 +84,6 @@ export default function reducer(
                 ...state,
                 friends: action.payload.friends,
                 view: action.payload.view,
-                open: false,
                 fetchingFriends: false,
                 fetchedFriends: true
             }
@@ -96,7 +92,6 @@ export default function reducer(
             return {
                 ...state,
                 view: action.payload.view,
-                open:false,
                 fetchingNewForum: false,
                 fetchedNewForum: true
             }

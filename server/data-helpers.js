@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 module.exports = function makeDataHelpers(knex) {
   return {
     getForums: function(currentUserID) {
-      return knex("requests")
+      return knex("requests").orderBy('id', 'desc')
         .where({ user_admin_id: currentUserID })
         .then(results => {
           return results;

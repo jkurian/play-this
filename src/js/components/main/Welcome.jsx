@@ -5,11 +5,11 @@ import SideBar from "./SideBar.jsx";
 import Settings from "./Settings.jsx";
 import Friends from "./Friends.jsx";
 import NewForum from "./NewForum.jsx";
-import LandingPage from "../LandingPage.jsx"
-import Layout from '../Layout.jsx'
+import LandingPage from "../LandingPage.jsx";
+import Layout from '../Layout.jsx';
 
 import { connect } from "react-redux";
-import { sidebarToggleClose, fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
+import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
 
 import { Route, HashRouter, Redirect } from 'react-router-dom';
 
@@ -40,15 +40,15 @@ export default class Welcome extends Component {
     if (!this.props.sessionCookie) {
       return <Redirect to="/login"/>
     }
-
-    const toggleClose = () => {
-       if (this.props.sidebarToggle) {
-           this.props.dispatch(sidebarToggleClose()) 
-       }
-    }
     
+    const divStyle={
+        backgroundImage: 'url(' + '../../../images/Playthis_welcome_logo.svg' + ')',   
+        width: 500,
+        height: 500 
+      }
+      
   return (
-      <div>
+      <div style={divStyle}>
         <SideBar />
       </div>
     );
