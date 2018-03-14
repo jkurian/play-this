@@ -11,5 +11,16 @@ export default function reducer(
   }, action
 )
  {
+  switch(action.type) {
+    case "[PROFILE]UPDATE_DISABLED_FIELD_STATE": {
+      return {
+        ...state,
+        disabledFieldState: {
+          ...state.disabledFieldState,
+          ...action.payload.disabledFieldState
+        }
+      }
+    }
+  }
   return state;
 }

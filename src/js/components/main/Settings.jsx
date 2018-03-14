@@ -9,6 +9,7 @@ import ActionGrade from "material-ui/svg-icons/action/grade";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import SideBar from './SideBar.jsx'
+import { updateEditState } from "../../actions/profile"
 
 const style = {
   margin: 12
@@ -17,10 +18,13 @@ const style = {
 @connect(store => {
   return {
     settings: store.sidebar.settings,
-    disabledFieldState: store.profile.disabledFieldState
+    disabledFieldState: store.profile.disabledFieldState,
   };
 })
 export default class Settings extends Component {
+    componentWillUpdate() {
+        console.log('updating component');
+    }
   render() {
     let avatarImage = this.props.settings[0].avatar_image;
     const onSubmit = evt => {
@@ -32,10 +36,10 @@ export default class Settings extends Component {
       console.log("clicking", this.props.settings[0].first_name);
       onSubmit(evt);
     };
-    const updateEditableState = (evt, first_name) => {
+    const updateEditableState = (evt, disabledStateChange) => {
         evt.preventDefault();
-        console.log(evt, first_name, 'is the editable state value');
-        
+        console.log(disabledStateChange);
+        this.props.dispatch(updateEditState(disabledStateChange))
     }
     //have to find out how to pass value to onclick
     return (
@@ -45,42 +49,42 @@ export default class Settings extends Component {
           <div>
             <TextField
               disabled={this.props.disabledFieldState.first_name}
-              value={this.props.settings[0].first_name}
+              defaultValue={this.props.settings[0].first_name}
               name="first_name"
             />
-            <IconButton touch={true} onClick={updateEditableState.bind('first_name')}> 
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {first_name: !this.props.disabledFieldState.first_name})}> 
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
             <TextField
               disabled={this.props.disabledFieldState.last_name}
-              value={this.props.settings[0].last_name}
+              defaultValue={this.props.settings[0].last_name}
             />
-            <IconButton touch={true}>
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {last_name: !this.props.disabledFieldState.last_name})}>
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
             <TextField
               disabled={this.props.disabledFieldState.email}
-              value={this.props.settings[0].email}
+              defaultValue={this.props.settings[0].email}
             />
-            <IconButton touch={true}>
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {email: !this.props.disabledFieldState.email})}>
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
             <TextField
               disabled={this.props.disabledFieldState.avatar_url}
-              value={avatarImage}
+              defaultValue={avatarImage}
             />
-            <IconButton touch={true}>
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {avatar_url: !this.props.disabledFieldState.avatar_url})}>
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
             <TextField
               disabled={this.props.disabledFieldState.password}
-              value={this.props.settings[0].password}
+              defaultValue={this.props.settings[0].password}
             />
-            <IconButton touch={true}>
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {password: !this.props.disabledFieldState.password})}>
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
           </div>
@@ -88,7 +92,6 @@ export default class Settings extends Component {
             type="submit"
             label="Save"
             style={style}
-            onClick={onClick}
           />
         </form>
         <br />
