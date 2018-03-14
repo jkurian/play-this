@@ -79,7 +79,6 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     postSpotifySong: function(songInformation) {
-      console.log("In data helpers --> " + songInformation);
       return knex("songs")
       .insert({
         artist: songInformation.artist,
@@ -107,7 +106,6 @@ module.exports = function makeDataHelpers(knex) {
       return knex("songs")
         .where({ request_id: 2 })
         .then(results => {
-          console.log("LOOK song info---> " + results);
           return results;
         })
         .catch(err => {

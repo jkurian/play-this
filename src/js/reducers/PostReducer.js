@@ -17,7 +17,6 @@ export default function reducer(
       };
     }
     case "FETCH_SONG_COMMENTS_FULFILLED": {
-      console.log(action.payload[0].comment);
       return {
         ...state,
         fetching: false,
@@ -31,7 +30,6 @@ export default function reducer(
       };
     }
     case "FETCH_SONG_INFO_FULFILLED": {
-      console.log(action.payload);
       return {
         ...state,
         fetching: false,
@@ -39,14 +37,12 @@ export default function reducer(
       };
     }
     case "SEARCH_FOR_SPOTIFY_SONGS_FULFILLED": {
-      console.log(action.payload);
       return {
         ...state,
         searchedTracks: action.payload.searchedTracks
       };
     }
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
-      console.log(action.payload);
       return {
         ...state,
         postSpotifySong: action.payload.searchedTracks

@@ -42,7 +42,6 @@ export function fetchSongInfo() {
 
 export function postSpotifyTrackData(incomingSpotifyTrack) {
   return function(dispatch) {
-    console.log("Following Spotify --> " + incomingSpotifyTrack.artists[0].name)
     let songInformation = {
       artist: incomingSpotifyTrack.artists[0].name,
       title: incomingSpotifyTrack.name,
