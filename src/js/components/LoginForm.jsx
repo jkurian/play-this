@@ -13,6 +13,7 @@ const style = {
   return {
       loginEmailField: store.login.loginEmailField,
       loginPasswordField: store.login.loginPasswordField,
+      sessionCookie: store.login.sessionCookie
       // tweets: store.tweets
   }
 })
@@ -22,9 +23,6 @@ export default class LoginForm extends React.Component {
   render() {
     const sendForm = (evt) => {
       evt.preventDefault();
-      console.log('email field isASDASDAS',this.props.loginEmailField);
-      return(<Redirect to="/"/>)
-
       this.props.dispatch(authenticate(this.props.loginEmailField, this.props.loginPasswordField));
     }
     const onClick = (evt) => {
@@ -32,6 +30,7 @@ export default class LoginForm extends React.Component {
       sendForm(evt);
       this.props.dispatch(updateEmailField(''))
       this.props.dispatch(updatePasswordField(''))
+      
     }
     const handleEmailFieldChange = (evt) => {
       evt.preventDefault();
@@ -40,6 +39,9 @@ export default class LoginForm extends React.Component {
     const handlePasswordFieldChange = (evt) => {
       evt.preventDefault();
       this.props.dispatch(updatePasswordField(evt.target.value))
+    }
+    if (this.props.sessionCookie) {
+      return <Redirect to="/welcome"/>
     }
     return(
       <form action="/api/login" method="POST">
