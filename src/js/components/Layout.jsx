@@ -2,16 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import LandingPage from "./LandingPage.jsx";
 import Main from "./main/Main.jsx";
-<<<<<<< HEAD
-import Search from "./main/Search.jsx";
-=======
 import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
 import Settings from './main/Settings.jsx'
 import NewForum from './main/NewForum.jsx'
 import { Route, HashRouter, Redirect } from 'react-router-dom';
 import Friends from './main/Friends.jsx'
->>>>>>> react-router
 // import Forum from "./main/Forum.jsx ";
 //example import action
 //import { fetchUser } from '../actions/userActions'
