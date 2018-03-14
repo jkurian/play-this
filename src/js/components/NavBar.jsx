@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom'
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
 import { logout } from '../actions/logout'
-import { sidebarToggleOpen } from '../actions/sidebar'
+import { sidebarToggle } from '../actions/sidebar'
 /**
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
@@ -21,7 +21,8 @@ import { sidebarToggleOpen } from '../actions/sidebar'
     //   tweets: store.tweets.tweets,
     showLoginForm: store.navbar.showLoginForm,
     showSignupForm: store.navbar.showSignupForm,
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
+    open: store.sidebar.open
   };
 })
 export default class NavBar extends React.Component {
@@ -54,15 +55,15 @@ export default class NavBar extends React.Component {
           
         this.props.sessionCookie ? buttons = logoutButton : buttons = rightButtons
     
-    const toggleClose = () => {
-      this.props.dispatch(sidebarToggleOpen())       
+    const toggleSideBar = () => {
+      this.props.dispatch(sidebarToggle(!this.props.open))       
     }
     return (
         <div>
         <AppBar
           title="PlayThis"
           iconElementRight={buttons}
-          onLeftIconButtonClick={toggleClose}
+          onLeftIconButtonClick={toggleSideBar}
         >
         </AppBar>
         </div>

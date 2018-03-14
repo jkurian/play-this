@@ -18,11 +18,10 @@ export default function reducer(
     error: null,
   }, action) {
     switch (action.type) {
-        case "SIDEBAR_TOGGLE_OPEN": {
-            console.log(reducer)
+        case "SIDEBAR_TOGGLE": {
             return {
                 ...state,
-                open: true
+                open: action.payload.toggleState
             }
         }
         case "SIDEBAR_TOGGLE_CLOSE": {

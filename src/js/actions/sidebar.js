@@ -68,9 +68,9 @@ export function fetchNewForum(view) {
   }
 }
 
-export function sidebarToggleOpen() {
+export function sidebarToggle(toggleState) {
   return function(dispatch) {
-    dispatch({type: "SIDEBAR_TOGGLE_OPEN"});
+    dispatch({type: "SIDEBAR_TOGGLE", payload: {toggleState: toggleState}});
   }
 }
 
