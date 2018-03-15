@@ -5,14 +5,16 @@ import SideBar from "./SideBar.jsx";
 import Settings from "./Settings.jsx";
 import Friends from "./Friends.jsx";
 import NewForum from "./NewForum.jsx";
-import LandingPage from "../LandingPage.jsx"
-import Layout from '../Layout.jsx'
+import LandingPage from "../LandingPage.jsx";
+import Layout from "../Layout.jsx";
+import RaisedButton from "material-ui/RaisedButton";
 
 import { connect } from "react-redux";
-import { sidebarToggleClose } from '../../actions/sidebar'
-import { Route, HashRouter, Redirect } from 'react-router-dom';
+import { sidebarToggleClose } from "../../actions/sidebar";
+import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
+import { authenticateSpotify } from "../../actions/login";
 
 @connect(store => {
   return {
@@ -27,18 +29,18 @@ class Main extends Component {
   }
   render() {
     if (!this.props.sessionCookie) {
-      return <Redirect to="/login"/>
+      return <Redirect to="/login" />;
     }
     const toggleClose = () => {
-       if (this.props.sidebarToggle) {
-           this.props.dispatch(sidebarToggleClose()) 
-       }
-    }
+      if (this.props.sidebarToggle) {
+        this.props.dispatch(sidebarToggleClose());
+      }
+    };
 
     // const currentView = function (view) {
     //     switch (view) {
     //         case null: {
-    //             return //welcome page here   
+    //             return //welcome page here
     //         }
     //         case "settings": {
     //             return <Settings />
@@ -51,29 +53,32 @@ class Main extends Component {
     //         }
     //     }
     //   };
-    const home = this.props.sessionCookie ? <Friends /> : <LandingPage />
+    const buttonClick = () => {
+      this.props.dispatch(authenticateSpotify());
+    };
+    const home = this.props.sessionCookie ? <Friends /> : <LandingPage />;
     console.log("IN MAIN COMPONENT");
-    
-  return (
+
+    return (
       <div>
-          {/* <NavBar />
-          <SideBar /> */}
-            <div>
-              <SideBar />
-                <Friends />
-                {/* <Route path="/friends" component={Friends} /> */}
-            </div>
-            {this.props.children}
+        {/* <NavBar />
+        <SideBar /> */}
+        <div>
+          <SideBar />
+          <Friends />
+          <RaisedButton onClick={buttonClick} />
+          {/* <Route path="/friends" component={Friends} /> */}
+        </div>
+        {this.props.children}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => { 
-
-    return { 
-        sessionCookie: state.login.sessionCookie
-     };
+const mapStateToProps = state => {
+  return {
+    sessionCookie: state.login.sessionCookie
   };
+};
 
 export default connect(mapStateToProps)(Main);

@@ -82,6 +82,7 @@ app.get("/callback", (req, res) => {
       .authorizationCodeGrant(code)
       .then(data => {
         const { expires_in, access_token, refresh_token } = data.body;
+        console.log("TOKENS ---> " + data.body);
 
         // Set the access token on the API object to use it in later calls
         spotifyApi.setAccessToken(access_token);
@@ -89,20 +90,20 @@ app.get("/callback", (req, res) => {
 
         // use the access token to access the Spotify Web API
         spotifyApi.getMe().then(({ body }) => {
-          console.log(body);
+          console.log("Body --> " + body);
         });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          `http://localhost:8080/spotify/${access_token}/${refresh_token}`
+          `http://localhost:3000/api/spotify/login?access_token=${access_token}&refresh_token=${refresh_token}`
         );
       })
       .catch(err => {
-        res.redirect("http://localhost:8080/spotifyerror/invalidtoken");
+        res.redirect("http://localhost:8080/api/spotifyerror/invalidtoken");
       });
   }
 });
 
 app.listen(port);
 
-console.log("todo list RESTful API server started on: " + port);
+console.log("RESTful API server started on: " + port);
