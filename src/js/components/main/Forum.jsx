@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import SideBar from './SideBar.jsx'
-
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
+
+import SideBar from './SideBar.jsx'
 
 import {getRequest} from '../../actions/forum'
 import { sidebarToggleClose } from '../../actions/sidebar'
-import {Redirect} from 'react-router-dom'
 
 @connect(store => {
   return {
@@ -14,14 +14,16 @@ import {Redirect} from 'react-router-dom'
     sessionCookie: store.login.sessionCookie
   };
 })
-export default class Main extends Component {
+class Forum extends Component {
   componentWillUpdate() {
     this.props.dispatch(sidebarToggleClose());
   }
-  render() {
+  componentDidUpdate() {
     if (!this.props.sessionCookie) {
-      return <Redirect to="/login"/>
+      this.props.history.push('/login')
     }
+  }
+  render() {
     return (
       <div>
         <SideBar />
@@ -32,3 +34,4 @@ export default class Main extends Component {
     );
   }
 }
+export default withRouter(Forum)

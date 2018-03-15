@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router-dom';
+
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SideBar from './SideBar.jsx'
+
 import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
-import { Redirect, Link, withRouter } from 'react-router-dom';
-//import { fetchSettings } from '../../actions/sidebar';
-
 import { addForum } from '../../actions/newForum'
+
+const style = {
+    margin: 12,
+};
+const submitForm = (evt) => {
+    evt.preventDefault();
+    this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
+    this.props.history.push("/forum")
+}
 
 @connect((store) => {
     return {
         sessionCookie: store.login.sessionCookie
     };
 })
-
-
 class NewForum extends Component {
     componentWillMount() {
         this.props.dispatch(sidebarToggleClose());
     }
-    render() {
+    componentDidUpdate() {
         if (!this.props.sessionCookie) {
-            return <Redirect to="/login"/>
-          }
-        const style = {
-            margin: 12,
-        };
-        const submitForm = (evt) => {
-            evt.preventDefault();
-            this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
-            this.props.history.push("/forum")
+            this.props.history.push('/login')
         }
-
+    }
+    render() {
         return  (
             <div>
                 <SideBar />
