@@ -12,7 +12,8 @@ import { addForum } from '../../actions/newForum'
 
 @connect((store) => {
     return {
-        sessionCookie: store.login.sessionCookie
+        sessionCookie: store.login.sessionCookie,
+        lastForumID: store.sidebar.userForums[0].id
     };
 })
 
@@ -30,10 +31,9 @@ class NewForum extends Component {
         };
         const submitForm = (evt) => {
             evt.preventDefault();
-            this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
-            this.props.history.push("/forum")
+            this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie));
+            this.props.history.push(`/welcome`)
         }
-
         return  (
             <div>
                 <SideBar />
