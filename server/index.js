@@ -1,20 +1,20 @@
 require("dotenv").config({ path: __dirname + "../.env" });
-
 let cors = require("cors");
 let bodyParser = require("body-parser");
 let express = require("express");
-
 let app = express();
 let port = process.env.PORT || 3000;
 const knexConfig = require("../knexfile");
 const knex = require("knex")(knexConfig.development);
 const knexLogger = require("knex-logger");
-
 const dataHelpers = require("./data-helpers")(knex);
 
+// Modules needed for Spotify API
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const querystring = require("querystring");
+
+//Spotify API
 const Spotify = require("spotify-web-api-node");
 const CLIENT_ID = process.env.spotify_clientID;
 const CLIENT_SECRET = process.env.spotify_clientSecret;
@@ -29,7 +29,8 @@ const spotifyApi = new Spotify({
   redirectUri: REDIRECT_URI
 });
 
-/** Generates a random string containing numbers and letters of N characters */
+// Generates a random string containing numbers and letters of N characters for
+// spotify auth
 const generateRandomString = N =>
   (Math.random().toString(36) + Array(N).join("0")).slice(2, N + 2);
 
@@ -47,33 +48,20 @@ app.use(logger("dev")).use(cookieParser());
 var routes = require("./api/routes/playThisRoutes"); //importing route
 routes(app, dataHelpers); //register the route
 
+// Server route to spotify oAuth
 app.get("/login", (_, res) => {
   const state = generateRandomString(16);
   res.cookie(STATE_KEY, state);
   res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
 });
 
-// app.get("/callback", (req, res) => {
-//   const { code } = req.query;
-//   spotifyApi
-//     .authorizationCodeGrant(code)
-//     .then(data => {
-//       const { expires_in, access_token, refresh_token } = data.body;
-//       spotifyApi.setAccessToken(access_token);
-//       spotifyApi.setRefreshToken(refresh_token);
-//       res.redirect(`/user/${access_token}/${refresh_token}`);
-//     })
-//     .catch(err => {
-//       res.redirect("/error/invalid token");
-//     });
-// });
-
+// Callback URL for spotify response
 app.get("/callback", (req, res) => {
   const { code, state } = req.query;
   const storedState = req.cookies ? req.cookies[STATE_KEY] : null;
-  // first do state validation
+  // state validation
   if (state === null || state !== storedState) {
-    res.redirect("/#/error/state mismatch");
+    res.redirect("http://localhost:8080/#/error/statemismatch");
     // if the state is valid, get the authorization code and pass it on to the client
   } else {
     res.clearCookie(STATE_KEY);

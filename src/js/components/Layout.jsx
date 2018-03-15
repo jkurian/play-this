@@ -48,7 +48,6 @@ export default class Layout extends React.Component {
               );
             }}
           />
-          // parse location.search
           <Route path="/login" component={LandingPage} />
           <Route path="/welcome" component={Main} />
           <Route path="/settings" component={Settings} />

@@ -55,12 +55,4 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/forum")
     .post((req, res) => newForumController.addNewForum(req, res, dataHelpers));
-
-  app
-    .route("/api/spotify/login")
-    .get((req, res) => spotifyAuthController.spotifyCallback(req, res));
-
-  app
-    .route("/api/spotifyerror/invalidtoken")
-    .get((req, res) => console.log("Oh noes!"));
 };
