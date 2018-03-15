@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import ActionHome from 'material-ui/svg-icons/action/home';
 import {List, ListItem} from 'material-ui/List';
@@ -30,7 +30,7 @@ let currentUserID;
         sessionCookie: store.login.sessionCookie
     };
 })
-export default class SideBar extends React.Component {
+class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
     }
@@ -61,15 +61,18 @@ export default class SideBar extends React.Component {
         const settingsClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchSettings("settings", currentUserID))
+            this.props.history.push("/settings")
         }
 
         const friendsClick = (ev) => {
             ev.preventDefault();
+            this.props.history.push("/friends")
         }
 
         const newForumClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchNewForum("newForum"))
+            this.props.history.push('/newforum')
         }
 
         const allUserRequests = this.props.userForums.map(forum => {
@@ -97,13 +100,9 @@ export default class SideBar extends React.Component {
                 Play This
                 </div> 
                     <h4>Requests</h4>
-                    <IconButton>
-                        <AddIcon onClick={newForumClick} >
-                        </AddIcon>
-                    </IconButton>
-                        <Link to="/newforum">
-                            Create New Request
-                        </Link>
+                    <MenuItem>
+                        <ListItem onClick={newForumClick} primaryText='New Request'/>
+                    </MenuItem>
                     <MenuItem>
                         {allUserRequests}
                     </MenuItem>
@@ -114,17 +113,9 @@ export default class SideBar extends React.Component {
                     </MenuItem>
                     <Divider />
                     <MenuItem>
-                        <ListItem>
-                            <Link to="/friends">
-                                Friends
-                            </Link>
-                        </ListItem>
+                        <ListItem onClick={friendsClick} primaryText='Friends'/>
                         <Divider />
-                        <ListItem onClick={settingsClick}>
-                            <Link to="/settings">
-                                Settings
-                            </Link>
-                        </ListItem>
+                        <ListItem onClick={settingsClick} primaryText="Settings"/>
                     </MenuItem>
                 </Drawer>
             </div>
@@ -132,3 +123,4 @@ export default class SideBar extends React.Component {
     }
 };
 
+export default withRouter(SideBar)

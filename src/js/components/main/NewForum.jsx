@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import SideBar from './SideBar.jsx'
-import { Redirect } from 'react-router-dom';
 import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
 import { Redirect, Link, withRouter } from 'react-router-dom';
@@ -56,7 +55,7 @@ class NewForum extends Component {
             
                     <br />
                     <div>
-                    <RaisedButton type="submit" style={style} />
+                    <RaisedButton type="submit" style={style} label='Create Forum'/>
                     </div>
                 </form>
             </div>
