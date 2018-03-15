@@ -5,14 +5,16 @@ import ReactDOM from "react-dom";
 import AutoComplete from 'material-ui/AutoComplete'
 
 import SideBar from "./SideBar.jsx";
-import { sidebarToggleClose } from "../../actions/sidebar";
+import { sidebarToggleClose, fetchFriends } from "../../actions/sidebar";
+import { addFriend } from '../../actions/users'
 import { connect } from "react-redux";
 
 @connect(store => {
   return {
     friends: store.sidebar.friends,
     sessionCookie: store.login.sessionCookie,
-    allUsers: store.users.allUsers
+    allUsers: store.users.allUsers,
+    addingFriend: store.users.addingFriend
   };
 })
 class Friends extends Component {
@@ -23,6 +25,8 @@ class Friends extends Component {
     if (!this.props.sessionCookie) {
         this.props.history.push('/login')
       }
+      console.log('friends are', this.props.friends);
+      
   }
   render() {
     const friendProfiles = this.props.friends.map(friendObj => {
@@ -36,6 +40,13 @@ class Friends extends Component {
         </div>
       );
     });
+    const onClick = evt => {
+        let newFriendData = {
+            currentUserID: this.props.sessionCookie,
+            friendToAddID: evt.id
+        }
+        this.props.dispatch(addFriend(newFriendData))
+    };
     const dataSource = this.props.allUsers.map((user) => {
         return ({identity: (user.first_name + ', ' + user.last_name + ', ' + user.email), id: user.id})
     })
@@ -43,11 +54,13 @@ class Friends extends Component {
       <div>
         <SideBar />
         <AutoComplete
-                floatingLabelText="Type 'peah', fuzzy search"
+                floatingLabelText="Type name or email"
                 filter={AutoComplete.fuzzyFilter}
                 dataSource={dataSource}
                 dataSourceConfig={{text: 'identity', value: 'id'}}
                 maxSearchResults={5}
+                fullWidth={true}
+                onNewRequest={onClick}
         />
         {friendProfiles}
       </div>
