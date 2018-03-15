@@ -113,6 +113,19 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    getAllUsers: function() {
+      console.log('IN DATA HELPERS GET ALL USERS')
+      return knex
+        .select('first_name', 'last_name', 'email', 'id')
+        .from('users')
+        .then(results => {
+          console.log('RESULTS FOUND')
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     getForumRequest: function(id) {
       return knex("requests")
         .where({ id: id })

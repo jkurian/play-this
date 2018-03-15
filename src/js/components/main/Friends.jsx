@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
 
+import AutoComplete from 'material-ui/AutoComplete'
+
 import SideBar from "./SideBar.jsx";
 import { sidebarToggleClose } from "../../actions/sidebar";
 import { connect } from "react-redux";
@@ -9,7 +11,8 @@ import { connect } from "react-redux";
 @connect(store => {
   return {
     friends: store.sidebar.friends,
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
+    allUsers: store.users.allUsers
   };
 })
 class Friends extends Component {
@@ -22,7 +25,6 @@ class Friends extends Component {
       }
   }
   render() {
-    console.log(this.props, "props are");
     const friendProfiles = this.props.friends.map(friendObj => {
       return (
         <div>
@@ -34,10 +36,19 @@ class Friends extends Component {
         </div>
       );
     });
-
+    const dataSource = this.props.allUsers.map((user) => {
+        return ({identity: (user.first_name + ', ' + user.last_name + ', ' + user.email), id: user.id})
+    })
     return (
       <div>
         <SideBar />
+        <AutoComplete
+                floatingLabelText="Type 'peah', fuzzy search"
+                filter={AutoComplete.fuzzyFilter}
+                dataSource={dataSource}
+                dataSourceConfig={{text: 'identity', value: 'id'}}
+                maxSearchResults={5}
+        />
         {friendProfiles}
       </div>
     );

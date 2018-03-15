@@ -7,6 +7,7 @@ module.exports = function(app, dataHelpers) {
   const newForumController = require("../controllers/newForumController");
   const forumController = require("../controllers/forumController");
   const profileController = require("../controllers/profileController");
+  const usersController = require("../controllers/usersController");
 
   app
     .route("/api/login")
@@ -62,4 +63,8 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/profile/update/:id")
     .post((req, res) => profileController.updateProfile(req, res, dataHelpers));
+    
+  app
+    .route("/api/users/")
+    .get((req, res) => usersController.getAllUsers(req, res, dataHelpers));
 };

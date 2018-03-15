@@ -16,7 +16,19 @@ export function updatePasswordField(formText) {
       },
     }
   }
-
+export function getAllUsers() {
+  return function(dispatch) {
+    dispatch({type: "[USER]GET_ALL_PENDING"})
+    axios.get("http://localhost:3000/api/users/")
+      .then((response) => {
+        console.log('RESPONSE IS ', response)
+        dispatch({type: "[USER]GET_ALL_FULFILLED", payload: response.data})
+      })
+      .catch((err) => {
+          dispatch({type: "[USER]GET_ALL_FAILED", payload: response.data.authenticated})
+      })
+  }
+}
 export function authenticate(loginEmailField, loginPasswordField) {
   console.log('AUTHENTICATE FUNCTION', loginEmailField, loginPasswordField)
     return function(dispatch) {

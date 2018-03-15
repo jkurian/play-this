@@ -9,6 +9,7 @@ import post from "./PostReducer";
 import register from "./RegisterReducer";
 import profile from './ProfileReducer'
 import forum from './ForumReducer'
+import users from './UsersReducer'
 
 const appReducer = combineReducers({
   navbar,
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
   register,
   profile,
   forum,
+  users,
 });
 
 const rootReducer = (state, action) => {
