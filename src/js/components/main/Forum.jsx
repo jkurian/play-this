@@ -4,21 +4,23 @@ import SideBar from './SideBar.jsx'
 
 import { connect } from "react-redux";
 
+import {getRequest} from '../../actions/forum'
+import { sidebarToggleClose } from '../../actions/sidebar'
+
 @connect(store => {
   return {
-    //viewingRequest: store.forum.viewingRequest
+    viewingRequest: store.forum.viewingRequest
   };
 })
 export default class Main extends Component {
   componentWillUpdate() {
-    console.log(this.props.match.params.id)
-    //this.props.dispatch(getRequest());
+    this.props.dispatch(sidebarToggleClose());
   }
   render() {
     return (
       <div>
         <SideBar />
-
+        {this.props.viewingRequest.title}
       </div>
     );
   }

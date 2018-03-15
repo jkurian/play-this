@@ -5,6 +5,7 @@ module.exports = function(app, dataHelpers) {
   const registerController = require("../controllers/registerController");
   const songPostController = require("../controllers/songPostController");
   const newForumController = require("../controllers/newForumController");
+  const forumController = require("../controllers/forumController");
   const profileController = require("../controllers/profileController");
 
   app
@@ -21,9 +22,11 @@ module.exports = function(app, dataHelpers) {
     );
 
   app
+    .route("/api/forum/:id")
+    .get((req,res) => forumController.getForumRequest(req,res,dataHelpers))
+  app
     .route("/api/settings/:id")
     .get((req, res) => sidebarController.settings(req, res, dataHelpers));
-
   app
     .route("/api/register/email")
     .post((req, res) =>

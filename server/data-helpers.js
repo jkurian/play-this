@@ -113,6 +113,16 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    getForumRequest: function(id) {
+      return knex("requests")
+        .where({ id: id })
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     getFriendsList: function(currentUserID) {
       return knex("userfriends")
         .rightJoin("users", "user_id2", "id")

@@ -17,6 +17,7 @@ import IconButton from 'material-ui/IconButton';
 
 import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
 import { sidebarToggle } from '../../actions/sidebar'
+import {getRequest} from '../../actions/forum'
 
 let currentUserID;
 //this is where data comes from store as props
@@ -74,16 +75,17 @@ class SideBar extends React.Component {
             this.props.dispatch(fetchNewForum("newForum"))
             this.props.history.push('/newforum')
         }
-        const onClickUserRequest = (ev, id) => {
+        const onClickRequest = (ev, id) => {
             ev.preventDefault();
+            this.props.dispatch(getRequest(id));
             this.props.history.push(`/forum/${id}`)
         }
         const allUserRequests = this.props.userForums.map((forum, index) => {
-            return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickUserRequest(ev, forum.id)}/>
+            return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
         })
 
         const allUserFriendRequests = this.props.userFriendsForums.map((forum,index) => {
-            return <ListItem key={index} id={forum.id} secondaryText={forum.title} rightIcon={<ForumIcon />} />
+            return <ListItem key={index} id={forum.id} secondaryText={forum.title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
         })
         
         const drawerOpenState = this.props.sidebarToggle;

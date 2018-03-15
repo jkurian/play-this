@@ -9,7 +9,7 @@ import LandingPage from "../LandingPage.jsx";
 import Layout from '../Layout.jsx';
 import { connect } from "react-redux";
 import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'
-
+import {getRequest} from '../../actions/forum'
 import { Route, HashRouter, Redirect } from 'react-router-dom';
 
 import { displayLoginForm, displaySignupForm } from "../../actions/navbar";
@@ -35,6 +35,9 @@ export default class Welcome extends Component {
     this.props.dispatch(fetchUserFriendsForums(currentUserID))
     this.props.dispatch(fetchFriends("friends", currentUserID))
     this.props.dispatch(fetchSettings("settings", currentUserID))
+    //cheap hack that should be changed. Make a new dispatch called getFirstRequest which gets the
+    //users first request instead of just 1.
+    this.props.dispatch(getRequest(1));
   }
   render() {
     if (!this.props.sessionCookie) {
