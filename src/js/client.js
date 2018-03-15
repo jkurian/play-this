@@ -37,6 +37,7 @@ const getTheme = () => {
           "disabledColor": "#c5e1a5",
           "textColor": "#e8f5e9"
       },
+      
   };
     return getMuiTheme(baseTheme, overwrites);
   }
