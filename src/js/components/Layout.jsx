@@ -44,6 +44,7 @@ export default class Layout extends React.Component {
                    )
                 }} />
               <Route path="/login" component={LandingPage} />
+              <Route path="/signup" component={LandingPage} />
               <Route path="/welcome" component={Welcome} />
               <Route path="/settings" component={Settings} />
               <Route path="/friends" component={Friends} />

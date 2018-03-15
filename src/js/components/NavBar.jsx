@@ -4,11 +4,12 @@ import RaisedButton from "material-ui/RaisedButton";
 import SignUpForm from "./SignUpForm.jsx";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
 import { logout } from '../actions/logout'
 import { sidebarToggle } from '../actions/sidebar'
+
 /**
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
@@ -25,18 +26,21 @@ import { sidebarToggle } from '../actions/sidebar'
     open: store.sidebar.open
   };
 })
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
   render() {
     const onLoginClick = evt => {
       this.props.dispatch(displayLoginForm(!this.props.showLoginForm));
+      this.props.history.push('/login')
     };
 
     const onSignupClick = evt => {
       this.props.dispatch(displaySignupForm(!this.props.showSignupForm));
+      this.props.history.push('/signup')
     };
 
     const onLogoutClick = evt => {
       this.props.dispatch(logout())
+      this.props.history.push('/login')
     };
 
     let buttons = null;
@@ -70,3 +74,4 @@ export default class NavBar extends React.Component {
     )
   }
 }
+export default withRouter(NavBar)
