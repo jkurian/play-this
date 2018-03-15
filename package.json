@@ -15,6 +15,7 @@
   "author": "Jerry Kurian",
   "license": "ISC",
   "dependencies": {
+    "ajax": "^0.0.4",
     "axios": "^0.18.0",
     "bcrypt": "^1.0.3",
     "cookie-parser": "^1.4.3",

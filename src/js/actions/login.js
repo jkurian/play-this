@@ -1,4 +1,5 @@
 import axios from "axios";
+import ajax from "ajax";
 
 export function updateEmailField(formText) {
   return {
@@ -52,11 +53,11 @@ export function authenticateSpotify() {
     axios
       .get("http://localhost:3000/api/spotify/login")
       .then(response => {
-        console.log("response from axios in apilogin", response.data);
+        console.log("response from axios in api login", response);
         console.log(response);
         //  SET COOKIE
         // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
-        localStorage.setItem("spotify_token", { token: response.data });
+        //localStorage.setItem("spotify_token", { token: response.data });
       })
       .catch(err => {
         dispatch({
@@ -66,6 +67,15 @@ export function authenticateSpotify() {
       });
   };
 }
+//   $.ajax({
+//     type: "get",
+//     url: "http://localhost:3000/api/spotify/login",
+//     async: true,
+//     data: { access_token: access_token, refresh_token: refresh_token }
+//   }).done(function(data) {
+//     localStorage.setItem(data);
+//   });
+// }
 
 // export function fetchTweets() {
 //   return function(dispatch) {

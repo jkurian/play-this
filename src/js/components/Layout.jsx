@@ -8,6 +8,8 @@ import Settings from "./main/Settings.jsx";
 import NewForum from "./main/NewForum.jsx";
 import { Route, HashRouter, Redirect } from "react-router-dom";
 import Friends from "./main/Friends.jsx";
+import Query from "query-string";
+import Spotify from "./Spotify.jsx";
 // import Forum from "./main/Forum.jsx ";
 //example import action
 //import { fetchUser } from '../actions/userActions'
@@ -45,13 +47,14 @@ export default class Layout extends React.Component {
               );
             }}
           />
+          // parse location.search
           <Route path="/login" component={LandingPage} />
           <Route path="/welcome" component={Main} />
           <Route path="/settings" component={Settings} />
           <Route path="/friends" component={Friends} />
           <Route path="/newforum" component={NewForum} />
-          {/* <Route path="/spotify/:accessToken/:refreshToken" component={User} />
-          <Route path="/spotifyerror/:errorMsg" component={Error} /> */}
+          <Route path="/spotify" component={Spotify} />
+          {/* <Route path="/spotifyerror/:errorMsg" component={Error} /> */}
           {/* <div>
             <SideBar />
               <Route path="/friends" component={Friends} />
