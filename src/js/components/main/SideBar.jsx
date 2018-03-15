@@ -79,13 +79,39 @@ class SideBar extends React.Component {
             this.props.dispatch(getRequest(id));
             this.props.history.push(`/forum/${id}`)
         }
-        const allUserRequests = this.props.userForums.map((forum, index) => {
-            return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
-        })
+        // const allUserRequests = this.props.userForums.map((forum, index) => {
+        //     if (index > 10) {
+        //         return <p>See all your forums</p>;
+        //         break;
+        //     }
+        //     return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
+        // })
+        const allUserRequests = (userForumsArray) => {
+            let allForums = []
+            for (let i=0; i < userForumsArray.length; i++) {
+                if (i > 10) {
+                    allForums.push(<ListItem primaryText="See all your forums" />)
+                    break;
+                }
+                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
+            }
+            return allForums;
+        }
+        const allUserFriendRequests = (userForumsArray) => {
+            let allForums = []
+            for (let i=0; i < userForumsArray.length; i++) {
+                if (i > 10) {
+                    allForums.push(<ListItem primaryText="See all your friends' forums" />)
+                    break;
+                }
+                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
+            }
+            return allForums;
+        }
 
-        const allUserFriendRequests = this.props.userFriendsForums.map((forum,index) => {
-            return <ListItem key={index} id={forum.id} secondaryText={forum.title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
-        })
+        // const allUserFriendRequests = this.props.userFriendsForums.map((forum,index) => {
+        //     return <ListItem key={index} id={forum.id} secondaryText={forum.title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
+        // })
         
         const drawerOpenState = this.props.sidebarToggle;
 
@@ -108,12 +134,12 @@ class SideBar extends React.Component {
                         <ListItem onClick={newForumClick} primaryText='New Request'/>
                     </MenuItem>
                     <MenuItem>
-                        {allUserRequests}
+                        {allUserRequests(this.props.userForums)}
                     </MenuItem>
                     <Divider />
                     <h4>Friends' Requests</h4>
                     <MenuItem innerDivStyle={menuItemStyle}>
-                        {allUserFriendRequests}
+                        {allUserFriendRequests(this.props.userFriendsForums)}
                     </MenuItem>
                     <Divider />
                     <MenuItem>
