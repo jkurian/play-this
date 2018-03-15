@@ -57,6 +57,6 @@ module.exports = function(app, dataHelpers) {
     .post((req, res) => newForumController.addNewForum(req, res, dataHelpers));
 
   app
-    .route("/callback")
+    .route("/spotify")
     .get((req, res) => spotifyAuthController.spotifyCallback(req, res));
 };

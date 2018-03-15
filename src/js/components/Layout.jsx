@@ -4,10 +4,10 @@ import LandingPage from "./LandingPage.jsx";
 import Main from "./main/Main.jsx";
 import NavBar from "./NavBar.jsx";
 import SideBar from "./main/SideBar.jsx";
-import Settings from './main/Settings.jsx'
-import NewForum from './main/NewForum.jsx'
-import { Route, HashRouter, Redirect } from 'react-router-dom';
-import Friends from './main/Friends.jsx'
+import Settings from "./main/Settings.jsx";
+import NewForum from "./main/NewForum.jsx";
+import { Route, HashRouter, Redirect } from "react-router-dom";
+import Friends from "./main/Friends.jsx";
 // import Forum from "./main/Forum.jsx ";
 //example import action
 //import { fetchUser } from '../actions/userActions'
@@ -22,39 +22,44 @@ import Friends from './main/Friends.jsx'
   };
 })
 export default class Layout extends React.Component {
-    componentWillMount() {
-        //example displatch after component is mounted
-        //this.props.dispatch(fetchUser())
-    }
-    render() {
-        //Site would render the user age and name
-        //const { user } = this.props;
-        //return <h1>{user.name} is {user.age} years old</h1>
-        return (
-          <HashRouter>
-            <div>
-              <NavBar />
-              <Route exact path="/" render={() => {
-                    return this.props.sessionCookie ? (
-                        <Redirect to="/welcome"/>
-                   ) : (
-                       <Redirect to="/login" />
-                   )
-                }} />
-              <Route path="/login" component={LandingPage} />
-              <Route path="/welcome" component={Main} />
-              <Route path="/settings" component={Settings} />
-              <Route path="/friends" component={Friends} />
-              <Route path="/newforum" component={NewForum} />
-              {/* <div>
-                <SideBar />
+  componentWillMount() {
+    //example displatch after component is mounted
+    //this.props.dispatch(fetchUser())
+  }
+  render() {
+    //Site would render the user age and name
+    //const { user } = this.props;
+    //return <h1>{user.name} is {user.age} years old</h1>
+    return (
+      <HashRouter>
+        <div>
+          <NavBar />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return this.props.sessionCookie ? (
+                <Redirect to="/welcome" />
+              ) : (
+                <Redirect to="/login" />
+              );
+            }}
+          />
+          <Route path="/login" component={LandingPage} />
+          <Route path="/welcome" component={Main} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/friends" component={Friends} />
+          <Route path="/newforum" component={NewForum} />
+          {/* <Route path="/spotify/:accessToken/:refreshToken" component={User} />
+          <Route path="/spotifyerror/:errorMsg" component={Error} /> */}
+          {/* <div>
+            <SideBar />
               <Route path="/friends" component={Friends} />
               </div> */}
-
-            </div>
-            {/* the sessionCOokie is now the JWT id
+        </div>
+        {/* the sessionCOokie is now the JWT id
             this.props.sessionCookie ? <Main /> : <LandingPage /> */}
-          </HashRouter>
-        );
-    }
+      </HashRouter>
+    );
+  }
 }

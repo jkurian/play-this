@@ -1,13 +1,6 @@
-let SpotifyWebApi = require("spotify-web-api-node");
+require("dotenv").config({ path: __dirname + "../.env" });
 
 exports.spotifyCallback = function(req, res) {
-  console.log("in callback");
-  const spotifyApi = new SpotifyWebApi({
-    redirectUri: "https://requestb.in/1cph36p1",
-    clientId: process.env.spotify_clientID
-  });
-
-  console.log("in /callback");
   /* Read query parameters */
   var code = req.query.code; // Read the authorization code from the query parameters
   var state = req.query.state; // (Optional) Read the state from the query parameter
