@@ -62,10 +62,12 @@ class NavBar extends React.Component {
     const toggleSideBar = () => {
       this.props.dispatch(sidebarToggle(!this.props.open))       
     }
+    
+    const navbarLogo = <img src="../../../images/Playthis_navbar_logo.svg" height="40" />
     return (
         <div>
         <AppBar
-          title="PlayThis"
+          title={navbarLogo}
           iconElementRight={buttons}
           onLeftIconButtonClick={toggleSideBar}
           style={{zIndex: 1400}}

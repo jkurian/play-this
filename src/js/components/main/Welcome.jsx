@@ -54,9 +54,11 @@ export default class Welcome extends Component {
       }
       
   return (
-      <div style={divStyle}>
+    <div>
         <SideBar />
+      <div style={divStyle}>
       </div>
+    </div>
     );
   }
 }
