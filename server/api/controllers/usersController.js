@@ -7,3 +7,12 @@ exports.getAllUsers = function(req, res, dataHelpers) {
     }
   )
 };
+exports.addFriend = function(req, res, dataHelpers) {
+   dataHelpers.addFriend(req.body)
+    .then(result => {      
+      console.log('RESULT OF ADD FRIEND', result)
+      res.json(result)
+    }
+  )
+};
+

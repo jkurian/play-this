@@ -126,6 +126,21 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    addFriend: function(newFriendData) {
+      console.log('NEW FRIEND DATA IS', newFriendData)
+      return knex('userfriends')
+        .insert({
+          user_id1: newFriendData.currentUserID,
+          user_id2: newFriendData.friendToAddID
+        })
+        .then(results => {
+          console.log('RESULTS FOUND', results)
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     getForumRequest: function(id) {
       return knex("requests")
         .where({ id: id })

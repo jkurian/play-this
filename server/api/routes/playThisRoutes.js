@@ -67,4 +67,8 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/users/")
     .get((req, res) => usersController.getAllUsers(req, res, dataHelpers));
+  
+  app
+    .route("/api/users/addfriend")
+    .post((req,res) => usersController.addFriend(req, res, dataHelpers));
 };
