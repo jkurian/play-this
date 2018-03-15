@@ -10,6 +10,7 @@ import { Route, HashRouter, Redirect } from "react-router-dom";
 import Friends from "./main/Friends.jsx";
 import Query from "query-string";
 import Spotify from "./Spotify.jsx";
+import Search from "./main/Search.jsx";
 // import Forum from "./main/Forum.jsx ";
 //example import action
 //import { fetchUser } from '../actions/userActions'
@@ -54,6 +55,7 @@ export default class Layout extends React.Component {
           <Route path="/friends" component={Friends} />
           <Route path="/newforum" component={NewForum} />
           <Route path="/spotify" component={Spotify} />
+          <Route path="/search" component={Search} />
           {/* <Route path="/spotifyerror/:errorMsg" component={Error} /> */}
           {/* <div>
             <SideBar />

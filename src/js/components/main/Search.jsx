@@ -32,16 +32,18 @@ export default class Search extends Component {
 
     const spotifyApi = new SpotifyWebApi();
 
-    spotifyApi.setAccessToken("");
+    spotifyApi.setAccessToken(localStorage.getItem("spotifyTokens"));
 
     const tracks = this.props.searchedTracks;
     let listArr = [];
 
-    tracks.map(track => {
-      listArr.push(
-        `${track.name} - ${track.artists[0].name} - ${track.album.name}`
-      );
-    });
+    if (tracks) {
+      tracks.map(track => {
+        listArr.push(
+          `${track.name} - ${track.artists[0].name} - ${track.album.name}`
+        );
+      });
+    }
 
     const onChange = evt => {
       spotifyApi.searchTracks(evt).then(data => {
