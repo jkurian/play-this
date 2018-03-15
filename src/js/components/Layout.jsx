@@ -48,7 +48,8 @@ export default class Layout extends React.Component {
               <Route path="/settings" component={Settings} />
               <Route path="/friends" component={Friends} />
               <Route path="/newforum" component={NewForum} />
-              <Route path="/forum" component={Forum} />
+              <Route exact path="/forum" component={Forum} />
+              <Route path="/forum/:id" component={Forum} />
               {/* <div>
                 <SideBar />
               <Route path="/friends" component={Friends} />

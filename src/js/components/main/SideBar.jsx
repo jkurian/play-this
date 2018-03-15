@@ -74,13 +74,16 @@ class SideBar extends React.Component {
             this.props.dispatch(fetchNewForum("newForum"))
             this.props.history.push('/newforum')
         }
-
-        const allUserRequests = this.props.userForums.map(forum => {
-            return <ListItem secondaryText={forum.title} leftIcon={<HearingIcon />} />
+        const onClickUserRequest = (ev, id) => {
+            ev.preventDefault();
+            this.props.history.push(`/forum/${id}`)
+        }
+        const allUserRequests = this.props.userForums.map((forum, index) => {
+            return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickUserRequest(ev, forum.id)}/>
         })
 
-        const allUserFriendRequests = this.props.userFriendsForums.map(forum => {
-            return <ListItem secondaryText={forum.title} rightIcon={<ForumIcon />} />
+        const allUserFriendRequests = this.props.userFriendsForums.map((forum,index) => {
+            return <ListItem key={index} id={forum.id} secondaryText={forum.title} rightIcon={<ForumIcon />} />
         })
         
         const drawerOpenState = this.props.sidebarToggle;
