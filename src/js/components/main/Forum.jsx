@@ -5,15 +5,20 @@ import SideBar from './SideBar.jsx'
 import { connect } from "react-redux";
 
 @connect(store => {
-  return {};
+  return {
+    //viewingRequest: store.forum.viewingRequest
+  };
 })
 export default class Main extends Component {
+  componentWillUpdate() {
+    console.log(this.props.match.params.id)
+    //this.props.dispatch(getRequest());
+  }
   render() {
     return (
       <div>
         <SideBar />
-          FORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUMFORUM
-          
+
       </div>
     );
   }
