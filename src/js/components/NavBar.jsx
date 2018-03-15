@@ -46,14 +46,14 @@ class NavBar extends React.Component {
     let buttons = null;
 
     const logoutButton = (
-      <div>
+      <div style={{marginTop: 5, marginRight: 55 }}>
         <RaisedButton label="Logout" primary={true} onClick={onLogoutClick} />
       </div>
     );
         const rightButtons = (
             <div>
-                <RaisedButton label="Login" primary={true} onClick={onLoginClick}/>
-                <RaisedButton label="Sign up" primary={true} onClick={onSignupClick}/>
+                <RaisedButton style={{marginTop: 5, marginRight: 55 }} label="Login" primary={true} onClick={onLoginClick}/>
+                <RaisedButton style={{marginTop: 5, marginRight: 55 }} label="Sign up" primary={true} onClick={onSignupClick}/>
             </div>
           );
           

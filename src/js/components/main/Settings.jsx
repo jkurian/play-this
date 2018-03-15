@@ -12,7 +12,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import SideBar from './SideBar.jsx'
 import { updateEditState, updateProfile } from "../../actions/profile"
 const style = {
-  margin: 12
+  marginTop: 12,
+  marginLeft: 300
 };
 
 @connect(store => {
@@ -53,7 +54,9 @@ export default class Settings extends Component {
       <div>
         <SideBar />
         <form onSubmit={onSubmit}>
-          <div>
+          <div style={{marginTop: 200, marginLeft: 300 }}>
+            {/* <h4 style={{marginRight: 20, fontFamily: 'Raleway, sans-serif'}}>First name: </h4> */}
+            <TextField defaultValue="First name: " underlineShow={false} style={{ width: 100}}/>
             <TextField
               disabled={this.props.disabledFieldState.first_name}
               defaultValue={this.props.settings[0].first_name}
@@ -63,6 +66,7 @@ export default class Settings extends Component {
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
+            <TextField defaultValue="Last name: " underlineShow={false} style={{ width: 100}}/>
             <TextField
               disabled={this.props.disabledFieldState.last_name}
               defaultValue={this.props.settings[0].last_name}
@@ -71,6 +75,7 @@ export default class Settings extends Component {
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
+            <TextField defaultValue="Email: " underlineShow={false} style={{ width: 100}}/>
             <TextField
               disabled={this.props.disabledFieldState.email}
               defaultValue={this.props.settings[0].email}
@@ -79,19 +84,21 @@ export default class Settings extends Component {
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
             <br />
-            <TextField
-              disabled={this.props.disabledFieldState.avatar_url}
-              defaultValue={avatarImage}
-            />
-            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {avatar_url: !this.props.disabledFieldState.avatar_url})}>
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
-            <br />
+            <TextField defaultValue="Password: " underlineShow={false} style={{ width: 100}}/>
             <TextField
               disabled={this.props.disabledFieldState.password}
               defaultValue={this.props.settings[0].password}
             />
             <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {password: !this.props.disabledFieldState.password})}>
+              <FontIcon className="material-icons">mode_edit</FontIcon>
+            </IconButton>
+            <br />
+            <TextField defaultValue="Avatar URL: " underlineShow={false} style={{ width: 100}}/>
+            <TextField
+              disabled={this.props.disabledFieldState.avatar_url}
+              defaultValue={avatarImage}
+            />
+            <IconButton touch={true} onClick={(evt) => updateEditableState(evt, {avatar_url: !this.props.disabledFieldState.avatar_url})}>
               <FontIcon className="material-icons">mode_edit</FontIcon>
             </IconButton>
           </div>
