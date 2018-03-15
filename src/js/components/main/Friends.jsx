@@ -61,6 +61,7 @@ class Friends extends Component {
                 maxSearchResults={5}
                 fullWidth={true}
                 onNewRequest={onClick}
+                style={{marginTop: 80, paddingLeft: 20, paddingRight: 20}}
         />
         {friendProfiles}
       </div>

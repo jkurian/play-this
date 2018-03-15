@@ -13,12 +13,6 @@ import { getAllUsers } from "../../actions/login";
 
 let currentUserID;
 
-const divStyle={
-  backgroundImage: 'url(' + '../../../images/Playthis_welcome_logo.svg' + ')',   
-  width: 500,
-  height: 500 
-}
-
 @connect(store => {
   return {
     sidebarToggle: store.sidebar.open,
@@ -48,11 +42,22 @@ class Welcome extends Component {
       this.props.history.push('/login')
     }
   }
-  render() {
+    render() {
+    const divStyle={
+        backgroundImage: 'url(' + '../../../assets/images/Playthis_welcome_logo.svg' + ')',   
+        backgroundRepeat: "no-repeat",
+        opacity: 0.3,
+        backgroundPosition: "center",
+        marginTop: 100,
+        height: 500 
+      }
+      
   return (
-      <div style={divStyle}>
+    <div>
         <SideBar />
+      <div style={divStyle}>
       </div>
+    </div>
     );
   }
 }

@@ -12,39 +12,32 @@ import store  from './store'
 
 const app = document.getElementById('app')
 
-import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import * as Colors from 'material-ui/styles/colors';
-import { fade } from 'material-ui/utils/colorManipulator'
+import { fade } from 'material-ui/utils/colorManipulator';
 
 const getTheme = () => {
     let overwrites = {
       "palette": {
-          "primary1Color": "#c8e6c9",
-          "accent1Color": "#c8e6c9",
-          "canvasColor": "#eceff1",
-          "shadowColor": "#4caf50",
-          "borderColor": "#1b5e20",
-          "pickerHeaderColor": "rgba(255, 255, 255, 0.11)",
-          "textColor": "#1b5e20",
-          "secondaryTextColor": "rgba(0, 105, 92, 0.81)",
-          "alternateTextColor": "#2e7d32",
+        "primary1Color": "#607d8b",
+        "accent1Color": "#81d4fa",
+        "borderColor": "#263238",
           "disabledColor": "rgba(0, 0, 0, 0.26)",
-          "primary3Color": "#aeea00",
-          "primary2Color": "#2e7d32"
       },
       "raisedButton": {
-          "disabledColor": "#c5e1a5",
+          "disabledColor": "#cfd8dc",
           "primaryTextColor": "#e0f2f1",
-          "color": "#ccff90",
-          "primaryColor": "#689f38"
+          "primaryColor": "#90a4ae"
       },
       "drawer": {
-          "color": "#c8e6c9"
+          "color": "#90a4ae"
       },
       "flatButton": {
-          "color": "#689f38",
+          "color": "#607d8b",
+          "disabledColor": "#c5e1a5",
           "textColor": "#e8f5e9"
-      }
+      },
+      
   };
     return getMuiTheme(baseTheme, overwrites);
   }

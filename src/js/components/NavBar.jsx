@@ -42,7 +42,7 @@ class NavBar extends React.Component {
     let buttons = null;
 
     const logoutButton = (
-      <div>
+      <div style={{marginTop: 5, marginRight: 55 }}>
         <RaisedButton label="Logout" primary={true} onClick={onLogoutClick} />
       </div>
     );
@@ -60,16 +60,18 @@ class NavBar extends React.Component {
     const toggleSideBar = () => {
       this.props.dispatch(sidebarToggle(!this.props.open));
     };
+    const navbarLogo = <img src="../../../assets/images/Playthis_navbar_logo.svg" height="40" />
     return (
       <div>
         <AppBar
-          title="PlayThis"
+          title={navbarLogo}
           iconElementRight={buttons}
           onLeftIconButtonClick={toggleSideBar}
-          style={{ zIndex: 1400 }}
-        />
-      </div>
-    );
+          style={{zIndex: 1400, position: 'fixed', top: 0}}
+        >
+        </AppBar>
+        </div>
+    )
   }
 }
 export default withRouter(NavBar);
