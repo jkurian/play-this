@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import SideBar from './SideBar.jsx'
 import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
@@ -55,7 +55,7 @@ class NewForum extends Component {
             
                     <br />
                     <div>
-                    <RaisedButton type="submit" style={style} label='Create Forum'/>
+                    <FlatButton type="submit" style={style} label='Create Forum'/>
                     </div>
                 </form>
             </div>

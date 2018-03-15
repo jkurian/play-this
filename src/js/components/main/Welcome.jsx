@@ -45,7 +45,7 @@ export default class Welcome extends Component {
     }
     
     const divStyle={
-        backgroundImage: 'url(' + '../../../images/Playthis_welcome_logo.svg' + ')',   
+        backgroundImage: 'url(' + '../../../assets/images/Playthis_welcome_logo.svg' + ')',   
         backgroundRepeat: "no-repeat",
         opacity: 0.3,
         backgroundPosition: "center",

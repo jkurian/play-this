@@ -34,7 +34,10 @@ export default class Friends extends Component {
         return (
             <div>
                 <SideBar />
+                <div style={{marginTop: 80 }}>
+
                 {friendProfiles}
+                </div>
             </div>
         )
     }
