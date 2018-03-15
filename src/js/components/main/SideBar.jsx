@@ -50,7 +50,6 @@ class SideBar extends React.Component {
             color: rgb(255, 255, 255); 
             line-height: 64px; 
             font-weight: 300;
-            background-color: rgb(0, 188, 212); 
             padding-left: 24px; 
             margin-bottom: 8px;
         }`

@@ -68,6 +68,7 @@ class NavBar extends React.Component {
           title="PlayThis"
           iconElementRight={buttons}
           onLeftIconButtonClick={toggleSideBar}
+          style={{zIndex: 1400}}
         >
         </AppBar>
         </div>
