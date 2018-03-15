@@ -20,10 +20,14 @@ const style = {
 @connect(store => {
   return {
     showLoginForm: store.navbar.showLoginForm,
-    showSignupForm: store.navbar.showSignupForm
+    showSignupForm: store.navbar.showSignupForm,
+    sessionCookie: store.login.sessionCookie
   };
 })
 class LandingPage extends Component {
+  componentDidUpdate() {
+    this.props.history.push('/')
+  }
   render() {
     return (
       <div>
