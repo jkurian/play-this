@@ -51,7 +51,6 @@ export default class Layout extends React.Component {
         this.props.dispatch(authenticateValidEmail(this.props.registerEmailField))
       } else {
         //cheap hack, need to fix. Basically send out and invalidate email
-        console.log('invalid email syntax');
         this.props.dispatch(authenticateValidEmail('jerry@dev.com'))
       }
     }
@@ -78,8 +77,6 @@ export default class Layout extends React.Component {
   }
 
   let emailError = ''
-
-  // if(!this.props.isValid) emailError = 'Sorry, invalid email!'
     return (
       <div>
         <form action="/api/register" method="POST">

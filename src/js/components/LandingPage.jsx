@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import NavBar from "./NavBar.jsx";
+import { connect } from "react-redux";
+import {withRouter} from 'react-router-dom'
+
+//Components
 import LoginForm from "./LoginForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
 import Paper from 'material-ui/Paper';
 
-import { connect } from "react-redux";
 
 const style = {
   height: 'auto',
@@ -22,15 +24,10 @@ const style = {
   return {
     showLoginForm: store.navbar.showLoginForm,
     showSignupForm: store.navbar.showSignupForm
-    //   userFetched: store.user.fetched,
-    //   tweets: store.tweets.tweets,
   };
 })
-export default class LandingPage extends Component {
+class LandingPage extends Component {
   render() {
-    if (this.props.sessionCookie) {
-      return <Redirect to="/"/>
-    }
     return (
       <div>
         {this.props.showLoginForm ? <Paper style={style} zDepth={2}><LoginForm /></Paper> : null}
@@ -39,3 +36,5 @@ export default class LandingPage extends Component {
     );
   }
 }
+
+export default withRouter(LandingPage)

@@ -1,25 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import SignUpForm from "./SignUpForm.jsx";
-import axios from "axios";
-import { connect } from "react-redux";
-import { Redirect, withRouter } from 'react-router-dom'
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
-import { logout } from '../actions/logout'
-import { sidebarToggle } from '../actions/sidebar'
-
-/**
- * A simple example of `AppBar` with an icon on the right.
- * By default, the left icon is a navigation-menu.
- */
+import { logout } from "../actions/logout";
+import { sidebarToggle } from "../actions/sidebar";
 
 @connect(store => {
   return {
-    //   user: store.user.user,
-    //   userFetched: store.user.fetched,
-    //   tweets: store.tweets.tweets,
     showLoginForm: store.navbar.showLoginForm,
     showSignupForm: store.navbar.showSignupForm,
     sessionCookie: store.login.sessionCookie,
@@ -30,17 +22,21 @@ class NavBar extends React.Component {
   render() {
     const onLoginClick = evt => {
       this.props.dispatch(displayLoginForm(!this.props.showLoginForm));
-      this.props.history.push('/login')
+      //prevents pushing to history if the user is already on /signup
+      if (this.props.location.pathname !== "/login")
+        this.props.history.push("/login");
     };
 
     const onSignupClick = evt => {
       this.props.dispatch(displaySignupForm(!this.props.showSignupForm));
-      this.props.history.push('/signup')
+      //prevents pushing to history if the user is already on /signup
+      if (this.props.location.pathname !== "/signup")
+        this.props.history.push("/signup");
     };
 
     const onLogoutClick = evt => {
-      this.props.dispatch(logout())
-      this.props.history.push('/login')
+      this.props.dispatch(logout());
+      this.props.history.push("/login");
     };
 
     let buttons = null;
@@ -50,29 +46,30 @@ class NavBar extends React.Component {
         <RaisedButton label="Logout" primary={true} onClick={onLogoutClick} />
       </div>
     );
-        const rightButtons = (
-            <div>
-                <RaisedButton label="Login" primary={true} onClick={onLoginClick}/>
-                <RaisedButton label="Sign up" primary={true} onClick={onSignupClick}/>
-            </div>
-          );
-          
-        this.props.sessionCookie ? buttons = logoutButton : buttons = rightButtons
-    
+    const rightButtons = (
+      <div>
+        <RaisedButton label="Login" primary={true} onClick={onLoginClick} />
+        <RaisedButton label="Sign up" primary={true} onClick={onSignupClick} />
+      </div>
+    );
+
+    this.props.sessionCookie
+      ? (buttons = logoutButton)
+      : (buttons = rightButtons);
+
     const toggleSideBar = () => {
-      this.props.dispatch(sidebarToggle(!this.props.open))       
-    }
+      this.props.dispatch(sidebarToggle(!this.props.open));
+    };
     return (
-        <div>
+      <div>
         <AppBar
           title="PlayThis"
           iconElementRight={buttons}
           onLeftIconButtonClick={toggleSideBar}
-          style={{zIndex: 1400}}
-        >
-        </AppBar>
-        </div>
-    )
+          style={{ zIndex: 1400 }}
+        />
+      </div>
+    );
   }
 }
-export default withRouter(NavBar)
+export default withRouter(NavBar);

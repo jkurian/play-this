@@ -40,9 +40,6 @@ export default class LoginForm extends React.Component {
       evt.preventDefault();
       this.props.dispatch(updatePasswordField(evt.target.value))
     }
-    if (this.props.sessionCookie) {
-      return <Redirect to="/"/>
-    }
     return(
       <form action="/api/login" method="POST">
       <TextField
