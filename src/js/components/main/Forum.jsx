@@ -25,6 +25,7 @@ export default class Main extends Component {
     }
     const titleStyle={
       fontFamily: 'Raleway, sans-serif',
+      marginTop: 100,
       fontSize: 50,
       fontWeight: 900,
       textAlign: 'center'
@@ -38,9 +39,9 @@ export default class Main extends Component {
     return (
       <div>
         <SideBar />
-        <h1 style={headerStyle}>Title: {this.props.viewingRequest.title}</h1>
+        <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br/>
-        <p style={paragraphStyle}>Description: {this.props.viewingRequest.explanation}</p>
+        <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
       </div>
     );
   }
