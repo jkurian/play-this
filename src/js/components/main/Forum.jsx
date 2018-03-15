@@ -20,7 +20,9 @@ export default class Main extends Component {
     return (
       <div>
         <SideBar />
-        {this.props.viewingRequest.title}
+        Title: {this.props.viewingRequest.title}
+        <br/>
+        Description: {this.props.viewingRequest.explanation}
       </div>
     );
   }
