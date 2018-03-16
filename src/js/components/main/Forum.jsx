@@ -22,19 +22,22 @@ class Forum extends Component {
     if (!this.props.sessionCookie) {
       this.props.history.push('/login')
     }
+  }
+  
+  render() {
     const titleStyle={
-      fontFamily: 'Raleway, sans-serif',
-      marginTop: 100,
-      fontSize: 50,
-      fontWeight: 900,
-      textAlign: 'center'
-    }
+        fontFamily: 'Raleway, sans-serif',
+        marginTop: 100,
+        fontSize: 50,
+        fontWeight: 900,
+        textAlign: 'center'
+      }
     const paragraphStyle={
       fontFamily: 'Raleway, sans-serif',
       fontSize: 30,
       fontWeight: 200,
       textAlign: 'center'
-    }
+      }
     return (
       <div>
         <SideBar />
@@ -42,7 +45,7 @@ class Forum extends Component {
         <br/>
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
       </div>
-    );
+    );  
   }
 }
 export default withRouter(Forum)

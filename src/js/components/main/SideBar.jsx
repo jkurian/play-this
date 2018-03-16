@@ -97,7 +97,7 @@ class SideBar extends React.Component {
             let allForums = []
             for (let i=0; i < userForumsArray.length; i++) {
                 if (i > 10) {
-                    allForums.push(<ListItem primaryText="See all your friends' forums" />)
+                    allForums.push(<ListItem primaryText="See all your friends' forums" onClick={friendsClick}/>)
                     break;
                 }
                 allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
