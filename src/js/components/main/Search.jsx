@@ -5,17 +5,20 @@ import Fuse from "fuse.js";
 import { connect } from "react-redux";
 import { spotifyTrackData } from "../../actions/search";
 import { postSpotifyTrackData } from "../../actions/post";
+import queryString from "query-string";
+import { withRouter } from "react-router-dom";
 
 @connect(store => {
   return {
-    searchedTracks: store.post.searchedTracks
+    searchedTracks: store.post.searchedTracks,
+    userId: store.login.sessionCookie
   };
 })
 
 // For tomorrow:
 // searchText={this.state}
 // Also: http://fusejs.io/ for fuzzy search, is far superior than material's
-export default class Search extends Component {
+class Search extends Component {
   render() {
     // const fuseOptions = {
     //   shouldSort: true,
@@ -48,9 +51,14 @@ export default class Search extends Component {
       });
     };
 
+    let userId = this.props.userId;
+    let forumId = this.props.match.params.id;
+
     const onClick = evt => {
       spotifyApi.searchTracks(evt).then(data => {
-        this.props.dispatch(postSpotifyTrackData(data.tracks.items[0]));
+        this.props.dispatch(
+          postSpotifyTrackData(data.tracks.items[0], userId, forumId)
+        );
       });
     };
 
@@ -70,3 +78,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default withRouter(Search);

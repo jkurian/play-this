@@ -86,7 +86,9 @@ module.exports = function makeDataHelpers(knex) {
         artist: songInformation.artist,
         title: songInformation.title,
         album: songInformation.album,
-        spotify_id: songInformation.spotify_id
+        spotify_id: songInformation.spotify_id,
+        user_id: songInformation.user_id,
+        request_id: songInformation.request_id
       });
     },
     //This needs to be edited to bring down the object being sent to only send the required information

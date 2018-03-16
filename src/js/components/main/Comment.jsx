@@ -12,7 +12,6 @@ import { fetchSongComments } from "../../actions/post";
 import * as _ from "lodash";
 
 @connect((store, props) => {
-  console.log(props);
   return {
     songComments: _.get(store, `post.songComments.${props.songId}`)
   };
