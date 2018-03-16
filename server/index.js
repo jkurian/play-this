@@ -83,7 +83,7 @@ app.get("/callback", (req, res) => {
         );
       })
       .catch(err => {
-        res.redirect("http://localhost:8080/spotifyerror/invalidtoken");
+        res.redirect("http://localhost:8080/#/spotifyerror/invalidtoken");
       });
   }
 });
