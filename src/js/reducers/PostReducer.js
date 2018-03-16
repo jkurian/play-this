@@ -1,8 +1,8 @@
 export default function reducer(
   state = {
-    songComments: [{}],
-    songInfo: [{}],
-    searchedTracks: [{}],
+    songComments: [],
+    songInfo: [],
+    searchedTracks: [],
     postSpotifySong: {},
     fetching: false,
     error: null

@@ -36,6 +36,7 @@ export default class Search extends Component {
 
     const tracks = this.props.searchedTracks;
     let listArr = [];
+<<<<<<< HEAD
     console.log(tracks);
 
     if (!tracks) {
@@ -47,6 +48,13 @@ export default class Search extends Component {
         );
       });
     }
+=======
+    tracks.map(track => {
+      listArr.push(
+        `${track.name} - ${track.artists[0].name} - ${track.album.name}`
+      );
+    });
+>>>>>>> 8413a9b27bf7549d72f7a175aba27cb3a1616359
 
     const onChange = evt => {
       spotifyApi.searchTracks(evt).then(data => {

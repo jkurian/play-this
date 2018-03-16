@@ -1,6 +1,7 @@
 import axios from 'axios'
 export function getRequest(forum_id) {
   return function(dispatch) {
+    dispatch({type: '[FORUM]VIEW_FORUM_PENDING'})
     axios.get(`http://localhost:3000/api/forum/${forum_id}`)
       .then((response) => {
         // console.log('response from axios',response.data);
@@ -11,7 +12,7 @@ export function getRequest(forum_id) {
         dispatch({type: "[FORUM]VIEW_FORUM_FULFILLED", payload: response.data[0]})
       })
       .catch((err) => {
-          dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED", payload: err})
+          dispatch({type: "[FORUM]VIEW_FORUM_REJECTED", payload: err})
       })
   }
 }

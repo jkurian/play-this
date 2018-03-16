@@ -103,9 +103,10 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
-    getSongInfo: function() {
+    getSongInfo: function(forumid) {
+      console.log('the songs forumid is', forumid)
       return knex("songs")
-        .where({ request_id: 2 })
+        .where({ request_id: forumid })
         .then(results => {
           return results;
         })
