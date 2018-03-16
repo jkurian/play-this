@@ -24,7 +24,7 @@ module.exports = function(app, dataHelpers) {
 
   app
     .route("/api/forum/:id")
-    .get((req,res) => forumController.getForumRequest(req,res,dataHelpers))
+    .get((req, res) => forumController.getForumRequest(req, res, dataHelpers));
   app
     .route("/api/settings/:id")
     .get((req, res) => sidebarController.settings(req, res, dataHelpers));
@@ -63,12 +63,12 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/profile/update/:id")
     .post((req, res) => profileController.updateProfile(req, res, dataHelpers));
-    
+
   app
     .route("/api/users/")
     .get((req, res) => usersController.getAllUsers(req, res, dataHelpers));
-  
+
   app
     .route("/api/users/addfriend")
-    .post((req,res) => usersController.addFriend(req, res, dataHelpers));
+    .post((req, res) => usersController.addFriend(req, res, dataHelpers));
 };

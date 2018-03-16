@@ -42,15 +42,13 @@ const menuItemStyle = {
         userForums: store.sidebar.userForums,
         userFriendsForums: store.sidebar.userFriendsForums,
         settings: store.sidebar.settings,
-        sessionCookie: store.login.sessionCookie
+        sessionCookie: store.login.sessionCookie,
+        viewingRequest: store.forum.viewingRequest,
     };
 })
 class SideBar extends React.Component {
     componentWillMount() {
         currentUserID = this.props.sessionCookie
-        if (this.props.sidebarToggle) {
-            this.props.dispatch(sidebarToggleClose());
-        }
     }
     
     render(){
@@ -68,13 +66,12 @@ class SideBar extends React.Component {
         const newForumClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchNewForum("newForum"))
-            this.props.dispatch();
             this.props.history.push('/newforum')
         }
         const onClickRequest = (ev, id) => {
             ev.preventDefault();
             this.props.dispatch(getRequest(id));
-            this.props.history.push(`/forum/${this.props.viewingRequest}`)
+            this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
         }
         // const allUserRequests = this.props.userForums.map((forum, index) => {
         //     if (index > 10) {

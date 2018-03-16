@@ -15,6 +15,8 @@ import {
 } from "../actions/register";
 import { connect } from "react-redux";
 
+import { displayLoginForm, displaySignupForm } from "../actions/navbar";
+
 const style = {
   margin: 12
 };
@@ -33,7 +35,7 @@ const style = {
     errorMessage: store.register.errorMessage
   };
 })
-export default class Layout extends React.Component {
+export default class SignUpForm extends React.Component {
   render() {
     const handleEmailFieldChange = evt => {
       evt.preventDefault();

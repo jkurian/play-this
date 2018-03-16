@@ -7,6 +7,8 @@ import LoginForm from "./LoginForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
 import Paper from "material-ui/Paper";
 
+import { displayLoginForm, displaySignupForm } from "../actions/navbar";
+
 const style = {
   height: 'auto',
   width: 'auto',
@@ -40,14 +42,19 @@ const imgStyle={
   return {
     showLoginForm: store.navbar.showLoginForm,
     showSignupForm: store.navbar.showSignupForm,
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
   };
 })
 class LandingPage extends Component {
-  componentDidUpdate() {
-    this.props.history.push('/')
+  componentWillUpdate() {
+    console.log('test update');
+  }
+  componentWillUnmount() {
+    // this.props.dispatch(displayLoginForm(false))
+    // this.props.dispatch(displaySignupForm(false))
   }
   render() {
+    if(this.props.sessionCookie) this.props.history.push('/welcome');
     return (
       <div>
         {this.props.showLoginForm ? (

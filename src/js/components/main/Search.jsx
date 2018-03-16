@@ -31,8 +31,8 @@ export default class Search extends Component {
     // let result = fuse.search();
 
     const spotifyApi = new SpotifyWebApi();
-
-    spotifyApi.setAccessToken("");
+    let token = localStorage.getItem("spotify_access_token");
+    spotifyApi.setAccessToken(token);
 
     const tracks = this.props.searchedTracks;
     let listArr = [];

@@ -21,17 +21,17 @@ import { sidebarToggle } from "../actions/sidebar";
 class NavBar extends React.Component {
   render() {
     const onLoginClick = evt => {
+      console.log('login clicked');
+      
       this.props.dispatch(displayLoginForm(!this.props.showLoginForm));
       //prevents pushing to history if the user is already on /signup
-      if (this.props.location.pathname !== "/login")
-        this.props.history.push("/login");
+      if (this.props.location.pathname !== "/login") this.props.history.push("/login");
     };
 
     const onSignupClick = evt => {
       this.props.dispatch(displaySignupForm(!this.props.showSignupForm));
       //prevents pushing to history if the user is already on /signup
-      if (this.props.location.pathname !== "/signup")
-        this.props.history.push("/signup");
+      if (this.props.location.pathname !== "/signup") this.props.history.push("/signup");
     };
 
     const onLogoutClick = evt => {

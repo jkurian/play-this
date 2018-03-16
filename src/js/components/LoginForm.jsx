@@ -11,6 +11,8 @@ import {
   authenticate
 } from "../actions/login";
 
+import { displayLoginForm, displaySignupForm } from "../actions/navbar";
+
 const style = {
   margin: 12
 };
@@ -20,7 +22,6 @@ const style = {
     loginEmailField: store.login.loginEmailField,
     loginPasswordField: store.login.loginPasswordField,
     sessionCookie: store.login.sessionCookie
-    // tweets: store.tweets
   };
 })
 export default class LoginForm extends React.Component {
