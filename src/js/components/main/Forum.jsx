@@ -7,6 +7,7 @@ import SideBar from './SideBar.jsx'
 import Search from './Search.jsx'
 import Post from './Post.jsx'
 
+import { fetchSongInfo } from "../../actions/post";
 import {getRequest} from '../../actions/forum'
 import { sidebarToggleClose } from '../../actions/sidebar'
 
@@ -19,6 +20,7 @@ import { sidebarToggleClose } from '../../actions/sidebar'
 class Forum extends Component {
   componentWillUpdate() {
     this.props.dispatch(sidebarToggleClose());
+    console.log('FORUM VIEW IS UPDATING', this.props.viewingRequest);
   }
   componentDidUpdate() {
     if (!this.props.sessionCookie) {

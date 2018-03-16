@@ -20,12 +20,12 @@ export function fetchSongComments() {
   };
 }
 
-export function fetchSongInfo() {
+export function fetchSongInfo(forumID) {
   return function(dispatch) {
-    dispatch({ type: "FETCH_SONG_INFO" });
+    dispatch({ type: "FETCH_SONG_INFO", payload: forumID });
 
     axios
-      .get("http://localhost:3000/api/songinfo")
+      .get(`http://localhost:3000/api/songinfo/${forumID}`)
       .then(response => {
         console.log("Song Info from axios", response.data);
 

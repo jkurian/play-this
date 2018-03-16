@@ -13,11 +13,6 @@ import { addForum } from '../../actions/newForum'
 const style = {
     margin: 12,
 };
-const submitForm = (evt) => {
-    evt.preventDefault();
-    this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
-    this.props.history.push("/forum")
-}
 
 @connect((store) => {
     return {
@@ -34,6 +29,11 @@ class NewForum extends Component {
         }
     }
     render() {
+        const submitForm = (evt) => {
+            evt.preventDefault();
+            this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
+            this.props.history.push("/forum")
+        }
         return  (
             <div>
                 <SideBar />

@@ -10,7 +10,7 @@ exports.songComments = function(req, res, dataHelpers) {
 
 exports.songInfo = function(req, res, dataHelpers) {
   let err = false;
-  dataHelpers.getSongInfo().then(result => {
+  dataHelpers.getSongInfo(req.params.forumid).then(result => {
     res.json(result);
   });
 

@@ -68,12 +68,13 @@ class SideBar extends React.Component {
         const newForumClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchNewForum("newForum"))
+            this.props.dispatch();
             this.props.history.push('/newforum')
         }
         const onClickRequest = (ev, id) => {
             ev.preventDefault();
             this.props.dispatch(getRequest(id));
-            this.props.history.push(`/forum/${id}`)
+            this.props.history.push(`/forum/${this.props.viewingRequest}`)
         }
         // const allUserRequests = this.props.userForums.map((forum, index) => {
         //     if (index > 10) {
