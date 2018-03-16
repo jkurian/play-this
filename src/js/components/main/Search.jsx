@@ -31,13 +31,16 @@ export default class Search extends Component {
     // let result = fuse.search();
 
     const spotifyApi = new SpotifyWebApi();
-
-    spotifyApi.setAccessToken(localStorage.getItem("spotifyTokens"));
+    let token = localStorage.getItem("spotify_access_token");
+    spotifyApi.setAccessToken(token);
 
     const tracks = this.props.searchedTracks;
     let listArr = [];
+    console.log(tracks);
 
-    if (tracks) {
+    if (!tracks) {
+      return null;
+    } else {
       tracks.map(track => {
         listArr.push(
           `${track.name} - ${track.artists[0].name} - ${track.album.name}`
