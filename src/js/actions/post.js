@@ -1,17 +1,17 @@
 import axios from "axios";
 
-export function fetchSongComments() {
+export function fetchSongComments(songid) {
   return function(dispatch) {
     dispatch({ type: "FETCH_SONG_COMMENTS" });
 
     axios
-      .get("http://localhost:3000/api/songcomments/")
+      .get(`http://localhost:3000/api/songs/${songid}/comments`)
       .then(response => {
         console.log("song comments from axios", response.data);
 
         dispatch({
           type: "FETCH_SONG_COMMENTS_FULFILLED",
-          payload: response.data
+          payload: { songId: songid, comments: response.data }
         });
       })
       .catch(err => {

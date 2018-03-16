@@ -39,7 +39,7 @@ module.exports = function(app, dataHelpers) {
       registerController.registerNewUser(req, res, dataHelpers)
     );
   app
-    .route("/api/songcomments/")
+    .route("/api/songs/:id/comments/")
     .get((req, res) => songPostController.songComments(req, res, dataHelpers));
 
   app

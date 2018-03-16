@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import Comment from "./Comment.jsx";
 import { fetchSongInfo } from "../../actions/post";
+import Subheader from "material-ui/Subheader";
 
 @connect(store => {
   return {
@@ -14,6 +15,7 @@ import { fetchSongInfo } from "../../actions/post";
 // eg. https://open.spotify.com/embed?uri=${songURI}
 export default class SongPost extends Component {
   render() {
+    console.log(this.props.songInfo);
     const songs = this.props.songInfo.map(song => {
       return (
         <div>
@@ -36,6 +38,7 @@ export default class SongPost extends Component {
             </div>
           </div>
           <div>
+            <Subheader>Comments</Subheader>
             <Comment songId={song.id} />
           </div>
         </div>

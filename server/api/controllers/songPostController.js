@@ -1,6 +1,6 @@
 exports.songComments = function(req, res, dataHelpers) {
   let err = false;
-  dataHelpers.getSongComments().then(result => {
+  dataHelpers.getSongComments(req.params.id).then(result => {
     res.json(result);
   });
 
@@ -23,4 +23,4 @@ exports.postSpotifySong = function(req, res, dataHelpers) {
   dataHelpers.postSpotifySong(req.body).then(result => {
     res.json(result);
   });
-}
+};

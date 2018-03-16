@@ -1,6 +1,6 @@
 export default function reducer(
   state = {
-    songComments: [],
+    songComments: {},
     songInfo: [],
     searchedTracks: [],
     postSpotifySong: {},
@@ -20,7 +20,10 @@ export default function reducer(
       return {
         ...state,
         fetching: false,
-        songComments: action.payload
+        songComments: {
+          ...state.songComments,
+          [action.payload.songId]: action.payload.comments
+        }
       };
     }
     case "FETCH_SONG_INFO": {
@@ -46,7 +49,7 @@ export default function reducer(
       return {
         ...state,
         postSpotifySong: action.payload.searchedTracks
-      }
+      };
     }
   }
   return state;
