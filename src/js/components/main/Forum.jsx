@@ -22,6 +22,8 @@ class Forum extends Component {
     if (!this.props.sessionCookie) {
       this.props.history.push('/login')
     }
+  }
+    render() {
     const titleStyle={
       fontFamily: 'Raleway, sans-serif',
       marginTop: 100,
