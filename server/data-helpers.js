@@ -2,7 +2,8 @@ const bcrypt = require("bcrypt");
 module.exports = function makeDataHelpers(knex) {
   return {
     getForums: function(currentUserID) {
-      return knex("requests").orderBy('id', 'desc')
+      return knex("requests")
+        .orderBy("id", "desc")
         .where({ user_admin_id: currentUserID })
         .then(results => {
           return results;
@@ -90,11 +91,11 @@ module.exports = function makeDataHelpers(knex) {
     },
     //This needs to be edited to bring down the object being sent to only send the required information
     //rather than the whole two tables. Same for getFriendsForums
-    getSongComments: function() {
+    getSongComments: function(songid) {
       return knex("comments")
         .leftJoin("users", "users.id", "comments.user_id")
         .leftJoin("songs", "songs.id", "comments.song_id")
-        .where({ request_id: 2 })
+        .where({ song_id: songid })
         .then(results => {
           console.log("LOOK COMMENTS---> " + results);
           return results;
@@ -104,7 +105,7 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getSongInfo: function(forumid) {
-      console.log('the songs forumid is', forumid)
+      console.log("the songs forumid is", forumid);
       return knex("songs")
         .where({ request_id: forumid })
         .then(results => {
@@ -115,12 +116,12 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getAllUsers: function() {
-      console.log('IN DATA HELPERS GET ALL USERS')
+      console.log("IN DATA HELPERS GET ALL USERS");
       return knex
-        .select('first_name', 'last_name', 'email', 'id')
-        .from('users')
+        .select("first_name", "last_name", "email", "id")
+        .from("users")
         .then(results => {
-          console.log('RESULTS FOUND')
+          console.log("RESULTS FOUND");
           return results;
         })
         .catch(err => {
@@ -128,14 +129,14 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     addFriend: function(newFriendData) {
-      console.log('NEW FRIEND DATA IS', newFriendData)
-      return knex('userfriends')
+      console.log("NEW FRIEND DATA IS", newFriendData);
+      return knex("userfriends")
         .insert({
           user_id1: newFriendData.currentUserID,
           user_id2: newFriendData.friendToAddID
         })
         .then(results => {
-          console.log('RESULTS FOUND', results)
+          console.log("RESULTS FOUND", results);
           return results;
         })
         .catch(err => {
@@ -173,20 +174,20 @@ module.exports = function makeDataHelpers(knex) {
           user_admin_id: newForumDetails.user_admin_id
         })
         .then(results => {
-          return results[0]
+          return results[0];
         })
         .catch(err => {
           console.log(err);
         });
     },
     updateProfile: function(updatedProfile, user_id) {
-      console.log("UPDATING PROFILE IN DATA HELPERS")
+      console.log("UPDATING PROFILE IN DATA HELPERS");
       return knex("users")
-        .where({id: user_id})
+        .where({ id: user_id })
         .update(updatedProfile)
         .then(results => {
-          console.log("RESULTS AFTER UPDATE:", results)
-        }) 
+          console.log("RESULTS AFTER UPDATE:", results);
+        });
     }
   };
 };

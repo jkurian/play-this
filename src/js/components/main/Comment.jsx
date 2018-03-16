@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "material-ui/List";
 import Divider from "material-ui/Divider";
-import Subheader from "material-ui/Subheader";
 import Avatar from "material-ui/Avatar";
 import { grey400, darkBlack, lightBlack } from "material-ui/styles/colors";
 import IconButton from "material-ui/IconButton";
@@ -10,38 +9,43 @@ import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
 import { fetchSongComments } from "../../actions/post";
+import * as _ from "lodash";
 
-@connect(store => {
+@connect((store, props) => {
+  console.log(props);
   return {
-    songComments: store.post.songComments
+    songComments: _.get(store, `post.songComments.${props.songId}`)
   };
 })
 
 // Once the API is fully up and running, we will parsing and mapping the object into just one <ListItem>
 export default class Comment extends Component {
   componentWillMount() {
-    this.props.dispatch(fetchSongComments());
+    this.props.dispatch(fetchSongComments(this.props.songId));
   }
 
   render() {
-    const comments = this.props.songComments.map(comment => {
-      if (this.props.songId === comment.song_id) {
-        return (
-          <div>
-            <List>
-              <Subheader>Comments</Subheader>
+    const comments = this.props.songComments
+      ? this.props.songComments.map(comment => {
+          return (
+            <div>
               <ListItem
                 leftAvatar={<Avatar src={comment.avatar_image} />}
                 primaryText={comment.first_name}
                 secondaryText={<p>{comment.comment}</p>}
                 secondaryTextLines={2}
+                key={comment.id}
               />
               <Divider inset={true} />
-            </List>
-          </div>
-        );
-      }
-    });
-    return <div>{comments}</div>;
+            </div>
+          );
+        })
+      : undefined;
+    return (
+      <div>
+        <div>{this.props.songId}</div>
+        <List>{comments}</List>
+      </div>
+    );
   }
 }
