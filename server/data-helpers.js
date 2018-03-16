@@ -109,6 +109,7 @@ module.exports = function makeDataHelpers(knex) {
     getSongInfo: function(forumid) {
       console.log("the songs forumid is", forumid);
       return knex("songs")
+        .orderBy("time_stamp", "desc")
         .where({ request_id: forumid })
         .then(results => {
           return results;

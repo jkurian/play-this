@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import Comment from "./Comment.jsx";
-import { fetchSongInfo } from "../../actions/post";
 import Subheader from "material-ui/Subheader";
 
 @connect(store => {

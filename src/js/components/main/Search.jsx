@@ -7,6 +7,7 @@ import { spotifyTrackData } from "../../actions/search";
 import { postSpotifyTrackData } from "../../actions/post";
 import queryString from "query-string";
 import { withRouter } from "react-router-dom";
+import { fetchSongInfo } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -59,6 +60,7 @@ class Search extends Component {
         this.props.dispatch(
           postSpotifyTrackData(data.tracks.items[0], userId, forumId)
         );
+        this.props.dispatch(fetchSongInfo(1));
       });
     };
 
