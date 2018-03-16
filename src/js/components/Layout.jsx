@@ -32,7 +32,11 @@ export default class Layout extends React.Component {
             path="/"
             render={() => {
               return this.props.sessionCookie ? (
-                <Redirect to="/welcome" />
+                <Route
+                  component={() =>
+                    (window.location = "http://localhost:3000/login")
+                  }
+                />
               ) : (
                 <Redirect to="/login" />
               );
