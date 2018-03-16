@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 
 import SideBar from './SideBar.jsx'
+import Search from './Search.jsx'
+import Post from './Post.jsx'
 
 import {getRequest} from '../../actions/forum'
 import { sidebarToggleClose } from '../../actions/sidebar'
@@ -43,6 +45,8 @@ class Forum extends Component {
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br/>
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
+        <Search />
+        <Post />
       </div>
     );
   }

@@ -36,7 +36,6 @@ export default class Search extends Component {
 
     const tracks = this.props.searchedTracks;
     let listArr = [];
-
     tracks.map(track => {
       listArr.push(
         `${track.name} - ${track.artists[0].name} - ${track.album.name}`
