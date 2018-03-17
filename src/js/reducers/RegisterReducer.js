@@ -7,6 +7,7 @@ export default function reducer(state={
     registerPasswordConfirmationField: '',
     authenticateValidEmail: '',
     sessionCookie: false,
+    registering: false,
     authenticatingEmailEmail: false,
     passwordValidity: false, 
     emailValidity: false,
@@ -52,6 +53,18 @@ export default function reducer(state={
         return {
           ...state, 
           authenticatingEmail: true,
+        }
+      }
+      case "[REGISTER]NEW_USER_PENDING": {
+        return {
+          ...state, 
+          registering: action.payload.registering,
+        }
+      }
+      case "[REGISTER]NEW_USER_FULFILLED": {
+        return {
+          ...state, 
+          registering: action.payload.registering,
         }
       }
       case "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED": {

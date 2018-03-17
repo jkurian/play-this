@@ -68,15 +68,24 @@ export function authenticatePasswordFields(password, passwordConfirmation) {
   }
   export function registerNewUser(userRegistrationDetails) {
     return function(dispatch) {
-      dispatch({type: "REGISTER_NEW_USER"});
+      dispatch({type: "[REGISTER]NEW_USER_PENDING", payload: {registering: true}});
       axios.post("http://localhost:3000/api/register/newuser", userRegistrationDetails)
         .then((response) => {
-          // console.log('response from axios',response.data);
-          //  SET COOKIE
-          // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
-          // dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED", payload: response.data})
+          dispatch({type: "[REGISTER]NEW_USER_FULFILLED", payload: {registering: false}});
           localStorage.setItem('key', response.data.token);
-          dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: response.data.authenticated})
+          // authenticated = {
+          //   token: token,
+          //   authenticated: payload.user_id,
+          //   avatar_url: results[0].avatar_image,
+          //   first_name: results[0].first_name,
+          //   last_name: results[0].last_name
+          // };
+          let result = {
+            authenticated: response.data.authenticated,
+            first_name: userRegistrationDetails.first_name,
+            last_name: userRegistrationDetails.last_name,
+          }
+          dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: result})
         })
         .catch((err) => {
             dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_REJECTED", payload: err})
