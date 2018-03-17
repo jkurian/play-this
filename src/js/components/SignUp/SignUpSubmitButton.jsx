@@ -18,9 +18,6 @@ const style = {
   };
 })
 export default class registerLastNameField extends React.Component {
-  componentWillUnmount() {
-    this.props.dispatch(updateRegisterLastNameField(""));
-  }
   render() {
     const submitForm = evt => {
       let userRegistrationDetails = {
