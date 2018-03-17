@@ -4,10 +4,10 @@ import { withRouter } from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
-import SignUpForm from "./SignUp/SignUpForm.jsx";
+import SignUpForm from "../SignUp/SignUpForm.jsx";
 import LogoutButton from "./LogoutButton.jsx";
 import LoggedInButtons from "./LoggedInButtons.jsx";
-import { sidebarToggle } from "../actions/sidebar";
+import { sidebarToggle } from "../../actions/sidebar";
 
 @connect(store => {
   return {
