@@ -8,7 +8,7 @@ import NavBar from "./NavBar/NavBar.jsx";
 import SideBar from "./SideBar/SideBar.jsx";
 import Settings from "./Settings/Settings.jsx";
 import NewForum from "./main/NewForum.jsx";
-import Friends from "./main/Friends.jsx";
+import Friends from "./Friends/Friends.jsx";
 import Query from "query-string";
 import Spotify from "./Spotify.jsx";
 import Search from "./main/Search.jsx";
