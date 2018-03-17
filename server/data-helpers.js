@@ -108,6 +108,7 @@ module.exports = function makeDataHelpers(knex) {
     //rather than the whole two tables. Same for getFriendsForums
     getSongComments: function(songid) {
       return knex("comments")
+        .orderBy("comments.time_stamp", "desc")
         .leftJoin("users", "users.id", "comments.user_id")
         .leftJoin("songs", "songs.id", "comments.song_id")
         .where({ song_id: songid })
