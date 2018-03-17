@@ -13,15 +13,11 @@ import { postSongComment } from "../../actions/post";
     viewingRequest: store.forum.viewingRequest,
   };
 })
-export default class Main extends Component {
-  componentWillUpdate() {
-    console.log("POSTS ARE MOUNTING AGAIN", this.props.viewingRequest.id);
+export default class Post extends Component {
+  componentDidUpdate() {   
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
-    const commentEnter = (evt) => {
-
-    }
     return (
       <div class="postedBox">
         <div>
@@ -33,16 +29,6 @@ export default class Main extends Component {
           </FloatingActionButton>
         </span>
         <div>
-          {/* <TextField
-            hintText="What did you think?"
-            floatingLabelText="Comment"
-            fullwidth="true"
-            onKeyPress={(evt) => {
-              if (evt.key === 'Enter') {
-                {commentEnter(evt)}
-              }
-            }}
-          /> */}
           <br />
         </div>
       </div>

@@ -8,7 +8,7 @@ export default function reducer(state={
     case "[FORUM]VIEW_FORUM_FULFILLED": {
       return {
         ...state, 
-        viewingRequest: action.payload,
+        viewingRequest: {...action.payload},
       }
     }
   }

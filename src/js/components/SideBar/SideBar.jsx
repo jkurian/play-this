@@ -54,21 +54,14 @@ class SideBar extends React.Component {
             this.props.dispatch(fetchSettings("settings", this.props.sessionCookie))
             this.props.history.push("/settings")
         }
-
         const friendsClick = (ev) => {
             ev.preventDefault();
             this.props.history.push("/friends")
         }
-
         const newForumClick = (ev) => {
             ev.preventDefault();
             this.props.dispatch(fetchNewForum("newForum"))
             this.props.history.push('/newforum')
-        }
-        const onClickRequest = (ev, id) => {
-            ev.preventDefault();
-            this.props.dispatch(getRequest(id));
-            this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
         }
         const settingsIcon = <img src="../../../../assets/images/settings_icon.png" />
 

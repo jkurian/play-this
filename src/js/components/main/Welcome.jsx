@@ -24,7 +24,7 @@ class Welcome extends Component {
     this.props.dispatch(getAllUsers());
     //cheap hack that should be changed. Make a new dispatch called getFirstRequest which gets the
     //users first request instead of just 1.
-    this.props.dispatch(getRequest(1));
+    // this.props.dispatch(getRequest(1));
   }
   componentDidUpdate() {
     if (!this.props.sessionCookie) {

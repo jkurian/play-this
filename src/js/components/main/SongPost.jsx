@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import Comment from "./Comment.jsx";
-import { fetchSongInfo, postSongComment } from "../../actions/post";
+import { postSongComment } from "../../actions/post";
 import Subheader from "material-ui/Subheader";
 import TextField from "material-ui/TextField";
 
