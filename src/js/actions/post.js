@@ -70,7 +70,7 @@ export function postSongComment(userid, songid, comment, avatar_url, first_name,
       songid: songid,
       userid: userid,
       comment: comment,
-      avatar_url: avatar_url,
+      avatar_image: avatar_url,
       first_name: first_name,
       last_name: last_name
     }
