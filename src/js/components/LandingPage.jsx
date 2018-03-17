@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import LoginForm from "./LoginForm.jsx";
+import LoginForm from "./Login/LoginForm.jsx";
 import SignUpForm from "./SignUpForm.jsx";
 import Paper from "material-ui/Paper";
 
