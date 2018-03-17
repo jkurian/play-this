@@ -4,20 +4,19 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import ActionHome from 'material-ui/svg-icons/action/home';
 import {ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
-import IconButton from 'material-ui/IconButton';
+import HomeButton from './HomeButton.jsx'
 
 import { fetchSettings, fetchNewForum } from '../../actions/sidebar'
 import { sidebarToggle, sidebarToggleClose } from '../../actions/sidebar'
 import {getRequest} from '../../actions/forum'
 
-let currentUserID;
+let this.props.sessionCookie;
 
 const divStyle = `
 .sidebarStyle {
@@ -33,11 +32,9 @@ const menuItemStyle = {
     padding: 0,
 }
 
-
 //this is where data comes from store as props
 @connect((store) => {
     return {
-        open: store.sidebar.open,
         sidebarToggle: store.sidebar.open,
         userForums: store.sidebar.userForums,
         userFriendsForums: store.sidebar.userFriendsForums,
@@ -47,14 +44,10 @@ const menuItemStyle = {
     };
 })
 class SideBar extends React.Component {
-    componentWillMount() {
-        currentUserID = this.props.sessionCookie
-    }
-    
     render(){
         const settingsClick = (ev) => {
             ev.preventDefault();
-            this.props.dispatch(fetchSettings("settings", currentUserID))
+            this.props.dispatch(fetchSettings("settings", this.props.sessionCookie))
             this.props.history.push("/settings")
         }
 
@@ -102,19 +95,10 @@ class SideBar extends React.Component {
             }
             return allForums;
         }
-        const onClick = (evt) => {
-            evt.preventDefault();
-            this.props.dispatch(sidebarToggle(!this.props.open))  
-        }
         return (
             <div>
                 <Drawer open={this.props.sidebarToggle}> 
-                <div class="sidebarStyle"><style>{divStyle}</style>
-                <IconButton >
-                    <ActionHome onClick={onClick}/>
-                </IconButton>
-                Play This
-                </div> 
+                    <HomeButton />
                     <h4>Requests</h4>
                     <MenuItem>
                         <ListItem onClick={newForumClick} primaryText='New Request'/>
