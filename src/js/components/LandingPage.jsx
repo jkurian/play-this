@@ -20,7 +20,7 @@ const imgStyle = {
   marginTop: 60,
   /* Set rules to fill background */
   minHeight: "100%",
-  minWidth: "1024px",
+  minWidth: "100%",
 
   /* Set up proportionate scaling */
   width: "100%",
@@ -44,6 +44,7 @@ const imgStyle = {
 class LandingPage extends React.Component {
   render() {
     if (this.props.sessionCookie) this.props.history.push("/");
+    
     return (
       <div>
         {this.props.showLoginForm ? (
@@ -56,8 +57,16 @@ class LandingPage extends React.Component {
             <SignUpForm />{" "}
           </Paper>
         ) : null}
-        <div>
-          <img src="../../assets/images/headphones_landing.png" />
+        <div style={{position: 'relative', height: '100%', width: '100%'}} >
+          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50, marginLeft: 100}} >
+          <img src="../../assets/images/headphones_landing.png"  style={{height: '15em', width: '15em'}}/>
+          </div>
+          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50}}>
+          <img src="../../assets/images/headphones_landing.png" style={{height: '15em', width: '15em'}}/>
+          </div>
+          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50, marginRight: 100}}>
+          <img src="../../assets/images/headphones_landing.png" style={{height: '15em', width: '15em'}}/>
+          </div>
           <img src='../../../assets/images/music-share.jpg' style={imgStyle} />
         </div>
       </div>
