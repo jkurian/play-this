@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 
 import AutoComplete from 'material-ui/AutoComplete'
 
-import SideBar from "./SideBar.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 import { sidebarToggleClose, fetchFriends } from "../../actions/sidebar";
 import { addFriend } from '../../actions/users'
 import { connect } from "react-redux";

@@ -17,6 +17,7 @@ export default function reducer(
       };
     }
     case "[SONG]POST_COMMENTS_FULFILLED": {
+      console.log('ACTION PAYLOAD IN POST COMMENTS FULFILLED,', action.payload);
       return {
         ...state,
         songComments: {
@@ -57,7 +58,7 @@ export default function reducer(
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
       return {
         ...state,
-        postSpotifySong: action.payload.searchedTracks
+        songInfo: [action.payload, ...state.songInfo]
       };
     }
   }

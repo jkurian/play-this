@@ -10,7 +10,7 @@ import { postSongComment } from "../../actions/post";
 @connect(store => {
   return {
     sessionCookie: store.login.sessionCookie,
-    viewingRequest: store.forum.viewingRequest
+    viewingRequest: store.forum.viewingRequest,
   };
 })
 export default class Main extends Component {
@@ -20,8 +20,7 @@ export default class Main extends Component {
   }
   render() {
     const commentEnter = (evt) => {
-      console.log('in comment enter', evt.target);
-      this.props.dispatch(postSongComment(this.props.sessionCookie,1,'test'));
+
     }
     return (
       <div class="postedBox">

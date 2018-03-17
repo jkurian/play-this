@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { withRouter } from 'react-router-dom';
 
-import SideBar from "./SideBar.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 
 import { connect } from "react-redux";
 import { fetchUserForums, fetchUserFriendsForums, fetchSettings, fetchFriends, fetchNewForum } from '../../actions/sidebar'

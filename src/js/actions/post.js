@@ -40,22 +40,25 @@ export function fetchSongInfo(forumID) {
   };
 }
 
-export function postSpotifyTrackData(incomingSpotifyTrack) {
+export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
   return function(dispatch) {
     let songInformation = {
       artist: incomingSpotifyTrack.artists[0].name,
       title: incomingSpotifyTrack.name,
       album: incomingSpotifyTrack.album.name,
-      spotify_id: incomingSpotifyTrack.id
+      spotify_id: incomingSpotifyTrack.id,
+      user_id: userId,
+      request_id: forumId
     };
+    dispatch({
+      type: "POST_SPOTIFY_SONG_SUCCESSFUL",
+      payload: { ...songInformation, userId, forumId }
+    });
+
     axios
       .post("http://localhost:3000/api/songinfo/post", songInformation)
       .then(response => {
         console.log("Spotify song sent to axios", response.data);
-        dispatch({
-          type: "POST_SPOTIFY_SONG_SUCCESSFUL",
-          payload: response.data
-        });
       })
       .catch(err => {
         dispatch({ type: "POST_SPOTIFY_SONG_REJECTED", payload: err });
@@ -63,14 +66,18 @@ export function postSpotifyTrackData(incomingSpotifyTrack) {
   };
 }
 
-export function postSongComment(userid, songid, comment) {
+export function postSongComment(userid, songid, comment, avatar_url, first_name, last_name) {
   return function(dispatch) {
     dispatch({ type: "[SONG]POST_COMMENTS_PENDING",});
     let songCommentInfo = {
       songid: songid,
       userid: userid,
       comment: comment,
+      avatar_image: avatar_url,
+      first_name: first_name,
+      last_name: last_name
     }
+    console.log('BEFORE GONG TO REDUCER', songCommentInfo)
     dispatch({
       type: "[SONG]POST_COMMENTS_FULFILLED",
       payload: songCommentInfo

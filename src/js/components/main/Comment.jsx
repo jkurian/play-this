@@ -12,13 +12,12 @@ import { fetchSongComments } from "../../actions/post";
 import * as _ from "lodash";
 
 @connect((store, props) => {
-  console.log(props);
   return {
     songComments: _.get(store, `post.songComments.${props.songId}`)
   };
 })
 
-// Once the API is fully up and running, we will parsing and mapping the object into just one <ListItem>
+// Add time of post into comment?
 export default class Comment extends Component {
   componentWillMount() {
     this.props.dispatch(fetchSongComments(this.props.songId));
@@ -42,7 +41,6 @@ export default class Comment extends Component {
       : undefined;
     return (
       <div>
-        <div>{this.props.songId}</div>
         <List>{comments}</List>
       </div>
     );

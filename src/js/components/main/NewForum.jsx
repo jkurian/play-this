@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { withRouter } from "react-router-dom";
 
-import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
-import SideBar from './SideBar.jsx'
+import TextField from "material-ui/TextField";
+import FlatButton from "material-ui/FlatButton";
+import SideBar from "../SideBar/SideBar.jsx";
 
-import { sidebarToggleClose } from '../../actions/sidebar'
-import { connect } from 'react-redux';
-import { addForum } from '../../actions/newForum'
+import { sidebarToggleClose } from "../../actions/sidebar";
+import { connect } from "react-redux";
+import { addForum } from "../../actions/newForum";
 
 @connect((store) => {
     return {
@@ -16,12 +16,12 @@ import { addForum } from '../../actions/newForum'
     };
 })
 class NewForum extends Component {
-    componentWillMount() {
-        this.props.dispatch(sidebarToggleClose());
-    }
+  componentWillMount() {
+    this.props.dispatch(sidebarToggleClose());
+  }
     componentDidUpdate() {
         if (!this.props.sessionCookie) {
-            this.props.history.push('/login')
+        this.props.history.push("/login");
         }
     }
     render() {
@@ -64,7 +64,9 @@ class NewForum extends Component {
                 </form>
             </div>
         )
-    }
+    };
+
 }
+
 
 export default withRouter(NewForum);

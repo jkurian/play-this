@@ -4,8 +4,8 @@ import { Route, HashRouter, Redirect } from "react-router-dom";
 
 import LandingPage from "./LandingPage.jsx";
 import Welcome from "./main/Welcome.jsx";
-import NavBar from "./NavBar.jsx";
-import SideBar from "./main/SideBar.jsx";
+import NavBar from "./NavBar/NavBar.jsx";
+import SideBar from "./SideBar/SideBar.jsx";
 import Settings from "./main/Settings.jsx";
 import NewForum from "./main/NewForum.jsx";
 import Friends from "./main/Friends.jsx";

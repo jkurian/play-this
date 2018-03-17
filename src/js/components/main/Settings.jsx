@@ -7,7 +7,7 @@ import TextField from "material-ui/TextField";
 import IconButton from "material-ui/IconButton";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
-import SideBar from "./SideBar.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 
 import { sidebarToggleClose } from "../../actions/sidebar";
 import { updateEditState, updateProfile } from "../../actions/profile";
