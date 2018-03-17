@@ -88,12 +88,15 @@ class LandingPage extends React.Component {
             <div style={iconStyle} >
               <img src="../../assets/images/chatIcon.png" style={{height: 'auto', width: '100%'}}/>
             </div>
+            <div style={{textAlign: 'center'}}>
               <p style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, width: '20em', display: 'inline-block'}}><font size="20">CREATE</font></p>
               <p style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, width: '20em', display: 'inline-block', marginLeft: '3em', marginRight: '3em'}}><font size="20">LISTEN</font></p>
-              <p style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, width: '20em', display: 'inline-block'}}><font size="20">CHAT</font></p>
+              <p style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, width: '20em', display: 'inline-block'}}><font size="20">CHAT</font></p></div>
+              <div style={{textAlign: 'center'}}>
               <p style={{fontFamily: 'Raleway, sans-serif', width: '20em', display: 'inline-block'}}>Initialize a platform where your friends will recommend and discuss tracks, focused on a topic of your choice</p>
               <p style={{fontFamily: 'Raleway, sans-serif', width: '20em', display: 'inline-block', marginLeft: '3em', marginRight: '3em'}}>Indulge in the aural delights of your friends' impeccable tastes</p>
               <p style={{fontFamily: 'Raleway, sans-serif', width: '20em', display: 'inline-block'}}>Leave comments so everyone knows exactly how you feel about their selections and opinions</p>
+              </div>
           </div>
 
         </div>
