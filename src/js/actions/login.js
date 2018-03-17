@@ -51,7 +51,7 @@ export function authenticate(loginEmailField, loginPasswordField) {
         localStorage.setItem("key", response.data.token);
         dispatch({
           type: "AUTHENTICATE_USER_FULFILLED",
-          payload: response.data.authenticated
+          payload: response.data
         });
       })
       .catch(err => {

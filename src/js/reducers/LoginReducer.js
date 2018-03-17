@@ -3,7 +3,8 @@ export default function reducer(state={
     loginPasswordField: '',
     sessionCookie: null,
     authenticating: false,
-    username:'',
+    first_name:'',
+    last_name: '',
     avatar_url:'',
     error: null,
   }, action) {
@@ -29,7 +30,10 @@ export default function reducer(state={
       case "AUTHENTICATE_USER_FULFILLED": {
         return {
           ...state, 
-          sessionCookie: action.payload,
+          sessionCookie: action.payload.authenticated,
+          avatar_url: action.payload.avatar_url,
+          first_name: action.payload.first_name,
+          last_name: action.payload.last_name,
           authenticating: false
         }
       }
