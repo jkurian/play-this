@@ -27,16 +27,20 @@ class UserForums extends React.Component {
     };
     return (
       <div>
+        <ListItem 
+        leftIcon={<PlusIcon />} 
+        onClick={newForumClick} 
+        primaryText="Create New Forum" 
+        style={{marginTop: 70, fontFamily: 'Raleway, sans-serif', fontWeight: 600}}/>
         <ListItem
-          primaryText="Requests"
-          leftIcon={<HourGlass />}
+          primaryText="Your Forums"
           initiallyOpen={true}
           primaryTogglesNestedList={true}
+          style={{fontFamily: 'Raleway, sans-serif', fontWeight: 600}}
           nestedItems={[
             <UserForumListItem/>
           ]}>
         </ListItem>
-        <ListItem leftIcon={<PlusIcon />} onClick={newForumClick} primaryText="New Request" />
       </div>
     );
   }
