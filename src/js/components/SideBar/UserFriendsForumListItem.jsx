@@ -4,7 +4,7 @@ import {getRequest} from '../../actions/forum'
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import {withRouter} from 'react-router-dom'
-import Listen from 'material-ui/svg-icons/action/record-voice-over';
+import FriendForumIcon from 'material-ui/svg-icons/communication/forum';
 
 @connect(store => {
   return {
@@ -22,10 +22,9 @@ class UserFriendsForumButton extends React.Component {
       let allFriendsForums = []
       for (let i=0; i < this.props.userFriendsForums.length; i++) {
           if (i === 9) {
-              allFriendsForums.push(<ListItem primaryText="See all your forums" />)
               break;
           }
-          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} secondaryText={this.props.userFriendsForums[i].title} leftIcon={<Listen />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
+          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} secondaryText={this.props.userFriendsForums[i].title} leftIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
   }
     return (
       <div>

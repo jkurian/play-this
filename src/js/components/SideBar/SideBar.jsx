@@ -7,8 +7,14 @@ import { withRouter } from 'react-router-dom';
 import {ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import ForumIcon from 'material-ui/svg-icons/communication/forum';
+import PlusIcon from 'material-ui/svg-icons/content/add-circle-outline';
+import FriendsIcon from 'material-ui/svg-icons/social/people';
+import FriendForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
+import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
+import ForumIcon from 'material-ui/svg-icons/communication/forum';
+
 import HomeButton from './HomeButton.jsx'
 import UserForums from './UserForums.jsx'
 import UserFriendsForums from './UserFriendsForums.jsx'
@@ -38,6 +44,7 @@ const menuItemStyle = {
         settings: store.sidebar.settings,
         sessionCookie: store.login.sessionCookie,
         viewingRequest: store.forum.viewingRequest,
+        userFirstName: store.login.first_name
     };
 })
 class SideBar extends React.Component {
@@ -63,13 +70,8 @@ class SideBar extends React.Component {
             this.props.dispatch(getRequest(id));
             this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
         }
-        // const allUserRequests = this.props.userForums.map((forum, index) => {
-        //     if (index > 10) {
-        //         return <p>See all your forums</p>;
-        //         break;
-        //     }
-        //     return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
-        // })
+        const settingsIcon = <img src="../../../../assets/images/settings_icon.png" />
+
         return (
             <div>
                 <Drawer open={this.props.sidebarToggle}> 
@@ -79,9 +81,9 @@ class SideBar extends React.Component {
                     <UserFriendsForums/>
                     <Divider />
                     <MenuItem>
-                        <ListItem onClick={friendsClick} primaryText='Friends'/>
+                        <ListItem onClick={friendsClick} primaryText='Friends' leftIcon={<FriendsIcon />} />
                         <Divider />
-                        <ListItem onClick={settingsClick} primaryText="Settings"/>
+                        <ListItem onClick={settingsClick} primaryText='Settings' leftIcon={settingsIcon} />
                     </MenuItem>
                 </Drawer>
             </div>

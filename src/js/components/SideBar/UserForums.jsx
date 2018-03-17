@@ -6,7 +6,7 @@ import UserForumListItem from './UserForumListItem.jsx'
 import HourGlass from 'material-ui/svg-icons/action/hourglass-empty';
 import { fetchNewForum, fetchUserForums } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
-import FiberNew from 'material-ui/svg-icons/av/fiber-new';
+import PlusIcon from 'material-ui/svg-icons/content/add-circle-outline';
 
 
 @connect(store => {
@@ -37,7 +37,7 @@ class UserForums extends React.Component {
             <UserForumListItem/>
           ]}>
         </ListItem>
-        <ListItem leftIcon={<FiberNew />} onClick={newForumClick} primaryText="New Request" />
+        <ListItem leftIcon={<PlusIcon />} onClick={newForumClick} primaryText="New Request" />
       </div>
     );
   }
