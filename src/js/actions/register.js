@@ -82,8 +82,8 @@ export function authenticatePasswordFields(password, passwordConfirmation) {
           // };
           let result = {
             authenticated: response.data.authenticated,
-            first_name: userRegistrationDetails.first_name,
-            last_name: userRegistrationDetails.last_name,
+            first_name: userRegistrationDetails.firstname,
+            last_name: userRegistrationDetails.lastname,
           }
           dispatch({type: "AUTHENTICATE_USER_FULFILLED", payload: result})
         })

@@ -54,7 +54,7 @@ class LandingPage extends Component {
     // this.props.dispatch(displaySignupForm(false))
   }
   render() {
-    if(this.props.sessionCookie) this.props.history.push('/welcome');
+    if(this.props.sessionCookie) this.props.history.push('/');
     return (
       <div>
         {this.props.showLoginForm ? (
