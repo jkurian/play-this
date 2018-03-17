@@ -13,7 +13,8 @@ const style = {
     registerFirstNameField: store.register.registerFirstNameField,
     registerEmailField: store.register.registerEmailField,
     registerPasswordField: store.register.registerPasswordField,
-    registerPasswordConfirmationField: store.register.registerPasswordConfirmationField,
+    registerPasswordConfirmationField:
+      store.register.registerPasswordConfirmationField
   };
 })
 export default class registerLastNameField extends React.Component {

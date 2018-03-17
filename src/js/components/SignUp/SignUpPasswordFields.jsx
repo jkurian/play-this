@@ -1,12 +1,16 @@
 import React from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { updateRegisterPasswordField, updateRegisterPasswordConfirmationField } from "../../actions/register";
+import {
+  updateRegisterPasswordField,
+  updateRegisterPasswordConfirmationField
+} from "../../actions/register";
 
 @connect(store => {
   return {
     registerPasswordField: store.register.registerPasswordField,
-    registerPasswordConfirmationField: store.register.registerPasswordConfirmationField
+    registerPasswordConfirmationField:
+      store.register.registerPasswordConfirmationField
   };
 })
 export default class LoginEmailField extends React.Component {
@@ -29,27 +33,29 @@ export default class LoginEmailField extends React.Component {
     };
     const onPasswordConfirmationChange = evt => {
       evt.preventDefault();
-      this.props.dispatch(updateRegisterPasswordConfirmationField(evt.target.value));
+      this.props.dispatch(
+        updateRegisterPasswordConfirmationField(evt.target.value)
+      );
     };
     return (
       <div>
         <TextField
-        floatingLabelText="Password"
-        type="password"
-        value={this.props.registerPasswordField}
-        onChange={onPasswordChange}
-        // errorText={this.props.passwordError}
-      />
-      <br />
-      <TextField
-        floatingLabelText="Password Confirmation"
-        type="password"
-        value={this.props.registerPasswordConfirmationField}
-        onChange={onPasswordConfirmationChange}
-        // onBlur={checkPasswordMatching}
-        // errorText={this.props.passwordError}
-      />
-    </div>
+          floatingLabelText="Password"
+          type="password"
+          value={this.props.registerPasswordField}
+          onChange={onPasswordChange}
+          // errorText={this.props.passwordError}
+        />
+        <br />
+        <TextField
+          floatingLabelText="Password Confirmation"
+          type="password"
+          value={this.props.registerPasswordConfirmationField}
+          onChange={onPasswordConfirmationChange}
+          // onBlur={checkPasswordMatching}
+          // errorText={this.props.passwordError}
+        />
+      </div>
     );
   }
 }

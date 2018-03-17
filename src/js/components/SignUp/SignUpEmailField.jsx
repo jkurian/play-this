@@ -33,13 +33,13 @@ export default class SignUpEmailField extends React.Component {
     };
     return (
       <TextField
-      hintText="example@domain.com"
-      floatingLabelText="Email"
-      value={this.props.registerEmailField}
-      onChange={onChange}
-      // onBlur={checkValidEmail}
-      // errorText={this.props.errorMessage}
-    />
+        hintText="example@domain.com"
+        floatingLabelText="Email"
+        value={this.props.registerEmailField}
+        onChange={onChange}
+        // onBlur={checkValidEmail}
+        // errorText={this.props.errorMessage}
+      />
     );
   }
 }
