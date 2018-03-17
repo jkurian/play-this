@@ -29,7 +29,6 @@ export default class SongPost extends Component {
         )
       );
     };
-    console.log(this.props.songInfo);
     const songs = this.props.songInfo
       ? this.props.songInfo.map(song => {
           return (
