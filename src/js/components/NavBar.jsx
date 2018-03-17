@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
-import SignUpForm from "./SignUpForm.jsx";
+import SignUpForm from "./SignUp/SignUpForm.jsx";
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";
 import { logout } from "../actions/logout";

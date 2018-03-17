@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import LoginForm from "./Login/LoginForm.jsx";
-import SignUpForm from "./SignUpForm.jsx";
+import SignUpForm from "./SignUp/SignUpForm.jsx";
 import Paper from "material-ui/Paper";
 
 import { displayLoginForm, displaySignupForm } from "../actions/navbar";

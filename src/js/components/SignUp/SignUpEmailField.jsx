@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { updateRegisterEmailField } from "../actions/register";
+import { updateRegisterEmailField } from "../../actions/register";
 
 @connect(store => {
   return {

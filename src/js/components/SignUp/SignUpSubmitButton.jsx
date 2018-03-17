@@ -1,7 +1,7 @@
 import React from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import { connect } from "react-redux";
-import { registerNewUser } from "../actions/register";
+import { registerNewUser } from "../../actions/register";
 
 const style = {
   margin: 12
