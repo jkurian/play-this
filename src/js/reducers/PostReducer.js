@@ -17,6 +17,7 @@ export default function reducer(
       };
     }
     case "[SONG]POST_COMMENTS_FULFILLED": {
+      console.log('ACTION PAYLOAD IN POST COMMENTS FULFILLED,', action.payload);
       return {
         ...state,
         songComments: {

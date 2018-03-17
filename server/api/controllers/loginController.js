@@ -14,7 +14,7 @@ exports.login = function(req, res, dataHelpers) {
     .then(results => {
       if (results) {
         //instead of returning true or false in result, return userid if correct credentials
-        console.log("RESULTS OF AUTH", results[0]);
+        console.log("RESULTS OF AUTHHHHHHHHH", results[0]);
         const payload = { user_id: results[0].id };
         jwt.sign(
           payload,
@@ -27,7 +27,7 @@ exports.login = function(req, res, dataHelpers) {
             authenticated = {
               token: token,
               authenticated: payload.user_id,
-              avatar_url: results[0].avatar_url,
+              avatar_url: results[0].avatar_image,
               first_name: results[0].first_name,
               last_name: results[0].last_name
             };

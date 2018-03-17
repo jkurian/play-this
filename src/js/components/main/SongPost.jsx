@@ -9,7 +9,10 @@ import TextField from "material-ui/TextField";
 @connect(store => {
   return {
     songInfo: store.post.songInfo,
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
+    avatar_url: store.login.avatar_url,
+    first_name: store.login.first_name,
+    last_name: store.login.last_name
   };
 })
 
@@ -18,8 +21,9 @@ import TextField from "material-ui/TextField";
 export default class SongPost extends Component {
   render() {
     const commentEnter = (evt, songid) => {
+      console.log('PROPS ARE', this.props);
       
-      this.props.dispatch(postSongComment(this.props.sessionCookie, songid, evt.target.value));
+      this.props.dispatch(postSongComment(this.props.sessionCookie,songid,evt.target.value, this.props.avatar_url, this.props.first_name, this.props.last_name));
     }
     console.log(this.props.songInfo);
     const songs = this.props.songInfo.map(song => {

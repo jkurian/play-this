@@ -63,14 +63,18 @@ export function postSpotifyTrackData(incomingSpotifyTrack) {
   };
 }
 
-export function postSongComment(userid, songid, comment) {
+export function postSongComment(userid, songid, comment, avatar_url, first_name, last_name) {
   return function(dispatch) {
     dispatch({ type: "[SONG]POST_COMMENTS_PENDING",});
     let songCommentInfo = {
       songid: songid,
       userid: userid,
       comment: comment,
+      avatar_url: avatar_url,
+      first_name: first_name,
+      last_name: last_name
     }
+    console.log('BEFORE GONG TO REDUCER', songCommentInfo)
     dispatch({
       type: "[SONG]POST_COMMENTS_FULFILLED",
       payload: songCommentInfo
