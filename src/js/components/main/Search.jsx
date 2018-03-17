@@ -20,7 +20,12 @@ import { fetchSongInfo } from "../../actions/post";
 // searchText={this.state}
 // Also: http://fusejs.io/ for fuzzy search, is far superior than material's
 class Search extends Component {
-  componentWillMount() {}
+  constructor (props) {
+    super(props)
+    this.state = {
+      searchText: ''
+    }
+  }
   render() {
     // const fuseOptions = {
     //   shouldSort: true,
@@ -47,11 +52,6 @@ class Search extends Component {
       );
     });
 
-    const onChange = evt => {
-      spotifyApi.searchTracks(evt).then(data => {
-        this.props.dispatch(spotifyTrackData(data.tracks.items));
-      });
-    };
 
     let userId = this.props.userId;
     let forumId = this.props.match.params.id;
@@ -61,10 +61,15 @@ class Search extends Component {
         this.props.dispatch(
           postSpotifyTrackData(data.tracks.items[0], userId, forumId)
         );
-        // this.props.dispatch(fetchSongInfo(3));
       });
+      this.setState( { searchText: '' })
     };
-
+    const onChange = evt => {
+      spotifyApi.searchTracks(evt).then(data => {
+        this.props.dispatch(spotifyTrackData(data.tracks.items));
+      });
+      this.setState({ searchText: evt })
+    };
     return (
       <div>
         <AutoComplete
@@ -73,6 +78,7 @@ class Search extends Component {
           dataSource={listArr}
           maxSearchResults={10}
           onUpdateInput={onChange}
+          searchText={this.state.searchText}
           onNewRequest={onClick}
           fullWidth={true}
           menuCloseDelay={0}
