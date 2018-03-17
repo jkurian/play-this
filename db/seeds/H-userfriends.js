@@ -4,11 +4,11 @@ let createRecord = knex => {
   return knex("userfriends").insert({
     user_id1: faker.random.number({
       min: 1,
-      max: 1000
+      max: 100
     }),
     user_id2: faker.random.number({
       min: 1,
-      max: 1000
+      max: 100
     })
   });
 };

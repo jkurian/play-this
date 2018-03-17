@@ -4,11 +4,11 @@ let createRecord = knex => {
   return knex("user_song").insert({
     user_id: faker.random.number({
       min: 1,
-      max: 1000
+      max: 100
     }),
     song_id: faker.random.number({
       min: 1,
-      max: 25000
+      max: 1000
     })
   });
 };

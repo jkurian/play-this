@@ -6,11 +6,11 @@ let createRecord = (knex, id) => {
     time_stamp: faker.date.between("2017-07-31", "2018-03-09"),
     user_id: faker.random.number({
       min: 1,
-      max: 1000
+      max: 100
     }),
     song_id: faker.random.number({
       min: 1,
-      max: 25000
+      max: 1000
     })
   });
 };
