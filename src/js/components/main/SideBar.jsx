@@ -11,12 +11,11 @@ import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
 import HomeButton from './HomeButton.jsx'
+import UserForums from './UserForums.jsx'
 
 import { fetchSettings, fetchNewForum } from '../../actions/sidebar'
 import { sidebarToggle, sidebarToggleClose } from '../../actions/sidebar'
 import {getRequest} from '../../actions/forum'
-
-let this.props.sessionCookie;
 
 const divStyle = `
 .sidebarStyle {
@@ -99,13 +98,7 @@ class SideBar extends React.Component {
             <div>
                 <Drawer open={this.props.sidebarToggle}> 
                     <HomeButton />
-                    <h4>Requests</h4>
-                    <MenuItem>
-                        <ListItem onClick={newForumClick} primaryText='New Request'/>
-                    </MenuItem>
-                    <MenuItem>
-                        {allUserRequests(this.props.userForums)}
-                    </MenuItem>
+                    <UserForums/>
                     <Divider />
                     <h4>Friends' Requests</h4>
                     <MenuItem innerDivStyle={menuItemStyle}>
