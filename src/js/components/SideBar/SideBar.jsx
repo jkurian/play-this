@@ -15,7 +15,6 @@ import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 
-import HomeButton from './HomeButton.jsx'
 import UserForums from './UserForums.jsx'
 import UserFriendsForums from './UserFriendsForums.jsx'
 
@@ -75,16 +74,21 @@ class SideBar extends React.Component {
         return (
             <div>
                 <Drawer open={this.props.sidebarToggle}> 
-                    <HomeButton />
                     <UserForums/>
                     <Divider />
                     <UserFriendsForums/>
                     <Divider />
-                    <MenuItem>
-                        <ListItem onClick={friendsClick} primaryText='Friends' leftIcon={<FriendsIcon />} />
-                        <Divider />
-                        <ListItem onClick={settingsClick} primaryText='Settings' leftIcon={settingsIcon} />
-                    </MenuItem>
+                    <ListItem onClick={friendsClick} 
+                                primaryText='Friends' 
+                                leftIcon={<FriendsIcon />} 
+                                style={{fontFamily: 'Raleway, sans-serif', fontWeight: 600, width: '100%'}}
+                    />
+                    <Divider />
+                    <ListItem onClick={settingsClick} 
+                                primaryText='Settings' 
+                                leftIcon={settingsIcon} 
+                                style={{fontFamily: 'Raleway, sans-serif', fontWeight: 600}}
+                    />
                 </Drawer>
             </div>
         )

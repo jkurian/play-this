@@ -24,8 +24,8 @@ class UserFriendsForums extends React.Component {
       {/* <h4 style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, backgroundColor: '#607d8b', paddingTop: 80, paddingRight: 20, paddingBottom: 25, paddingLeft: 20}}>{this.props.userFirstName}'s Forums</h4> */}
 
         <ListItem
-          primaryText="Friends Requests"
-          leftIcon={<HourGlass />}
+          style={{fontFamily: 'Raleway, sans-serif', fontWeight: 600}}
+          primaryText="Friends' Forums"
           initiallyOpen={true}
           primaryTogglesNestedList={true}
           nestedItems={[
