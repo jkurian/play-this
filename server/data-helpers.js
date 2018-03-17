@@ -86,7 +86,9 @@ module.exports = function makeDataHelpers(knex) {
         artist: songInformation.artist,
         title: songInformation.title,
         album: songInformation.album,
-        spotify_id: songInformation.spotify_id
+        spotify_id: songInformation.spotify_id,
+        user_id: songInformation.user_id,
+        request_id: songInformation.request_id
       });
     },
     postSongComment: function(songInformation) {
@@ -117,6 +119,7 @@ module.exports = function makeDataHelpers(knex) {
     getSongInfo: function(forumid) {
       console.log("the songs forumid is", forumid);
       return knex("songs")
+        .orderBy("time_stamp", "desc")
         .where({ request_id: forumid })
         .then(results => {
           return results;

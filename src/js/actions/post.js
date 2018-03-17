@@ -40,22 +40,25 @@ export function fetchSongInfo(forumID) {
   };
 }
 
-export function postSpotifyTrackData(incomingSpotifyTrack) {
+export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
   return function(dispatch) {
     let songInformation = {
       artist: incomingSpotifyTrack.artists[0].name,
       title: incomingSpotifyTrack.name,
       album: incomingSpotifyTrack.album.name,
-      spotify_id: incomingSpotifyTrack.id
+      spotify_id: incomingSpotifyTrack.id,
+      user_id: userId,
+      request_id: forumId
     };
+    dispatch({
+      type: "POST_SPOTIFY_SONG_SUCCESSFUL",
+      payload: { ...songInformation, userId, forumId }
+    });
+
     axios
       .post("http://localhost:3000/api/songinfo/post", songInformation)
       .then(response => {
         console.log("Spotify song sent to axios", response.data);
-        dispatch({
-          type: "POST_SPOTIFY_SONG_SUCCESSFUL",
-          payload: response.data
-        });
       })
       .catch(err => {
         dispatch({ type: "POST_SPOTIFY_SONG_REJECTED", payload: err });
