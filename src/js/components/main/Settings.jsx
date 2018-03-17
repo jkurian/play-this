@@ -8,6 +8,11 @@ import IconButton from "material-ui/IconButton";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import SideBar from "../SideBar/SideBar.jsx";
+import FirstNameSetting from '../Settings/FirstNameSetting.jsx'
+import LastNameSetting from '../Settings/LastNameSetting.jsx'
+import EmailSetting from '../Settings/EmailSetting.jsx'
+import PasswordSetting from '../Settings/PasswordSetting.jsx'
+import AvatarSetting from '../Settings/AvatarSetting.jsx'
 
 import { sidebarToggleClose } from "../../actions/sidebar";
 import { updateEditState, updateProfile } from "../../actions/profile";
@@ -59,87 +64,15 @@ class Settings extends Component {
         <SideBar />
         <form onSubmit={onSubmit}>
           <div style={{marginTop: 200, marginLeft: 300 }}>
-            {/* <h4 style={{marginRight: 20, fontFamily: 'Raleway, sans-serif'}}>First name: </h4> */}
-            <TextField defaultValue="First name: " underlineShow={false} style={{ width: 100}}/>
-            <TextField
-              disabled={this.props.disabledFieldState.first_name}
-              defaultValue={this.props.settings[0].first_name}
-              name="first_name"
-            />
-            <IconButton
-              touch={true}
-              onClick={evt =>
-                updateEditableState(evt, {
-                  first_name: !this.props.disabledFieldState.first_name
-                })
-              }
-            >
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
+          <FirstNameSetting />
+          <br />
+          <LastNameSetting />
             <br />
-            <TextField defaultValue="Last name: " underlineShow={false} style={{ width: 100}}/>
-            <TextField
-              disabled={this.props.disabledFieldState.last_name}
-              defaultValue={this.props.settings[0].last_name}
-            />
-            <IconButton
-              touch={true}
-              onClick={evt =>
-                updateEditableState(evt, {
-                  last_name: !this.props.disabledFieldState.last_name
-                })
-              }
-            >
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
+          <EmailSetting />
             <br />
-            <TextField defaultValue="Email: " underlineShow={false} style={{ width: 100}}/>
-            <TextField
-              disabled={this.props.disabledFieldState.email}
-              defaultValue={this.props.settings[0].email}
-            />
-            <IconButton
-              touch={true}
-              onClick={evt =>
-                updateEditableState(evt, {
-                  email: !this.props.disabledFieldState.email
-                })
-              }
-            >
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
+            <PasswordSetting />
             <br />
-            <TextField defaultValue="Password: " underlineShow={false} style={{ width: 100}}/>
-            <TextField
-              disabled={this.props.disabledFieldState.password}
-              defaultValue={this.props.settings[0].password}
-            />
-            <IconButton
-              touch={true}
-              onClick={evt =>
-                updateEditableState(evt, {
-                  avatar_url: !this.props.disabledFieldState.avatar_url
-                })
-              }
-            >
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
-            <br />
-            <TextField defaultValue="Avatar URL: " underlineShow={false} style={{ width: 100}}/>
-            <TextField
-              disabled={this.props.disabledFieldState.avatar_url}
-              defaultValue={avatarImage}
-            />
-            <IconButton
-              touch={true}
-              onClick={evt =>
-                updateEditableState(evt, {
-                  password: !this.props.disabledFieldState.password
-                })
-              }
-            >
-              <FontIcon className="material-icons">mode_edit</FontIcon>
-            </IconButton>
+            <AvatarSetting />
           </div>
           <RaisedButton type="submit" label="Save" style={style} />
         </form>

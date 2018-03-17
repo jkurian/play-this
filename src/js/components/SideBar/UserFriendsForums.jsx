@@ -4,7 +4,6 @@ import {List, ListItem} from 'material-ui/List';
 import { sidebarToggle } from "../../actions/sidebar";
 import UserFriendsForumListItem from './UserFriendsForumListItem.jsx'
 import HourGlass from 'material-ui/svg-icons/action/hourglass-full';
-import Listen from 'material-ui/svg-icons/action/record-voice-over';
 import { fetchNewForum } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
 
@@ -21,8 +20,6 @@ class UserFriendsForums extends React.Component {
     };
     return (
       <div>
-      {/* <h4 style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, backgroundColor: '#607d8b', paddingTop: 80, paddingRight: 20, paddingBottom: 25, paddingLeft: 20}}>{this.props.userFirstName}'s Forums</h4> */}
-
         <ListItem
           primaryText="Friends Requests"
           leftIcon={<HourGlass />}
