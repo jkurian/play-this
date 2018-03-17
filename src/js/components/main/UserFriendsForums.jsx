@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import {List, ListItem} from 'material-ui/List';
 import { sidebarToggle } from "../../actions/sidebar";
 import UserFriendsForumListItem from './UserFriendsForumListItem.jsx'
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import HourGlass from 'material-ui/svg-icons/action/hourglass-full';
+import Listen from 'material-ui/svg-icons/action/record-voice-over';
 import { fetchNewForum } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
 
@@ -22,7 +23,7 @@ class UserFriendsForums extends React.Component {
       <div>
         <ListItem
           primaryText="Friends Requests"
-          leftIcon={<ContentInbox />}
+          leftIcon={<HourGlass />}
           initiallyOpen={true}
           primaryTogglesNestedList={true}
           nestedItems={[

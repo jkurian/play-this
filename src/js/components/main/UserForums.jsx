@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import {List, ListItem} from 'material-ui/List';
 import { sidebarToggle } from "../../actions/sidebar";
 import UserForumListItem from './UserForumListItem.jsx'
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import HourGlass from 'material-ui/svg-icons/action/hourglass-empty';
 import { fetchNewForum, fetchUserForums } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
-
+import FiberNew from 'material-ui/svg-icons/av/fiber-new';
 
 
 @connect(store => {
@@ -30,14 +30,14 @@ class UserForums extends React.Component {
       <div>
         <ListItem
           primaryText="Requests"
-          leftIcon={<ContentInbox />}
+          leftIcon={<HourGlass />}
           initiallyOpen={true}
           primaryTogglesNestedList={true}
           nestedItems={[
             <UserForumListItem/>
           ]}>
         </ListItem>
-        <ListItem onClick={newForumClick} primaryText="New Request" />
+        <ListItem leftIcon={<FiberNew />} onClick={newForumClick} primaryText="New Request" />
       </div>
     );
   }
