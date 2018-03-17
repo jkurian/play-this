@@ -10,10 +10,6 @@ import { sidebarToggleClose } from '../../actions/sidebar'
 import { connect } from 'react-redux';
 import { addForum } from '../../actions/newForum'
 
-const style = {
-    margin: 12,
-};
-
 @connect((store) => {
     return {
         sessionCookie: store.login.sessionCookie
@@ -34,11 +30,18 @@ class NewForum extends Component {
             this.props.dispatch(addForum(evt.target[1].value, evt.target[3].value, this.props.sessionCookie))
             this.props.history.push("/welcome")
         }
+        
+        const formStyle = {
+            width: 400,
+            display: 'block',
+            margin: 'auto'
+        }
         return  (
             <div>
                 <SideBar />
-                <form onSubmit={submitForm}>
+                <form onSubmit={submitForm} style={{marginTop: 80}}>
                     <TextField
+                    style={formStyle}
                     name="title"
                     hintText="E.g. PUMPED UP Friday Night Jamz"
                     floatingLabelText="Add Forum Title"
@@ -46,6 +49,7 @@ class NewForum extends Component {
                     rows={1}
                     /><br />
                     <TextField
+                    style={formStyle}
                     name="description"
                     hintText="E.g. All tracks should be the aural equivalent of a 4-pack of RedBull and punch to the brain through both ears."
                     floatingLabelText="Add Forum Description"
@@ -55,7 +59,7 @@ class NewForum extends Component {
             
                     <br />
                     <div>
-                    <FlatButton type="submit" style={style} label='Create Forum'/>
+                    <FlatButton type="submit" style={formStyle} label='Create Forum'/>
                     </div>
                 </form>
             </div>

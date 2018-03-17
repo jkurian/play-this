@@ -68,6 +68,7 @@ class LandingPage extends Component {
           </Paper>
         ) : null}
         <div>
+          <img src="../../assets/images/headphones_landing.png" />
           <img src='../../../assets/images/music-share.jpg' style={imgStyle} />
         </div>
       </div>
