@@ -15,7 +15,7 @@ exports.seed = (knex, Promise) => {
   return knex("users").then(() => {
     let records = [];
 
-    for (let i = 4; i <= 1000; i++) {
+    for (let i = 4; i <= 100; i++) {
       records.push(createRecord(knex));
     }
 
