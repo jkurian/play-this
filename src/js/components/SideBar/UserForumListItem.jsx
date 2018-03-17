@@ -15,8 +15,6 @@ class UserForumListItem extends React.Component {
   render() {
     const onClickRequest = (ev, id) => {
       ev.preventDefault();
-      console.log('CLICKED ON', id);
-      
       this.props.dispatch(getRequest(id));
       this.props.history.push(`/forum/${id}`)
   }
