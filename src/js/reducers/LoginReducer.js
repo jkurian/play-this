@@ -46,7 +46,6 @@ export default function reducer(state={
       }
       case "USER_LOGOUT": {
         return {
-          ...state, 
           sessionCookie: null,
         }
       }

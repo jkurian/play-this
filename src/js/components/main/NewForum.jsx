@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import TextField from "material-ui/TextField";
 import FlatButton from "material-ui/FlatButton";
-import SideBar from "./SideBar.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 
 import { sidebarToggleClose } from "../../actions/sidebar";
 import { connect } from "react-redux";

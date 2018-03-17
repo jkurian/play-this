@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router-dom";
 
-import SideBar from "./SideBar.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 import Search from "./Search.jsx";
 import Post from "./Post.jsx";
 

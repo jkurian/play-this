@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import {ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import HearingIcon from 'material-ui/svg-icons/av/hearing';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
 import HomeButton from './HomeButton.jsx'
@@ -71,18 +70,6 @@ class SideBar extends React.Component {
         //     }
         //     return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
         // })
-
-        const allUserFriendRequests = (userForumsArray) => {
-            let allForums = []
-            for (let i=0; i < userForumsArray.length; i++) {
-                if (i > 10) {
-                    allForums.push(<ListItem primaryText="See all your friends' forums" />)
-                    break;
-                }
-                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
-            }
-            return allForums;
-        }
         return (
             <div>
                 <Drawer open={this.props.sidebarToggle}> 

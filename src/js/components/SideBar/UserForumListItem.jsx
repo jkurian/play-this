@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import {getRequest} from '../../actions/forum'
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
@@ -11,7 +12,7 @@ import HearingIcon from 'material-ui/svg-icons/av/hearing';
     viewingRequest: store.forum.viewingRequest,
   };
 })
-export default class UserForumButton extends React.Component {
+class UserForumListItem extends React.Component {
   render() {
     const onClickRequest = (ev, id) => {
       ev.preventDefault();
@@ -33,3 +34,4 @@ export default class UserForumButton extends React.Component {
     )
   }
 }
+export default withRouter(UserForumListItem)

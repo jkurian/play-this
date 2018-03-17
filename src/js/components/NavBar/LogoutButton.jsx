@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import { logout } from "../../actions/logout";
 import RaisedButton from 'material-ui/RaisedButton'
+
 
 @connect(store => {
   return {
   };
 })
-export default class LogoutButton extends React.Component {
+class LogoutButton extends React.Component {
   render() {
     const onLogoutClick = evt => {
       this.props.dispatch(logout());
@@ -20,3 +22,5 @@ export default class LogoutButton extends React.Component {
     )
   }
 }
+
+export default withRouter(LogoutButton)
