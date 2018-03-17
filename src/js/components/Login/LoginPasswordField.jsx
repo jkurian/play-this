@@ -9,6 +9,9 @@ import { connect } from "react-redux";
   };
 })
 export default class LoginPasswordField extends React.Component {
+  componentWillUnmount() {
+    this.props.dispatch(updatePasswordField(""));
+  }
   render() {
     const onChange = evt => {
       evt.preventDefault();

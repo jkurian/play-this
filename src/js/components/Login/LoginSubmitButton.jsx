@@ -1,6 +1,6 @@
 import React from "react";
 import RaisedButton from 'material-ui/RaisedButton'
-import { updatePasswordField } from "../../actions/login";
+import { updatePasswordField, authenticate } from "../../actions/login";
 import { connect } from "react-redux";
 
 
@@ -11,6 +11,7 @@ const style = {
 @connect(store => {
   return {
     loginPasswordField: store.login.loginPasswordField,
+    loginEmailField: store.login.loginEmailField,
   };
 })
 export default class LoginPasswordField extends React.Component {
@@ -24,8 +25,6 @@ export default class LoginPasswordField extends React.Component {
     const onClick = evt => {
       evt.preventDefault();
       sendForm(evt);
-      this.props.dispatch(updateEmailField(""));
-      this.props.dispatch(updatePasswordField(""));
     };
     return (
         <RaisedButton

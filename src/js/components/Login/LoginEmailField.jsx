@@ -9,6 +9,9 @@ import { connect } from "react-redux";
   };
 })
 export default class LoginEmailField extends React.Component {
+  componentWillUnmount() {
+    this.props.dispatch(updateEmailField(""));
+  }
   render() {
     const onChange = evt => {
       evt.preventDefault();
