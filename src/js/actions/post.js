@@ -27,6 +27,7 @@ export function fetchSongInfo(forumID) {
     axios
       .get(`http://localhost:3000/api/songinfo/${forumID}`)
       .then(response => {
+        console.log("IS ANYTHING HAPPENING?");
         console.log("Song Info from axios", response.data);
 
         dispatch({
@@ -50,15 +51,16 @@ export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
       user_id: userId,
       request_id: forumId
     };
-    dispatch({
-      type: "POST_SPOTIFY_SONG_SUCCESSFUL",
-      payload: { ...songInformation, userId, forumId }
-    });
 
+    //Sends the new song and updates the state with an ID
     axios
       .post("http://localhost:3000/api/songinfo/post", songInformation)
       .then(response => {
-        console.log("Spotify song sent to axios", response.data);
+        songInformation.id = response.data[0];
+        dispatch({
+          type: "POST_SPOTIFY_SONG_SUCCESSFUL",
+          payload: { ...songInformation, userId, forumId }
+        });
       })
       .catch(err => {
         dispatch({ type: "POST_SPOTIFY_SONG_REJECTED", payload: err });
@@ -66,9 +68,16 @@ export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
   };
 }
 
-export function postSongComment(userid, songid, comment, avatar_url, first_name, last_name) {
+export function postSongComment(
+  userid,
+  songid,
+  comment,
+  avatar_url,
+  first_name,
+  last_name
+) {
   return function(dispatch) {
-    dispatch({ type: "[SONG]POST_COMMENTS_PENDING",});
+    dispatch({ type: "[SONG]POST_COMMENTS_PENDING" });
     let songCommentInfo = {
       songid: songid,
       userid: userid,
@@ -76,16 +85,18 @@ export function postSongComment(userid, songid, comment, avatar_url, first_name,
       avatar_image: avatar_url,
       first_name: first_name,
       last_name: last_name
-    }
-    console.log('BEFORE GONG TO REDUCER', songCommentInfo)
+    };
+    console.log("BEFORE GONG TO REDUCER", songCommentInfo);
     dispatch({
       type: "[SONG]POST_COMMENTS_FULFILLED",
       payload: songCommentInfo
     });
     axios
-      .post(`http://localhost:3000/api/songs/${songid}/comments`, songCommentInfo)
-      .then(response => {
-      })
+      .post(
+        `http://localhost:3000/api/songs/${songid}/comments`,
+        songCommentInfo
+      )
+      .then(response => {})
       .catch(err => {
         dispatch({ type: "[SONG]POST_COMMENTS_FULFILLED", payload: err });
       });
