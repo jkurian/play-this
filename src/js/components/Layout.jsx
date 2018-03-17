@@ -6,7 +6,7 @@ import LandingPage from "./LandingPage.jsx";
 import Welcome from "./main/Welcome.jsx";
 import NavBar from "./NavBar/NavBar.jsx";
 import SideBar from "./SideBar/SideBar.jsx";
-import Settings from "./main/Settings.jsx";
+import Settings from "./Settings/Settings.jsx";
 import NewForum from "./main/NewForum.jsx";
 import Friends from "./main/Friends.jsx";
 import Query from "query-string";

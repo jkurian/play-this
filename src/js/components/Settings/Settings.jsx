@@ -8,11 +8,11 @@ import IconButton from "material-ui/IconButton";
 import FontIcon from "material-ui/FontIcon";
 import RaisedButton from "material-ui/RaisedButton";
 import SideBar from "../SideBar/SideBar.jsx";
-import FirstNameSetting from '../Settings/FirstNameSetting.jsx'
-import LastNameSetting from '../Settings/LastNameSetting.jsx'
-import EmailSetting from '../Settings/EmailSetting.jsx'
-import PasswordSetting from '../Settings/PasswordSetting.jsx'
-import AvatarSetting from '../Settings/AvatarSetting.jsx'
+import FirstNameSetting from './FirstNameSetting.jsx'
+import LastNameSetting from './LastNameSetting.jsx'
+import EmailSetting from './EmailSetting.jsx'
+import PasswordSetting from './PasswordSetting.jsx'
+import AvatarSetting from './AvatarSetting.jsx'
 
 import { sidebarToggleClose } from "../../actions/sidebar";
 import { updateEditState, updateProfile } from "../../actions/profile";
@@ -24,8 +24,6 @@ const style = {
 
 @connect(store => {
   return {
-    settings: store.sidebar.settings,
-    disabledFieldState: store.profile.disabledFieldState,
     sessionCookie: store.login.sessionCookie
   };
 })
@@ -39,24 +37,19 @@ class Settings extends Component {
     }
   }
   render() {
-    let avatarImage = this.props.settings[0].avatar_image;
     const onSubmit = evt => {
+      console.log(evt.target.email);
       evt.preventDefault();
       let updatedProfile = {
-        first_name: evt.target[0].value,
-        last_name: evt.target[2].value,
-        email: evt.target[4].value,
-        avatar_image: evt.target[6].value,
-        password: evt.target[8].value
+        first_name: evt.target.first_name.value,
+        last_name: evt.target.last_name.value,
+        email: evt.target.email.value,
+        avatar_image: evt.target.avatar_image.value,
+        password: evt.target.password.value
       };
       this.props.dispatch(
         updateProfile(updatedProfile, this.props.sessionCookie)
       );
-    };
-    const updateEditableState = (evt, disabledStateChange) => {
-      evt.preventDefault();
-      console.log(disabledStateChange);
-      this.props.dispatch(updateEditState(disabledStateChange));
     };
     //have to find out how to pass value to onclick
     return (

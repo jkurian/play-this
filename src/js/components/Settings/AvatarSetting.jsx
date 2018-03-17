@@ -5,7 +5,7 @@ import EditFieldButton from './EditFieldButton.jsx'
 
 @connect(store => {
   return {
-    avatarSettings: store.sidebar.settings[0].avatar_url,
+    avatarSettings: store.sidebar.settings[0].avatar_image,
     disabledAvatarFieldState: store.profile.disabledFieldState.avatar_url,
   };
 })
@@ -17,6 +17,7 @@ export default class registerEmailField extends React.Component {
           <TextField
             disabled={this.props.disabledAvatarFieldState}
             defaultValue={this.props.avatarSettings}
+            name="avatar_image"
           />
         <EditFieldButton fieldToChange='avatar_url' fieldToChangeValue={!this.props.disabledAvatarFieldState} />  
       </div>
