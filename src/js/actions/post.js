@@ -50,14 +50,15 @@ export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
       user_id: userId,
       request_id: forumId
     };
+    dispatch({
+      type: "POST_SPOTIFY_SONG_SUCCESSFUL",
+      payload: { ...songInformation, userId, forumId }
+    });
+
     axios
       .post("http://localhost:3000/api/songinfo/post", songInformation)
       .then(response => {
         console.log("Spotify song sent to axios", response.data);
-        dispatch({
-          type: "POST_SPOTIFY_SONG_SUCCESSFUL",
-          payload: response.data
-        });
       })
       .catch(err => {
         dispatch({ type: "POST_SPOTIFY_SONG_REJECTED", payload: err });

@@ -48,7 +48,7 @@ export default function reducer(
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
       return {
         ...state,
-        postSpotifySong: action.payload.searchedTracks
+        songInfo: [action.payload, ...state.songInfo]
       };
     }
   }

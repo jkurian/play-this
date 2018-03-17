@@ -20,6 +20,7 @@ import { fetchSongInfo } from "../../actions/post";
 // searchText={this.state}
 // Also: http://fusejs.io/ for fuzzy search, is far superior than material's
 class Search extends Component {
+  componentWillMount() {}
   render() {
     // const fuseOptions = {
     //   shouldSort: true,
@@ -60,7 +61,7 @@ class Search extends Component {
         this.props.dispatch(
           postSpotifyTrackData(data.tracks.items[0], userId, forumId)
         );
-        this.props.dispatch(fetchSongInfo(1));
+        // this.props.dispatch(fetchSongInfo(3));
       });
     };
 
