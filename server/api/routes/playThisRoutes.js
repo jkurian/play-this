@@ -38,9 +38,11 @@ module.exports = function(app, dataHelpers) {
     .post((req, res) =>
       registerController.registerNewUser(req, res, dataHelpers)
     );
+
   app
     .route("/api/songs/:id/comments/")
-    .get((req, res) => songPostController.songComments(req, res, dataHelpers));
+    .get((req, res) => songPostController.songComments(req, res, dataHelpers))
+    .post((req, res) => songPostController.postSongComment(req, res, dataHelpers));
 
   app
     .route("/api/songinfo/:forumid")

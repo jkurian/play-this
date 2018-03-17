@@ -5,6 +5,7 @@ import TextField from "material-ui/TextField";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import { connect } from "react-redux";
 import { fetchSongInfo } from "../../actions/post";
+import { postSongComment } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -18,6 +19,10 @@ export default class Main extends Component {
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
+    const commentEnter = (evt) => {
+      console.log('in comment enter', evt.target);
+      this.props.dispatch(postSongComment(this.props.sessionCookie,1,'test'));
+    }
     return (
       <div class="postedBox">
         <div>
@@ -29,11 +34,16 @@ export default class Main extends Component {
           </FloatingActionButton>
         </span>
         <div>
-          <TextField
+          {/* <TextField
             hintText="What did you think?"
             floatingLabelText="Comment"
             fullwidth="true"
-          />
+            onKeyPress={(evt) => {
+              if (evt.key === 'Enter') {
+                {commentEnter(evt)}
+              }
+            }}
+          /> */}
           <br />
         </div>
       </div>

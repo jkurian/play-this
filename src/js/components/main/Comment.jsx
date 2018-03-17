@@ -23,7 +23,6 @@ export default class Comment extends Component {
   componentWillMount() {
     this.props.dispatch(fetchSongComments(this.props.songId));
   }
-
   render() {
     const comments = this.props.songComments
       ? this.props.songComments.map(comment => {

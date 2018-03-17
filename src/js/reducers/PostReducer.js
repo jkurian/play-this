@@ -16,6 +16,15 @@ export default function reducer(
         fetching: true
       };
     }
+    case "[SONG]POST_COMMENTS_FULFILLED": {
+      return {
+        ...state,
+        songComments: {
+          ...state.songComments, 
+          [action.payload.songid]: [action.payload, ...state.songComments[action.payload.songid]],
+        }
+      };
+    }
     case "FETCH_SONG_COMMENTS_FULFILLED": {
       return {
         ...state,

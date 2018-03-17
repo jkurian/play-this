@@ -62,3 +62,25 @@ export function postSpotifyTrackData(incomingSpotifyTrack) {
       });
   };
 }
+
+export function postSongComment(userid, songid, comment) {
+  return function(dispatch) {
+    dispatch({ type: "[SONG]POST_COMMENTS_PENDING",});
+    let songCommentInfo = {
+      songid: songid,
+      userid: userid,
+      comment: comment,
+    }
+    dispatch({
+      type: "[SONG]POST_COMMENTS_FULFILLED",
+      payload: songCommentInfo
+    });
+    axios
+      .post(`http://localhost:3000/api/songs/${songid}/comments`, songCommentInfo)
+      .then(response => {
+      })
+      .catch(err => {
+        dispatch({ type: "[SONG]POST_COMMENTS_FULFILLED", payload: err });
+      });
+  };
+}

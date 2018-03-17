@@ -3,6 +3,8 @@ export default function reducer(state={
     loginPasswordField: '',
     sessionCookie: null,
     authenticating: false,
+    username:'',
+    avatar_url:'',
     error: null,
   }, action) {
     switch (action.type) {
@@ -28,7 +30,6 @@ export default function reducer(state={
         return {
           ...state, 
           sessionCookie: action.payload,
-          
           authenticating: false
         }
       }

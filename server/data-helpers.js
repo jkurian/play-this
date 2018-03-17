@@ -89,6 +89,16 @@ module.exports = function makeDataHelpers(knex) {
         spotify_id: songInformation.spotify_id
       });
     },
+    postSongComment: function(songInformation) {
+      return knex("comments").insert({
+        user_id: songInformation.userid,
+        song_id: songInformation.songid,
+        comment: songInformation.comment,
+      })
+      .then(result => {
+        console.log('POSTING COMMENT COMPLETE', result)
+      })
+    },
     //This needs to be edited to bring down the object being sent to only send the required information
     //rather than the whole two tables. Same for getFriendsForums
     getSongComments: function(songid) {
