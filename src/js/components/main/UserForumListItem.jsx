@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import {getRequest} from '../../actions/forum'
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import HearingIcon from 'material-ui/svg-icons/av/hearing';
+
 @connect(store => {
   return {
-    userForums: store.sidebar.userForums
+    userForums: store.sidebar.userForums,
+    viewingRequest: store.forum.viewingRequest,
   };
 })
 export default class UserForumButton extends React.Component {
@@ -15,21 +18,18 @@ export default class UserForumButton extends React.Component {
       this.props.dispatch(getRequest(id));
       this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
   }
-    const allUserRequests = () => {
       let allForums = []
       for (let i=0; i < this.props.userForums.length; i++) {
           if (i === 9) {
               allForums.push(<ListItem primaryText="See all your forums" />)
               break;
           }
-          allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
+          allForums.push(<ListItem id={this.props.userForums[i].id} key={i} secondaryText={this.props.userForums[i].title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, this.props.userForums[i].id)}/>)
       }
-      return allForums;
-  }
     return (
       <div>
-        {allUserRequests}
-      </div> 
+        {allForums}
+      </div>
     )
   }
 }

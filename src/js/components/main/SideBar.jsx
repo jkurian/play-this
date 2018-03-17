@@ -12,6 +12,7 @@ import ForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
 import HomeButton from './HomeButton.jsx'
 import UserForums from './UserForums.jsx'
+import UserFriendsForums from './UserFriendsForums.jsx'
 
 import { fetchSettings, fetchNewForum } from '../../actions/sidebar'
 import { sidebarToggle, sidebarToggleClose } from '../../actions/sidebar'
@@ -35,8 +36,6 @@ const menuItemStyle = {
 @connect((store) => {
     return {
         sidebarToggle: store.sidebar.open,
-        userForums: store.sidebar.userForums,
-        userFriendsForums: store.sidebar.userFriendsForums,
         settings: store.sidebar.settings,
         sessionCookie: store.login.sessionCookie,
         viewingRequest: store.forum.viewingRequest,
@@ -72,17 +71,7 @@ class SideBar extends React.Component {
         //     }
         //     return <ListItem id={forum.id} key={index} secondaryText={forum.title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, forum.id)}/>
         // })
-        const allUserRequests = (userForumsArray) => {
-            let allForums = []
-            for (let i=0; i < userForumsArray.length; i++) {
-                if (i > 10) {
-                    allForums.push(<ListItem primaryText="See all your forums" />)
-                    break;
-                }
-                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
-            }
-            return allForums;
-        }
+
         const allUserFriendRequests = (userForumsArray) => {
             let allForums = []
             for (let i=0; i < userForumsArray.length; i++) {
@@ -100,10 +89,7 @@ class SideBar extends React.Component {
                     <HomeButton />
                     <UserForums/>
                     <Divider />
-                    <h4>Friends' Requests</h4>
-                    <MenuItem innerDivStyle={menuItemStyle}>
-                        {allUserFriendRequests(this.props.userFriendsForums)}
-                    </MenuItem>
+                    <UserFriendsForums/>
                     <Divider />
                     <MenuItem>
                         <ListItem onClick={friendsClick} primaryText='Friends'/>

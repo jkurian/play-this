@@ -2,26 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import {List, ListItem} from 'material-ui/List';
 import { sidebarToggle } from "../../actions/sidebar";
-import UserForumListItem from './UserForumListItem.jsx'
+import UserFriendsForumListItem from './UserFriendsForumListItem.jsx'
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import { fetchNewForum, fetchUserForums } from '../../actions/sidebar'
+import { fetchNewForum } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
-
-
 
 @connect(store => {
   return {
     sidebarToggle: store.sidebar.open,
-    sessionCookie: store.login.sessionCookie
   };
 })
-class UserForums extends React.Component {
+class UserFriendsForums extends React.Component {
   render() {
-    const newForumClick = (ev) => {
-      ev.preventDefault();
-      this.props.dispatch(fetchNewForum("newForum"))
-      this.props.history.push('/newforum')
-  }
     const onClick = evt => {
       evt.preventDefault();
       this.props.dispatch(sidebarToggle(!this.props.sidebarToggle));
@@ -29,18 +21,17 @@ class UserForums extends React.Component {
     return (
       <div>
         <ListItem
-          primaryText="Requests"
+          primaryText="Friends Requests"
           leftIcon={<ContentInbox />}
           initiallyOpen={true}
           primaryTogglesNestedList={true}
           nestedItems={[
-            <UserForumListItem/>
+            <UserFriendsForumListItem/>
           ]}>
         </ListItem>
-        <ListItem onClick={newForumClick} primaryText="New Request" />
       </div>
     );
   }
 }
 
-export default withRouter(UserForums)
+export default withRouter(UserFriendsForums)
