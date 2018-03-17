@@ -7,7 +7,6 @@ import { spotifyTrackData } from "../../actions/search";
 import { postSpotifyTrackData } from "../../actions/post";
 import queryString from "query-string";
 import { withRouter } from "react-router-dom";
-import { fetchSongInfo } from "../../actions/post";
 
 @connect(store => {
   return {
