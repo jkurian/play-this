@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import LoginForm from "./Login/LoginForm.jsx";
 import SignUpForm from "./SignUp/SignUpForm.jsx";
 import Paper from "material-ui/Paper";
+import {GridList, GridTile} from 'material-ui/GridList';
 
 const style = {
   height: "auto",
@@ -13,7 +14,9 @@ const style = {
   padding: 20,
   textAlign: "center",
   display: "inline-block",
-  float: "right"
+  position: "absolute",
+  zIndex: 100,
+  right: 0
 };
 
 const imgStyle = {
@@ -44,7 +47,14 @@ const imgStyle = {
 class LandingPage extends React.Component {
   render() {
     if (this.props.sessionCookie) this.props.history.push("/");
-    
+    const iconStyle = {
+      position: 'relative',
+      display: 'inline-block',
+      padding: 70,
+      width: '15em',
+      margin: '4.2em',
+    }
+
     return (
       <div>
         {this.props.showLoginForm ? (
@@ -57,18 +67,22 @@ class LandingPage extends React.Component {
             <SignUpForm />{" "}
           </Paper>
         ) : null}
-        <div style={{position: 'relative', height: '100%', width: '100%'}} >
-          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50, marginLeft: 100}} >
-          <img src="../../assets/images/headphones_landing.png"  style={{height: '15em', width: '15em'}}/>
+        <div style={{position: 'relative', height: '100%', width: '100%', marginTop: '6em'}} >
+          
+          <div style={{textAlign: 'center'}}>
+            <div style={iconStyle} >
+              <img src="../../assets/images/headphones_landing.png"  style={{height: 'auto', width: '100%'}}/>
+            </div>
+            <div style={iconStyle} >
+              <img src="../../assets/images/headphones_landing.png" style={{height: 'auto', width: '100%'}}/>
+            </div>
+            <div style={iconStyle} >
+              <img src="../../assets/images/headphones_landing.png" style={{height: 'auto', width: '100%'}}/>
+            </div>
           </div>
-          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50}}>
-          <img src="../../assets/images/headphones_landing.png" style={{height: '15em', width: '15em'}}/>
-          </div>
-          <div style={{position: 'relative', display: 'inline-block', float: 'left', padding: 50, marginRight: 100}}>
-          <img src="../../assets/images/headphones_landing.png" style={{height: '15em', width: '15em'}}/>
-          </div>
-          <img src='../../../assets/images/music-share.jpg' style={imgStyle} />
+
         </div>
+        <img src='../../../assets/images/music-share.jpg' style={imgStyle} />
       </div>
     );
   }
