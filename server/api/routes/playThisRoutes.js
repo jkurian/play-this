@@ -41,8 +41,10 @@ module.exports = function(app, dataHelpers) {
 
   app
     .route("/api/songs/:id/comments/")
-    .get((req, res) => songPostController.songComments(req, res, dataHelpers))
-    .post((req, res) => songPostController.postSongComment(req, res, dataHelpers));
+    .post((req, res) =>
+      songPostController.postSongComment(req, res, dataHelpers)
+    )
+    .get((req, res) => songPostController.songComments(req, res, dataHelpers));
 
   app
     .route("/api/songinfo/:forumid")
