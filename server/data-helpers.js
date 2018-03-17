@@ -82,24 +82,27 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     postSpotifySong: function(songInformation) {
-      return knex("songs").insert({
-        artist: songInformation.artist,
-        title: songInformation.title,
-        album: songInformation.album,
-        spotify_id: songInformation.spotify_id,
-        user_id: songInformation.user_id,
-        request_id: songInformation.request_id
-      });
+      return knex("songs")
+        .returning("id")
+        .insert({
+          artist: songInformation.artist,
+          title: songInformation.title,
+          album: songInformation.album,
+          spotify_id: songInformation.spotify_id,
+          user_id: songInformation.user_id,
+          request_id: songInformation.request_id
+        });
     },
     postSongComment: function(songInformation) {
-      return knex("comments").insert({
-        user_id: songInformation.userid,
-        song_id: songInformation.songid,
-        comment: songInformation.comment,
-      })
-      .then(result => {
-        console.log('POSTING COMMENT COMPLETE', result)
-      })
+      return knex("comments")
+        .insert({
+          user_id: songInformation.userid,
+          song_id: songInformation.songid,
+          comment: songInformation.comment
+        })
+        .then(result => {
+          console.log("POSTING COMMENT COMPLETE", result);
+        });
     },
     //This needs to be edited to bring down the object being sent to only send the required information
     //rather than the whole two tables. Same for getFriendsForums
@@ -122,6 +125,7 @@ module.exports = function makeDataHelpers(knex) {
         .orderBy("time_stamp", "desc")
         .where({ request_id: forumid })
         .then(results => {
+          console.log("SOMETHING");
           return results;
         })
         .catch(err => {

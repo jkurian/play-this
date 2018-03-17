@@ -10,6 +10,7 @@ exports.songComments = function(req, res, dataHelpers) {
 
 exports.songInfo = function(req, res, dataHelpers) {
   let err = false;
+  console.log("Song Post Result --> " + req.params);
   dataHelpers.getSongInfo(req.params.forumid).then(result => {
     res.json(result);
   });
@@ -18,12 +19,12 @@ exports.songInfo = function(req, res, dataHelpers) {
   if (err) res.status(501).send("failed");
 };
 exports.postSongComment = function(req, res, dataHelpers) {
-  console.log('POSTING SONG COMMENTS', req.body, req.params)
+  console.log("POSTING SONG COMMENTS", req.body, req.params);
   let songPost = {
     songid: req.params.id,
     userid: req.body.userid,
     comment: req.body.comment
-  }
+  };
   dataHelpers.postSongComment(songPost).then(result => {
     res.json(result);
   });
@@ -32,6 +33,7 @@ exports.postSongComment = function(req, res, dataHelpers) {
 exports.postSpotifySong = function(req, res, dataHelpers) {
   let err = false;
   dataHelpers.postSpotifySong(req.body).then(result => {
+    console.log(" ====>  " + JSON.stringify(result));
     res.json(result);
   });
 };
