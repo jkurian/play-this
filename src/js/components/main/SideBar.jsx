@@ -8,10 +8,12 @@ import ActionHome from 'material-ui/svg-icons/action/home';
 import {ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import HearingIcon from 'material-ui/svg-icons/av/hearing';
-import ForumIcon from 'material-ui/svg-icons/communication/forum';
+import PlusIcon from 'material-ui/svg-icons/content/add-circle-outline';
+import FriendsIcon from 'material-ui/svg-icons/social/people';
+import FriendForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
+import Badge from 'material-ui/Badge';
 
 import { fetchSettings, fetchNewForum } from '../../actions/sidebar'
 import { sidebarToggle, sidebarToggleClose } from '../../actions/sidebar'
@@ -44,6 +46,7 @@ const menuItemStyle = {
         settings: store.sidebar.settings,
         sessionCookie: store.login.sessionCookie,
         viewingRequest: store.forum.viewingRequest,
+        userFirstName: store.login.first_name
     };
 })
 class SideBar extends React.Component {
@@ -82,12 +85,14 @@ class SideBar extends React.Component {
         // })
         const allUserRequests = (userForumsArray) => {
             let allForums = []
+            let forumIcon = <img src="../../../assets/images/headphoneslogo.png" />
+            
             for (let i=0; i < userForumsArray.length; i++) {
                 if (i > 10) {
-                    allForums.push(<ListItem primaryText="See all your forums" />)
+
                     break;
                 }
-                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} leftIcon={<HearingIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
+                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} leftIcon={forumIcon} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
             }
             return allForums;
         }
@@ -95,10 +100,9 @@ class SideBar extends React.Component {
             let allForums = []
             for (let i=0; i < userForumsArray.length; i++) {
                 if (i > 10) {
-                    allForums.push(<ListItem primaryText="See all your friends' forums" />)
                     break;
                 }
-                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} rightIcon={<ForumIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
+                allForums.push(<ListItem id={userForumsArray[i].id} key={i} secondaryText={userForumsArray[i].title} rightIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, userForumsArray[i].id)}/>)
             }
             return allForums;
         }
@@ -106,32 +110,26 @@ class SideBar extends React.Component {
             evt.preventDefault();
             this.props.dispatch(sidebarToggle(!this.props.open))  
         }
+        const settingsIcon = <img src='../../../assets/images/settings_icon.png' />
         return (
             <div>
                 <Drawer open={this.props.sidebarToggle}> 
-                <div class="sidebarStyle"><style>{divStyle}</style>
-                <IconButton >
-                    <ActionHome onClick={onClick}/>
-                </IconButton>
-                Play This
-                </div> 
-                    <h4>Requests</h4>
+                    <h4 style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, backgroundColor: '#607d8b', paddingTop: 80, paddingRight: 20, paddingBottom: 25, paddingLeft: 20}}>{this.props.userFirstName}'s Forums</h4>
                     <MenuItem>
-                        <ListItem onClick={newForumClick} primaryText='New Request'/>
+                        <ListItem onClick={newForumClick} primaryText='Create New Forum' leftIcon={<PlusIcon />} style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900}}/>
                     </MenuItem>
                     <MenuItem>
                         {allUserRequests(this.props.userForums)}
                     </MenuItem>
-                    <Divider />
-                    <h4>Friends' Requests</h4>
+                    <h4 style={{fontFamily: 'Raleway, sans-serif', fontWeight: 900, backgroundColor: '#607d8b', paddingTop: 25, paddingRight: 20, paddingBottom: 25, paddingLeft: 20}}>{this.props.userFirstName}'s Friends' Forums</h4>
                     <MenuItem innerDivStyle={menuItemStyle}>
                         {allUserFriendRequests(this.props.userFriendsForums)}
                     </MenuItem>
                     <Divider />
                     <MenuItem>
-                        <ListItem onClick={friendsClick} primaryText='Friends'/>
+                        <ListItem onClick={friendsClick} primaryText='Friends' leftIcon={<FriendsIcon />} />
                         <Divider />
-                        <ListItem onClick={settingsClick} primaryText="Settings"/>
+                        <ListItem onClick={settingsClick} primaryText='Settings' leftIcon={settingsIcon} />
                     </MenuItem>
                 </Drawer>
             </div>
