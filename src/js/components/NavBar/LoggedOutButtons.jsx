@@ -28,8 +28,8 @@ class LoggedInButtons extends React.Component {
     };
     return (
       <div>
-        <RaisedButton label="Login" primary={true} onClick={onLoginClick} />
-        <RaisedButton label="Sign up" primary={true} onClick={onSignupClick} />
+        <RaisedButton label="Login" primary={true} onClick={onLoginClick} style={{marginRight: '1em'}} />
+        <RaisedButton label="Sign up" primary={true} onClick={onSignupClick} style={{marginRight: '1em'}} />
       </div>
     );
   }

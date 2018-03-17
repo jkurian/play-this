@@ -55,7 +55,7 @@ class Forum extends Component {
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
         <Search />
         <Post />
-        <Redirect to={newForumLink} />;
+        <Redirect to={newForumLink} />
       </div>
     );
   }

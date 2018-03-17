@@ -6,7 +6,7 @@ import AppBar from "material-ui/AppBar";
 import RaisedButton from "material-ui/RaisedButton";
 import SignUpForm from "../SignUp/SignUpForm.jsx";
 import LogoutButton from "./LogoutButton.jsx";
-import LoggedInButtons from "./LoggedInButtons.jsx";
+import LoggedOutButtons from "./LoggedOutButtons.jsx";
 import { sidebarToggle } from "../../actions/sidebar";
 
 @connect(store => {
@@ -20,7 +20,7 @@ class NavBar extends React.Component {
     let buttons = null;
     this.props.sessionCookie
       ? (buttons = <LogoutButton />)
-      : (buttons = <LoggedInButtons />);
+      : (buttons = <LoggedOutButtons />);
 
     const toggleSideBar = () => {
       this.props.dispatch(sidebarToggle(!this.props.open));
