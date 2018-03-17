@@ -13,6 +13,7 @@ export default function reducer(
  {
   switch(action.type) {
     case "[PROFILE]UPDATE_DISABLED_FIELD_STATE": {
+      console.log('action.payload in disabled fieldstate', action.payload)
       return {
         ...state,
         disabledFieldState: {

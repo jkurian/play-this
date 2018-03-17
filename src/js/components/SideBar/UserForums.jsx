@@ -8,7 +8,6 @@ import { fetchNewForum, fetchUserForums } from '../../actions/sidebar'
 import {withRouter} from 'react-router-dom'
 import PlusIcon from 'material-ui/svg-icons/content/add-circle-outline';
 
-
 @connect(store => {
   return {
     sidebarToggle: store.sidebar.open,

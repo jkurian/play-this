@@ -18,8 +18,6 @@ import TextField from "material-ui/TextField";
 export default class SongPost extends Component {
   render() {
     const commentEnter = (evt, songid) => {
-      console.log("PROPS ARE", this.props);
-
       this.props.dispatch(
         postSongComment(
           this.props.sessionCookie,
