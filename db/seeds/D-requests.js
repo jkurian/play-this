@@ -1,6 +1,6 @@
 const faker = require("faker");
 
-let createRecord = (knex) => {
+let createRecord = knex => {
   return knex("requests").insert({
     title: faker.lorem.words(),
     explanation: faker.lorem.sentence(),
@@ -16,7 +16,7 @@ exports.seed = (knex, Promise) => {
   return knex("requests").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 3000; i++) {
+    for (let i = 1; i <= 300; i++) {
       records.push(createRecord(knex));
     }
 

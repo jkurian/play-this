@@ -22,7 +22,7 @@ exports.seed = (knex, Promise) => {
   return knex("songs").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 25000; i++) {
+    for (let i = 1; i <= 1000; i++) {
       records.push(createRecord(knex));
     }
 

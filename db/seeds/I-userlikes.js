@@ -1,6 +1,6 @@
 const faker = require("faker");
 
-let createRecord = (knex) => {
+let createRecord = knex => {
   return knex("userlikes").insert({
     user_id: faker.random.number({
       min: 1,
@@ -17,7 +17,7 @@ exports.seed = (knex, Promise) => {
   return knex("userlikes").then(() => {
     let records = [];
 
-    for (let i = 1; i <= 10000; i++) {
+    for (let i = 1; i <= 1000; i++) {
       records.push(createRecord(knex));
     }
 
