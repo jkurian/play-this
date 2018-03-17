@@ -5,8 +5,12 @@ import ReactDOM from "react-dom";
 import AutoComplete from 'material-ui/AutoComplete'
 
 import SideBar from "./SideBar.jsx";
+import Friend from "./Friend.jsx";
+import FriendForums from "./FriendForums.jsx";
+
 import { sidebarToggleClose, fetchFriends } from "../../actions/sidebar";
-import { addFriend } from '../../actions/users'
+import { addFriend } from '../../actions/users';
+
 import { connect } from "react-redux";
 
 @connect(store => {
@@ -63,7 +67,8 @@ class Friends extends Component {
                 onNewRequest={onClick}
                 style={{marginTop: 80, paddingLeft: 20, paddingRight: 20}}
         />
-        {friendProfiles}
+        <Friend />
+        <FriendForums />
       </div>
     );
   }
