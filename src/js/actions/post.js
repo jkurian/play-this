@@ -27,7 +27,6 @@ export function fetchSongInfo(forumID) {
     axios
       .get(`http://localhost:3000/api/songinfo/${forumID}`)
       .then(response => {
-        console.log("IS ANYTHING HAPPENING?");
         console.log("Song Info from axios", response.data);
 
         dispatch({
@@ -44,6 +43,7 @@ export function fetchSongInfo(forumID) {
 export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
   return function(dispatch) {
     let songInformation = {
+      id: "",
       artist: incomingSpotifyTrack.artists[0].name,
       title: incomingSpotifyTrack.name,
       album: incomingSpotifyTrack.album.name,

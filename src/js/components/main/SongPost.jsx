@@ -40,6 +40,7 @@ export default class SongPost extends Component {
       );
       this.setState( { commentText: '' })
     };
+
     const songs = this.props.songInfo
       ? this.props.songInfo.map(song => {
           let nameOfPoster = !song.first_name
@@ -87,6 +88,7 @@ export default class SongPost extends Component {
                 />
                 <Subheader>Comments</Subheader>
                 <Comment songId={song.id} />
+                <p>{song.id}</p>
               </div>
             </div>
           );

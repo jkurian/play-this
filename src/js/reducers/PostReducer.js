@@ -17,12 +17,15 @@ export default function reducer(
       };
     }
     case "[SONG]POST_COMMENTS_FULFILLED": {
-      console.log('ACTION PAYLOAD IN POST COMMENTS FULFILLED,', action.payload);
+      console.log("ACTION PAYLOAD IN POST COMMENTS FULFILLED,", action.payload);
       return {
         ...state,
         songComments: {
-          ...state.songComments, 
-          [action.payload.songid]: [action.payload, ...state.songComments[action.payload.songid]],
+          ...state.songComments,
+          [action.payload.songid]: [
+            action.payload,
+            ...state.songComments[action.payload.songid]
+          ]
         }
       };
     }
@@ -56,6 +59,7 @@ export default function reducer(
       };
     }
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
+      console.log(action.payload);
       return {
         ...state,
         songInfo: [action.payload, ...state.songInfo]
