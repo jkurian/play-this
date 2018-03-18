@@ -15,7 +15,7 @@ exports.up = (knex, Promise) => {
       table.increments("id");
       table.string("title");
       table.string("explanation", 500);
-      table.timestamp("time_stamp").defaultTo(knex.fn.now());
+      table.timestamp("request_time_stamp").defaultTo(knex.fn.now());
       table.integer("user_admin_id").unsigned();
       table.foreign("user_admin_id").references("users.id");
     }),
@@ -27,7 +27,7 @@ exports.up = (knex, Promise) => {
       table.string("title");
       table.string("album");
       table.string("spotify_id");
-      table.timestamp("time_stamp").defaultTo(knex.fn.now());
+      table.timestamp("song_time_stamp").defaultTo(knex.fn.now());
       table.integer("request_id").unsigned();
       table.foreign("request_id").references("requests.id");
       table.integer("user_id").unsigned();

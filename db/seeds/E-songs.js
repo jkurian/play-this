@@ -6,7 +6,7 @@ let createRecord = (knex, id) => {
     title: faker.commerce.productName(),
     album: faker.commerce.productName(),
     spotify_id: "7GhIk7Il098yCjg4BQjzvb",
-    time_stamp: faker.date.between("2017-07-31", "2018-03-09"),
+    song_time_stamp: faker.date.between("2017-07-31", "2018-03-09"),
     request_id: faker.random.number({
       min: 1,
       max: 300

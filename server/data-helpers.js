@@ -122,7 +122,8 @@ module.exports = function makeDataHelpers(knex) {
     getSongInfo: function(forumid) {
       console.log("the songs forumid is", forumid);
       return knex("songs")
-        .orderBy("time_stamp", "desc")
+        .orderBy("song_time_stamp", "desc")
+        .leftJoin("users", "users.id", "songs.user_id")
         .where({ request_id: forumid })
         .then(results => {
           console.log("SOMETHING");

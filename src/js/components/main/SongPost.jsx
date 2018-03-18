@@ -5,6 +5,7 @@ import Comment from "./Comment.jsx";
 import { postSongComment } from "../../actions/post";
 import Subheader from "material-ui/Subheader";
 import TextField from "material-ui/TextField";
+import Moment from "react-moment";
 
 @connect(store => {
   return {
@@ -29,14 +30,13 @@ export default class SongPost extends Component {
         )
       );
     };
+
+    // let findUser =
     const songs = this.props.songInfo
       ? this.props.songInfo.map(song => {
           return (
             <div>
               <div>
-                <span>
-                  {song.title} by {song.artist} from {song.album}
-                </span>
                 <div>
                   <iframe
                     src={
@@ -50,10 +50,15 @@ export default class SongPost extends Component {
                     allow="encrypted-media"
                   />
                 </div>
+                <span>
+                  Posted by {song.first_name}{" "}
+                  <Moment fromNow ago>
+                    {song.song_time_stamp}
+                  </Moment>{" "}
+                  ago
+                </span>
               </div>
               <div>
-                <Subheader>Comments</Subheader>
-                <Comment songId={song.id} />
                 <TextField
                   hintText="What did you think?"
                   floatingLabelText="Comment"
@@ -66,6 +71,8 @@ export default class SongPost extends Component {
                     }
                   }}
                 />
+                <Subheader>Comments</Subheader>
+                <Comment songId={song.id} />
               </div>
             </div>
           );
