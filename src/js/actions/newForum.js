@@ -12,7 +12,6 @@ export function addForum(title, description, id) {
     axios
       .post("http://localhost:3000/api/forum/", newForumDetails)
       .then(responseOne => {
-        console.log("response from axios for FORUM POST", responseOne.data);
         dispatch({ type: "ADD_FORUM_FULFILLED", payload: responseOne.data });
         axios
           .get(`http://localhost:3000/api/userforums/${id}`)

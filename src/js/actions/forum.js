@@ -1,7 +1,7 @@
 import axios from 'axios'
 export function getRequest(forum_id) {
   return function(dispatch) {
-    dispatch({type: '[FORUM]VIEW_FORUM_PENDING'})
+    dispatch({type: '[FORUM]VIEW_FORUM_PENDING', payload:forum_id})
     axios.get(`http://localhost:3000/api/forum/${forum_id}`)
       .then((response) => {
         // console.log('response from axios',response.data);

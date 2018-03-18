@@ -41,16 +41,16 @@ const styles = {
 class Forum extends Component {
   componentWillMount() {
     this.setState({ redirectToNewPage: false });
-    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
+    // this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   componentWillUpdate() {
-    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
     this.props.dispatch(sidebarToggleClose());
   }
   componentDidUpdate() {
     if (!this.props.sessionCookie) {
       this.props.history.push("/login");
     }
+    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
     let deleteButton = null;
