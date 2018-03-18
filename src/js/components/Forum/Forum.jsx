@@ -5,7 +5,7 @@ import { withRouter, Redirect } from "react-router-dom";
 
 import SideBar from "../SideBar/SideBar.jsx";
 import Search from "./Search.jsx";
-import Post from "./Post.jsx";
+import SongPost from "./SongPost.jsx";
 
 import { getRequest } from "../../actions/forum";
 import { deleteForum } from "../../actions/forum";
@@ -87,7 +87,9 @@ class Forum extends Component {
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
         <Search />
-        <Post />
+        <div class="postedBox">
+        <SongPost />
+        </div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from 'material-ui/TextField'
 import { connect } from "react-redux";
-import Comment from "../main/Comment.jsx";
+import Comment from "./SongComment.jsx";
 import Subheader from "material-ui/Subheader";
 import Moment from "react-moment";
 
@@ -27,7 +27,7 @@ export default class CommentTextField extends React.Component {
         />
       </div>
       <span>
-        Posted by {this.render.nameOfPoster}{" "}
+        Posted by {this.props.nameOfPoster}{" "}
         <Moment fromNow ago>
           {this.props.song.song_time_stamp}
         </Moment>{" "}

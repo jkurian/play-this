@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom"
 import Subheader from "material-ui/Subheader";
-import TextField from "material-ui/TextField";
-import Moment from "react-moment";
 import CommentTextField from './CommentTextField.jsx'
 import SongCommentList from './SongCommentList.jsx'
 import SongWidget from './SongWidget.jsx'
@@ -12,12 +10,17 @@ import SongWidget from './SongWidget.jsx'
   return {
     songInfo: store.post.songInfo,
     sessionCookie: store.login.sessionCookie,
-    avatar_url: store.login.avatar_url,
     first_name: store.login.first_name,
-    last_name: store.login.last_name
+    viewingRequest: store.forum.viewingRequest,
   };
 })
-export default class SongPost extends Component {
+class SongPost extends Component {
+  componentDidUpdate() {
+    if(!this.props.sessionCookie) {
+      this.props.history.push('/')
+    }
+    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
+  }
   render() {
     const songs = this.props.songInfo
       ? this.props.songInfo.map(song => {
@@ -26,17 +29,19 @@ export default class SongPost extends Component {
             : song.first_name;
           return (
             <div>
-              <div>
                 <SongWidget song={song} nameOfPoster={nameOfPoster}/>
               <div>
                 <CommentTextField songID={song.id}/>
                 <SongCommentList songID={song.id} />
               </div>
             </div>
-            </div>
           );
         })
       : undefined;
-    return <div>{songs}</div>;
+      return (
+      <div>
+        {songs}
+      </div>);
   }
 }
+export default withRouter(SongPost)
