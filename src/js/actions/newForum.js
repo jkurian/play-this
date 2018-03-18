@@ -11,17 +11,19 @@ export function addForum(title, description, id) {
     };
     axios
       .post("http://localhost:3000/api/forum/", newForumDetails)
-      .then(response => {
-        console.log("response from axios for FORUM POST", response.data);
-
+      .then(responseOne => {
+        console.log("response from axios for FORUM POST", responseOne.data);
         axios
           .get(`http://localhost:3000/api/userforums/${id}`)
-          .then(response => {
-            console.log("response from axios", response.data);
-
+          .then(responseTwo => {
+            console.log("response from axios after getting userforums", responseTwo.data);
             dispatch({
               type: "FETCH_USER_FORUMS_FULFILLED",
-              payload: response.data
+              payload: responseTwo.data
+            });
+            dispatch({
+              type: "[FORUM]VIEW_FORUM_FULFILLED",
+              payload: responseTwo.data[0]
             });
           })
           .catch(err => {

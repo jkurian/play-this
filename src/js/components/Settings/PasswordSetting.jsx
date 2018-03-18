@@ -18,6 +18,7 @@ export default class registerEmailField extends React.Component {
               disabled={this.props.disabledPasswordFieldState}
               defaultValue={this.props.passwordSettings}
               name="password"
+              type="password"
             />
         <EditFieldButton fieldToChange='password' fieldToChangeValue={!this.props.disabledPasswordFieldState} />  
       </div>
