@@ -17,7 +17,8 @@ class UserFriendsForumButton extends React.Component {
     const onClickRequest = (ev, id) => {
       ev.preventDefault();
       this.props.dispatch(getRequest(id));
-      this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
+      console.log('THE FRIEND CLICK VIEWING REQUEST');
+      this.props.history.push(`/forum/${id}`)
   }
       let allFriendsForums = []
       for (let i=0; i < this.props.userFriendsForums.length; i++) {

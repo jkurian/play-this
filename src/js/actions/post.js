@@ -27,9 +27,6 @@ export function fetchSongInfo(forumID) {
     axios
       .get(`http://localhost:3000/api/songinfo/${forumID}`)
       .then(response => {
-        console.log("IS ANYTHING HAPPENING?");
-        console.log("Song Info from axios", response.data);
-
         dispatch({
           type: "FETCH_SONG_INFO_FULFILLED",
           payload: response.data

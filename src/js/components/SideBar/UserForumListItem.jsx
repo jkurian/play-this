@@ -16,6 +16,8 @@ class UserForumListItem extends React.Component {
     const onClickRequest = (ev, id) => {
       ev.preventDefault();
       this.props.dispatch(getRequest(id));
+      console.log('THE ID OF REDIRECT IS', id);
+      
       this.props.history.push(`/forum/${id}`)
   }
       let allForums = []

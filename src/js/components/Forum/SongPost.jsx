@@ -5,7 +5,6 @@ import Subheader from "material-ui/Subheader";
 import CommentTextField from './CommentTextField.jsx'
 import SongCommentList from './SongCommentList.jsx'
 import SongWidget from './SongWidget.jsx'
-import { fetchSongInfo } from "../../actions/post";
 
 @connect(store => {
   return {

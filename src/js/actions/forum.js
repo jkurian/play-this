@@ -2,8 +2,10 @@ import axios from 'axios'
 export function getRequest(forum_id) {
   return function(dispatch) {
     dispatch({type: '[FORUM]VIEW_FORUM_PENDING', payload:forum_id})
+    console.log("AFTER PENDING DISPATCH")
     axios.get(`http://localhost:3000/api/forum/${forum_id}`)
       .then((response) => {
+        console.log("AXIOS GET COMPLETE")
         // console.log('response from axios',response.data);
         //  SET COOKIE
         // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})

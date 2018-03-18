@@ -8,7 +8,6 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
-import { fetchSongComments } from "../../actions/post";
 import * as _ from "lodash";
 import Moment from "react-moment";
 
