@@ -24,8 +24,10 @@ module.exports = function(app, dataHelpers) {
 
   app
     .route("/api/forum/:id")
-    .get((req, res) => forumController.getForumRequest(req, res, dataHelpers));
-  app
+    .get((req, res) => forumController.getForumRequest(req, res, dataHelpers))
+    .delete((req, res) => forumController.deleteForumRequests(req, res, dataHelpers));
+  
+    app
     .route("/api/settings/:id")
     .get((req, res) => sidebarController.settings(req, res, dataHelpers));
   app

@@ -17,7 +17,16 @@ import Moment from "react-moment";
   };
 })
 export default class SongPost extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      commentText: ''
+    }
+  }
   render() {
+    const onChange = (evt) => {
+      this.setState( { commentText: evt.target.value })
+    }
     const commentEnter = (evt, songid) => {
       this.props.dispatch(
         postSongComment(
@@ -29,6 +38,7 @@ export default class SongPost extends Component {
           this.props.last_name
         )
       );
+      this.setState( { commentText: '' })
     };
 
     const songs = this.props.songInfo
@@ -66,6 +76,8 @@ export default class SongPost extends Component {
                   hintText="What did you think?"
                   floatingLabelText="Comment"
                   fullwidth="true"
+                  onChange={onChange}
+                  value={this.state.commentText}
                   onKeyPress={evt => {
                     if (evt.key === "Enter") {
                       {

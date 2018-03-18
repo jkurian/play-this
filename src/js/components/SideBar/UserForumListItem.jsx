@@ -21,9 +21,7 @@ class UserForumListItem extends React.Component {
       let allForums = []
       let forumIcon = <img src="../../../assets/images/headphoneslogo.png" />
       for (let i=0; i < this.props.userForums.length; i++) {
-            
-        for (let i=0; i < this.props.userForums.length; i++) {
-          allForums.push(<ListItem id={this.props.userForums[i].id} key={i} secondaryText={this.props.userForums[i].title} leftIcon={forumIcon} onClick={(ev) => onClickRequest(ev, this.props.userForums[i].id)}/>)
+        allForums.push(<ListItem id={this.props.userForums[i].id} key={i} secondaryText={this.props.userForums[i].title} leftIcon={forumIcon} onClick={(ev) => onClickRequest(ev, this.props.userForums[i].id)}/>)
       }
     return (
       <div>
@@ -31,6 +29,5 @@ class UserForumListItem extends React.Component {
       </div>
     )
   }
-}
 }
 export default withRouter(UserForumListItem)
