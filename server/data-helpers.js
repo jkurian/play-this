@@ -14,6 +14,7 @@ module.exports = function makeDataHelpers(knex) {
     },
     getFriendsForums: function(currentUserID) {
       return knex("userfriends")
+        .orderBy("request_time_stamp", "desc")
         .rightJoin("requests", "user_id2", "user_admin_id")
         .where({ user_id1: currentUserID })
         .then(results => {
@@ -91,6 +92,13 @@ module.exports = function makeDataHelpers(knex) {
           spotify_id: songInformation.spotify_id,
           user_id: songInformation.user_id,
           request_id: songInformation.request_id
+        })
+        .then(results => {
+          console.log(results);
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
         });
     },
     postSongComment: function(songInformation) {
@@ -122,7 +130,6 @@ module.exports = function makeDataHelpers(knex) {
         .leftJoin("songs", "comments.song_id", "songs.id")
         .where({ song_id: songid })
         .then(results => {
-          console.log(results);
           return results;
         })
         .catch(err => {

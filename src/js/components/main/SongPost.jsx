@@ -37,7 +37,6 @@ export default class SongPost extends Component {
             ? this.props.first_name
             : song.first_name;
 
-          console.log(song);
           return (
             <div>
               <div>
