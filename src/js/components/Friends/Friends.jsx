@@ -66,7 +66,7 @@ class Friends extends Component {
     }
     const pStyle = {
       fontFamily: 'Raleway, sans-serif',
-      width: '25em',
+      width: '29em',
     }
     return (
       <div>
