@@ -10,6 +10,8 @@ import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
 import { fetchSongComments } from "../../actions/post";
 import * as _ from "lodash";
+import { timeDifference } from "../../../assets/scripts/timeStamp.js";
+import Moment from "react-moment";
 
 @connect((store, props) => {
   return {
@@ -25,12 +27,27 @@ export default class Comment extends Component {
   render() {
     const comments = this.props.songComments
       ? this.props.songComments.map(comment => {
+          // console.log("====> " + comment.comment_time_stamp);
+          // let postDate = moment(comment.comment_time_stamp);
+          // let timeStamp = timeDifference(Date.now(), postDate);
+
           return (
             <div>
               <ListItem
                 leftAvatar={<Avatar src={comment.avatar_image} />}
                 primaryText={comment.first_name}
-                secondaryText={<p>{comment.comment}</p>}
+                secondaryText={
+                  <p>
+                    <span style={{ color: darkBlack }}>
+                      <Moment fromNow ago>
+                        {comment.comment_time_stamp}
+                      </Moment>{" "}
+                      ago
+                    </span>
+                    <br />
+                    {comment.comment}
+                  </p>
+                }
                 secondaryTextLines={2}
                 key={comment.id}
               />

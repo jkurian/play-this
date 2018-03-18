@@ -38,7 +38,7 @@ exports.up = (knex, Promise) => {
     knex.schema.createTable("comments", table => {
       table.increments("id");
       table.string("comment", 500);
-      table.timestamp("time_stamp").defaultTo(knex.fn.now());
+      table.timestamp("comment_time_stamp").defaultTo(knex.fn.now());
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();

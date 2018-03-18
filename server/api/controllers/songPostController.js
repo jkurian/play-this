@@ -10,7 +10,6 @@ exports.songComments = function(req, res, dataHelpers) {
 
 exports.songInfo = function(req, res, dataHelpers) {
   let err = false;
-  console.log("Song Post Result --> " + req.params);
   dataHelpers.getSongInfo(req.params.forumid).then(result => {
     res.json(result);
   });
@@ -33,7 +32,6 @@ exports.postSongComment = function(req, res, dataHelpers) {
 exports.postSpotifySong = function(req, res, dataHelpers) {
   let err = false;
   dataHelpers.postSpotifySong(req.body).then(result => {
-    console.log(" ====>  " + JSON.stringify(result));
     res.json(result);
   });
 };
