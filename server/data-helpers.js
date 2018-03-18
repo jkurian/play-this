@@ -188,7 +188,6 @@ module.exports = function makeDataHelpers(knex) {
         .insert({
           title: newForumDetails.title,
           explanation: newForumDetails.explanation,
-          time_stamp: new Date(),
           user_admin_id: newForumDetails.user_admin_id
         })
         .then(results => {
