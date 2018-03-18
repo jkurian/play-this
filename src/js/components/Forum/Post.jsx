@@ -18,7 +18,7 @@ export default class Post extends Component {
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
-    
+
     return (
       <div class="postedBox">
         <div>

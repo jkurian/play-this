@@ -11,8 +11,7 @@ import NewForum from "./main/NewForum.jsx";
 import Friends from "./Friends/Friends.jsx";
 import Query from "query-string";
 import Spotify from "./Spotify.jsx";
-import Search from "./main/Search.jsx";
-import Forum from "./main/Forum.jsx";
+import Forum from "./Forum/Forum.jsx";
 //example import action
 //import { fetchUser } from '../actions/userActions'
 
