@@ -197,6 +197,13 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    deleteForumRequest: function(forum_id) {
+      return knex("requests").where('id', forum_id)
+        .del()
+        .catch(err => {
+          console.log(err);
+        });
+    },
     updateProfile: function(updatedProfile, user_id) {
       console.log("UPDATING PROFILE IN DATA HELPERS");
       return knex("users")

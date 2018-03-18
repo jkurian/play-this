@@ -16,3 +16,15 @@ export function getRequest(forum_id) {
       })
   }
 }
+export function deleteForum(forum_id) {
+  return function(dispatch) {
+    dispatch({type: '[FORUM]DELETE_FORUM_PENDING', payload: {forum_id: forum_id}})
+    axios.delete(`http://localhost:3000/api/forum/${forum_id}`, {params: {forum_id: forum_id}})
+      .then((response) => {
+        dispatch({type: "[FORUM]DELETE_FORUM_FULFILLED", payload: response.data})
+      })
+      .catch((err) => {
+          dispatch({type: "[FORUM]DELETE_FORUM_REJECTED", payload: err})
+      })
+    }
+}

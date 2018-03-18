@@ -7,6 +7,17 @@ exports.getForumRequest = function(req, res, dataHelpers) {
       console.log('RESULT IN GET FORUM CONTROLLER ---->', result)
       res.json(result);
   })
-
-  if (err) res.status(501).send('failed');
+}
+exports.deleteForumRequests = function(req, res, dataHelpers) {
+  console.log('DELETING FORUM REQUEST', req.params)
+  // let err = false;
+  // dataHelpers.getForumRequest(req.params.id)
+  // .then(result => {
+  //     console.log('RESULT IN GET FORUM CONTROLLER ---->', result)
+  //     res.json(result);
+  // })
+  dataHelpers.deleteForumRequest(req.params.id)
+    .then(() => {
+      res.json({forum_id: req.params.id})
+    })
 }

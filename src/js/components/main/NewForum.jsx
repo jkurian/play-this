@@ -24,6 +24,7 @@ class NewForum extends Component {
     if (!this.props.sessionCookie) {
       this.props.history.push("/login");
     }
+    this.props.history.push(`/forum/${this.props.viewingRequestID + 1}`);
   }
   render() {
     const submitForm = evt => {
@@ -35,7 +36,6 @@ class NewForum extends Component {
           this.props.sessionCookie
         )
       );
-      this.props.history.push(`/forum/${this.props.viewingRequestID + 1}`);
     };
 
     const formStyle = {

@@ -8,7 +8,28 @@ import Search from "./Search.jsx";
 import Post from "./Post.jsx";
 
 import { getRequest } from "../../actions/forum";
+import { deleteForum } from "../../actions/forum";
 import { sidebarToggleClose } from "../../actions/sidebar";
+import RaisedButton from 'material-ui/RaisedButton';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
+
+const styles = {
+  button: {
+    marginTop: 80,
+    marginLeft: 20
+  },
+  exampleImageInput: {
+    cursor: 'pointer',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    width: '100%',
+    opacity: 0,
+  },
+};
 
 @connect(store => {
   return {
@@ -43,16 +64,26 @@ class Forum extends Component {
       fontWeight: 200,
       textAlign: "center"
     };
-    let newForumLink = `/forum/${this.props.newForumLink}`;
+    const onClick = (evt) => {
+      this.props.history.push('/welcome')
+      this.props.dispatch(deleteForum(this.props.viewingRequest.id))
+    }
     return (
       <div>
         <SideBar />
+        <RaisedButton
+          target="_blank"
+          label="Delete Forum"
+          secondary={true}
+          style={styles.button}
+          icon={<CloseIcon />}
+          onClick={onClick}
+        />
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
         <Search />
         <Post />
-        <Redirect to={newForumLink} />
       </div>
     );
   }

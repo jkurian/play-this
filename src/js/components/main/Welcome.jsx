@@ -12,7 +12,8 @@ import { getAllUsers } from "../../actions/login";
 
 @connect(store => {
   return {
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
+    deletingForum: store.forum.lastDeletedForum
   };
 })
 class Welcome extends Component {
@@ -25,6 +26,9 @@ class Welcome extends Component {
     //cheap hack that should be changed. Make a new dispatch called getFirstRequest which gets the
     //users first request instead of just 1.
     // this.props.dispatch(getRequest(1));
+  }
+  componentWillUpdate() {
+    this.props.dispatch(fetchUserForums(this.props.sessionCookie))
   }
   componentDidUpdate() {
     if (!this.props.sessionCookie) {

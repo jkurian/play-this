@@ -29,7 +29,7 @@ exports.up = (knex, Promise) => {
       table.string("spotify_id");
       table.timestamp("song_time_stamp").defaultTo(knex.fn.now());
       table.integer("request_id").unsigned();
-      table.foreign("request_id").references("requests.id");
+      table.foreign("request_id").references("requests.id").onDelete('CASCADE');
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
     }),
@@ -42,7 +42,7 @@ exports.up = (knex, Promise) => {
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
-      table.foreign("song_id").references("songs.id");
+      table.foreign("song_id").references("songs.id").onDelete('CASCADE');
     }),
 
     // User_song table
@@ -50,7 +50,7 @@ exports.up = (knex, Promise) => {
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
-      table.foreign("song_id").references("songs.id");
+      table.foreign("song_id").references("songs.id").onDelete('CASCADE');
     }),
 
     // User likes table
@@ -58,7 +58,7 @@ exports.up = (knex, Promise) => {
       table.integer("user_id").unsigned();
       table.foreign("user_id").references("users.id");
       table.integer("song_id").unsigned();
-      table.foreign("song_id").references("songs.id");
+      table.foreign("song_id").references("songs.id").onDelete('CASCADE');
     }),
 
     // User Friends tableName
