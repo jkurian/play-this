@@ -35,7 +35,7 @@ export default class FriendItem extends React.Component {
     return (
       <AutoComplete
       floatingLabelText="Type name or email"
-      filter={AutoComplete.fuzzyFilter}
+      filter={AutoComplete.caseInsensitiveFilter}
       dataSource={dataSource}
       dataSourceConfig={{ text: "identity", value: "id" }}
       searchText={this.state.searchText}
@@ -43,7 +43,8 @@ export default class FriendItem extends React.Component {
       maxSearchResults={5}
       fullWidth={true}
       onNewRequest={onClick}
-      style={{ marginTop: 80, paddingLeft: 20, paddingRight: 20 }}
+      textFieldStyle={{fontFamily: 'Raleway, sans-serif' }}
+      style={{ marginTop: 5, paddingLeft: 20, paddingRight: 20, width: '35em'}}
     />
     )
   }

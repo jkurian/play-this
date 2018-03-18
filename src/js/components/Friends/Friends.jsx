@@ -19,10 +19,15 @@ const styles = {
     flexWrap: "wrap",
     justifyContent: "space-around",
   },
+  //the entire container of tiles
   gridList: {
-    overflowX: 'auto',
-    display: 'flex',
-    flexWrap: 'nowrap',
+    width: '100%',
+    height: '100%',
+    overflowY: 'auto',
+    marginTop: '1em',
+    marginLeft: '6em',
+    marginRight: '6em',
+    marginBottom: '6em',
   }
 };
 
@@ -46,19 +51,35 @@ class Friends extends Component {
     const friendProfiles = this.props.friends.map((friendObj, i) => {
       return (
         <FriendItem
-          key={i}
-          avatar_image={friendObj.avatar_image}
-          first_name={friendObj.first_name}
-          last_name={friendObj.last_name}
+        key={i}
+        avatar_image={friendObj.avatar_image}
+        first_name={friendObj.first_name}
+        last_name={friendObj.last_name}
         />
       );
     });
+    const titleStyle = {
+      paddingLeft: 20,
+      marginTop: '4em',
+      fontFamily: 'Raleway, sans-serif', 
+      fontWeight: 900
+    }
+    const pStyle = {
+      fontFamily: 'Raleway, sans-serif',
+      width: '25em',
+    }
     return (
       <div>
         <SideBar />
-        <FriendSearchBar />
+        <div style={{marginLeft: '8em', marginTop: '2em'}}>
+          <div style={{display: 'inline-block'}}><p style={pStyle}><font size="5">Each of your friends desperately need your authoritative opinion. All of their forums are available for you to add comments or song recommendations.</font></p></div>
+          <div style={{ display: 'inline-block', right: 0, marginLeft: '5em', marginRight: '7em'}}>
+            <h2 style={titleStyle}>Add Friend</h2>
+              <FriendSearchBar />
+          </div>
+        </div>
         <div style={styles.root}>
-        <GridList cellHeight={180} style={styles.gridList}>
+        <GridList padding='60' cols='4' cellHeight={180} style={styles.gridList}>
           {friendProfiles}
         </GridList>
         </div>
