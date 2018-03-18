@@ -10,7 +10,6 @@ import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
 import { fetchSongComments } from "../../actions/post";
 import * as _ from "lodash";
-import { timeDifference } from "../../../assets/scripts/timeStamp.js";
 import Moment from "react-moment";
 
 @connect((store, props) => {
