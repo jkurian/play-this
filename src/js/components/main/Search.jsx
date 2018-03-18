@@ -73,7 +73,7 @@ class Search extends Component {
       <div>
         <AutoComplete
           floatingLabelText="Search for your recommendation:"
-          filter={AutoComplete.fuzzyFilter}
+          filter={AutoComplete.caseInsensitiveFilter}
           dataSource={listArr}
           maxSearchResults={10}
           onUpdateInput={onChange}
