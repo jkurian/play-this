@@ -27,10 +27,6 @@ export default class Comment extends Component {
   render() {
     const comments = this.props.songComments
       ? this.props.songComments.map(comment => {
-          // console.log("====> " + comment.comment_time_stamp);
-          // let postDate = moment(comment.comment_time_stamp);
-          // let timeStamp = timeDifference(Date.now(), postDate);
-
           return (
             <div>
               <ListItem
