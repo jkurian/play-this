@@ -13,6 +13,7 @@ import { sidebarToggleClose } from "../../actions/sidebar";
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
+import { fetchSongInfo } from "../../actions/post";
 
 const styles = {
   button: {
@@ -40,8 +41,10 @@ const styles = {
 class Forum extends Component {
   componentWillMount() {
     this.setState({ redirectToNewPage: false });
+    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   componentWillUpdate() {
+    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
     this.props.dispatch(sidebarToggleClose());
   }
   componentDidUpdate() {

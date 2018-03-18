@@ -5,6 +5,7 @@ import Subheader from "material-ui/Subheader";
 import CommentTextField from './CommentTextField.jsx'
 import SongCommentList from './SongCommentList.jsx'
 import SongWidget from './SongWidget.jsx'
+import { fetchSongInfo } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -19,7 +20,6 @@ class SongPost extends Component {
     if(!this.props.sessionCookie) {
       this.props.history.push('/')
     }
-    this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
     const songs = this.props.songInfo
