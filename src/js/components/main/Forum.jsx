@@ -35,7 +35,6 @@ const styles = {
   return {
     viewingRequest: store.forum.viewingRequest,
     sessionCookie: store.login.sessionCookie,
-    newForumLink: store.sidebar.userForums[0].id
   };
 })
 class Forum extends Component {
@@ -51,6 +50,7 @@ class Forum extends Component {
     }
   }
   render() {
+    let deleteButton = null;
     const titleStyle = {
       fontFamily: "Raleway, sans-serif",
       marginTop: 100,
@@ -68,17 +68,21 @@ class Forum extends Component {
       this.props.history.push('/welcome')
       this.props.dispatch(deleteForum(this.props.viewingRequest.id))
     }
+    if(this.props.viewingRequest.user_admin_id === this.props.sessionCookie) {
+      deleteButton = ( 
+      <RaisedButton
+        target="_blank"
+        label="Delete Forum"
+        secondary={true}
+        style={styles.button}
+        icon={<CloseIcon />}
+        onClick={onClick}
+      />)
+    }
     return (
       <div>
         <SideBar />
-        <RaisedButton
-          target="_blank"
-          label="Delete Forum"
-          secondary={true}
-          style={styles.button}
-          icon={<CloseIcon />}
-          onClick={onClick}
-        />
+        {deleteButton}
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>

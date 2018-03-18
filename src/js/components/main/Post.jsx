@@ -18,15 +18,16 @@ export default class Post extends Component {
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
+    
     return (
       <div class="postedBox">
         <div>
           <SongPost />
         </div>
         <span>
-          <FloatingActionButton>
+          {/* <FloatingActionButton>
             <span>Like!</span>
-          </FloatingActionButton>
+          </FloatingActionButton> */}
         </span>
         <div>
           <br />

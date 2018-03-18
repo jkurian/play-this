@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import Comment from "./Comment.jsx";
-import { postSongComment } from "../../actions/post";
 import Subheader from "material-ui/Subheader";
 import TextField from "material-ui/TextField";
 import Moment from "react-moment";
+import CommentTextField from '../Forum/CommentTextField.jsx'
+import SongComments from '../Forum/SongComments.jsx'
 
 @connect(store => {
   return {
@@ -24,22 +25,6 @@ export default class SongPost extends Component {
     }
   }
   render() {
-    const onChange = (evt) => {
-      this.setState( { commentText: evt.target.value })
-    }
-    const commentEnter = (evt, songid) => {
-      this.props.dispatch(
-        postSongComment(
-          this.props.sessionCookie,
-          songid,
-          evt.target.value,
-          this.props.avatar_url,
-          this.props.first_name,
-          this.props.last_name
-        )
-      );
-      this.setState( { commentText: '' })
-    };
     const songs = this.props.songInfo
       ? this.props.songInfo.map(song => {
           let nameOfPoster = !song.first_name
@@ -71,22 +56,8 @@ export default class SongPost extends Component {
                 </span>
               </div>
               <div>
-                <TextField
-                  hintText="What did you think?"
-                  floatingLabelText="Comment"
-                  fullwidth="true"
-                  onChange={onChange}
-                  value={this.state.commentText}
-                  onKeyPress={evt => {
-                    if (evt.key === "Enter") {
-                      {
-                        commentEnter(evt, song.id);
-                      }
-                    }
-                  }}
-                />
-                <Subheader>Comments</Subheader>
-                <Comment songId={song.id} />
+                <CommentTextField songID={song.id}/>
+                <SongComments songID={song.id} />
               </div>
             </div>
           );
