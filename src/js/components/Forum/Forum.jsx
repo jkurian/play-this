@@ -36,6 +36,7 @@ const styles = {
   return {
     viewingRequest: store.forum.viewingRequest,
     sessionCookie: store.login.sessionCookie,
+    allUsers: store.users.allUsers
   };
 })
 class Forum extends Component {
@@ -63,6 +64,12 @@ class Forum extends Component {
       fontWeight: 200,
       textAlign: "center"
     };
+    const nameStyle = {
+      fontFamily: "Raleway, sans-serif",
+      fontSize: 17,
+      fontWeight: 150,
+      textAlign: "center"
+    };
     const onClick = (evt) => {
       this.props.history.push('/welcome')
       this.props.dispatch(deleteForum(this.props.viewingRequest.id))
@@ -78,6 +85,7 @@ class Forum extends Component {
         onClick={onClick}
       />)
     }
+    let ownedBy = this.props.allUsers[this.props.viewingRequest.user_admin_id-1];
     return (
       <div>
         <SideBar />
@@ -85,6 +93,7 @@ class Forum extends Component {
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
+        <p style={nameStyle}> Submitted by : {ownedBy.first_name}  {ownedBy.last_name}</p>
         <Search />
         <div class="postedBox">
         <SongPost />

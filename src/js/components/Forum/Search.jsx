@@ -56,7 +56,7 @@ class Search extends Component {
     let forumId = this.props.match.params.id;
 
     const onClick = evt => {
-      spotifyApi.searchTracks(evt).then(data => {
+      spotifyApi.searchTracks(evt).then(data => {        
         this.props.dispatch(
           postSpotifyTrackData(data.tracks.items[0], userId, forumId)
         );
