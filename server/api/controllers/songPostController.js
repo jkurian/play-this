@@ -35,3 +35,11 @@ exports.postSpotifySong = function(req, res, dataHelpers) {
     res.json(result);
   });
 };
+
+exports.postUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  console.log(req.body);
+  dataHelpers.postUserLike(req.body).then(result => {
+    res.json(result);
+  });
+};

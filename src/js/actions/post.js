@@ -91,7 +91,7 @@ export function postSongComment(
         songCommentInfo
       )
       .then(response => {
-        console.log('WRITTEN TO DB', songCommentInfo)
+        console.log("WRITTEN TO DB", songCommentInfo);
         dispatch({
           type: "[SONG]POST_COMMENT_FULFILLED",
           payload: songCommentInfo
@@ -99,6 +99,25 @@ export function postSongComment(
       })
       .catch(err => {
         dispatch({ type: "[SONG]POST_COMMENTS_FULFILLED", payload: err });
+      });
+  };
+}
+
+export function postLike(userId, songId) {
+  return function(dispatch) {
+    let userLike = {
+      userId: userId,
+      songId: songId
+    };
+    dispatch({ type: "SONG_LIKE_CLICKED" });
+
+    axios
+      .post(`http://localhost:3000/api/songs/${songId}/like`, userLike)
+      .then(response => {
+        dispatch({ type: "SONG_LIKE_FULFILLED", payload: { liked: true } });
+      })
+      .catch(err => {
+        dispatch({ type: "SONG_LIKED_REJECTED", payload: err });
       });
   };
 }
