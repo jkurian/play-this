@@ -14,6 +14,7 @@ module.exports = function makeDataHelpers(knex) {
     },
     getFriendsForums: function(currentUserID) {
       return knex("userfriends")
+        .orderBy("request_time_stamp", "desc")
         .rightJoin("requests", "user_id2", "user_admin_id")
         .where({ user_id1: currentUserID })
         .then(results => {
@@ -91,6 +92,13 @@ module.exports = function makeDataHelpers(knex) {
           spotify_id: songInformation.spotify_id,
           user_id: songInformation.user_id,
           request_id: songInformation.request_id
+        })
+        .then(results => {
+          console.log(results);
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
         });
     },
     postSongComment: function(songInformation) {
@@ -109,8 +117,17 @@ module.exports = function makeDataHelpers(knex) {
     getSongComments: function(songid) {
       return knex("comments")
         .orderBy("comments.comment_time_stamp", "desc")
-        .leftJoin("users", "users.id", "comments.user_id")
-        .leftJoin("songs", "songs.id", "comments.song_id")
+        .select([
+          "comments.id",
+          "comments.comment",
+          "comments.comment_time_stamp",
+          "comments.user_id",
+          "comments.song_id",
+          "users.first_name",
+          "users.avatar_image"
+        ])
+        .leftJoin("users", "comments.user_id", "users.id")
+        .leftJoin("songs", "comments.song_id", "songs.id")
         .where({ song_id: songid })
         .then(results => {
           return results;
@@ -120,13 +137,22 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getSongInfo: function(forumid) {
-      console.log("the songs forumid is", forumid);
       return knex("songs")
         .orderBy("song_time_stamp", "desc")
-        .leftJoin("users", "users.id", "songs.user_id")
+        .select([
+          "songs.id",
+          "songs.artist",
+          "songs.title",
+          "songs.album",
+          "songs.spotify_id",
+          "songs.song_time_stamp",
+          "songs.request_id",
+          "songs.user_id",
+          "users.first_name"
+        ])
+        .leftJoin("users", "songs.user_id", "users.id")
         .where({ request_id: forumid })
         .then(results => {
-          console.log("SOMETHING");
           return results;
         })
         .catch(err => {

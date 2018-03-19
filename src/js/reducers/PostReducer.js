@@ -1,3 +1,5 @@
+import { login } from "../../../server/api/controllers/loginController";
+
 export default function reducer(
   state = {
     songComments: {},
@@ -5,7 +7,7 @@ export default function reducer(
     searchedTracks: [],
     postSpotifySong: {},
     fetching: false,
-    error: null
+    error: null,
   },
   action
 ) {
@@ -16,16 +18,6 @@ export default function reducer(
         fetching: true
       };
     }
-    case "[SONG]POST_COMMENTS_FULFILLED": {
-      console.log('ACTION PAYLOAD IN POST COMMENTS FULFILLED,', action.payload);
-      return {
-        ...state,
-        songComments: {
-          ...state.songComments, 
-          [action.payload.songid]: [action.payload, ...state.songComments[action.payload.songid]],
-        }
-      };
-    }
     case "FETCH_SONG_COMMENTS_FULFILLED": {
       return {
         ...state,
@@ -33,6 +25,17 @@ export default function reducer(
         songComments: {
           ...state.songComments,
           [action.payload.songId]: action.payload.comments
+        }
+      };
+    }
+    case "[SONG]POST_COMMENT_FULFILLED": {
+      console.log("THE PAYLOAD IS:", action.payload)
+      return {
+        ...state,
+        testUpdate: action.payload.comments,
+        songComments: {
+          ...state.songComments,
+          [action.payload.songid]: [action.payload, ...state.songComments[action.payload.songid]],
         }
       };
     }
@@ -56,6 +59,7 @@ export default function reducer(
       };
     }
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
+      console.log(action.payload);
       return {
         ...state,
         songInfo: [action.payload, ...state.songInfo]

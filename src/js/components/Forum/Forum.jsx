@@ -13,7 +13,7 @@ import { sidebarToggleClose } from "../../actions/sidebar";
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
-import { fetchSongInfo } from "../../actions/post";
+import { fetchSongInfo, fetchSongComments } from "../../actions/post";
 
 const styles = {
   button: {
@@ -47,7 +47,6 @@ class Forum extends Component {
       this.props.history.push("/login");
     }
     console.log('UPDATING COMPONENT');
-    
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {

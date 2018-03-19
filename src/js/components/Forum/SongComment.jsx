@@ -13,7 +13,6 @@ import Moment from "react-moment";
 
 @connect((store, props) => {
   return {
-    songComments: _.get(store, `post.songthis.props.Comments.${props.songId}`)
   };
 })
 // Add time of post into this.props.comment?
@@ -22,22 +21,22 @@ export default class SongComment extends Component {
           return (
             <div>
               <ListItem
-                leftAvatar={<Avatar src={this.props.comment.avatar_image} />}
-                primaryText={this.props.comment.first_name}
+                leftAvatar={<Avatar src={this.props.comments.avatar_image} />}
+                primaryText={this.props.comments.first_name}
                 secondaryText={
                   <p>
                     <span style={{ color: darkBlack }}>
                       <Moment fromNow ago>
-                        {this.props.comment.comment_time_stamp}
+                        {this.props.comments.comment_time_stamp}
                       </Moment>{" "}
                       ago
                     </span>
                     <br />
-                    {this.props.comment.this.props.comment}
+                    {this.props.comments.comment}
                   </p>
                 }
                 secondaryTextLines={2}
-                key={this.props.comment.id}
+                key={this.props.comments.id}
               />
               <Divider inset={true} />
             </div>

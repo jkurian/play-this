@@ -8,17 +8,18 @@ import { fetchSongComments } from "../../actions/post";
 
 @connect((store, props) => {
   return {
-    songComments: _.get(store, `post.songComments.${props.songId}`)
+    songComments: _.get(store, `post.songComments.${props.songID}`),
   };
 })
 export default class CommentTextField extends React.Component {
   componentWillMount() {
-    this.props.dispatch(fetchSongComments(this.props.songId));
+    this.props.dispatch(fetchSongComments(this.props.songID))
   }
   render() {
-    const allComments = this.props.songComments ? this.props.songComments.map(song => {
-      return <SongComment song={song} />
-    }) : undefined
+    console.log('Props of comments are', this.props);
+    const allComments = this.props.songComments ? this.props.songComments.map(comments => {
+      return <SongComment comments={comments} />
+    }) : undefined;
     return (
       <div>
       <Subheader>Comments</Subheader>

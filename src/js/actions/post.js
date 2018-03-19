@@ -41,6 +41,7 @@ export function fetchSongInfo(forumID) {
 export function postSpotifyTrackData(incomingSpotifyTrack, userId, forumId) {
   return function(dispatch) {
     let songInformation = {
+      id: "",
       artist: incomingSpotifyTrack.artists[0].name,
       title: incomingSpotifyTrack.name,
       album: incomingSpotifyTrack.album.name,
@@ -74,7 +75,6 @@ export function postSongComment(
   last_name
 ) {
   return function(dispatch) {
-    dispatch({ type: "[SONG]POST_COMMENTS_PENDING" });
     let songCommentInfo = {
       songid: songid,
       userid: userid,
@@ -83,17 +83,20 @@ export function postSongComment(
       first_name: first_name,
       last_name: last_name
     };
+    dispatch({ type: "[SONG]POST_COMMENTS_PENDING", payload: songCommentInfo });
     console.log("BEFORE GONG TO REDUCER", songCommentInfo);
-    dispatch({
-      type: "[SONG]POST_COMMENTS_FULFILLED",
-      payload: songCommentInfo
-    });
     axios
       .post(
         `http://localhost:3000/api/songs/${songid}/comments`,
         songCommentInfo
       )
-      .then(response => {})
+      .then(response => {
+        console.log('WRITTEN TO DB', songCommentInfo)
+        dispatch({
+          type: "[SONG]POST_COMMENT_FULFILLED",
+          payload: songCommentInfo
+        });
+      })
       .catch(err => {
         dispatch({ type: "[SONG]POST_COMMENTS_FULFILLED", payload: err });
       });

@@ -41,3 +41,16 @@ export function updateProfile(userProfileDetails, currentUserID) {
       })
   }
 }
+export function disableProfile() {
+  return function(dispatch) {
+    const disabledFieldState = {
+      first_name: true,
+      last_name: true,
+      email: true,
+      avatar_url: true,
+      password: true
+    }
+    dispatch({type: "[PROFILE]UPDATE_DISABLED_FIELD_STATE", payload: {disabledFieldState: disabledFieldState}})
+
+  }
+}

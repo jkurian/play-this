@@ -15,7 +15,7 @@ import PasswordSetting from './PasswordSetting.jsx'
 import AvatarSetting from './AvatarSetting.jsx'
 
 import { sidebarToggleClose } from "../../actions/sidebar";
-import { updateEditState, updateProfile } from "../../actions/profile";
+import { updateEditState, updateProfile, disableProfile } from "../../actions/profile";
 
 const style = {
   marginTop: 12,
@@ -30,6 +30,7 @@ const style = {
 class Settings extends Component {
   componentWillMount() {
     this.props.dispatch(sidebarToggleClose());
+    this.props.dispatch(disableProfile());
   }
   componentDidUpdate() {
     if (!this.props.sessionCookie) {
@@ -56,7 +57,7 @@ class Settings extends Component {
       <div>
         <SideBar />
         <form onSubmit={onSubmit}>
-          <div style={{marginTop: 200, marginLeft: 300 }}>
+          <div style={{margin: '10em', textAlign: 'center' }}>
           <FirstNameSetting />
           <br />
           <LastNameSetting />

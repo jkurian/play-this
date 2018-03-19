@@ -1,10 +1,15 @@
 import React from "react";
 import TextField from 'material-ui/TextField'
 import { connect } from "react-redux";
-import { postSongComment } from "../../actions/post";
+import { postSongComment, fetchSongComments } from "../../actions/post";
 
 @connect(store => {
   return {
+    songInfo: store.post.songInfo,
+    sessionCookie: store.login.sessionCookie,
+    avatar_url: store.login.avatar_url,
+    first_name: store.login.first_name,
+    last_name: store.login.last_name
   };
 })
 export default class CommentTextField extends React.Component {
