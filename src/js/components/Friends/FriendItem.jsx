@@ -6,8 +6,7 @@ import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 
-import { deleteFriend } from '../../actions/friends'
-import { fetchFriends } from "../../actions/sidebar";
+import { deleteFriend } from '../../actions/users'
 
 
 const tileStyle = {
@@ -30,7 +29,6 @@ export default class FriendItem extends React.Component {
       console.log('THE RELATIONSHIP OF DELETE IS', this.props.relationship);
       console.log('SESSION COOKIE', this.props.sessionCookie)
       this.props.dispatch(deleteFriend(this.props.sessionCookie, this.props.relationship))
-      this.props.dispatch(fetchFriends("friends", this.props.sessionCookie))
 
     }
     return (
