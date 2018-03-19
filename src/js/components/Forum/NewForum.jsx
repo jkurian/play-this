@@ -53,7 +53,7 @@ class NewForum extends Component {
       height: 600,
       backgroundPosition: "left",
       marginTop: 100,
- 
+      position: 'relative',
       zIndex: -1500 
     }
     return (

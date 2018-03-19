@@ -26,9 +26,9 @@ class UserFriendsForumButton extends React.Component {
           if (i === 9) {
               break;
           }
-          let adminUserID = this.props.userFriendsForums[i].user_admin_id - 1;
-          let username = `${this.props.allUsers[adminUserID].first_name} ${this.props.allUsers[adminUserID].last_name}`
-          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} primaryText={this.props.userFriendsForums[i].title} secondaryText={username} rightIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
+          // let adminUserID = this.props.userFriendsForums[i].user_admin_id - 1;
+          // let username = `${this.props.allUsers[adminUserID].first_name} ${this.props.allUsers[adminUserID].last_name}`
+          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} primaryText={this.props.userFriendsForums[i].title}  rightIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
   }
     return (
       <div>
