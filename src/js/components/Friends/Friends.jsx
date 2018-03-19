@@ -6,10 +6,11 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import FriendItem from './FriendItem.jsx'
 
+import FriendItem from './FriendItem.jsx'
 import FriendSearchBar from './FriendSearchBar.jsx'
 import SideBar from "../SideBar/SideBar.jsx";
+
 import { sidebarToggleClose, fetchFriends } from "../../actions/sidebar";
 import { connect } from "react-redux";
 
@@ -33,6 +34,7 @@ const styles = {
 
 @connect(store => {
   return {
+    deletedFriend: store.friend.deletedFriend,
     friends: store.sidebar.friends,
     sessionCookie: store.login.sessionCookie,
     addingFriend: store.users.addingFriend
@@ -42,16 +44,19 @@ class Friends extends Component {
   componentWillMount() {
     this.props.dispatch(sidebarToggleClose());
   }
+
   componentDidUpdate() {
     if (!this.props.sessionCookie) {
       this.props.history.push("/login");
     }
+
   }
   render() {
     const friendProfiles = this.props.friends.map((friendObj, i) => {
       return (
         <FriendItem
         key={i}
+        relationship={{user_id1: this.props.sessionCookie, user_id2: friendObj.id}}
         avatar_image={friendObj.avatar_image}
         first_name={friendObj.first_name}
         last_name={friendObj.last_name}

@@ -11,7 +11,6 @@ import PlusIcon from 'material-ui/svg-icons/content/add-circle-outline';
 import FriendsIcon from 'material-ui/svg-icons/social/people';
 import FriendForumIcon from 'material-ui/svg-icons/communication/forum';
 import Divider from 'material-ui/Divider';
-import IconButton from 'material-ui/IconButton';
 import Badge from 'material-ui/Badge';
 import ForumIcon from 'material-ui/svg-icons/communication/forum';
 

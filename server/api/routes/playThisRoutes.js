@@ -8,6 +8,7 @@ module.exports = function(app, dataHelpers) {
   const forumController = require("../controllers/forumController");
   const profileController = require("../controllers/profileController");
   const usersController = require("../controllers/usersController");
+  const friendsController = require("../controllers/friendsController");
 
   app
     .route("/api/login")
@@ -54,7 +55,11 @@ module.exports = function(app, dataHelpers) {
 
   app
     .route("/api/friends/:id")
-    .get((req, res) => sidebarController.friends(req, res, dataHelpers));
+    .get((req, res) => sidebarController.friends(req, res, dataHelpers))
+
+  app
+    .route("/api/friend")
+    .post((req, res) => friendsController.deleteFriend(req, res, dataHelpers));
 
   app
     .route("/api/songinfo/post")
