@@ -57,11 +57,6 @@ class SideBar extends React.Component {
             ev.preventDefault();
             this.props.history.push("/friends")
         }
-        const newForumClick = (ev) => {
-            ev.preventDefault();
-            this.props.dispatch(fetchNewForum("newForum"))
-            this.props.history.push('/newforum')
-        }
         const settingsIcon = <img src="../../../../assets/images/settings_icon.png" />
 
         return (

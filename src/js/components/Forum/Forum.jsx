@@ -47,6 +47,7 @@ class Forum extends Component {
       this.props.history.push("/login");
     }
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
+    // this.props.history.push(`/forum/${this.props.viewingRequest.id}`)
   }
   render() {
     let deleteButton = null;
