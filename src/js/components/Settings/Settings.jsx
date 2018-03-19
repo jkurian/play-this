@@ -52,25 +52,38 @@ class Settings extends Component {
         updateProfile(updatedProfile, this.props.sessionCookie)
       );
     };
-    //have to find out how to pass value to onclick
+    const background={
+      backgroundImage: 'url(' + '../../../assets/images/settings_icon.png' + ')',   
+      backgroundRepeat: "no-repeat",
+      opacity: 0.05,
+      height: 600,
+      backgroundPosition: "left",
+      backgroundSize: 350,
+      marginTop: 100,
+      marginLeft: '12em',
+      position: 'relative',
+      zIndex: -1500
+    }
     return (
       <div>
         <SideBar />
-        <form onSubmit={onSubmit}>
-          <div style={{margin: '10em', textAlign: 'center' }}>
-          <FirstNameSetting />
-          <br />
-          <LastNameSetting />
+        <div style={{position: 'relative', float: 'left', width: '100%'}}>
+          <form onSubmit={onSubmit}>
+            <div style={{margin: '10em', textAlign: 'center' }}>
+            <FirstNameSetting />
             <br />
-          <EmailSetting />
-            <br />
-            <PasswordSetting />
-            <br />
-            <AvatarSetting />
-          <RaisedButton type="submit" label="Save" style={style} />
-          </div>
-        </form>
-        <br />
+            <LastNameSetting />
+              <br />
+            <EmailSetting />
+              <br />
+              <PasswordSetting />
+              <br />
+              <AvatarSetting />
+            <RaisedButton type="submit" label="Save" style={style} />
+            </div>
+          </form>
+        </div>
+        <div style={background}></div>
       </div>
     );
   }

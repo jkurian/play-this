@@ -84,6 +84,10 @@ class Forum extends Component {
         onClick={onClick}
       />)
     }
+<<<<<<< HEAD
+=======
+    // let ownedBy = this.props.allUsers[this.props.viewingRequest.user_admin_id-1];
+>>>>>>> ab57b68134f3fc320cbe6419c974edcb3e36d5c1
     return (
       <div>
         <SideBar />
@@ -91,7 +95,11 @@ class Forum extends Component {
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
+<<<<<<< HEAD
         <p style={nameStyle}> Submitted by : {this.props.viewingRequest.first_name} {this.props.viewingRequest.last_name}</p>
+=======
+        {/* <p style={nameStyle}> Submitted by : {ownedBy.first_name}  {ownedBy.last_name}</p> */}
+>>>>>>> ab57b68134f3fc320cbe6419c974edcb3e36d5c1
         <Search />
         <div class="postedBox">
         <SongPost />

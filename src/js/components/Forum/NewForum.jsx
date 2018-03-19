@@ -42,34 +42,61 @@ class NewForum extends Component {
       display: "block",
       margin: "auto"
     };
+    const pStyle = {
+      fontFamily: 'Raleway, sans-serif',
+      width: '28em',
+    }
+    const background={
+      backgroundImage: 'url(' + '../../../assets/images/create_icon.png' + ')',   
+      backgroundRepeat: "no-repeat",
+      opacity: 0.05,
+      height: 600,
+      backgroundPosition: "left",
+      marginTop: 100,
+      position: 'relative',
+      zIndex: -1500 
+    }
     return (
       <div>
         <SideBar />
-        <form onSubmit={submitForm} style={{ margin: 80, float: 'right' }}>
-          <TextField
-            style={formStyle}
-            name="title"
-            hintText="E.g. PUMPED UP Friday Night Jamz"
-            floatingLabelText="Add Forum Title"
-            multiLine={true}
-            rows={1}
-          />
-          <br />
-          <TextField
-            style={formStyle}
-            name="description"
-            hintText="E.g. All tracks should be the aural equivalent of a 4-pack of RedBull and punch to the brain through both ears."
-            floatingLabelText="Add Forum Description"
-            multiLine={true}
-            rows={1}
-          />
-          <br />
+        <div style={{textAlign: 'center'}}>
+          <div style={{ position: 'relative', display: 'inline-block', float: 'left', marginTop: '12em', marginRight: '6em', marginLeft: '12em'}}>
+            <p style={pStyle}> 
+              <font size="5">
+                  Forum titles should define the kind of music to be shared and discussed.<br />  
+                  <br />
+                  Add a more detailed description of your forum to get the ideas flowing in the right direction. 
+                  Or don't--whatever--your title says it all. 
+              </font>  
+            </p>
+          </div>          
+          <div style={{position: 'relative', display: 'inline-block', float: 'left'}}>
+            <form onSubmit={submitForm} style={{ marginTop: '9em', marginRight: '5em', marginLeft: '5em'}}>
+              <TextField
+                style={formStyle}
+                name="title"
+                floatingLabelText="Add Forum Title"
+                multiLine={true}
+                rows={1}
+              />
+              <br />
+              <TextField
+                style={formStyle}
+                name="description"
+                floatingLabelText="Add Forum Description"
+                multiLine={true}
+                rows={1}
+              />
+              <br />
 
-          <br />
-          <div>
-            <FlatButton type="submit" style={formStyle} label="Create Forum" />
+              <br />
+              <div>
+                <FlatButton type="submit" style={formStyle} label="Create Forum" />
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
+        <div style={background}></div>
       </div>
     );
   }
