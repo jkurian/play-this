@@ -12,7 +12,6 @@ import { fetchSongComments } from "../../actions/post";
     songInfo: store.post.songInfo,
     sessionCookie: store.login.sessionCookie,
     first_name: store.login.first_name,
-    viewingRequest: store.forum.viewingRequest,
   };
 })
 class SongPost extends Component {
@@ -20,6 +19,9 @@ class SongPost extends Component {
     if(!this.props.sessionCookie) {
       this.props.history.push('/')
     }
+    this.props.songInfo.map(song => {
+      this.props.dispatch(fetchSongComments(song.id))
+    })
   }
   render() {
     const songs = this.props.songInfo

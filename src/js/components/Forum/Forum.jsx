@@ -46,7 +46,6 @@ class Forum extends Component {
     if (!this.props.sessionCookie) {
       this.props.history.push("/login");
     }
-    console.log('UPDATING COMPONENT');
     this.props.dispatch(fetchSongInfo(this.props.viewingRequest.id));
   }
   render() {
