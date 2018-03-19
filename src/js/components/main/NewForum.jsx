@@ -46,7 +46,7 @@ class NewForum extends Component {
     return (
       <div>
         <SideBar />
-        <form onSubmit={submitForm} style={{ marginTop: 80 }}>
+        <form onSubmit={submitForm} style={{ margin: 80, float: 'right' }}>
           <TextField
             style={formStyle}
             name="title"

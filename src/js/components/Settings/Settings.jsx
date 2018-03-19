@@ -67,8 +67,8 @@ class Settings extends Component {
             <PasswordSetting />
             <br />
             <AvatarSetting />
-          </div>
           <RaisedButton type="submit" label="Save" style={style} />
+          </div>
         </form>
         <br />
       </div>
