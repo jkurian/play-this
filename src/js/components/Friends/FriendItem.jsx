@@ -5,6 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import DefaultAvatar from 'material-ui/svg-icons/social/person';
 
 import { deleteFriend } from '../../actions/users'
 
@@ -31,13 +32,19 @@ export default class FriendItem extends React.Component {
       this.props.dispatch(deleteFriend(this.props.sessionCookie, this.props.relationship))
 
     }
+    let image;
+    if(this.props.avatar_image) {
+      image = <img src={this.props.avatar_image} style={{height:"100%", width: "100%"}}/>
+    } else {
+      image = <DefaultAvatar style={{height:"100%", width: "100%"}} />
+    }
     return (
       <GridTile
       actionIcon={<IconButton onClick={deleteHandler}><DeleteIcon color={'white'} /></IconButton>}
       key={this.props.i}
       title={this.props.first_name}
       subtitle={<span><b>{this.props.last_name}</b></span>}>
-      <img src={this.props.avatar_image} />
+      {image}
     </GridTile>
     )
   }

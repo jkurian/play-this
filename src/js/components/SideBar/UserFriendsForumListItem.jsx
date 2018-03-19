@@ -18,7 +18,6 @@ class UserFriendsForumButton extends React.Component {
     const onClickRequest = (ev, id) => {
       ev.preventDefault();
       this.props.dispatch(getRequest(id));
-      console.log('THE FRIEND CLICK VIEWING REQUEST');
       this.props.history.push(`/forum/${id}`)
   }
       let allFriendsForums = []
@@ -26,9 +25,8 @@ class UserFriendsForumButton extends React.Component {
           if (i === 9) {
               break;
           }
-          let adminUserID = this.props.userFriendsForums[i].user_admin_id - 1;
-          let username = `${this.props.allUsers[adminUserID].first_name} ${this.props.allUsers[adminUserID].last_name}`
-          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} primaryText={this.props.userFriendsForums[i].title} secondaryText={username} rightIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
+          let userName = this.props.userFriendsForums[i].first_name + " " + this.props.userFriendsForums[i].last_name
+          allFriendsForums.push(<ListItem id={this.props.userFriendsForums[i].id} key={i} primaryText={this.props.userFriendsForums[i].title} secondaryText={userName} rightIcon={<FriendForumIcon />} onClick={(ev) => onClickRequest(ev, this.props.userFriendsForums[i].id)}/>)
   }
     return (
       <div>

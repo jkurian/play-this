@@ -18,14 +18,10 @@ import { getAllUsers } from "../../actions/login";
 })
 class Welcome extends Component {
   componentWillMount() {    
-    this.props.dispatch(fetchUserForums(this.props.sessionCookie))
-    this.props.dispatch(fetchUserFriendsForums(this.props.sessionCookie))
     this.props.dispatch(fetchFriends("friends", this.props.sessionCookie))
     this.props.dispatch(fetchSettings("settings", this.props.sessionCookie))
-    this.props.dispatch(getAllUsers());
-    //cheap hack that should be changed. Make a new dispatch called getFirstRequest which gets the
-    //users first request instead of just 1.
-    // this.props.dispatch(getRequest(1));
+    this.props.dispatch(fetchUserForums(this.props.sessionCookie))
+    this.props.dispatch(fetchUserFriendsForums(this.props.sessionCookie))
   }
   componentWillUpdate() {
     this.props.dispatch(fetchUserForums(this.props.sessionCookie))

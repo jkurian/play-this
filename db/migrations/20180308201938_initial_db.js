@@ -67,6 +67,7 @@ exports.up = (knex, Promise) => {
       table.foreign("user_id1").references("users.id");
       table.integer("user_id2").unsigned();
       table.foreign("user_id2").references("users.id");
+      table.primary(['user_id1', 'user_id2']);
     })
   ]);
 };

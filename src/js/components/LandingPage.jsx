@@ -8,6 +8,7 @@ import Paper from "material-ui/Paper";
 import {GridList, GridTile} from 'material-ui/GridList';
 import ChatIcon from 'material-ui/svg-icons/communication/forum';
 import TextField from "material-ui/TextField";
+import { getAllUsers } from "../actions/login";
 
 const style = {
   height: "auto",
@@ -47,6 +48,9 @@ const imgStyle = {
   };
 })
 class LandingPage extends React.Component {
+  componentWillMount() {
+    this.props.dispatch(getAllUsers());
+  }
   render() {
     if (this.props.sessionCookie) this.props.history.push("/");
     const iconStyle = {

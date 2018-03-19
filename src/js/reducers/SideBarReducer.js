@@ -2,14 +2,14 @@ export default function reducer(
   state = {
     //these keys are used as names for props in component
     open: true,
-    userForums: [{}],
-    userFriendsForums: [{}],
+    userForums: [],
+    userFriendsForums: [],
     fetchingForums: false,
     fetchedForums: false,
     settings: {},
     fetchingSettings: false,
     fetchedSettings: false,
-    friends: [{}],
+    friends: [],
     fetchingFriends: false,
     fetchedFriends: false,
     fetchingNewForum: false,

@@ -11,6 +11,12 @@ export function addFriend(newFriendData) {
         axios.get(`http://localhost:3000/api/friends/${newFriendData.currentUserID}`)
         .then((response) => {
           console.log('THIS IS SETTINGS AXIOS RESPONSE from friends:', response)
+          axios.get(`http://localhost:3000/api/userfriendsforums/${newFriendData.currentUserID}`)
+          .then((response) => {
+            console.log('response from axios',response.data);
+    
+            dispatch({type: "FETCH_USER_FRIENDS_FORUMS_FULFILLED", payload: response.data})
+          })
           dispatch({type: "FETCH_FRIENDS_FULFILLED", payload: {friends: response.data, view: 'view'}})
         })
         .catch((err) => {
@@ -34,6 +40,12 @@ export function deleteFriend(id, relationship) {
           .then((response) => {
             console.log('THIS IS SETTINGS AXIOS RESPONSE from friends:', response)
             dispatch({type: "FETCH_FRIENDS_FULFILLED", payload: {friends: response.data, view: 'view'}})
+          })
+          axios.get(`http://localhost:3000/api/userfriendsforums/${relationship.user_id1}`)
+          .then((response) => {
+            console.log('response from axios',response.data);
+    
+            dispatch({type: "FETCH_USER_FRIENDS_FORUMS_FULFILLED", payload: response.data})
           })
           .catch((err) => {
             dispatch({type: "FETCH_FRIENDS_REJECTED", payload: err})

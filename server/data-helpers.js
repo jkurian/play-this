@@ -17,7 +17,9 @@ module.exports = function makeDataHelpers(knex) {
         .orderBy("request_time_stamp", "desc")
         .rightJoin("requests", "user_id2", "user_admin_id")
         .where({ user_id1: currentUserID })
+        .join('users', 'user_id2', 'users.id')
         .then(results => {
+          console.log(results);
           return results;
         })
         .catch(err => {
@@ -180,7 +182,6 @@ module.exports = function makeDataHelpers(knex) {
           user_id2: newFriendData.friendToAddID
         })
         .then(results => {
-          console.log("RESULTS FOUND", results);
           return results;
         })
         .catch(err => {
