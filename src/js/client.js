@@ -34,8 +34,8 @@ const getTheme = () => {
       },
       "flatButton": {
           "color": "#607d8b",
-          "disabledColor": "#c5e1a5",
-          "textColor": "#e8f5e9"
+          "textColor": "#e8f5e9",
+          "buttonFilterColor": "#263238",
       },
       
   };

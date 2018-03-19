@@ -77,7 +77,14 @@ class Friends extends Component {
       <div>
         <SideBar />
         <div style={{marginLeft: '8em', marginTop: '2em'}}>
-          <div style={{display: 'inline-block'}}><p style={pStyle}><font size="5">Each of your friends desperately need your authoritative opinion. All of their forums are available for you to add comments or song recommendations.</font></p></div>
+          <div style={{display: 'inline-block'}}>
+            <p style={pStyle}>
+              <font size="5">
+                Each of your friends desperately need your authoritative opinion. 
+                All of their forums are available for you to add comments or song recommendations.
+               </font>  
+            </p>
+          </div>
           <div style={{ display: 'inline-block', right: 0, marginLeft: '5em', marginRight: '7em'}}>
             <h2 style={titleStyle}>Add Friend</h2>
               <FriendSearchBar />
