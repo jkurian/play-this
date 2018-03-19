@@ -1,6 +1,6 @@
 export default function reducer(
   state = {
-    allUsers: null,
+    allUsers: [],
     addingFriend: false,
     error: null
   }, action

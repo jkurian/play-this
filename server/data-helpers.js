@@ -17,9 +17,10 @@ module.exports = function makeDataHelpers(knex) {
         .orderBy("request_time_stamp", "desc")
         .rightJoin("requests", "user_id2", "user_admin_id")
         .where({ user_id1: currentUserID })
-        .join('users', 'user_id2', 'users.id')
+        .join('users', 'user_admin_id', 'users.id')
+        .select(['first_name', 'last_name', 'title', 'explanation', 'user_admin_id', 'requests.id', 'request_time_stamp', 'user_id1', 'user_id2'])
         .then(results => {
-          console.log(results);
+          console.log('RESULTS OF FREINDS FORUMS',results);
           return results;
         })
         .catch(err => {
@@ -189,9 +190,12 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getForumRequest: function(id) {
-      return knex("requests")
-        .where({ id: id })
+      console.log('ID OF REQUESTS', id)
+      return knex("users")
+        .join('requests', 'users.id', 'user_admin_id')
+        .where('requests.id', id)
         .then(results => {
+          console.log('GET FORUM REQUEST DATA', results, id)
           return results;
         })
         .catch(err => {

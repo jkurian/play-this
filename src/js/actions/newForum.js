@@ -21,10 +21,16 @@ export function addForum(title, description, id) {
               type: "FETCH_USER_FORUMS_FULFILLED",
               payload: responseTwo.data
             });
-            dispatch({
-              type: "[FORUM]VIEW_FORUM_FULFILLED",
-              payload: responseTwo.data[0]
-            });
+            axios.get(`http://localhost:3000/api/forum/${responseOne.data}`)
+            .then((response) => {
+              console.log("AXIOS GET COMPLETE")
+              // console.log('response from axios',response.data);
+              //  SET COOKIE
+              // dispatch({type: "FETCH_USER_FORUMS_FULFILLED", payload: response.data})
+              // dispatch({type: "AUTHENTICATE_VALID_REGISTER_EMAIL_FULFILLED", payload: response.data})
+              console.log('AFTER GET REQUEST AXIOS', response)
+              dispatch({type: "[FORUM]VIEW_FORUM_FULFILLED", payload: response.data[0]})
+            })
           })
       })
       .catch(err => {

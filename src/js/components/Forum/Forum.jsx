@@ -36,7 +36,6 @@ const styles = {
   return {
     viewingRequest: store.forum.viewingRequest,
     sessionCookie: store.login.sessionCookie,
-    allUsers: store.users.allUsers
   };
 })
 class Forum extends Component {
@@ -85,7 +84,6 @@ class Forum extends Component {
         onClick={onClick}
       />)
     }
-    let ownedBy = this.props.allUsers[this.props.viewingRequest.user_admin_id-1];
     return (
       <div>
         <SideBar />
@@ -93,7 +91,7 @@ class Forum extends Component {
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
-        <p style={nameStyle}> Submitted by : {ownedBy.first_name}  {ownedBy.last_name}</p>
+        <p style={nameStyle}> Submitted by : {this.props.viewingRequest.first_name} {this.props.viewingRequest.last_name}</p>
         <Search />
         <div class="postedBox">
         <SongPost />
