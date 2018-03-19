@@ -13,7 +13,6 @@ import { addForum } from "../../actions/newForum";
 @connect(store => {
   return {
     sessionCookie: store.login.sessionCookie,
-    viewingRequestID: store.forum.viewingRequest.id
   };
 })
 class NewForum extends Component {
@@ -36,8 +35,8 @@ class NewForum extends Component {
           this.props.sessionCookie
         )
       );
+      this.props.history.push(`/newrequest`)
     };
-
     const formStyle = {
       width: 400,
       display: "block",

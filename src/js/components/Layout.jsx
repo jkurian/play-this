@@ -48,6 +48,7 @@ export default class Layout extends React.Component {
           <Route path="/friends" component={Friends} />
           <Route path="/newforum" component={NewForum} />
           <Route exact path="/forum" component={Forum} />
+          <Route exact path="/newrequest" component={Forum} />
           <Route path="/forum/:id" component={Forum} />
           <Route path="/spotify" component={Spotify} />
         </div>
