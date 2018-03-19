@@ -10,6 +10,7 @@ import register from "./RegisterReducer";
 import profile from './ProfileReducer'
 import forum from './ForumReducer'
 import users from './UsersReducer'
+import friend from './FriendReducer'
 
 const appReducer = combineReducers({
   navbar,
@@ -20,6 +21,7 @@ const appReducer = combineReducers({
   profile,
   forum,
   users,
+  friend
 });
 
 const rootReducer = (state, action) => {

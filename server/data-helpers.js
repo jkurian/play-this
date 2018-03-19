@@ -238,6 +238,13 @@ module.exports = function makeDataHelpers(knex) {
         .then(results => {
           console.log("RESULTS AFTER UPDATE:", results);
         });
-    }
+    },
+    deleteFriend: function(relationship) {
+      return knex("userfriends").where({user_id1: relationship.user_id1, user_id2: relationship.user_id2})
+        .del()
+        .catch(err => {
+          console.log(err);
+        });
+    },
   };
 };
