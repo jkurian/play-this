@@ -68,7 +68,7 @@ class Settings extends Component {
         <SideBar />
         <div style={{position: 'relative', float: 'left', width: '100%'}}>
           <form onSubmit={onSubmit}>
-            <div style={{margin: '10em', textAlign: 'center' }}>
+            <div style={{margin: '10em', marginTop: '6em', textAlign: 'center' }}>
             <FirstNameSetting />
             <br />
             <LastNameSetting />
