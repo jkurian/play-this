@@ -8,7 +8,8 @@ import { getLikes, postLike, removeLike } from "../../actions/post";
 @connect(store => {
   return {
     sessionCookie: store.login.sessionCookie,
-    likes: store.post.songLikes
+    likes: store.post.songLikes,
+    alreadyLiked: store.post.alreadyLiked
   };
 })
 class Likes extends Component {
@@ -21,11 +22,13 @@ class Likes extends Component {
   render() {
     let userId = this.props.sessionCookie;
     let songId = this.props.songID;
-    let likes = this.props.likes[songId][0].count;
-    let alreadyLiked = this.props.likes[songId][1].isLiked;
+    let likes = !this.props.likes[songId]
+      ? "0"
+      : this.props.likes[songId][0].count;
+    console.log("=====> ", this.props.alreadyLiked);
 
     const onLikeClick = evt => {
-      if (!alreadyLiked === true) {
+      if (this.props.alreadyLiked === true) {
         this.props.dispatch(removeLike(userId, songId));
       } else {
         this.props.dispatch(postLike(userId, songId));

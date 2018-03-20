@@ -111,8 +111,7 @@ export function getLikes(songId) {
       .then(response => {
         let songLikes = {
           songId: songId,
-          likes: response.data[0],
-          isLiked: { isLiked: true }
+          likes: response.data[0]
         };
         dispatch({
           type: "FETCHED_SONG_LIKES",
@@ -142,8 +141,7 @@ export function postLike(userId, songId) {
           .then(responseTwo => {
             let songLikes = {
               songId: songId,
-              likes: responseTwo.data[0],
-              isLiked: { isLiked: true }
+              likes: responseTwo.data[0]
             };
             dispatch({
               type: "FETCHED_SONG_LIKES",
@@ -173,10 +171,13 @@ export function removeLike(userId, songId) {
           .get(`http://localhost:3000/api/songs/${songId}/like`)
           .then(responseTwo => {
             console.log("=====> ", responseTwo);
-
+            let songLikes = {
+              songId: songId,
+              likes: responseTwo.data[0]
+            };
             dispatch({
               type: "FETCHED_SONG_LIKES",
-              payload: responseTwo
+              payload: songLikes
             });
           });
       })
