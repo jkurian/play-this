@@ -35,3 +35,24 @@ exports.postSpotifySong = function(req, res, dataHelpers) {
     res.json(result);
   });
 };
+
+exports.postUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.postUserLike(req.body).then(result => {
+    res.json(result);
+  });
+};
+
+exports.getUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.getUserLike(req.params.id).then(result => {
+    res.json(result);
+  });
+};
+
+exports.removeUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.removeUserLike(req.body).then(result => {
+    res.json(result);
+  });
+};
