@@ -89,6 +89,7 @@ export default function reducer(
     case "FETCHED_SONG_LIKES": {
       return {
         ...state,
+        fetching: false,
         songLikes: {
           ...state.songLikes,
           [action.payload.songId]: action.payload.likes.count
