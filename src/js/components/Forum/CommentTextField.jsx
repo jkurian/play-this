@@ -48,7 +48,7 @@ export default class CommentTextField extends React.Component {
       style={{width: '30em'}}
       value={this.state.commentText}
       onKeyPress={evt => {
-        if (evt.key === "Enter") {
+        if (evt.key === "Enter" && evt.target.length !== 0) {
           {
             commentEnter(evt, this.props.songID);
           }

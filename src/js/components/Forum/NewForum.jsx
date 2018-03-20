@@ -76,6 +76,7 @@ class NewForum extends Component {
                 style={formStyle}
                 name="title"
                 floatingLabelText="Add Forum Title"
+                maxLength="40"
                 multiLine={true}
                 rows={1}
               />
@@ -84,6 +85,7 @@ class NewForum extends Component {
                 style={formStyle}
                 name="description"
                 floatingLabelText="Add Forum Description"
+                maxLength="150"
                 multiLine={true}
                 rows={1}
               />

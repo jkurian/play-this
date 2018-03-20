@@ -59,7 +59,8 @@ class Forum extends Component {
       marginLeft: '4em',
       fontSize: 50,
       fontWeight: 900,
-      textAlign: "center"
+      textAlign: "center",
+      wordWrap: 'break-word'
     };
     const headerStyle = {
       marginLeft: '8em',
@@ -69,7 +70,8 @@ class Forum extends Component {
       fontFamily: "Raleway, sans-serif",
       fontSize: 30,
       fontWeight: 200,
-      textAlign: "center"
+      textAlign: "center",
+      wordWrap: 'break-word'
     };
     const nameStyle = {
       fontFamily: "Raleway, sans-serif",
