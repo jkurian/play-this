@@ -170,7 +170,6 @@ export function removeLike(userId, songId) {
         axios
           .get(`http://localhost:3000/api/songs/${songId}/like`)
           .then(responseTwo => {
-            console.log("=====> ", responseTwo);
             let songLikes = {
               songId: songId,
               likes: responseTwo.data[0]
