@@ -83,7 +83,7 @@ export default function reducer(
     case "FETCHING_SONG_LIKES": {
       return {
         ...state,
-        fetching: false
+        fetching: true
       };
     }
     case "FETCHED_SONG_LIKES": {

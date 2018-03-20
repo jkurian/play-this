@@ -186,7 +186,6 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     getUserLike: function(songId) {
-      console.log("In get user like");
       return knex("userlikes")
         .where({ song_id: songId })
         .count("song_id")
