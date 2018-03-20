@@ -114,7 +114,6 @@ export function postLike(userId, songId) {
     axios
       .post(`http://localhost:3000/api/songs/${songId}/like`, userLike)
       .then(responseOne => {
-        console.log(responseOne);
         dispatch({ type: "SONG_LIKE_FULFILLED", payload: { liked: true } });
         axios
           .get(`http://localhost:3000/api/songs/${songId}/like`)

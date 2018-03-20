@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import FlatButton from "material-ui/FlatButton";
 import FontIcon from "material-ui/FontIcon";
-import ActionAndroid from "material-ui/svg-icons/action/android";
-import { fullWhite } from "material-ui/styles/colors";
 import { fetchSongComments, postLike } from "../../actions/post";
 
 @connect(store => {
@@ -28,12 +26,16 @@ class Likes extends Component {
       // this.setState( { searchText: '' })
     };
 
+    const likeButton = (
+      <img src="../../../assets/images/favorite-heart-button.svg" height="30" />
+    );
+
     return (
       <div>
         <FlatButton
           backgroundColor="#a4c639"
           hoverColor="#8AA62F"
-          icon={<ActionAndroid color={fullWhite} />}
+          icon={likeButton}
           label={likes}
           style={style}
           onClick={onLikeClick}
