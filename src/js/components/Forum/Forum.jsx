@@ -51,13 +51,20 @@ class Forum extends Component {
   }
   render() {
     let deleteButton = null;
+    
     const titleStyle = {
       fontFamily: "Raleway, sans-serif",
       marginTop: 100,
+      marginRight: '4em',
+      marginLeft: '4em',
       fontSize: 50,
       fontWeight: 900,
       textAlign: "center"
     };
+    const headerStyle = {
+      marginLeft: '8em',
+      marginRight: '8em'
+    }
     const paragraphStyle = {
       fontFamily: "Raleway, sans-serif",
       fontSize: 30,
@@ -89,10 +96,12 @@ class Forum extends Component {
       <div>
         <SideBar />
         <div>{deleteButton}</div>
-        <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
-        <br />
-        <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
-        <p style={nameStyle}> Submitted by : {this.props.viewingRequest.first_name} {this.props.viewingRequest.last_name}</p>
+          <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
+          <br />
+        <div style={headerStyle}>
+          <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
+          <p style={nameStyle}> Submitted by : {this.props.viewingRequest.first_name} {this.props.viewingRequest.last_name}</p>
+        </div>
         <div style={{marginLeft: '9em', marginBottom: '5em', width: '42em'}}>
           <Search/> 
         </div>
