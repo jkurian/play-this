@@ -119,9 +119,12 @@ export function postLike(userId, songId) {
         axios
           .get(`http://localhost:3000/api/songs/${songId}/like`)
           .then(responseTwo => {
+            let songLikes = {
+              likes: responseTwo.data[0]
+            };
             dispatch({
-              type: "FETCHING_USER_LIKES",
-              payload: responseTwo.data[0]
+              type: "FETCHED_SONG_LIKES",
+              payload: songLikes
             });
           });
       })

@@ -189,7 +189,7 @@ module.exports = function makeDataHelpers(knex) {
       console.log("In get user like");
       return knex("userlikes")
         .where({ song_id: songId })
-        .count("user_id")
+        .count("song_id")
         .then(results => {
           return results;
         })

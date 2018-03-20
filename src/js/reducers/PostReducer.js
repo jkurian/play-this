@@ -6,6 +6,7 @@ export default function reducer(
     songInfo: [],
     searchedTracks: [],
     postSpotifySong: {},
+    songLikes: {},
     fetching: false,
     error: null
   },
@@ -74,9 +75,15 @@ export default function reducer(
       };
     }
     case "SONG_LIKE_FULFILLED": {
-      console.log(action.payload);
       return {
-        ...state
+        ...state,
+        fetching: false
+      };
+    }
+    case "FETCHED_SONG_LIKES": {
+      return {
+        ...state,
+        songLikes: [action.payload]
       };
     }
   }
