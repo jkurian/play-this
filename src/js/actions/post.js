@@ -103,6 +103,28 @@ export function postSongComment(
   };
 }
 
+export function getLikes(songId) {
+  return function(dispatch) {
+    dispatch({ type: "FETCHING_SONG_LIKES" });
+    axios
+      .get(`http://localhost:3000/api/songs/${songId}/like`)
+      .then(response => {
+        let songLikes = {
+          songId: songId,
+          likes: response.data[0],
+          isLiked: { isLiked: true }
+        };
+        dispatch({
+          type: "FETCHED_SONG_LIKES",
+          payload: songLikes
+        });
+      })
+      .catch(err => {
+        dispatch({ type: "FETCH_SONG_LIKES_REJECTED", payload: err });
+      });
+  };
+}
+
 export function postLike(userId, songId) {
   return function(dispatch) {
     let userLike = {
@@ -114,13 +136,14 @@ export function postLike(userId, songId) {
     axios
       .post(`http://localhost:3000/api/songs/${songId}/like`, userLike)
       .then(responseOne => {
-        dispatch({ type: "SONG_LIKE_FULFILLED", payload: { liked: true } });
+        dispatch({ type: "SONG_LIKE_FULFILLED" });
         axios
           .get(`http://localhost:3000/api/songs/${songId}/like`)
           .then(responseTwo => {
             let songLikes = {
               songId: songId,
-              likes: responseTwo.data[0]
+              likes: responseTwo.data[0],
+              isLiked: { isLiked: true }
             };
             dispatch({
               type: "FETCHED_SONG_LIKES",
@@ -134,23 +157,31 @@ export function postLike(userId, songId) {
   };
 }
 
-export function getLikes(songId) {
+export function removeLike(userId, songId) {
   return function(dispatch) {
-    dispatch({ type: "FETCHING_SONG_LIKES" });
+    let userLike = {
+      userId: userId,
+      songId: songId
+    };
+    dispatch({ type: "SONG_LIKE_REMOVE_CLICKED" });
     axios
-      .get(`http://localhost:3000/api/songs/${songId}/like`)
-      .then(response => {
-        let songLikes = {
-          songId: songId,
-          likes: response.data[0]
-        };
-        dispatch({
-          type: "FETCHED_SONG_LIKES",
-          payload: songLikes
-        });
+      .post(`http://localhost:3000/api/songs/${songId}/like/delete`, userLike)
+      .then(responseOne => {
+        dispatch({ type: "SONG_LIKE_REMOVED" });
+
+        axios
+          .get(`http://localhost:3000/api/songs/${songId}/like`)
+          .then(responseTwo => {
+            console.log("=====> ", responseTwo);
+
+            dispatch({
+              type: "FETCHED_SONG_LIKES",
+              payload: responseTwo
+            });
+          });
       })
       .catch(err => {
-        dispatch({ type: "SONG_LIKE_REJECTED", payload: err });
+        dispatch({ type: "SONG_LIKE_NOT_REMOVED", payload: err });
       });
   };
 }

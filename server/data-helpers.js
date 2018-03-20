@@ -172,6 +172,17 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    getUserLike: function(songId) {
+      return knex("userlikes")
+        .where({ song_id: songId })
+        .count("song_id")
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     postUserLike: function(like) {
       return knex("userlikes")
         .insert({
@@ -185,16 +196,11 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
-    getUserLike: function(songId) {
+    removeUserLike: function(like) {
+      console.log(like);
       return knex("userlikes")
-        .where({ song_id: songId })
-        .count("song_id")
-        .then(results => {
-          return results;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        .where({ user_id: like.userId, song_id: like.songId })
+        .del();
     },
     addFriend: function(newFriendData) {
       console.log("NEW FRIEND DATA IS", newFriendData);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 import FontIcon from "material-ui/FontIcon";
-import { getLikes, postLike } from "../../actions/post";
+import { getLikes, postLike, removeLike } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -14,26 +14,32 @@ import { getLikes, postLike } from "../../actions/post";
 class Likes extends Component {
   componentWillMount() {
     let songId = this.props.songID;
+    let userId = this.props.sessionCookie;
     this.props.dispatch(getLikes(songId));
   }
 
   render() {
-    const style = {
-      margin: 12
-    };
-
     let userId = this.props.sessionCookie;
     let songId = this.props.songID;
-    let likes = this.props.likes[songId];
+    let likes = this.props.likes[songId][0].count;
+    let alreadyLiked = this.props.likes[songId][1].isLiked;
 
     const onLikeClick = evt => {
-      this.props.dispatch(postLike(userId, songId));
+      if (!alreadyLiked === true) {
+        this.props.dispatch(removeLike(userId, songId));
+      } else {
+        this.props.dispatch(postLike(userId, songId));
+      }
       // this.setState( { searchText: '' })
     };
 
     const likeButton = (
       <img src="../../../assets/images/favorite-heart-button.svg" height="30" />
     );
+
+    const style = {
+      margin: 12
+    };
 
     return (
       <div>

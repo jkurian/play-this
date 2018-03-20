@@ -87,13 +87,29 @@ export default function reducer(
       };
     }
     case "FETCHED_SONG_LIKES": {
+      console.log(action.payload);
       return {
         ...state,
         fetching: false,
         songLikes: {
           ...state.songLikes,
-          [action.payload.songId]: action.payload.likes.count
+          [action.payload.songId]: [
+            action.payload.likes,
+            action.payload.isLiked
+          ]
         }
+      };
+    }
+    case "SONG_LIKE_REMOVE_CLICKED": {
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "SONG_LIKE_REMOVED": {
+      return {
+        ...state,
+        fetching: false
       };
     }
   }

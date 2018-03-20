@@ -57,6 +57,12 @@ module.exports = function(app, dataHelpers) {
     .get((req, res) => songPostController.getUserLike(req, res, dataHelpers));
 
   app
+    .route("/api/songs/:id/like/delete")
+    .post((req, res) =>
+      songPostController.removeUserLike(req, res, dataHelpers)
+    );
+
+  app
     .route("/api/songinfo/:forumid")
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
 

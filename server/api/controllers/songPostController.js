@@ -49,3 +49,10 @@ exports.getUserLike = function(req, res, dataHelpers) {
     res.json(result);
   });
 };
+
+exports.removeUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.removeUserLike(req.body).then(result => {
+    res.json(result);
+  });
+};
