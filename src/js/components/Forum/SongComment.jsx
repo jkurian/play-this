@@ -40,7 +40,7 @@ export default class SongComment extends Component {
                 <Avatar src={this.props.comments.avatar_image} size={100} style={avatarStyle}/>
                 <Paper style={paperStyle} zDepth={1} rounded={false}>
                   <h4 style={{fontFamily: 'Raleway, sans-serif'}}>{this.props.comments.first_name}</h4>
-                  <p>
+                  <p style={{wordWrap: 'break-word'}}>
                     <span >
                           <i>
                           <Moment fromNow ago>
