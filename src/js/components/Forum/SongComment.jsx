@@ -6,76 +6,52 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import IconMenu from "material-ui/IconMenu";
 import MenuItem from "material-ui/MenuItem";
 import { connect } from "react-redux";
-import * as _ from "lodash";
 import Moment from "react-moment";
-import Paper from 'material-ui/Paper';
+import Paper from "material-ui/Paper";
 
 const paperStyle = {
-  height: '100%',
-  width: '70%',
+  height: "100%",
+  width: "70%",
   margin: 20,
   padding: 15,
-  display: 'inline-block',
-};  
+  display: "inline-block"
+};
 
 const avatarStyle = {
-  float: 'left',
-  marginLeft: '1em',
-  marginTop: '1em'
-}
+  float: "left",
+  marginLeft: "1em",
+  marginTop: "1em"
+};
 
 @connect((store, props) => {
-  return {
-  };
+  return {};
 })
-
 
 // Add time of post into this.props.comment?
 export default class SongComment extends Component {
   render() {
-
     return (
-            <div>
-              <div>
-                <Avatar src={this.props.comments.avatar_image} size={100} style={avatarStyle}/>
-                <Paper style={paperStyle} zDepth={1} rounded={false}>
-                  <h4 style={{fontFamily: 'Raleway, sans-serif'}}>{this.props.comments.first_name}</h4>
-                  <p style={{wordWrap: 'break-word'}}>
-                    <span >
-                          <i>
-                          <Moment fromNow ago>
-                            {this.props.comments.comment_time_stamp}
-                          </Moment>{" "}
-                          ago
-                          </i>
-                    </span>
-                    <br />
-                    <br />
-                    {this.props.comments.comment}
-                  </p>
-                </Paper>
-              </div>
-              {/* <ListItem
-                leftAvatar={<Avatar src={this.props.comments.avatar_image} />}
-                primaryText={this.props.comments.first_name}
-                secondaryText={
-                  <p>
-                    <span >
-                      <i>
-                      <Moment fromNow ago>
-                        {this.props.comments.comment_time_stamp}
-                      </Moment>{" "}
-                      ago
-                      </i>
-                    </span>
-                    <br />
-                    {this.props.comments.comment}
-                  </p>
-                }
-                secondaryTextLines={2}
-                key={this.props.comments.id}
-              /> */}
-            </div>
-          );
+      <div>
+        <div>
+          <Avatar src={this.props.comments.avatar_image} size={100} style={avatarStyle}/>
+          <Paper style={paperStyle} zDepth={1} rounded={false}>
+            <h4 style={{fontFamily: 'Raleway, sans-serif'}}>{this.props.comments.first_name}</h4>
+            <p style={{wordWrap: 'break-word'}}>
+              <span >
+                <i>
+                <Moment fromNow ago>
+                  {this.props.comments.comment_time_stamp}
+                </Moment>{" "}
+                ago
+                </i>
+              </span>
+              <br />
+              <br />
+              {this.props.comments.comment}
+            </p>
+          </Paper>
+        </div>
+      </div>
+    );
   }
 }

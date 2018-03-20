@@ -175,6 +175,35 @@ module.exports = function makeDataHelpers(knex) {
           console.log(err);
         });
     },
+    getUserLike: function(songId) {
+      return knex("userlikes")
+        .where({ song_id: songId })
+        .count("song_id")
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    postUserLike: function(like) {
+      return knex("userlikes")
+        .insert({
+          user_id: like.userId,
+          song_id: like.songId
+        })
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    removeUserLike: function(like) {
+      return knex("userlikes")
+        .where({ user_id: like.userId, song_id: like.songId })
+        .del();
+    },
     addFriend: function(newFriendData) {
       console.log("NEW FRIEND DATA IS", newFriendData);
       return knex("userfriends")
@@ -229,7 +258,8 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     deleteForumRequest: function(forum_id) {
-      return knex("requests").where('id', forum_id)
+      return knex("requests")
+        .where("id", forum_id)
         .del()
         .catch(err => {
           console.log(err);
@@ -245,11 +275,15 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     deleteFriend: function(relationship) {
-      return knex("userfriends").where({user_id1: relationship.user_id1, user_id2: relationship.user_id2})
+      return knex("userfriends")
+        .where({
+          user_id1: relationship.user_id1,
+          user_id2: relationship.user_id2
+        })
         .del()
         .catch(err => {
           console.log(err);
         });
-    },
+    }
   };
 };

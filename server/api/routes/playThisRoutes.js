@@ -26,9 +26,11 @@ module.exports = function(app, dataHelpers) {
   app
     .route("/api/forum/:id")
     .get((req, res) => forumController.getForumRequest(req, res, dataHelpers))
-    .delete((req, res) => forumController.deleteForumRequests(req, res, dataHelpers));
-  
-    app
+    .delete((req, res) =>
+      forumController.deleteForumRequests(req, res, dataHelpers)
+    );
+
+  app
     .route("/api/settings/:id")
     .get((req, res) => sidebarController.settings(req, res, dataHelpers));
   app
@@ -50,12 +52,23 @@ module.exports = function(app, dataHelpers) {
     .get((req, res) => songPostController.songComments(req, res, dataHelpers));
 
   app
+    .route("/api/songs/:id/like")
+    .post((req, res) => songPostController.postUserLike(req, res, dataHelpers))
+    .get((req, res) => songPostController.getUserLike(req, res, dataHelpers));
+
+  app
+    .route("/api/songs/:id/like/delete")
+    .post((req, res) =>
+      songPostController.removeUserLike(req, res, dataHelpers)
+    );
+
+  app
     .route("/api/songinfo/:forumid")
     .get((req, res) => songPostController.songInfo(req, res, dataHelpers));
 
   app
     .route("/api/friends/:id")
-    .get((req, res) => sidebarController.friends(req, res, dataHelpers))
+    .get((req, res) => sidebarController.friends(req, res, dataHelpers));
 
   app
     .route("/api/friend")

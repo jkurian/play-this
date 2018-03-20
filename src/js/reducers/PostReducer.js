@@ -6,8 +6,10 @@ export default function reducer(
     songInfo: [],
     searchedTracks: [],
     postSpotifySong: {},
+    songLikes: {},
+    alreadyLiked: false,
     fetching: false,
-    error: null,
+    error: null
   },
   action
 ) {
@@ -29,13 +31,16 @@ export default function reducer(
       };
     }
     case "[SONG]POST_COMMENT_FULFILLED": {
-      console.log("THE PAYLOAD IS:", action.payload)
+      console.log("THE PAYLOAD IS:", action.payload);
       return {
         ...state,
         testUpdate: action.payload.comments,
         songComments: {
           ...state.songComments,
-          [action.payload.songid]: [action.payload, ...state.songComments[action.payload.songid]],
+          [action.payload.songid]: [
+            action.payload,
+            ...state.songComments[action.payload.songid]
+          ]
         }
       };
     }
@@ -59,10 +64,49 @@ export default function reducer(
       };
     }
     case "POST_SPOTIFY_SONG_SUCCESSFUL": {
-      console.log(action.payload);
       return {
         ...state,
         songInfo: [action.payload, ...state.songInfo]
+      };
+    }
+    case "SONG_LIKE_CLICKED": {
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "SONG_LIKE_FULFILLED": {
+      return {
+        ...state,
+        fetching: false
+      };
+    }
+    case "FETCHING_SONG_LIKES": {
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "FETCHED_SONG_LIKES": {
+      return {
+        ...state,
+        fetching: false,
+        songLikes: {
+          ...state.songLikes,
+          [action.payload.songId]: [action.payload.likes]
+        }
+      };
+    }
+    case "SONG_LIKE_REMOVE_CLICKED": {
+      return {
+        ...state,
+        fetching: true
+      };
+    }
+    case "SONG_LIKE_REMOVED": {
+      return {
+        ...state,
+        fetching: false
       };
     }
   }
