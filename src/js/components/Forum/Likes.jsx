@@ -9,7 +9,8 @@ import { fetchSongComments, postLike } from "../../actions/post";
 
 @connect(store => {
   return {
-    sessionCookie: store.login.sessionCookie
+    sessionCookie: store.login.sessionCookie,
+    likes: store.post.songLikes
   };
 })
 class Likes extends Component {
@@ -20,6 +21,7 @@ class Likes extends Component {
 
     let userId = this.props.sessionCookie;
     let songId = this.props.songID;
+    let likes = this.props.likes[songId];
 
     const onLikeClick = evt => {
       this.props.dispatch(postLike(userId, songId));
@@ -32,7 +34,7 @@ class Likes extends Component {
           backgroundColor="#a4c639"
           hoverColor="#8AA62F"
           icon={<ActionAndroid color={fullWhite} />}
-          label="Likes"
+          label={likes}
           style={style}
           onClick={onLikeClick}
         />
