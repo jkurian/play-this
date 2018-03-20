@@ -113,11 +113,20 @@ export function postLike(userId, songId) {
 
     axios
       .post(`http://localhost:3000/api/songs/${songId}/like`, userLike)
-      .then(response => {
+      .then(responseOne => {
+        console.log(responseOne);
         dispatch({ type: "SONG_LIKE_FULFILLED", payload: { liked: true } });
+        axios
+          .get(`http://localhost:3000/api/songs/${songId}/like`)
+          .then(responseTwo => {
+            dispatch({
+              type: "FETCHING_USER_LIKES",
+              payload: responseTwo.data[0]
+            });
+          });
       })
       .catch(err => {
-        dispatch({ type: "SONG_LIKED_REJECTED", payload: err });
+        dispatch({ type: "SONG_LIKE_REJECTED", payload: err });
       });
   };
 }

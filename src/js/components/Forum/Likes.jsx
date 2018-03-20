@@ -32,6 +32,7 @@ class Likes extends Component {
           backgroundColor="#a4c639"
           hoverColor="#8AA62F"
           icon={<ActionAndroid color={fullWhite} />}
+          label="Likes"
           style={style}
           onClick={onLikeClick}
         />

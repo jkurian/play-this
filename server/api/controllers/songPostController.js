@@ -38,8 +38,14 @@ exports.postSpotifySong = function(req, res, dataHelpers) {
 
 exports.postUserLike = function(req, res, dataHelpers) {
   let err = false;
-  console.log(req.body);
   dataHelpers.postUserLike(req.body).then(result => {
+    res.json(result);
+  });
+};
+
+exports.getUserLike = function(req, res, dataHelpers) {
+  let err = false;
+  dataHelpers.getUserLike(req.params.id).then(result => {
     res.json(result);
   });
 };

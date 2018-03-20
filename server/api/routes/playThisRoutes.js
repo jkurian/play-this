@@ -53,7 +53,8 @@ module.exports = function(app, dataHelpers) {
 
   app
     .route("/api/songs/:id/like")
-    .post((req, res) => songPostController.postUserLike(req, res, dataHelpers));
+    .post((req, res) => songPostController.postUserLike(req, res, dataHelpers))
+    .get((req, res) => songPostController.getUserLike(req, res, dataHelpers));
 
   app
     .route("/api/songinfo/:forumid")

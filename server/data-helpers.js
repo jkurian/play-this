@@ -173,12 +173,23 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     postUserLike: function(like) {
-      console.log("In postUserLike!");
       return knex("userlikes")
         .insert({
           user_id: like.userId,
           song_id: like.songId
         })
+        .then(results => {
+          return results;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getUserLike: function(songId) {
+      console.log("In get user like");
+      return knex("userlikes")
+        .where({ song_id: songId })
+        .count("user_id")
         .then(results => {
           return results;
         })
