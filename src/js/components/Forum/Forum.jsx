@@ -17,8 +17,9 @@ import { fetchSongInfo, fetchSongComments } from "../../actions/post";
 
 const styles = {
   button: {
-    marginTop: 80,
-    marginLeft: 20
+    marginRight: '2em',
+    position: 'absolute',
+    right: 0
   },
   exampleImageInput: {
     cursor: 'pointer',
@@ -87,14 +88,16 @@ class Forum extends Component {
     return (
       <div>
         <SideBar />
-        {deleteButton}
+        <div>{deleteButton}</div>
         <h1 style={titleStyle}>{this.props.viewingRequest.title}</h1>
         <br />
         <p style={paragraphStyle}>{this.props.viewingRequest.explanation}</p>
         <p style={nameStyle}> Submitted by : {this.props.viewingRequest.first_name} {this.props.viewingRequest.last_name}</p>
-        <Search />
+        <div style={{marginLeft: '9em', marginBottom: '5em', width: '42em'}}>
+          <Search/> 
+        </div>
         <div class="postedBox">
-        <SongPost />
+          <SongPost />
         </div>
       </div>
     );

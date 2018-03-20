@@ -6,6 +6,7 @@ import Subheader from "material-ui/Subheader";
 import * as _ from "lodash";
 import { fetchSongComments } from "../../actions/post";
 
+
 @connect((store, props) => {
   return {
     songComments: _.get(store, `post.songComments.${props.songID}`),
@@ -22,7 +23,6 @@ export default class CommentTextField extends React.Component {
     }) : undefined;
     return (
       <div>
-      <Subheader>Comments</Subheader>
       {allComments}
       </div>
     );

@@ -27,7 +27,7 @@ export default class CommentTextField extends React.Component {
         />
       </div>
       <span>
-        Posted by {this.props.nameOfPoster}{" "}
+        Suggested by <strong>{this.props.nameOfPoster}{" "}</strong>
         <Moment fromNow ago>
           {this.props.song.song_time_stamp}
         </Moment>{" "}

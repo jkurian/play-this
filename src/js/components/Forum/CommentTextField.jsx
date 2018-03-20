@@ -36,12 +36,16 @@ export default class CommentTextField extends React.Component {
       );
       this.setState( { commentText: '' })
     };
+
     return (
       <TextField
-      hintText="What did you think?"
+      hintText="What did you think? (max. 500 characters)"
       floatingLabelText="Comment"
       fullwidth="true"
       onChange={onChange}
+      multiLine={true}
+      maxLength="499"
+      style={{width: '30em'}}
       value={this.state.commentText}
       onKeyPress={evt => {
         if (evt.key === "Enter") {
