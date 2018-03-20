@@ -197,7 +197,6 @@ module.exports = function makeDataHelpers(knex) {
         });
     },
     removeUserLike: function(like) {
-      console.log(like);
       return knex("userlikes")
         .where({ user_id: like.userId, song_id: like.songId })
         .del();
