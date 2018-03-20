@@ -120,6 +120,7 @@ export function postLike(userId, songId) {
           .get(`http://localhost:3000/api/songs/${songId}/like`)
           .then(responseTwo => {
             let songLikes = {
+              songId: songId,
               likes: responseTwo.data[0]
             };
             dispatch({

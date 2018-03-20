@@ -81,9 +81,13 @@ export default function reducer(
       };
     }
     case "FETCHED_SONG_LIKES": {
+      console.log("====> ", action.payload);
       return {
         ...state,
-        songLikes: [action.payload]
+        songLikes: {
+          ...state.songLikes,
+          [action.payload.songId]: action.payload.likes
+        }
       };
     }
   }
