@@ -133,3 +133,24 @@ export function postLike(userId, songId) {
       });
   };
 }
+
+export function getLikes(songId) {
+  return function(dispatch) {
+    dispatch({ type: "FETCHING_SONG_LIKES" });
+    axios
+      .get(`http://localhost:3000/api/songs/${songId}/like`)
+      .then(response => {
+        let songLikes = {
+          songId: songId,
+          likes: response.data[0]
+        };
+        dispatch({
+          type: "FETCHED_SONG_LIKES",
+          payload: songLikes
+        });
+      })
+      .catch(err => {
+        dispatch({ type: "SONG_LIKE_REJECTED", payload: err });
+      });
+  };
+}

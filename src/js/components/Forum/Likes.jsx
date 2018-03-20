@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import FlatButton from "material-ui/FlatButton";
+import RaisedButton from "material-ui/RaisedButton";
 import FontIcon from "material-ui/FontIcon";
-import { fetchSongComments, postLike } from "../../actions/post";
+import { getLikes, postLike } from "../../actions/post";
 
 @connect(store => {
   return {
@@ -12,6 +12,11 @@ import { fetchSongComments, postLike } from "../../actions/post";
   };
 })
 class Likes extends Component {
+  componentWillMount() {
+    let songId = this.props.songID;
+    this.props.dispatch(getLikes(songId));
+  }
+
   render() {
     const style = {
       margin: 12
@@ -32,9 +37,9 @@ class Likes extends Component {
 
     return (
       <div>
-        <FlatButton
-          backgroundColor="#a4c639"
-          hoverColor="#8AA62F"
+        <RaisedButton
+          backgroundColor="#169fbd"
+          hoverColor="#c3237e"
           icon={likeButton}
           label={likes}
           style={style}

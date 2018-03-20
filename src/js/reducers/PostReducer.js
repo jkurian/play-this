@@ -80,6 +80,12 @@ export default function reducer(
         fetching: false
       };
     }
+    case "FETCHING_SONG_LIKES": {
+      return {
+        ...state,
+        fetching: false
+      };
+    }
     case "FETCHED_SONG_LIKES": {
       return {
         ...state,
