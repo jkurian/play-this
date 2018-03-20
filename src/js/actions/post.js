@@ -165,7 +165,7 @@ export function removeLike(userId, songId) {
     axios
       .post(`http://localhost:3000/api/songs/${songId}/like/delete`, userLike)
       .then(responseOne => {
-        dispatch({ type: "SONG_LIKE_REMOVED" });
+        dispatch({ type: "SONG_LIKE_REMOVED", payload: responseOne });
 
         axios
           .get(`http://localhost:3000/api/songs/${songId}/like`)

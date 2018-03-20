@@ -78,8 +78,7 @@ export default function reducer(
     case "SONG_LIKE_FULFILLED": {
       return {
         ...state,
-        fetching: false,
-        alreadyLiked: true
+        fetching: false
       };
     }
     case "FETCHING_SONG_LIKES": {
@@ -107,8 +106,7 @@ export default function reducer(
     case "SONG_LIKE_REMOVED": {
       return {
         ...state,
-        fetching: false,
-        alreadyLiked: false
+        fetching: false
       };
     }
   }

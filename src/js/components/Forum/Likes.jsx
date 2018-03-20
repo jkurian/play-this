@@ -16,6 +16,7 @@ class Likes extends Component {
   componentWillMount() {
     let songId = this.props.songID;
     let userId = this.props.sessionCookie;
+    this.setState({ hasLiked: this.props.hasLiked });
     this.props.dispatch(getLikes(songId));
   }
 
@@ -25,15 +26,14 @@ class Likes extends Component {
     let likes = !this.props.likes[songId]
       ? "0"
       : this.props.likes[songId][0].count;
-    console.log("=====> ", this.props.alreadyLiked);
 
-    const onLikeClick = evt => {
-      if (this.props.alreadyLiked === true) {
+    const onLikeClick = (evt, hasLiked) => {
+      this.setState({ hasLiked: !this.state.hasLiked });
+      if (this.state.hasLiked === true) {
         this.props.dispatch(removeLike(userId, songId));
       } else {
         this.props.dispatch(postLike(userId, songId));
       }
-      // this.setState( { searchText: '' })
     };
 
     const likeButton = (
@@ -43,7 +43,7 @@ class Likes extends Component {
     const style = {
       margin: 12
     };
-
+    let hasLiked = false;
     return (
       <div>
         <RaisedButton
@@ -52,7 +52,7 @@ class Likes extends Component {
           icon={likeButton}
           label={likes}
           style={style}
-          onClick={onLikeClick}
+          onClick={evt => onLikeClick(evt, this.props.hasLiked)}
         />
       </div>
     );

@@ -30,11 +30,11 @@ class SongPost extends Component {
           let nameOfPoster = !song.first_name
             ? this.props.first_name
             : song.first_name;
-
+          let hasLiked = false;
           return (
             <div>
               <SongWidget song={song} nameOfPoster={nameOfPoster} />
-              <Likes songID={song.id} />
+              <Likes songID={song.id} hasLiked={hasLiked} />
               <div>
                 <CommentTextField songID={song.id} />
                 <SongCommentList songID={song.id} />
