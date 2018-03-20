@@ -14,7 +14,8 @@ const paperStyle = {
   width: "70%",
   margin: 20,
   padding: 15,
-  display: "inline-block"
+  display: "inline-block",
+  backgroundColor: "rgba(207, 216, 220, 0.3)"
 };
 
 const avatarStyle = {
