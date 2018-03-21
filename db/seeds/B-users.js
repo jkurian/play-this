@@ -8,21 +8,21 @@ exports.seed = function(knex, Promise) {
       {
         first_name: "Josh",
         last_name: "Rose",
-        avatar_image: "http://stevensegallery.com/200/300",
+        avatar_image: "",
         email: "josh@dev.com",
         password: bcrypt.hashSync('hunter2', 10)
       },
       {
         first_name: "Ed",
         last_name: "Eaglesham",
-        avatar_image: "http://www.placecage.com/c/200/300",
+        avatar_image: "",
         email: "ed@dev.com",
         password: bcrypt.hashSync('hunter2', 10)
       },
       {
         first_name: "Jerry",
         last_name: "Kurian",
-        avatar_image: "http://fillmurray.com/200/300",
+        avatar_image: "",
         email: "jerry@dev.com",
         password: bcrypt.hashSync('hunter2', 10)
       }

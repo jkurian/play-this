@@ -57,7 +57,7 @@ export function authenticate(loginEmailField, loginPasswordField) {
       .catch(err => {
         dispatch({
           type: "AUTHENTICATE_USER_REJECTED",
-          payload: response.data.authenticated
+          payload: {authenticated: false}
         });
       });
   };

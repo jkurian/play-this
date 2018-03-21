@@ -30,23 +30,21 @@ export default function reducer(state={
       case "AUTHENTICATE_USER_FULFILLED": {
         return {
           ...state, 
+          ...action.payload,
           sessionCookie: action.payload.authenticated,
-          avatar_url: action.payload.avatar_url,
-          first_name: action.payload.first_name,
-          last_name: action.payload.last_name,
           authenticating: false
         }
       }
       case "AUTHENTICATE_USER_REJECTED": {
         return {
           ...state, 
-          sessionCookie: "rejected",
-          authenticating: false
+          sessionCookie: false,
+          ...action.payload
         }
       }
       case "USER_LOGOUT": {
         return {
-          sessionCookie: null,
+          ...action.payload,
         }
       }
     }
