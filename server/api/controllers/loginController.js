@@ -14,7 +14,6 @@ exports.login = function(req, res, dataHelpers) {
     .then(results => {
       if (results) {
         //instead of returning true or false in result, return userid if correct credentials
-        console.log("RESULTS OF AUTHHHHHHHHH", results[0]);
         const payload = { user_id: results[0].id };
         jwt.sign(
           payload,
@@ -39,7 +38,7 @@ exports.login = function(req, res, dataHelpers) {
         // req.session.userID = results[0].id;
         // console.log('session set:', req.session)
       } else {
-        res.status(401).send(authenticated);
+        res.status(401).send({authenticated: false});
       }
     });
   //maybe return a res.500 because this would mean we dont return a promise
