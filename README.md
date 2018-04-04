@@ -2,9 +2,12 @@
 
 ## App Description
 
-Play This is a full-stack app which functions as a social media platform bringing together music lovers to collectively share, discuss and listen to music. It was developed using JavaScript, Express, PostgreSQL, React, Redux and designed with Material UI. Music streaming and search powered by Spotify. 
+Play This is a full-stack app which functions as a social media platform bringing together music lovers to collectively share, discuss and listen to music. Through a private network of friends, you will have access to post or receive song recommendations in forums created with a focus on a specific musical topic. 
+It was developed using JavaScript, Express, PostgreSQL, React, Redux and designed with Material UI. Music streaming and search powered by Spotify.
 
 ## Screenshots
+![Screenshot of landing page](https://github.com/jkurian/play-this/blob/master/docs/playthis_landing.png)
+![Screenshot of forum](https://github.com/jkurian/play-this/blob/master/docs/playthis_forum.png)
 
 
 ## Getting Started
