@@ -19,8 +19,7 @@ It was developed using JavaScript, Express, PostgreSQL, React, Redux and designe
 5.  Check the migrations folder to see what gets created in the DB
 6.  Run the seed: `npm run knex seed:run`
 7.  Check the seeds file to see what gets seeded in the DB
-8.  Run the express server: `node ./server/index.js`
-9.  Run Webpack dev server: `npm run dev`
+8.  Start the project: `npm run start`
 10. Visit http://localhost:8080/
 
 ## Dependencies
